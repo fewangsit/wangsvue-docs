@@ -3,6 +3,26 @@
     "docs": {
       "type": "http",
       "url": "http://localhost:3000/mcp"
+    },
+    "wangsvue-mcp": {
+      "type": "stdio",
+      "command": "npx",
+      "args": [
+        "wangsvue-mcp"
+      ],
+      "disabledTools": [
+        "get_component_documentation"
+      ],
+      "autoApprove": [
+        "search_components",
+        "analyze_component",
+        "get_component_definition",
+        "resolve_type_definition",
+        "get_component_source",
+      ]
+    },
+    "gitbook-mcp": {
+      "url": "https://fewangsit.gitbook.io/vue/~gitbook/mcp"
     }
   }
 }
