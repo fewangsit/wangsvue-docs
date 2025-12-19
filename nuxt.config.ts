@@ -14,7 +14,10 @@ export default defineNuxtConfig({
     enabled: true
   },
 
-  css: ['~/assets/css/main.css'],
+  css: [
+    '~/assets/css/main.css',
+    '@fewangsit/wangsvue-presets/wangsvue/style.css'
+  ],
 
   content: {
     build: {
