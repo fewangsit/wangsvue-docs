@@ -83,6 +83,7 @@
 
 <script setup lang="ts">
 import { ref, onMounted, type Component } from 'vue'
+import { componentRegistry } from '../docs'
 
 interface Props {
   src: string
@@ -100,22 +101,6 @@ const sourceCode = ref('')
 const isLoading = ref(true)
 const loadingError = ref('')
 const copied = ref(false)
-
-// Component registry - we'll expand this as we add more components
-const componentRegistry = {
-  'button/Basic': () => import('~/components/docs/button/Basic.vue'),
-  'button/Severity': () => import('~/components/docs/button/Severity.vue'),
-  'button/Size': () => import('~/components/docs/button/Size.vue'),
-  'button/Icon': () => import('~/components/docs/button/Icon.vue'),
-  'button/IconOnly': () => import('~/components/docs/button/IconOnly.vue'),
-  'button/Badge': () => import('~/components/docs/button/Badge.vue'),
-  'button/Tooltip': () => import('~/components/docs/button/Tooltip.vue'),
-  'button/Loading': () => import('~/components/docs/button/Loading.vue'),
-  'button/Raised': () => import('~/components/docs/button/Raised.vue'),
-  'button/Text': () => import('~/components/docs/button/Text.vue'),
-  'button/Outlined': () => import('~/components/docs/button/Outlined.vue'),
-  'button/Template': () => import('~/components/docs/button/Template.vue')
-}
 
 // Load component dynamically
 const loadComponent = async () => {
