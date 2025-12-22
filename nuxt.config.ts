@@ -84,6 +84,6 @@ export default defineNuxtConfig({
   },
 
   mcp: {
-    name: 'Docs template'
+    name: 'Wangsvue Docs'
   }
 })
