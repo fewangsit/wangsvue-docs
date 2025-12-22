@@ -51,27 +51,29 @@
         v-if="showCode && sourceCode"
         class="absolute top-4 right-4 flex items-center gap-2 z-10"
       >
-        <Button
-          v-if="isCodeTruncated"
-          :icon="isCodeExpanded ? 'arrow-up-s' : 'arrow-down'"
-          severity="secondary"
-          text
-          rounded
-          :tooltip="isCodeExpanded ? 'Collapse code' : 'Expand code'"
-          tooltip-pos="left"
-          class="shadow-lg bg-white/90 backdrop-blur-sm hover:bg-white"
-          @click="toggleCodeExpansion"
-        />
-        <Button
-          :icon="copied ? 'check' : 'file-copy'"
-          :severity="copied ? 'success' : 'secondary'"
-          text
-          rounded
-          :tooltip="copied ? 'Copied!' : 'Copy code'"
-          tooltip-pos="left"
-          class="shadow-lg bg-white/90 backdrop-blur-sm hover:bg-white"
-          @click="copyToClipboard"
-        />
+        <ClientOnly>
+          <Button
+            v-if="isCodeTruncated"
+            :icon="isCodeExpanded ? 'arrow-up-s' : 'arrow-down'"
+            severity="secondary"
+            text
+            rounded
+            :tooltip="isCodeExpanded ? 'Collapse code' : 'Expand code'"
+            tooltip-pos="left"
+            class="shadow-lg bg-white/90 backdrop-blur-sm hover:bg-white"
+            @click="toggleCodeExpansion"
+          />
+          <Button
+            :icon="copied ? 'check' : 'file-copy'"
+            :severity="copied ? 'success' : 'secondary'"
+            text
+            rounded
+            :tooltip="copied ? 'Copied!' : 'Copy code'"
+            tooltip-pos="left"
+            class="shadow-lg bg-white/90 backdrop-blur-sm hover:bg-white"
+            @click="copyToClipboard"
+          />
+        </ClientOnly>
       </div>
 
       <div class="p-4">

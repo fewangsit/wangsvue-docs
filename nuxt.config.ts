@@ -15,8 +15,7 @@ export default defineNuxtConfig({
   },
 
   css: [
-    '~/assets/css/main.css',
-    '@fewangsit/wangsvue-presets/wangsvue/style.css'
+    '~/assets/css/main.css'
   ],
 
   content: {
