@@ -1,3 +1,5 @@
+<!-- eslint-disable vue/no-v-text-v-html-on-component -->
+<!-- eslint-disable vue/no-v-html -->
 <template>
   <div class="component-demo border rounded-lg overflow-hidden my-6">
     <!-- Preview Section -->
@@ -56,10 +58,9 @@
       </div>
     </div>
 
-    <!-- Source Code Section -->
     <div
       v-if="showCode && sourceCode"
-      class="border-t bg-gray-50"
+      class="border-t"
     >
       <div class="p-4">
         <div class="flex items-center justify-between mb-3">
@@ -73,16 +74,16 @@
             {{ copied ? "Copied!" : "Copy" }}
           </button>
         </div>
-        <pre
-          class="text-sm bg-white p-3 rounded border overflow-x-auto"
-        ><code>{{ sourceCode }}</code></pre>
+        <div
+          v-html="highlightedCode"
+        />
       </div>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, type Component } from 'vue'
+import type { Component } from 'vue'
 import { componentRegistry } from '../docs'
 
 interface Props {
@@ -97,9 +98,13 @@ const props = withDefaults(defineProps<Props>(), {
 })
 
 const dynamicComponent = ref<Component | null>(null)
-const sourceCode = ref('')
 const isLoading = ref(true)
 const loadingError = ref('')
+const sourceCode = ref('')
+const highlightedCode = ref('')
+const fileName = ref('')
+const isLoadingSource = ref(false)
+const sourceCodeError = ref('')
 const copied = ref(false)
 
 // Load component dynamically
@@ -118,26 +123,49 @@ const loadComponent = async () => {
     // Import the component
     const module = await componentLoader()
     dynamicComponent.value = module.default
-
-    // Load source code if showCode is enabled
-    if (props.showCode) {
-      try {
-        const response = await fetch(
-          `/api/component-source?src=${encodeURIComponent(props.src)}`
-        )
-        if (response.ok) {
-          sourceCode.value = await response.text()
-        }
-      } catch (error) {
-        console.warn('Failed to load source code:', error)
-      }
-    }
   } catch (error) {
     console.error('Failed to load component:', error)
     loadingError.value
       = error instanceof Error ? error.message : 'Unknown error'
   } finally {
     isLoading.value = false
+  }
+}
+
+// Load source code
+const loadSourceCode = async () => {
+  if (!props.showCode) return
+
+  try {
+    isLoadingSource.value = true
+    sourceCodeError.value = ''
+
+    // Fetch source code from API
+    const response = await $fetch<{ sourceCode: string, path: string }>(
+      `/api/component-source?src=${encodeURIComponent(props.src)}`
+    )
+
+    sourceCode.value = response.sourceCode
+    fileName.value = response.path
+
+    const responsePost = await $fetch<{ html: string, path: string }>(
+      `/api/highlight-code`,
+      {
+        method: 'POST',
+        body: {
+          code: sourceCode.value,
+          lang: 'vue'
+        }
+      }
+    )
+
+    highlightedCode.value = responsePost.html
+  } catch (error) {
+    console.error('Failed to load source code:', error)
+    sourceCodeError.value
+      = error instanceof Error ? error.message : 'Unknown error'
+  } finally {
+    isLoadingSource.value = false
   }
 }
 
@@ -155,5 +183,12 @@ const copyToClipboard = async () => {
 
 onMounted(() => {
   loadComponent()
+  loadSourceCode()
 })
 </script>
+
+<style scoped>
+:deep(.shiki span.line) {
+  display: inline !important;
+}
+</style>

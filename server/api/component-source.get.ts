@@ -15,8 +15,8 @@ export default defineEventHandler(async (event) => {
   // Validate src to prevent path traversal
   if (
     src.includes('..')
-    || (src.includes('/')
-      && !src.match(/^[a-zA-Z0-9-_]+\/[0-9]{2}\.[a-zA-Z0-9-_]+$/))
+    || src.includes('../')
+    || !src.match(/^[a-zA-Z0-9-_]+\/[a-zA-Z0-9-_]+$/)
   ) {
     throw createError({
       statusCode: 400,
@@ -28,8 +28,10 @@ export default defineEventHandler(async (event) => {
     const filePath = join(process.cwd(), 'app/components/docs', `${src}.vue`)
     const content = await readFile(filePath, 'utf-8')
 
-    setHeader(event, 'content-type', 'text/plain')
-    return content
+    return {
+      sourceCode: content,
+      path: `${src}.vue`
+    }
   } catch {
     throw createError({
       statusCode: 404,

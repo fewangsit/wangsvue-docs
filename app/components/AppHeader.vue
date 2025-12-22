@@ -51,7 +51,7 @@ const { header } = useAppConfig()
         class="lg:hidden"
       />
 
-      <UColorModeButton v-if="header?.colorMode" />
+      <!-- <UColorModeButton v-if="header?.colorMode" /> -->
 
       <template v-if="header?.links">
         <UButton
