@@ -4,21 +4,6 @@
   <div class="component-demo border rounded-lg overflow-hidden my-6">
     <!-- Preview Section -->
     <div class="p-6">
-      <div
-        v-if="title"
-        class="mb-4"
-      >
-        <h3 class="text-lg font-semibold text-gray-900">
-          {{ title }}
-        </h3>
-        <p
-          v-if="description"
-          class="text-sm text-gray-600 mt-1"
-        >
-          {{ description }}
-        </p>
-      </div>
-
       <!-- Component Preview with isolated WangsVue styles -->
       <div class="preview-container wangsvue-isolated">
         <ClientOnly>
@@ -60,23 +45,49 @@
 
     <div
       v-if="showCode && sourceCode"
-      class="border-t"
+      class="border-t relative"
     >
-      <div class="p-4">
-        <div class="flex items-center justify-between mb-3">
-          <h4 class="text-sm font-medium text-gray-700">
-            Source Code
-          </h4>
-          <button
-            class="text-xs px-2 py-1 bg-gray-200 hover:bg-gray-300 rounded transition-colors"
-            @click="copyToClipboard"
-          >
-            {{ copied ? "Copied!" : "Copy" }}
-          </button>
-        </div>
-        <div
-          v-html="highlightedCode"
+      <div
+        v-if="showCode && sourceCode"
+        class="absolute top-4 right-4 flex items-center gap-2 z-10"
+      >
+        <Button
+          v-if="isCodeTruncated"
+          :icon="isCodeExpanded ? 'arrow-up-s' : 'arrow-down'"
+          severity="secondary"
+          text
+          rounded
+          :tooltip="isCodeExpanded ? 'Collapse code' : 'Expand code'"
+          tooltip-pos="left"
+          class="shadow-lg bg-white/90 backdrop-blur-sm hover:bg-white"
+          @click="toggleCodeExpansion"
         />
+        <Button
+          :icon="copied ? 'check' : 'file-copy'"
+          :severity="copied ? 'success' : 'secondary'"
+          text
+          rounded
+          :tooltip="copied ? 'Copied!' : 'Copy code'"
+          tooltip-pos="left"
+          class="shadow-lg bg-white/90 backdrop-blur-sm hover:bg-white"
+          @click="copyToClipboard"
+        />
+      </div>
+
+      <div class="p-4">
+        <div
+          class="relative"
+          :class="{ 'code-truncated': isCodeTruncated && !isCodeExpanded }"
+        >
+          <div
+            class="transition-all duration-300"
+            v-html="displayedCode"
+          />
+          <div
+            v-if="isCodeTruncated && !isCodeExpanded"
+            class="absolute bottom-0 left-0 right-0 h-12 bg-linear-to-t from-white to-transparent pointer-events-none"
+          />
+        </div>
       </div>
     </div>
   </div>
@@ -84,6 +95,7 @@
 
 <script setup lang="ts">
 import type { Component } from 'vue'
+import { Button } from '@fewangsit/wangsvue'
 import { componentRegistry } from '../docs'
 
 interface Props {
@@ -91,10 +103,12 @@ interface Props {
   title?: string
   description?: string
   showCode?: boolean
+  maxLines?: number
 }
 
 const props = withDefaults(defineProps<Props>(), {
-  showCode: true
+  showCode: true,
+  maxLines: 10
 })
 
 const dynamicComponent = ref<Component | null>(null)
@@ -106,6 +120,40 @@ const fileName = ref('')
 const isLoadingSource = ref(false)
 const sourceCodeError = ref('')
 const copied = ref(false)
+const isCodeExpanded = ref(false)
+const isCodeTruncated = ref(false)
+const truncatedCode = ref('')
+
+// Computed property for displayed code
+const displayedCode = computed(() => {
+  if (!isCodeTruncated.value || isCodeExpanded.value) {
+    return highlightedCode.value
+  }
+  return truncatedCode.value
+})
+
+// Function to check if code should be truncated and create truncated version
+const processCodeTruncation = () => {
+  if (!highlightedCode.value) return
+
+  // Count lines in the highlighted code
+  const lines = highlightedCode.value.split('\n')
+
+  if (lines.length > props.maxLines) {
+    isCodeTruncated.value = true
+
+    // Create truncated version by taking first maxLines lines
+    const truncatedLines = lines.slice(0, props.maxLines)
+    truncatedCode.value = truncatedLines.join('\n')
+  } else {
+    isCodeTruncated.value = false
+  }
+}
+
+// Toggle code expansion
+const toggleCodeExpansion = () => {
+  isCodeExpanded.value = !isCodeExpanded.value
+}
 
 // Load component dynamically
 const loadComponent = async () => {
@@ -160,6 +208,9 @@ const loadSourceCode = async () => {
     )
 
     highlightedCode.value = responsePost.html
+
+    // Process code truncation after highlighting is complete
+    processCodeTruncation()
   } catch (error) {
     console.error('Failed to load source code:', error)
     sourceCodeError.value
@@ -190,5 +241,14 @@ onMounted(() => {
 <style scoped>
 :deep(.shiki span.line) {
   display: inline !important;
+}
+
+.code-truncated {
+  max-height: calc(1.5rem * v-bind(maxLines));
+  overflow: hidden;
+}
+
+.code-truncated :deep(.shiki) {
+  padding-bottom: 3rem;
 }
 </style>
