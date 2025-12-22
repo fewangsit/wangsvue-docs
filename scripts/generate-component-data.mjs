@@ -141,7 +141,7 @@ async function main() {
       // Directory might already exist, ignore error
     }
 
-    await writeFile(outputPath, JSON.stringify(components, null, 2))
+    await writeFile(outputPath, JSON.stringify(components))
 
     console.log(`✅ Generated component data for ${components.length} components`)
     console.log(`📄 Output saved to: ${outputPath}`)

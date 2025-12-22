@@ -44,6 +44,33 @@ export default defineNuxtConfig({
     }
   },
 
+  hooks: {
+    'build:before': async () => {
+      // Generate component data before build
+      const { execSync } = await import('child_process')
+      console.log('🚀 Generating MCP component data...')
+      execSync('node scripts/generate-component-data.mjs', { stdio: 'inherit' })
+    },
+    'nitro:build:public-assets': async (nitro) => {
+      // Copy MCP data to Nitro build
+      const { copyFile, mkdir } = await import('fs/promises')
+      const { join } = await import('path')
+
+      try {
+        const sourcePath = join(process.cwd(), 'server/mcp/data/components.json')
+        const targetDir = join(nitro.options.output.serverDir, 'mcp/data')
+        const targetPath = join(targetDir, 'components.json')
+
+        await mkdir(targetDir, { recursive: true })
+        await copyFile(sourcePath, targetPath)
+
+        console.log('✅ MCP data copied to Nitro build', targetPath)
+      } catch (error) {
+        console.warn('⚠️ Failed to copy MCP data:', error)
+      }
+    }
+  },
+
   eslint: {
     config: {
       stylistic: {
