@@ -41,8 +41,26 @@ async function generateComponentData() {
       console.log(`  Found ${sections.length} sections:`, sections.map(s => s.id))
 
       componentData.sections = await Promise.all(sections.map(async (section) => {
-        // Read the corresponding Vue example file
-        const examplePath = join(docsDir, componentName, `${section.id}.vue`)
+        if (!section.hasExample) {
+          // Special sections don't need example files
+          return section
+        }
+
+        // For demo sections, we need to find the example file using the demo path
+        // Extract the example file name from the demo path
+        let exampleFileName = section.id // default to section id
+
+        // Re-parse the section content to get the demo path
+        const demoMatch = section.originalContent?.match(/::component-demo\{src="([^"]+)"\}/g)
+        if (demoMatch) {
+          const srcMatch = demoMatch[0].match(/src="([^"]+)"/)
+          if (srcMatch) {
+            const srcPath = srcMatch[1]
+            exampleFileName = srcPath.split('/').pop() || section.id
+          }
+        }
+
+        const examplePath = join(docsDir, componentName, `${exampleFileName}.vue`)
         let exampleCode = ''
 
         try {
@@ -55,6 +73,7 @@ async function generateComponentData() {
 
         return {
           ...section,
+          originalContent: undefined, // Remove this from final output
           example: exampleCode
         }
       }))
@@ -72,8 +91,8 @@ async function generateComponentData() {
 function parseMarkdownSections(content) {
   const sections = []
 
-  // Split content by ### headers (section headers)
-  const sectionRegex = /### ([^\n]+)\n([^#]*?)(?=###|$)/g
+  // Split content by ## headers (section headers) - include subsections with ###
+  const sectionRegex = /## ([^\n]+)\n((?:(?!##)[\s\S])*?)(?=##|$)/g
   let match
 
   while ((match = sectionRegex.exec(content)) !== null) {
@@ -85,21 +104,19 @@ function parseMarkdownSections(content) {
 
     // Extract component demo source
     const demoMatch = sectionContent.match(/::component-demo\{src="([^"]+)"\}/g)
-    if (demoMatch) {
-      // Extract the source path from the first demo
-      const srcMatch = demoMatch[0].match(/src="([^"]+)"/)
-      if (srcMatch) {
-        const srcPath = srcMatch[1]
-        // Extract the example name (last part after /)
-        const exampleName = srcPath.split('/').pop() || title
+    const hasExample = !!demoMatch
 
-        sections.push({
-          id: exampleName.toLowerCase(),
-          label: title,
-          description: description
-        })
-      }
-    }
+    // Always use title for section ID (kebab-case)
+    const sectionId = title.toLowerCase().replace(/\s+/g, '-')
+
+    sections.push({
+      id: sectionId,
+      label: title,
+      description: description,
+      content: hasExample ? undefined : sectionContent.trim(),
+      originalContent: hasExample ? sectionContent : undefined, // Store original for demo path lookup
+      hasExample: hasExample
+    })
   }
 
   return sections
@@ -111,7 +128,19 @@ async function main() {
     const components = await generateComponentData()
 
     // Write to JSON file
-    const outputPath = 'component-data.json'
+    const outputPath = 'server/mcp/data/components.json'
+
+    // Ensure the directory exists
+    const { dirname } = await import('path')
+    const { mkdir } = await import('fs/promises')
+    const outputDir = dirname(outputPath)
+
+    try {
+      await mkdir(outputDir, { recursive: true })
+    } catch {
+      // Directory might already exist, ignore error
+    }
+
     await writeFile(outputPath, JSON.stringify(components, null, 2))
 
     console.log(`✅ Generated component data for ${components.length} components`)

@@ -1,28 +1,5 @@
 import { z } from 'zod'
-import { readFile } from 'fs/promises'
-
-interface ComponentSection {
-  id: string
-  label: string
-  description: string
-  example: string
-}
-
-interface ComponentData {
-  name: string
-  title: string
-  description: string
-  sections: ComponentSection[]
-}
-
-async function loadComponentData(): Promise<ComponentData[]> {
-  try {
-    const data = await readFile('component-data.json', 'utf-8')
-    return JSON.parse(data)
-  } catch (error) {
-    throw new Error(`Failed to load component data: ${error instanceof Error ? error.message : 'Unknown error'}`)
-  }
-}
+import { loadComponentData } from '../utils/component-loader'
 
 export default defineMcpTool({
   description: `Get all available sections for a Wangsvue component documentation page.
@@ -41,7 +18,7 @@ EXAMPLES:
 - Get button sections: component_name="button"
 - Get icon sections: component_name="icon"
 
-WORKFLOW: Use this after list_components to see available sections, then use get_component_example with specific section IDs.`,
+WORKFLOW: Use this after list_components to see available sections, then use get_component_example with specific section IDs for section with 'hasExample=true' to find the code example.`,
 
   inputSchema: {
     component_name: z.string().describe('The component name (e.g., "button", "icon")')
@@ -68,7 +45,8 @@ WORKFLOW: Use this after list_components to see available sections, then use get
       // Return sections with id and description only
       const sections = component.sections.map(section => ({
         id: section.id,
-        description: section.description
+        description: section.description,
+        hasExample: section.hasExample
       }))
 
       return {

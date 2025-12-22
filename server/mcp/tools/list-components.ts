@@ -1,27 +1,4 @@
-import { readFile } from 'fs/promises'
-
-interface ComponentSection {
-  id: string
-  label: string
-  description: string
-  example: string
-}
-
-interface ComponentData {
-  name: string
-  title: string
-  description: string
-  sections: ComponentSection[]
-}
-
-async function loadComponentData(): Promise<ComponentData[]> {
-  try {
-    const data = await readFile('component-data.json', 'utf-8')
-    return JSON.parse(data)
-  } catch (error) {
-    throw new Error(`Failed to load component data: ${error instanceof Error ? error.message : 'Unknown error'}`)
-  }
-}
+import { loadComponentData } from '../utils/component-loader'
 
 export default defineMcpTool({
   description: `List all available Wangsvue component IDs.
