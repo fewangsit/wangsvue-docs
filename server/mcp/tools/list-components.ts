@@ -6,11 +6,11 @@ export default defineMcpTool({
 WHEN TO USE: Use this tool when you need to:
 - Discover what components are available
 - Get a simple list of component identifiers
-- Find components for use with get_component_example
+- Find components for use with get_example
 
 RETURNS: Simple array of component IDs (e.g., ["button", "icon"])
 
-WORKFLOW: After using this tool to find components, use get_component_sections with the component ID to list of sections in the documentation page. You will find section id to find the example code.`,
+WORKFLOW: After using this tool to find components, use get_sections with the component ID to list of sections in the documentation page. You will find section id to find the example code.`,
 
   cache: '10m',
 

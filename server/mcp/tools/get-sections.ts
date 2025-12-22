@@ -10,33 +10,33 @@ WHEN TO USE: Use this tool when you need to:
 - See the structure of component documentation
 
 PARAMETERS:
-- component_name: The component name (e.g., "button", "icon")
+- component: The component name (e.g., "button", "icon")
 
 RETURNS: JSON array of sections with id and description for the specified component.
 
 EXAMPLES:
-- Get button sections: component_name="button"
-- Get icon sections: component_name="icon"
+- Get button sections: component="button"
+- Get icon sections: component="icon"
 
-WORKFLOW: Use this after list_components to see available sections, then use get_component_example with specific section IDs for section with 'hasExample=true' to find the code example.`,
+WORKFLOW: Use this after list_components to see available sections, then use get_example with specific section IDs for section with 'hasExample=true' to find the code example.`,
 
   inputSchema: {
-    component_name: z.string().describe('The component name (e.g., "button", "icon")')
+    component: z.string().describe('The component name (e.g., "button", "icon")')
   },
 
   cache: '10m',
 
-  handler: async ({ component_name }) => {
+  handler: async ({ component: name }) => {
     try {
       const components = await loadComponentData()
 
       // Find the component
-      const component = components.find(c => c.name.toLowerCase() === component_name.toLowerCase())
+      const component = components.find(c => c.name.toLowerCase() === name.toLowerCase())
       if (!component) {
         return {
           content: [{
             type: 'text',
-            text: `Component "${component_name}" not found. Available components: ${components.map(c => c.name).join(', ')}`
+            text: `Component "${component}" not found. Available components: ${components.map(c => c.name).join(', ')}`
           }],
           isError: true
         }

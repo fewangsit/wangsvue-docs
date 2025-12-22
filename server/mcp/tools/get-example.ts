@@ -10,44 +10,44 @@ WHEN TO USE: Use this tool when you need to:
 - Copy example code for implementation
 
 PARAMETERS:
-- component_name: The component name (e.g., "button", "icon")
-- example_id: The example ID (e.g., "basic", "severity", "icon")
+- component: The component name (e.g., "button", "icon")
+- section: The section id (e.g., "basic", "severity", "icon")
 
 RETURNS: The complete Vue source code for the requested example, including template and script sections.
 
 EXAMPLES:
-- Get basic button example: component_name="button", example_id="basic"`,
+- Get basic button example: component="button", section="basic"`,
 
   inputSchema: {
-    component_name: z.string().describe('The component name (e.g., "button", "icon")'),
-    example_id: z.string().describe('The example ID (e.g., "basic", "severity", "icon")')
+    component: z.string().describe('The component name (e.g., "button", "icon")'),
+    section: z.string().describe('The section id (e.g., "basic", "severity", "icon")')
   },
 
   // cache: '10m',
 
-  handler: async ({ component_name, example_id }) => {
+  handler: async ({ component: name, section }) => {
     try {
       const components = await loadComponentData()
 
       // Find the component
-      const component = components.find(c => c.name.toLowerCase() === component_name.toLowerCase())
+      const component = components.find(c => c.name.toLowerCase() === name.toLowerCase())
       if (!component) {
         return {
           content: [{
             type: 'text',
-            text: `Component "${component_name}" not found. Available components: ${components.map(c => c.name).join(', ')}`
+            text: `Component "${component}" not found. Available components: ${components.map(c => c.name).join(', ')}`
           }],
           isError: true
         }
       }
 
       // Find the example
-      const example = component.sections.find(s => s.id.toLowerCase() === example_id.toLowerCase())
+      const example = component.sections.find(s => s.id.toLowerCase() === section.toLowerCase())
       if (!example) {
         return {
           content: [{
             type: 'text',
-            text: `Example "${example_id}" not found for component "${component_name}". Available examples: ${component.sections.filter(it => it.hasExample).map(s => s.id).join(', ')}`
+            text: `Example "${section}" not found for component "${component}". Available examples: ${component.sections.filter(it => it.hasExample).map(s => s.id).join(', ')}`
           }],
           isError: true
         }
@@ -58,7 +58,7 @@ EXAMPLES:
           type: 'text',
           text: JSON.stringify({
             component: component.name,
-            example_id: example_id,
+            section: section,
             example: example.example
           })
         }]

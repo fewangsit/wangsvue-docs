@@ -21,7 +21,7 @@ EXAMPLES:
 - List button examples: component_name="button"
 - List icon examples: component_name="icon"
 
-WORKFLOW: Use this to discover all available examples, then use get_component_example with specific section IDs to get the actual code.`,
+WORKFLOW: Use this to discover all available examples, then use get_example with specific section IDs to get the actual code.`,
 
   inputSchema: {
     component_name: z.string().describe('The component name (e.g., "button", "icon")')
