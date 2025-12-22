@@ -1,0 +1,90 @@
+import { z } from 'zod'
+import { readFile } from 'fs/promises'
+
+interface ComponentSection {
+  id: string
+  label: string
+  description: string
+  example: string
+}
+
+interface ComponentData {
+  name: string
+  title: string
+  description: string
+  sections: ComponentSection[]
+}
+
+async function loadComponentData(): Promise<ComponentData[]> {
+  try {
+    const data = await readFile('component-data.json', 'utf-8')
+    return JSON.parse(data)
+  } catch (error) {
+    throw new Error(`Failed to load component data: ${error instanceof Error ? error.message : 'Unknown error'}`)
+  }
+}
+
+export default defineMcpTool({
+  description: `Get all available sections for a Wangsvue component documentation page.
+
+WHEN TO USE: Use this tool when you need to:
+- List all available sections/examples for a specific component
+- Discover what documentation sections exist before getting specific examples
+- See the structure of component documentation
+
+PARAMETERS:
+- component_name: The component name (e.g., "button", "icon")
+
+RETURNS: JSON array of sections with id and description for the specified component.
+
+EXAMPLES:
+- Get button sections: component_name="button"
+- Get icon sections: component_name="icon"
+
+WORKFLOW: Use this after list_components to see available sections, then use get_component_example with specific section IDs.`,
+
+  inputSchema: {
+    component_name: z.string().describe('The component name (e.g., "button", "icon")')
+  },
+
+  cache: '10m',
+
+  handler: async ({ component_name }) => {
+    try {
+      const components = await loadComponentData()
+
+      // Find the component
+      const component = components.find(c => c.name.toLowerCase() === component_name.toLowerCase())
+      if (!component) {
+        return {
+          content: [{
+            type: 'text',
+            text: `Component "${component_name}" not found. Available components: ${components.map(c => c.name).join(', ')}`
+          }],
+          isError: true
+        }
+      }
+
+      // Return sections with id and description only
+      const sections = component.sections.map(section => ({
+        id: section.id,
+        description: section.description
+      }))
+
+      return {
+        content: [{
+          type: 'text',
+          text: JSON.stringify(sections, null, 2)
+        }]
+      }
+    } catch (error) {
+      return {
+        content: [{
+          type: 'text',
+          text: `Error: ${error instanceof Error ? error.message : 'Unknown error'}`
+        }],
+        isError: true
+      }
+    }
+  }
+})
