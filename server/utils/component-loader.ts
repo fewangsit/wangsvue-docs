@@ -14,22 +14,23 @@ export async function loadComponentData(): Promise<ComponentData[]> {
     const { join } = await import('path')
 
     const possiblePaths = [
+      join(process.cwd(), 'data/components.json'), // For netlify function
       // Development path
       join(process.cwd(), 'server/data/components.json'),
       // Production build path (Nitro output)
       join(process.cwd(), '.output/server/data/components.json')
     ]
 
-    const { readdir } = await import('fs/promises')
-    console.log('CWD: ', process.cwd())
-    console.log(
-      'Folders in current directory:',
-      await readdir(process.cwd(), { withFileTypes: true }).then(entries =>
-        entries
-          .filter(entry => entry.isDirectory())
-          .map(entry => entry.name)
-      )
-    )
+    // const { readdir } = await import('fs/promises')
+    // console.log('CWD: ', process.cwd())
+    // console.log(
+    //   'Folders in current directory:',
+    //   await readdir(process.cwd(), { withFileTypes: true }).then(entries =>
+    //     entries
+    //       .filter(entry => entry.isDirectory())
+    //       .map(entry => entry.name)
+    //   )
+    // )
 
     let data: string
 
