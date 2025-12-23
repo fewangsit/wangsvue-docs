@@ -8,7 +8,7 @@
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
     "lint": "eslint .",
-    "generate:component-data": "node scripts/generate-component-data.mjs"
+    "generate:unified-data": "node scripts/generate-unified-data.mjs"
   },
   "dependencies": {
     "@fewangsit/wangsvue": "1.5.229-alpha.5",

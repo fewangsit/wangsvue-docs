@@ -1,10 +1,10 @@
 #!/usr/bin/env node
 
-import { readFile, readdir, writeFile } from 'fs/promises'
+import { readFile, readdir, writeFile, mkdir } from 'fs/promises'
 import { join, basename } from 'path'
 import matter from 'gray-matter'
 
-async function generateComponentData() {
+export default async function generateUnifiedData() {
   const componentsDir = 'content/4.components'
   const docsDir = 'app/components/docs'
 
@@ -43,7 +43,13 @@ async function generateComponentData() {
       componentData.sections = await Promise.all(sections.map(async (section) => {
         if (!section.hasExample) {
           // Special sections don't need example files
-          return section
+          return {
+            id: section.id,
+            label: section.label,
+            description: section.description,
+            example: '',
+            hasExample: false
+          }
         }
 
         // For demo sections, we need to find the example file using the demo path
@@ -72,9 +78,11 @@ async function generateComponentData() {
         }
 
         return {
-          ...section,
-          originalContent: undefined, // Remove this from final output
-          example: exampleCode
+          id: section.id,
+          label: section.label,
+          description: section.description,
+          example: exampleCode,
+          hasExample: true
         }
       }))
 
@@ -83,7 +91,7 @@ async function generateComponentData() {
 
     return components
   } catch (error) {
-    console.error('Error generating component data:', error)
+    console.error('Error generating unified data:', error)
     throw error
   }
 }
@@ -124,27 +132,25 @@ function parseMarkdownSections(content) {
 
 async function main() {
   try {
-    console.log('🚀 Generating component data...')
-    const components = await generateComponentData()
-
-    // Write to JSON file
-    const outputPath = 'server/mcp/data/components.json'
+    console.log('🚀 Generating unified component data...')
+    const components = await generateUnifiedData()
 
     // Ensure the directory exists
-    const { dirname } = await import('path')
-    const { mkdir } = await import('fs/promises')
-    const outputDir = dirname(outputPath)
+    const outputDir = 'server/data'
+    await mkdir(outputDir, { recursive: true })
 
-    try {
-      await mkdir(outputDir, { recursive: true })
-    } catch {
-      // Directory might already exist, ignore error
-    }
+    // Also keep the JSON file for reference
+    const jsonPath = join(outputDir, 'components.json')
+    await writeFile(jsonPath, JSON.stringify(components))
 
-    await writeFile(outputPath, JSON.stringify(components))
+    console.log(`✅ Generated unified data for ${components.length} components`)
+    console.log(`📄 Components JSON: ${jsonPath}`)
 
-    console.log(`✅ Generated component data for ${components.length} components`)
-    console.log(`📄 Output saved to: ${outputPath}`)
+    // Count total examples
+    const totalExamples = components.reduce((count, component) => {
+      return count + component.sections.filter(section => section.hasExample).length
+    }, 0)
+    console.log(`📄 Included ${totalExamples} component examples with source code`)
 
     // Print summary
     components.forEach((component) => {
@@ -152,7 +158,8 @@ async function main() {
       console.log(`   ${component.description}`)
       console.log(`   Sections: ${component.sections.length}`)
       component.sections.forEach((section) => {
-        console.log(`   - ${section.label}: ${section.description.substring(0, 50)}...`)
+        const hasCode = section.hasExample ? ' (with code)' : ''
+        console.log(`   - ${section.label}: ${section.description.substring(0, 50)}...${hasCode}`)
       })
     })
   } catch (error) {
@@ -161,4 +168,6 @@ async function main() {
   }
 }
 
-main()
+if (import.meta.url === `file://${process.argv[1]}`) {
+  main()
+}

@@ -45,26 +45,23 @@ export default defineNuxtConfig({
   },
 
   hooks: {
-    'build:before': async () => {
-      // Generate component data before build
-      const { execSync } = await import('child_process')
-      console.log('🚀 Generating MCP component data...')
-      execSync('node scripts/generate-component-data.mjs', { stdio: 'inherit' })
-    },
     'nitro:build:public-assets': async (nitro) => {
-      // Copy MCP data to Nitro build
-      const { copyFile, mkdir } = await import('fs/promises')
+      // Generate unified component data and sources before build
+      console.log('🚀 Generating unified component data and sources...')
+      const { default: generate } = await import ('./scripts/generate-unified-data.mjs')
+      const components = await generate()
+
+      const { mkdir, writeFile } = await import('fs/promises')
       const { join } = await import('path')
 
       try {
-        const sourcePath = join(process.cwd(), 'server/mcp/data/components.json')
-        const targetDir = join(nitro.options.output.serverDir, 'mcp/data')
+        const targetDir = join(nitro.options.output.serverDir, 'data')
         const targetPath = join(targetDir, 'components.json')
 
         await mkdir(targetDir, { recursive: true })
-        await copyFile(sourcePath, targetPath)
+        await writeFile(targetPath, JSON.stringify(components))
 
-        console.log('✅ MCP data copied to Nitro build', targetPath)
+        console.log('✅ MCP data generate to: ', targetPath)
       } catch (error) {
         console.warn('⚠️ Failed to copy MCP data:', error)
       }
