@@ -2,7 +2,6 @@
 import { Form, InputText } from '@fewangsit/wangsvue'
 
 const existingUsernames = ['admin', 'user', 'test', 'demo']
-const existingEmails = ['admin@company.com', 'user@company.com']
 
 const checkDomainAvailability = async (value: string): Promise<boolean> => {
   await new Promise(resolve => setTimeout(resolve, 800))
@@ -22,33 +21,19 @@ const onCancel = () => {
 <template>
   <Form
     :column-per-row="2"
+    :buttons-template="['submit', 'cancel', 'clear']"
+    :hide-stay-checkbox="true"
     submit-btn-label="Create Account"
     @submit="onSubmit"
     @cancel="onCancel"
   >
     <template #fields="{ formValues }">
-      <!-- Basic required field -->
-      <InputText
-        label="Full Name"
-        field-name="fullName"
-        :use-validator="true"
-        :mandatory="true"
-        :max-length="50"
-        placeholder="Enter your full name"
-        :validator-message="{
-          empty: 'Full name is required',
-          exceed: 'Name must not exceed 50 characters'
-        }"
-      />
-
-      <!-- Username with existing values check -->
       <InputText
         label="Username"
         field-name="username"
         :use-validator="true"
         :mandatory="true"
         :max-length="20"
-        :auto-uppercase="true"
         :existing-values="existingUsernames"
         :prevent-input-on-max-length="true"
         placeholder="Choose username"
@@ -57,24 +42,6 @@ const onCancel = () => {
           empty: 'Username is required',
           exceed: 'Username must not exceed 20 characters',
           exist: 'This username is already taken'
-        }"
-      />
-
-      <!-- Email with async availability check -->
-      <InputText
-        label="Email Address"
-        field-name="email"
-        :use-validator="true"
-        :mandatory="true"
-        :max-length="100"
-        :existing-values="existingEmails"
-        :validate-on-blur="true"
-        placeholder="Enter email address"
-        field-info="Validation occurs on blur"
-        :validator-message="{
-          empty: 'Email is required',
-          exceed: 'Email must not exceed 100 characters',
-          exist: 'This email is already registered'
         }"
       />
 
