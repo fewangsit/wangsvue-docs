@@ -28,9 +28,13 @@ export const componentRegistry: Record<string, () => Promise<{ default: Componen
 
   // InputText components
   'inputtext/Basic': () => import('./inputtext/Basic.vue'),
-  'inputtext/Validation': () => import('./inputtext/Validation.vue'),
-  'inputtext/AutoUppercase': () => import('./inputtext/AutoUppercase.vue'),
   'inputtext/CharacterRestrictions': () => import('./inputtext/CharacterRestrictions.vue'),
+  'inputtext/MaxLengthPrevention': () => import('./inputtext/MaxLengthPrevention.vue'),
+  'inputtext/ValidationOnBlur': () => import('./inputtext/ValidationOnBlur.vue'),
+  'inputtext/AvailabilityCheck': () => import('./inputtext/AvailabilityCheck.vue'),
+  'inputtext/ExistingValues': () => import('./inputtext/ExistingValues.vue'),
+  'inputtext/ValidationStates': () => import('./inputtext/ValidationStates.vue'),
+  'inputtext/Disabled': () => import('./inputtext/Disabled.vue'),
   'inputtext/FormIntegration': () => import('./inputtext/FormIntegration.vue'),
 
   // Textarea components
