@@ -1,5 +1,5 @@
 import { z } from 'zod'
-import { loadComponentData } from '../utils/component-loader'
+import { loadComponentData } from '../../utils/component-loader'
 
 export default defineMcpTool({
   description: `List all available examples for a specific Wangsvue component.

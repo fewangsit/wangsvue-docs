@@ -1,4 +1,6 @@
-import type { ComponentData } from '../types/component'
+import type { ComponentData } from '../mcp/types/component'
+
+let loadedComponents: ComponentData[]
 
 /**
  * Loads component data from the JSON file
@@ -7,23 +9,15 @@ import type { ComponentData } from '../types/component'
  */
 export async function loadComponentData(): Promise<ComponentData[]> {
   try {
-    // In production, use Nitro's server assets
-    if (process.env.NODE_ENV === 'production') {
-      const data = await useStorage('assets:mcp').getItem('components.json')
-      if (data) {
-        return typeof data === 'string' ? JSON.parse(data) : data
-      }
-    }
-
-    // Fallback to file system for development
+    if (loadedComponents) return loadedComponents
     const { readFile } = await import('fs/promises')
     const { join } = await import('path')
 
     const possiblePaths = [
       // Development path
-      join(process.cwd(), 'server/mcp/data/components.json'),
+      join(process.cwd(), 'server/data/components.json'),
       // Production build path (Nitro output)
-      join(process.cwd(), '.output/server/mcp/data/components.json')
+      join(process.cwd(), '.output/server/data/components.json')
     ]
 
     let data: string
@@ -42,7 +36,8 @@ export async function loadComponentData(): Promise<ComponentData[]> {
       throw new Error('Component data file not found in any expected location')
     }
 
-    return JSON.parse(data)
+    loadedComponents = JSON.parse(data)
+    return loadedComponents
   } catch (error) {
     throw new Error(`Failed to load component data: ${error instanceof Error ? error.message : 'Unknown error'}`)
   }

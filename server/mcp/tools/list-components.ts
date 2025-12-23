@@ -1,4 +1,4 @@
-import { loadComponentData } from '../utils/component-loader'
+import { loadComponentData } from '../../utils/component-loader'
 
 export default defineMcpTool({
   description: `List all available Wangsvue component IDs.

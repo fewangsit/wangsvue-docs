@@ -1,5 +1,6 @@
-import { readFile } from 'fs/promises'
-import { join } from 'path'
+import { loadComponentData } from '../utils/component-loader'
+
+const componentSourceMap = new Map<string, string>()
 
 export default defineEventHandler(async (event) => {
   const query = getQuery(event)
@@ -25,11 +26,37 @@ export default defineEventHandler(async (event) => {
   }
 
   try {
-    const filePath = join(process.cwd(), 'app/components/docs', `${src}.vue`)
-    const content = await readFile(filePath, 'utf-8')
+    if (componentSourceMap.has(src)) return {
+      sourceCode: componentSourceMap.get(src),
+      path: `${src}.vue`
+    }
+
+    let sourceCode = ''
+    const components = await loadComponentData()
+    // const filePath = join(process.cwd(), 'app/components/docs', `${src}.vue`)
+    // const sourceCode = await readFile(filePath, 'utf-8')
+
+    if (components?.length) {
+      const [component] = src.split('/')
+      const match = components.find(it => it.name == component)
+
+      if (match) {
+        sourceCode
+          = match.sections.find(it => it.examplePath == src)?.example ?? ''
+      }
+
+      sourceCode
+        ||= components
+          .flatMap(it => it.sections)
+          .find(it => it.examplePath == src)?.example ?? ''
+
+      if (sourceCode) {
+        componentSourceMap.set(src, sourceCode)
+      }
+    }
 
     return {
-      sourceCode: content,
+      sourceCode: sourceCode,
       path: `${src}.vue`
     }
   } catch {

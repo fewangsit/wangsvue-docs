@@ -4,6 +4,8 @@ import { readFile, readdir, writeFile, mkdir } from 'fs/promises'
 import { join, basename } from 'path'
 import matter from 'gray-matter'
 
+import { fileURLToPath } from 'url'
+
 export default async function generateUnifiedData() {
   const componentsDir = 'content/4.components'
   const docsDir = 'app/components/docs'
@@ -48,7 +50,8 @@ export default async function generateUnifiedData() {
             label: section.label,
             description: section.description,
             example: '',
-            hasExample: false
+            hasExample: false,
+            examplePath: null
           }
         }
 
@@ -82,7 +85,8 @@ export default async function generateUnifiedData() {
           label: section.label,
           description: section.description,
           example: exampleCode,
-          hasExample: true
+          hasExample: true,
+          examplePath: `${componentName}/${exampleFileName}`
         }
       }))
 
@@ -168,6 +172,6 @@ async function main() {
   }
 }
 
-if (import.meta.url === `file://${process.argv[1]}`) {
+if (fileURLToPath(import.meta.url) === process.argv[1]) {
   main()
 }

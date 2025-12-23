@@ -4,6 +4,7 @@ export interface ComponentSection {
   description: string
   example: string
   hasExample: boolean
+  examplePath: string | null
 }
 
 export interface ComponentData {
