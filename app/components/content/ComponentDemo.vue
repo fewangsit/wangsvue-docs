@@ -48,39 +48,52 @@
     >
       <ClientOnly>
         <div class="relative">
-          <CodeBlock
-            :code="isCodeExpanded ? sourceCode : displayedCode"
-            language="vue"
-            :filename="fileName"
-            class="rounded-none border-0"
+          <div
+            :class="[
+              'code-container',
+              { 'code-truncated': isCodeTruncated && !isCodeExpanded }
+            ]"
           >
-            <template #toolbar>
-              <div class="flex items-center justify-end gap-3 w-max absolute top-0 right-0 p-2">
-                <button
-                  v-if="isCodeTruncated"
-                  class="opacity-0 group-hover:opacity-100 transition-opacity duration-200 p-1 rounded hover:bg-gray-200 dark:hover:bg-gray-700 leading-1"
-                  :title="isCodeExpanded ? 'Collapse code' : 'Expand code'"
-                  @click="toggleCodeExpansion"
-                >
-                  <UIcon
-                    name="lucide:code"
-                    class="h-4 w-4 text-gray-500"
-                  />
-                </button>
+            <CodeBlock
+              :code="sourceCode"
+              language="vue"
+              :filename="fileName"
+              class="rounded-none border-0"
+            >
+              <template #toolbar>
+                <div class="flex items-center justify-end gap-3 w-max absolute top-0 right-0 p-2">
+                  <button
+                    v-if="isCodeTruncated"
+                    class="opacity-0 group-hover:opacity-100 transition-opacity duration-200 p-1 rounded hover:bg-gray-200 dark:hover:bg-gray-700 leading-1"
+                    :title="isCodeExpanded ? 'Collapse code' : 'Expand code'"
+                    @click="toggleCodeExpansion"
+                  >
+                    <UIcon
+                      name="lucide:code"
+                      class="h-4 w-4 text-gray-500"
+                    />
+                  </button>
 
-                <button
-                  class="opacity-0 group-hover:opacity-100 transition-opacity duration-200 p-1 rounded hover:bg-gray-200 dark:hover:bg-gray-700 leading-1"
-                  :title="copied ? 'Copied!' : 'Copy code'"
-                  @click="copyCode"
-                >
-                  <UIcon
-                    :name="copied ? 'lucide:copy-check' : 'lucide:copy'"
-                    class="h-4 w-4 text-gray-500"
-                  />
-                </button>
-              </div>
-            </template>
-          </CodeBlock>
+                  <button
+                    class="opacity-0 group-hover:opacity-100 transition-opacity duration-200 p-1 rounded hover:bg-gray-200 dark:hover:bg-gray-700 leading-1"
+                    :title="copied ? 'Copied!' : 'Copy code'"
+                    @click="copyCode"
+                  >
+                    <UIcon
+                      :name="copied ? 'lucide:copy-check' : 'lucide:copy'"
+                      class="h-4 w-4 text-gray-500"
+                    />
+                  </button>
+                </div>
+              </template>
+            </CodeBlock>
+          </div>
+
+          <!-- Expand/Collapse overlay for truncated code -->
+          <div
+            v-if="isCodeTruncated && !isCodeExpanded"
+            class="absolute bottom-0 left-0 right-0 h-16 bg-linear-to-t from-white dark:from-gray-900 to-transparent pointer-events-none"
+          />
         </div>
       </ClientOnly>
     </div>
@@ -114,21 +127,11 @@ const sourceCodeError = ref('')
 const isCodeExpanded = ref(false)
 const isCodeTruncated = ref(false)
 
-const { copy, copied } = useClipboard({ source: sourceCode })
+const { copy, copied } = useClipboard({ source: sourceCode, legacy: true })
 
 const copyCode = async () => {
   await copy()
 }
-
-// Computed property for truncated code
-const displayedCode = computed(() => {
-  if (!sourceCode.value || !isCodeTruncated.value) {
-    return sourceCode.value
-  }
-
-  const lines = sourceCode.value.split('\n')
-  return lines.slice(0, props.maxLines).join('\n')
-})
 
 // Function to check if code should be truncated
 const checkCodeTruncation = () => {
@@ -197,3 +200,15 @@ onMounted(() => {
   loadSourceCode()
 })
 </script>
+
+<style scoped>
+.code-container.code-truncated {
+  max-height: calc(1.5rem * v-bind(maxLines) + 2rem); /* Line height * maxLines + padding */
+  overflow: hidden;
+  position: relative;
+}
+
+.code-container {
+  transition: max-height 0.3s ease-in-out;
+}
+</style>
