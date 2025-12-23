@@ -20,6 +20,17 @@ export async function loadComponentData(): Promise<ComponentData[]> {
       join(process.cwd(), '.output/server/data/components.json')
     ]
 
+    const { readdir } = await import('fs/promises')
+    console.log('CWD: ', process.cwd())
+    console.log(
+      'Folders in current directory:',
+      await readdir(process.cwd(), { withFileTypes: true }).then(entries =>
+        entries
+          .filter(entry => entry.isDirectory())
+          .map(entry => entry.name)
+      )
+    )
+
     let data: string
 
     for (const path of possiblePaths) {
@@ -39,6 +50,8 @@ export async function loadComponentData(): Promise<ComponentData[]> {
     loadedComponents = JSON.parse(data)
     return loadedComponents
   } catch (error) {
-    throw new Error(`Failed to load component data: ${error instanceof Error ? error.message : 'Unknown error'}`)
+    throw new Error(
+      `Failed to load component data: ${error instanceof Error ? error.message : 'Unknown error'}`
+    )
   }
 }
