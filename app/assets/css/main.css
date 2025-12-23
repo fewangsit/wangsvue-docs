@@ -23,3 +23,66 @@
 :root {
   --ui-container: var(--container-8xl);
 }
+/* Prism.js syntax highlighting styles */
+pre[class*="language-"] {
+  @apply bg-gray-50 dark:bg-gray-900 rounded-lg p-4 overflow-x-auto text-sm;
+}
+
+code[class*="language-"] {
+  @apply text-gray-800 dark:text-gray-200;
+}
+
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+  @apply text-gray-500 dark:text-gray-400;
+}
+
+.token.punctuation {
+  @apply text-gray-600 dark:text-gray-300;
+}
+
+.token.property,
+.token.tag,
+.token.boolean,
+.token.number,
+.token.constant,
+.token.symbol,
+.token.deleted {
+  @apply text-red-600 dark:text-red-400;
+}
+
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin,
+.token.inserted {
+  @apply text-green-600 dark:text-green-400;
+}
+
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string {
+  @apply text-blue-600 dark:text-blue-400;
+}
+
+.token.atrule,
+.token.attr-value,
+.token.keyword {
+  @apply text-purple-600 dark:text-purple-400;
+}
+
+.token.function,
+.token.class-name {
+  @apply text-yellow-600 dark:text-yellow-400;
+}
+
+.token.regex,
+.token.important,
+.token.variable {
+  @apply text-orange-600 dark:text-orange-400;
+}

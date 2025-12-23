@@ -1,5 +1,3 @@
-<!-- eslint-disable vue/no-v-text-v-html-on-component -->
-<!-- eslint-disable vue/no-v-html -->
 <template>
   <div class="component-demo border rounded-lg overflow-hidden my-6">
     <!-- Preview Section -->
@@ -43,61 +41,54 @@
       </div>
     </div>
 
+    <!-- Code Section -->
     <div
       v-if="showCode && sourceCode"
-      class="border-t relative"
+      class="border-t"
     >
-      <div
-        v-if="showCode && sourceCode"
-        class="absolute top-4 right-4 flex items-center gap-2 z-10"
-      >
-        <ClientOnly>
-          <Button
-            v-if="isCodeTruncated"
-            :icon="isCodeExpanded ? 'arrow-up-s' : 'arrow-down'"
-            severity="secondary"
-            text
-            rounded
-            :tooltip="isCodeExpanded ? 'Collapse code' : 'Expand code'"
-            tooltip-pos="left"
-            class="shadow-lg bg-white/90 backdrop-blur-sm hover:bg-white"
-            @click="toggleCodeExpansion"
-          />
-          <Button
-            :icon="copied ? 'check' : 'file-copy'"
-            :severity="copied ? 'success' : 'secondary'"
-            text
-            rounded
-            :tooltip="copied ? 'Copied!' : 'Copy code'"
-            tooltip-pos="left"
-            class="shadow-lg bg-white/90 backdrop-blur-sm hover:bg-white"
-            @click="copyToClipboard"
-          />
-        </ClientOnly>
-      </div>
+      <ClientOnly>
+        <div class="relative">
+          <CodeBlock
+            :code="isCodeExpanded ? sourceCode : displayedCode"
+            language="vue"
+            :filename="fileName"
+            class="rounded-none border-0"
+          >
+            <template #toolbar>
+              <div class="flex items-center justify-end gap-3 w-max absolute top-0 right-0 p-2">
+                <button
+                  v-if="isCodeTruncated"
+                  class="opacity-0 group-hover:opacity-100 transition-opacity duration-200 p-1 rounded hover:bg-gray-200 dark:hover:bg-gray-700 leading-1"
+                  :title="isCodeExpanded ? 'Collapse code' : 'Expand code'"
+                  @click="toggleCodeExpansion"
+                >
+                  <UIcon
+                    name="lucide:code"
+                    class="h-4 w-4 text-gray-500"
+                  />
+                </button>
 
-      <div class="p-4">
-        <div
-          class="relative"
-          :class="{ 'code-truncated': isCodeTruncated && !isCodeExpanded }"
-        >
-          <div
-            class="transition-all duration-300"
-            v-html="displayedCode"
-          />
-          <div
-            v-if="isCodeTruncated && !isCodeExpanded"
-            class="absolute bottom-0 left-0 right-0 h-12 bg-linear-to-t from-white to-transparent pointer-events-none"
-          />
+                <button
+                  class="opacity-0 group-hover:opacity-100 transition-opacity duration-200 p-1 rounded hover:bg-gray-200 dark:hover:bg-gray-700 leading-1"
+                  :title="copied ? 'Copied!' : 'Copy code'"
+                  @click="copyCode"
+                >
+                  <UIcon
+                    :name="copied ? 'lucide:copy-check' : 'lucide:copy'"
+                    class="h-4 w-4 text-gray-500"
+                  />
+                </button>
+              </div>
+            </template>
+          </CodeBlock>
         </div>
-      </div>
+      </ClientOnly>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
 import type { Component } from 'vue'
-import { Button } from '@fewangsit/wangsvue'
 import { componentRegistry } from '../docs'
 
 interface Props {
@@ -117,39 +108,34 @@ const dynamicComponent = ref<Component | null>(null)
 const isLoading = ref(true)
 const loadingError = ref('')
 const sourceCode = ref('')
-const highlightedCode = ref('')
 const fileName = ref('')
 const isLoadingSource = ref(false)
 const sourceCodeError = ref('')
-const copied = ref(false)
 const isCodeExpanded = ref(false)
 const isCodeTruncated = ref(false)
-const truncatedCode = ref('')
 
-// Computed property for displayed code
+const { copy, copied } = useClipboard({ source: sourceCode })
+
+const copyCode = async () => {
+  await copy()
+}
+
+// Computed property for truncated code
 const displayedCode = computed(() => {
-  if (!isCodeTruncated.value || isCodeExpanded.value) {
-    return highlightedCode.value
+  if (!sourceCode.value || !isCodeTruncated.value) {
+    return sourceCode.value
   }
-  return truncatedCode.value
+
+  const lines = sourceCode.value.split('\n')
+  return lines.slice(0, props.maxLines).join('\n')
 })
 
-// Function to check if code should be truncated and create truncated version
-const processCodeTruncation = () => {
-  if (!highlightedCode.value) return
+// Function to check if code should be truncated
+const checkCodeTruncation = () => {
+  if (!sourceCode.value) return
 
-  // Count lines in the highlighted code
-  const lines = highlightedCode.value.split('\n')
-
-  if (lines.length > props.maxLines) {
-    isCodeTruncated.value = true
-
-    // Create truncated version by taking first maxLines lines
-    const truncatedLines = lines.slice(0, props.maxLines)
-    truncatedCode.value = truncatedLines.join('\n')
-  } else {
-    isCodeTruncated.value = false
-  }
+  const lines = sourceCode.value.split('\n')
+  isCodeTruncated.value = lines.length > props.maxLines
 }
 
 // Toggle code expansion
@@ -164,8 +150,7 @@ const loadComponent = async () => {
     loadingError.value = ''
 
     // Check if component exists in registry
-    const componentLoader
-      = componentRegistry[props.src as keyof typeof componentRegistry]
+    const componentLoader = componentRegistry[props.src as keyof typeof componentRegistry]
     if (!componentLoader) {
       throw new Error(`Component "${props.src}" not found in registry`)
     }
@@ -175,8 +160,7 @@ const loadComponent = async () => {
     dynamicComponent.value = module.default
   } catch (error) {
     console.error('Failed to load component:', error)
-    loadingError.value
-      = error instanceof Error ? error.message : 'Unknown error'
+    loadingError.value = error instanceof Error ? error.message : 'Unknown error'
   } finally {
     isLoading.value = false
   }
@@ -198,39 +182,13 @@ const loadSourceCode = async () => {
     sourceCode.value = response.sourceCode
     fileName.value = response.path
 
-    const responsePost = await $fetch<{ html: string, path: string }>(
-      `/api/highlight-code`,
-      {
-        method: 'POST',
-        body: {
-          code: sourceCode.value,
-          lang: 'vue'
-        }
-      }
-    )
-
-    highlightedCode.value = responsePost.html
-
-    // Process code truncation after highlighting is complete
-    processCodeTruncation()
+    // Check if code needs truncation
+    checkCodeTruncation()
   } catch (error) {
     console.error('Failed to load source code:', error)
-    sourceCodeError.value
-      = error instanceof Error ? error.message : 'Unknown error'
+    sourceCodeError.value = error instanceof Error ? error.message : 'Unknown error'
   } finally {
     isLoadingSource.value = false
-  }
-}
-
-const copyToClipboard = async () => {
-  try {
-    await navigator.clipboard.writeText(sourceCode.value)
-    copied.value = true
-    setTimeout(() => {
-      copied.value = false
-    }, 2000)
-  } catch (error) {
-    console.error('Failed to copy to clipboard:', error)
   }
 }
 
@@ -239,18 +197,3 @@ onMounted(() => {
   loadSourceCode()
 })
 </script>
-
-<style scoped>
-:deep(.shiki span.line) {
-  display: inline !important;
-}
-
-.code-truncated {
-  max-height: calc(1.5rem * v-bind(maxLines));
-  overflow: hidden;
-}
-
-.code-truncated :deep(.shiki) {
-  padding-bottom: 3rem;
-}
-</style>
