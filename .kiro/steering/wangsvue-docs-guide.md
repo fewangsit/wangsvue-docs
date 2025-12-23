@@ -1,5 +1,5 @@
 ---
-inclusion: manual
+inclusion: always
 ---
 
 # WangsVue Documentation Creation Guide
@@ -25,15 +25,13 @@ description: Brief description of what the component does (Get the description f
 import { ComponentName } from '@fewangsit/wangsvue';
 ```
 
-## Examples
-
-### Basic
+## Basic
 Brief description of basic usage.
 
 ::component-demo{src="component/Basic"}
 ::
 
-### [Feature Name]
+## [Feature Name]
 Description of the feature being demonstrated.
 
 ::component-demo{src="component/FeatureName"}
@@ -136,21 +134,19 @@ description: Button is an extension to standard button element with icons and th
 import { Button } from '@fewangsit/wangsvue';
 ```
 
-## Examples
-
-### Basic
+## Basic
 Text to display on a button is defined with the `label` property.
 
 ::component-demo{src="button/Basic"}
 ::
 
-### Severity
+## Severity
 The severity property defines the variant of a button.
 
 ::component-demo{src="button/Severity"}
 ::
 
-### Icons
+## Icons
 Icon of a button is specified with `icon` property. The `icon` property accepts any value from the [WangsIcons](/components/icon) collection.
 
 ::component-demo{src="button/Icon"}

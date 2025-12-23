@@ -1,4 +1,40 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
+
+// Helper function to generate component data
+async function generateComponentData(nitro?: { options: { output: { serverDir: string } } }) {
+  console.log('🚀 Generating unified component data and sources...')
+
+  try {
+    const { default: generate } = await import('./scripts/generate-unified-data.mjs')
+    const components = await generate()
+
+    const { mkdir, writeFile } = await import('fs/promises')
+    const { join } = await import('path')
+
+    // Determine target directory based on environment
+    let targetDir: string
+    let targetPath: string
+
+    if (nitro) {
+      // Build time - use nitro output directory
+      targetDir = join(nitro.options.output.serverDir, 'data')
+      targetPath = join(targetDir, 'components.json')
+    } else {
+      // Development time - use server directory
+      targetDir = 'server/data'
+      targetPath = join(targetDir, 'components.json')
+    }
+
+    await mkdir(targetDir, { recursive: true })
+    await writeFile(targetPath, JSON.stringify(components, null, 2))
+
+    console.log('✅ MCP data generated to:', targetPath)
+    console.log(`📦 Generated data for ${components.length} components`)
+  } catch (error) {
+    console.warn('⚠️ Failed to generate MCP data:', error)
+  }
+}
+
 export default defineNuxtConfig({
   modules: [
     '@nuxt/eslint',
@@ -16,7 +52,9 @@ export default defineNuxtConfig({
   },
 
   css: [
-    '~/assets/css/main.css'
+    '~/assets/css/main.css',
+    '@fewangsit/wangsvue/style.css',
+    '@fewangsit/wangsvue-presets/wangsvue/style.css'
   ],
 
   content: {
@@ -46,26 +84,47 @@ export default defineNuxtConfig({
   },
 
   hooks: {
-    'nitro:build:public-assets': async (nitro) => {
-      // Generate unified component data and sources before build
-      console.log('🚀 Generating unified component data and sources...')
-      const { default: generate } = await import ('./scripts/generate-unified-data.mjs')
-      const components = await generate()
+    // Run during development server startup
+    'ready': async () => {
+      if (process.env.NODE_ENV === 'development') {
+        await generateComponentData()
 
-      const { mkdir, writeFile } = await import('fs/promises')
-      const { join } = await import('path')
+        // Set up file watching for automatic regeneration
+        const chokidar = await import('chokidar').catch(() => null)
+        if (chokidar) {
+          const watcher = chokidar.default.watch([
+            'content/4.components/**/*.md',
+            'app/components/docs/**/*.vue'
+          ], {
+            ignoreInitial: true,
+            persistent: true
+          })
 
-      try {
-        const targetDir = join(nitro.options.output.serverDir, 'data')
-        const targetPath = join(targetDir, 'components.json')
+          watcher.on('change', async (path) => {
+            console.log(`📝 Component file changed: ${path}`)
+            await generateComponentData()
+          })
 
-        await mkdir(targetDir, { recursive: true })
-        await writeFile(targetPath, JSON.stringify(components))
+          watcher.on('add', async (path) => {
+            console.log(`➕ Component file added: ${path}`)
+            await generateComponentData()
+          })
 
-        console.log('✅ MCP data generate to: ', targetPath)
-      } catch (error) {
-        console.warn('⚠️ Failed to copy MCP data:', error)
+          watcher.on('unlink', async (path) => {
+            console.log(`🗑️ Component file removed: ${path}`)
+            await generateComponentData()
+          })
+
+          console.log('👀 Watching component files for changes...')
+        } else {
+          console.warn('⚠️ chokidar not available - file watching disabled')
+        }
       }
+    },
+
+    // Run during build
+    'nitro:build:public-assets': async (nitro) => {
+      await generateComponentData(nitro)
     }
   },
 
