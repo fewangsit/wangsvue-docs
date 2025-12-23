@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { Form, InputText, InputBadge, Textarea } from '@fewangsit/wangsvue'
+import { Form, InputBadge } from '@fewangsit/wangsvue'
 
 const onSubmit = (payload: { formValues: Record<string, unknown> }) => {
-  console.log('Project form submitted:', payload.formValues)
+  console.log('Form submitted:', payload.formValues)
 }
 
 const onCancel = () => {
@@ -13,68 +13,47 @@ const onCancel = () => {
 <template>
   <Form
     :column-per-row="1"
-    submit-btn-label="Create Project"
+    submit-btn-label="Save Tags"
+    :buttons-template="['submit', 'cancel', 'clear']"
+    :hide-stay-checkbox="true"
     @submit="onSubmit"
     @cancel="onCancel"
   >
     <template #fields="{ formValues }">
-      <InputText
-        v-model="formValues.projectName"
-        label="Project Name"
-        field-name="projectName"
+      <InputBadge
+        label="Skills"
+        field-name="skills"
         :use-validator="true"
         :mandatory="true"
+        :initial-value="['JavaScript', 'Vue.js']"
+        placeholder="Enter your skills"
+        field-info="Press Enter to add each skill"
         :validator-message="{
-          empty: 'Project name is required'
+          empty: 'At least one skill is required'
         }"
       />
 
       <InputBadge
-        v-model="formValues.technologies"
-        label="Technologies"
-        field-name="technologies"
         :use-validator="true"
-        :mandatory="true"
-        placeholder="Enter technologies used"
-        field-info="Press Enter to add each technology"
-        :validator-message="{
-          empty: 'At least one technology is required'
-        }"
-      />
-
-      <InputBadge
-        v-model="formValues.tags"
+        :initial-value="['Non Editable Tag']"
+        :editable-values="['Frontend', 'Backend']"
+        :removable-values="['Frontend', 'Backend', 'Database']"
         label="Project Tags"
-        field-name="tags"
-        :use-validator="true"
+        field-name="projectTags"
         placeholder="Enter project tags"
         field-info="Optional tags for categorization"
+        remove-button-variant="disabled"
       />
 
+      <!-- Example of conditional rendering based on form values -->
       <InputBadge
-        v-model="formValues.teamMembers"
-        type="email"
-        label="Team Members"
-        field-name="teamMembers"
+        v-if="formValues.skills && (formValues.skills as string[]).includes('Vue.js')"
+        label="Vue.js Libraries"
+        field-name="vueLibraries"
         :use-validator="true"
-        placeholder="Enter team member emails"
-        field-info="Email addresses of team members"
-      />
-
-      <Textarea
-        v-model="formValues.description"
-        label="Project Description"
-        field-name="description"
-        :use-validator="true"
-        :mandatory="true"
-        :max-input="2000"
-        :auto-resize="true"
-        :rows="4"
-        placeholder="Describe your project"
-        :validator-message="{
-          empty: 'Project description is required',
-          exceed: 'Description must not exceed 2000 characters'
-        }"
+        :initial-value="['Nuxt.js', 'Pinia']"
+        placeholder="Enter Vue.js related libraries"
+        field-info="Shown because Vue.js is in your skills"
       />
     </template>
   </Form>

@@ -260,7 +260,7 @@
       {
         "id": "import",
         "label": "Import",
-        "description": "```typescript\nimport { Badge } from '@fewangsit/wangsvue';\nimport type * from '@fewangsit/wangsvue/badge';\n```",
+        "description": "```typescript\nimport { Badge } from '@fewangsit/wangsvue'\n```",
         "example": "",
         "hasExample": false,
         "examplePath": null
@@ -324,8 +324,8 @@
       {
         "id": "editable",
         "label": "Editable",
-        "description": "This demo shows individual badge editing capability, which is rarely used directly.\nFor creating multiple badges from text input, see [InputBadge](/components/inputbadge) component.",
-        "example": "<script setup lang=\"ts\">\nimport { ref } from 'vue'\nimport { Badge } from '@fewangsit/wangsvue'\n\nconst restoreLabel = ref('Edit me (restores on empty)')\n\nconst onLabelUpdate = (newLabel: string | null, prevLabel: string | null) => {\n  console.log('Label updated:', { newLabel, prevLabel })\n}\n</script>\n\n<template>\n  <div class=\"flex flex-col gap-4\">\n    <div class=\"flex flex-wrap gap-3\">\n      <Badge\n        :label=\"restoreLabel\"\n        severity=\"success\"\n        :editable=\"true\"\n        :restore-on-empty=\"true\"\n        format=\"nowrap\"\n        @update:label=\"onLabelUpdate\"\n      />\n\n      <p>\n        This badge will restores to previous value if left empty (restoreOnEmpty=true)\n      </p>\n    </div>\n  </div>\n</template>\n",
+        "description": "For creating multiple badges from text input, see [InputBadge](/components/inputbadge) component.",
+        "example": "<script setup lang=\"ts\">\nimport { ref } from 'vue'\nimport { Badge } from '@fewangsit/wangsvue'\n\nconst restoreLabel = ref('Edit me (restores on empty)')\n\nconst onLabelUpdate = (newLabel: string | null, prevLabel: string | null) => {\n  console.log('Label updated:', { newLabel, prevLabel })\n}\n</script>\n\n<template>\n  <div class=\"flex flex-col gap-4\">\n    <Badge\n      :label=\"restoreLabel\"\n      severity=\"success\"\n      :editable=\"true\"\n      :restore-on-empty=\"true\"\n      format=\"nowrap\"\n      class=\"w-max\"\n      @update:label=\"onLabelUpdate\"\n    />\n\n    <p>\n      This badge will restores to previous value if left empty (restoreOnEmpty=true)\n    </p>\n  </div>\n</template>\n",
         "hasExample": true,
         "examplePath": "badge/Editable"
       }
@@ -340,14 +340,6 @@
         "id": "import",
         "label": "Import",
         "description": "```typescript\nimport { BadgeGroup } from '@fewangsit/wangsvue'\n```",
-        "example": "",
-        "hasExample": false,
-        "examplePath": null
-      },
-      {
-        "id": "examples",
-        "label": "Examples",
-        "description": "",
         "example": "",
         "hasExample": false,
         "examplePath": null
@@ -391,14 +383,6 @@
         "example": "<script setup lang=\"ts\">\nimport { BadgeGroup } from '@fewangsit/wangsvue'\n\nconst teamMembers = [\n  'John Doe', 'Jane Smith', 'Mike Johnson', 'Sarah Wilson',\n  'David Brown', 'Lisa Davis', 'Tom Anderson', 'Emma Taylor'\n]\n\nconst projects = [\n  'E-commerce Platform', 'Mobile App', 'Dashboard Analytics',\n  'API Gateway', 'User Management', 'Payment System'\n]\n</script>\n\n<template>\n  <div class=\"flex flex-col gap-4\">\n    <div>\n      <h3 class=\"mb-2 font-semibold\">\n        Custom Dialog Content - Team Members\n      </h3>\n      <BadgeGroup\n        :labels=\"teamMembers\"\n        severity=\"primary\"\n        :limit=\"3\"\n        text-more=\"View All Members\"\n        header-label=\"Team Members\"\n      >\n        <template #dialogcontent=\"{ labels }\">\n          <div class=\"p-4\">\n            <p class=\"mb-4 text-gray-600\">\n              Total team members: {{ labels.length }}\n            </p>\n            <div class=\"grid grid-cols-2 gap-2\">\n              <div\n                v-for=\"(member, index) in labels\"\n                :key=\"index\"\n                class=\"p-2 bg-gray-50 rounded flex items-center gap-2\"\n              >\n                <div class=\"w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center text-white text-sm\">\n                  {{ member.charAt(0) }}\n                </div>\n                <span>{{ member }}</span>\n              </div>\n            </div>\n          </div>\n        </template>\n      </BadgeGroup>\n    </div>\n\n    <div>\n      <h3 class=\"mb-2 font-semibold\">\n        Custom Dialog Content - Projects\n      </h3>\n      <BadgeGroup\n        :labels=\"projects\"\n        severity=\"success\"\n        :limit=\"2\"\n        text-more=\"Show Projects\"\n        header-label=\"Active Projects\"\n      >\n        <template #dialogcontent=\"{ labels }\">\n          <div class=\"p-4\">\n            <div class=\"space-y-3\">\n              <div\n                v-for=\"(project, index) in labels\"\n                :key=\"index\"\n                class=\"border-l-4 border-green-500 pl-4 py-2\"\n              >\n                <h4 class=\"font-semibold\">\n                  {{ project }}\n                </h4>\n                <p class=\"text-sm text-gray-600\">\n                  Status: Active\n                </p>\n                <p class=\"text-xs text-gray-500\">\n                  Last updated: {{ new Date().toLocaleDateString() }}\n                </p>\n              </div>\n            </div>\n          </div>\n        </template>\n      </BadgeGroup>\n    </div>\n\n    <p class=\"text-sm text-gray-600\">\n      Use the dialogcontent slot to customize the more dialog\n    </p>\n  </div>\n</template>\n",
         "hasExample": true,
         "examplePath": "badgegroup/DialogContent"
-      },
-      {
-        "id": "related-components",
-        "label": "Related Components",
-        "description": "- [Badge](/components/badge) - Individual badge component with remove and edit functionality\n- [InputBadge](/components/inputbadge) - Input that creates badges from text",
-        "example": "",
-        "hasExample": false,
-        "examplePath": null
       }
     ]
   },
