@@ -14,7 +14,8 @@ const value = ref('')
       :use-validator="true"
       field-name="comments"
       :mandatory="true"
-      :max-input="500"
+      :maxlength="500"
+      :prevent-input-on-max-length="false"
       :validator-message="{
         empty: 'Comments are required',
         exceed: 'Comments must not exceed 500 characters'

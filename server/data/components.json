@@ -531,20 +531,12 @@
   {
     "name": "textarea",
     "title": "Textarea",
-    "description": "Textarea is a multi-line text input element.",
+    "description": "Textarea is a multi-line text input element. Textarea is designed for longer text content with features like character counting and automatic height adjustment",
     "sections": [
       {
         "id": "import",
         "label": "Import",
         "description": "```typescript\nimport { Textarea } from '@fewangsit/wangsvue'\n```",
-        "example": "",
-        "hasExample": false,
-        "examplePath": null
-      },
-      {
-        "id": "examples",
-        "label": "Examples",
-        "description": "",
         "example": "",
         "hasExample": false,
         "examplePath": null
@@ -558,6 +550,14 @@
         "examplePath": "textarea/Basic"
       },
       {
+        "id": "size",
+        "label": "Size",
+        "description": "Control textarea dimensions with rows and cols properties.",
+        "example": "<script setup lang=\"ts\">\nimport { ref } from 'vue'\nimport { Textarea } from '@fewangsit/wangsvue'\n\nconst customValue = ref('')\n</script>\n\n<template>\n  <Textarea\n    v-model=\"customValue\"\n    label=\"Custom Textarea\"\n    placeholder=\"6 rows with 50 cols\"\n    :rows=\"3\"\n    :cols=\"50\"\n  />\n</template>\n",
+        "hasExample": true,
+        "examplePath": "textarea/Size"
+      },
+      {
         "id": "auto-resize",
         "label": "Auto Resize",
         "description": "Textarea that automatically adjusts height based on content.",
@@ -566,26 +566,42 @@
         "examplePath": "textarea/AutoResize"
       },
       {
+        "id": "character-limit",
+        "label": "Character Limit",
+        "description": "Character counting and input prevention at maximum length.",
+        "example": "<script setup lang=\"ts\">\nimport { ref } from 'vue'\nimport { Textarea } from '@fewangsit/wangsvue'\n\nconst shortText = ref('')\nconst preventText = ref('')\n</script>\n\n<template>\n  <div class=\"flex flex-col gap-6\">\n    <div class=\"space-y-2\">\n      <h4 class=\"font-medium text-sm\">\n        Character Limit with Validation\n      </h4>\n      <Textarea\n        v-model=\"shortText\"\n        label=\"Short Description\"\n        placeholder=\"Enter a brief description\"\n        :use-validator=\"true\"\n        field-name=\"shortDescription\"\n        :maxlength=\"100\"\n        :prevent-input-on-max-length=\"false\"\n        :auto-resize=\"true\"\n        :rows=\"2\"\n        :validator-message=\"{\n          exceed: 'Description must not exceed 100 characters'\n        }\"\n      />\n      <p class=\"text-xs text-gray-600\">\n        {{ shortText.length }}/100 characters (<b>prevent-input-on-max-length=false</b> will allow input exceeds the maxlength but will error on validation)\n      </p>\n    </div>\n\n    <div class=\"space-y-2\">\n      <h4 class=\"font-medium text-sm\">\n        Prevent Input on Max Length\n      </h4>\n      <Textarea\n        v-model=\"preventText\"\n        label=\"Limited Input\"\n        placeholder=\"Try typing more than 50 characters\"\n        :maxlength=\"50\"\n        :prevent-input-on-max-length=\"true\"\n        :auto-resize=\"true\"\n        :rows=\"2\"\n        field-info=\"Input is blocked after 50 characters\"\n      />\n      <p class=\"text-xs text-gray-600\">\n        {{ preventText.length }}/50 characters (input blocked at limit)\n      </p>\n    </div>\n  </div>\n</template>\n",
+        "hasExample": true,
+        "examplePath": "textarea/CharacterLimit"
+      },
+      {
+        "id": "disabled-state",
+        "label": "Disabled State",
+        "description": "Disabled textarea for read-only content display.",
+        "example": "<script setup lang=\"ts\">\nimport { Textarea } from '@fewangsit/wangsvue'\n</script>\n\n<template>\n  <Textarea\n    label=\"Disabled\"\n    :disabled=\"true\"\n    :auto-resize=\"true\"\n    :rows=\"3\"\n    placeholder=\"Disabled textarea\"\n    field-info=\"This textarea is disabled\"\n  />\n</template>\n",
+        "hasExample": true,
+        "examplePath": "textarea/Disabled"
+      },
+      {
         "id": "validation",
         "label": "Validation",
-        "description": "Textarea with form validation and character limits.",
-        "example": "<script setup lang=\"ts\">\nimport { ref } from 'vue'\nimport { Textarea } from '@fewangsit/wangsvue'\n\nconst value = ref('')\n</script>\n\n<template>\n  <div class=\"flex flex-col gap-4\">\n    <Textarea\n      v-model=\"value\"\n      label=\"Comments\"\n      placeholder=\"Enter your comments\"\n      :use-validator=\"true\"\n      field-name=\"comments\"\n      :mandatory=\"true\"\n      :max-input=\"500\"\n      :validator-message=\"{\n        empty: 'Comments are required',\n        exceed: 'Comments must not exceed 500 characters'\n      }\"\n    />\n    <p class=\"text-sm text-gray-600\">\n      Characters: {{ value.length }}/500\n    </p>\n  </div>\n</template>\n",
+        "description": "Textarea with built-in form validation that automatically handles empty input validation and character limit enforcement.",
+        "example": "<script setup lang=\"ts\">\nimport { ref } from 'vue'\nimport { Textarea } from '@fewangsit/wangsvue'\n\nconst value = ref('')\n</script>\n\n<template>\n  <div class=\"flex flex-col gap-4\">\n    <Textarea\n      v-model=\"value\"\n      label=\"Comments\"\n      placeholder=\"Enter your comments\"\n      :use-validator=\"true\"\n      field-name=\"comments\"\n      :mandatory=\"true\"\n      :maxlength=\"500\"\n      :prevent-input-on-max-length=\"false\"\n      :validator-message=\"{\n        empty: 'Comments are required',\n        exceed: 'Comments must not exceed 500 characters'\n      }\"\n    />\n    <p class=\"text-sm text-gray-600\">\n      Characters: {{ value.length }}/500\n    </p>\n  </div>\n</template>\n",
         "hasExample": true,
         "examplePath": "textarea/Validation"
       },
       {
-        "id": "variants",
-        "label": "Variants",
-        "description": "Different visual styles for textarea.",
-        "example": "<script setup lang=\"ts\">\nimport { ref } from 'vue'\nimport { Textarea } from '@fewangsit/wangsvue'\n\nconst outlined = ref('')\nconst filled = ref('')\n</script>\n\n<template>\n  <div class=\"flex flex-col gap-6\">\n    <div>\n      <h3 class=\"mb-2 font-semibold\">\n        Outlined (Default)\n      </h3>\n      <Textarea\n        v-model=\"outlined\"\n        label=\"Outlined Textarea\"\n        placeholder=\"Outlined variant\"\n        variant=\"outlined\"\n      />\n    </div>\n\n    <div>\n      <h3 class=\"mb-2 font-semibold\">\n        Filled\n      </h3>\n      <Textarea\n        v-model=\"filled\"\n        label=\"Filled Textarea\"\n        placeholder=\"Filled variant\"\n        variant=\"filled\"\n      />\n    </div>\n  </div>\n</template>\n",
+        "id": "invalid-state",
+        "label": "Invalid State",
+        "description": "Manually control the invalid state with custom error messages for specialized validation scenarios not covered by standard validation rules.",
+        "example": "<script setup lang=\"ts\">\nimport { ref } from 'vue'\nimport { Textarea } from '@fewangsit/wangsvue'\n\nconst invalidValue = ref('This content has an error')\n</script>\n\n<template>\n  <Textarea\n    v-model=\"invalidValue\"\n    :invalid=\"true\"\n    :rows=\"3\"\n    :use-validator=\"true\"\n    label=\"Invalid Content\"\n    placeholder=\"This shows an error\"\n    validator-message=\"This content contains inappropriate language\"\n  />\n</template>\n",
         "hasExample": true,
-        "examplePath": "textarea/Variants"
+        "examplePath": "textarea/InvalidState"
       },
       {
         "id": "form-integration",
         "label": "Form Integration",
-        "description": "Complete form example with textarea fields.",
-        "example": "<script setup lang=\"ts\">\nimport { Form, InputText, Textarea } from '@fewangsit/wangsvue'\n\nconst onSubmit = (payload: { formValues: Record<string, unknown> }) => {\n  console.log('Form submitted:', payload.formValues)\n}\n\nconst onCancel = () => {\n  console.log('Form cancelled')\n}\n</script>\n\n<template>\n  <Form\n    :column-per-row=\"1\"\n    @submit=\"onSubmit\"\n    @cancel=\"onCancel\"\n  >\n    <template #fields=\"{ formValues }\">\n      <InputText\n        v-model=\"formValues.title\"\n        label=\"Title\"\n        field-name=\"title\"\n        :use-validator=\"true\"\n        :mandatory=\"true\"\n        :max-length=\"100\"\n        :validator-message=\"{\n          empty: 'Title is required',\n          exceed: 'Title must not exceed 100 characters'\n        }\"\n      />\n\n      <Textarea\n        v-model=\"formValues.description\"\n        label=\"Description\"\n        field-name=\"description\"\n        :use-validator=\"true\"\n        :mandatory=\"true\"\n        :max-input=\"1000\"\n        :auto-resize=\"true\"\n        :rows=\"4\"\n        placeholder=\"Provide a detailed description\"\n        field-info=\"This will be visible to all users\"\n        :validator-message=\"{\n          empty: 'Description is required',\n          exceed: 'Description must not exceed 1000 characters'\n        }\"\n      />\n\n      <Textarea\n        v-model=\"formValues.notes\"\n        label=\"Additional Notes\"\n        field-name=\"notes\"\n        :use-validator=\"true\"\n        :max-input=\"500\"\n        :auto-resize=\"true\"\n        :rows=\"3\"\n        placeholder=\"Any additional notes (optional)\"\n        :validator-message=\"{\n          exceed: 'Notes must not exceed 500 characters'\n        }\"\n      />\n    </template>\n  </Form>\n</template>\n",
+        "description": "Complete form example demonstrating textarea in a form context.",
+        "example": "<script setup lang=\"ts\">\nimport { Form, Textarea } from '@fewangsit/wangsvue'\n\nconst onSubmit = (payload: { formValues: Record<string, unknown> }) => {\n  console.log('Textarea form submitted:', payload.formValues)\n}\n\nconst onCancel = () => {\n  console.log('Form cancelled')\n}\n</script>\n\n<template>\n  <Form\n    :column-per-row=\"1\"\n    :buttons-template=\"['submit', 'cancel', 'clear']\"\n    submit-btn-label=\"Save Content\"\n    @submit=\"onSubmit\"\n    @cancel=\"onCancel\"\n  >\n    <template #fields=\"{ formValues }\">\n      <Textarea\n        label=\"Description\"\n        field-name=\"description\"\n        :use-validator=\"true\"\n        :mandatory=\"true\"\n        :maxlength=\"1000\"\n        :auto-resize=\"true\"\n        :rows=\"4\"\n        placeholder=\"Provide a detailed description\"\n        field-info=\"This will be visible to all users\"\n        :validator-message=\"{\n          empty: 'Description is required',\n          exceed: 'Description must not exceed 1000 characters'\n        }\"\n      />\n\n      <Textarea\n        label=\"Additional Notes\"\n        field-name=\"notes\"\n        :use-validator=\"true\"\n        :maxlength=\"500\"\n        :prevent-input-on-max-length=\"false\"\n        :auto-resize=\"true\"\n        :rows=\"3\"\n        placeholder=\"Any additional notes (optional)\"\n        :validator-message=\"{\n          exceed: 'Notes must not exceed 500 characters'\n        }\"\n      />\n\n      <Textarea\n        label=\"Comments\"\n        field-name=\"comments\"\n        :use-validator=\"true\"\n        :maxlength=\"300\"\n        :prevent-input-on-max-length=\"false\"\n        :auto-resize=\"true\"\n        :rows=\"2\"\n        placeholder=\"Internal comments\"\n        field-info=\"Only visible to team members\"\n        :validator-message=\"{\n          exceed: 'Comments must not exceed 300 characters'\n        }\"\n      />\n\n      <!-- Conditional field using formValues -->\n      <div v-if=\"formValues.description\">\n        <Textarea\n          label=\"Summary\"\n          field-name=\"summary\"\n          :use-validator=\"true\"\n          :maxlength=\"200\"\n          :auto-resize=\"true\"\n          :rows=\"2\"\n          placeholder=\"Brief summary of the description\"\n          field-info=\"Shown because description is provided\"\n          :validator-message=\"{\n            exceed: 'Summary must not exceed 200 characters'\n          }\"\n        />\n      </div>\n    </template>\n  </Form>\n</template>\n",
         "hasExample": true,
         "examplePath": "textarea/FormIntegration"
       }
@@ -873,18 +889,10 @@
         "examplePath": "inputurl/Validation"
       },
       {
-        "id": "addons",
-        "label": "Addons",
-        "description": "URL input with addon icons and buttons for enhanced functionality.",
-        "example": "<script setup lang=\"ts\">\nimport { ref } from 'vue'\nimport { InputURL, Icon, Button } from '@fewangsit/wangsvue'\n\nconst value = ref('')\n\nconst openUrl = () => {\n  if (value.value) {\n    window.open(value.value, '_blank')\n  }\n}\n\nconst copyUrl = async () => {\n  if (value.value) {\n    await navigator.clipboard.writeText(value.value)\n    console.log('URL copied to clipboard')\n  }\n}\n</script>\n\n<template>\n  <div class=\"flex flex-col gap-4\">\n    <InputURL\n      v-model=\"value\"\n      label=\"Website URL\"\n      placeholder=\"Enter website URL\"\n    >\n      <template #addon-left>\n        <Icon name=\"link\" />\n      </template>\n      <template #addon-right>\n        <div class=\"flex gap-1\">\n          <Button\n            icon=\"copy\"\n            severity=\"secondary\"\n            text\n            :disabled=\"!value\"\n            @click=\"copyUrl\"\n          />\n          <Button\n            icon=\"external-link-alt\"\n            severity=\"secondary\"\n            text\n            :disabled=\"!value\"\n            @click=\"openUrl\"\n          />\n        </div>\n      </template>\n    </InputURL>\n    <p class=\"text-sm text-gray-600\">\n      Value: {{ value || 'Empty' }}\n    </p>\n  </div>\n</template>\n",
-        "hasExample": true,
-        "examplePath": "inputurl/Addons"
-      },
-      {
         "id": "slots",
         "label": "Slots",
         "description": "Use addon slots to add URL-specific icons, open links, or test API endpoints.",
-        "example": "<script setup lang=\"ts\">\nimport { ref } from 'vue'\nimport { InputURL, Button, Icon } from '@fewangsit/wangsvue'\n\nconst websiteValue = ref('')\nconst apiValue = ref('')\nconst docsValue = ref('')\n\nconst openUrl = (url: string) => {\n  if (url) {\n    window.open(url, '_blank')\n  }\n}\n\nconst testApi = (url: string) => {\n  if (url) {\n    console.log('Testing API endpoint:', url)\n    // Simulate API test\n  }\n}\n</script>\n\n<template>\n  <div class=\"flex flex-col gap-6\">\n    <div class=\"space-y-2\">\n      <h4 class=\"font-medium text-sm\">\n        Left Addon - Link Icon\n      </h4>\n      <InputURL\n        v-model=\"websiteValue\"\n        label=\"Website URL\"\n        placeholder=\"https://example.com\"\n        :use-protocol=\"true\"\n      >\n        <template #addon-left>\n          <Icon\n            icon=\"link\"\n            class=\"text-md\"\n          />\n        </template>\n      </InputURL>\n    </div>\n\n    <div class=\"space-y-2\">\n      <h4 class=\"font-medium text-sm\">\n        Right Addon - Open Button\n      </h4>\n      <InputURL\n        v-model=\"docsValue\"\n        label=\"Documentation URL\"\n        placeholder=\"https://docs.example.com\"\n        :use-protocol=\"true\"\n      >\n        <template #addon-right>\n          <Button\n            icon=\"external-link\"\n            severity=\"secondary\"\n            text\n            :disabled=\"!docsValue\"\n            @click=\"openUrl(docsValue)\"\n          />\n        </template>\n      </InputURL>\n    </div>\n\n    <div class=\"space-y-2\">\n      <h4 class=\"font-medium text-sm\">\n        Both Addons - API Endpoint\n      </h4>\n      <InputURL\n        v-model=\"apiValue\"\n        label=\"API Endpoint\"\n        placeholder=\"https://api.example.com/v1\"\n        :use-protocol=\"true\"\n      >\n        <template #addon-left>\n          <Icon\n            icon=\"server\"\n            class=\"text-md text-green-500\"\n          />\n        </template>\n        <template #addon-right>\n          <Button\n            icon=\"play\"\n            severity=\"success\"\n            text\n            :disabled=\"!apiValue\"\n            @click=\"testApi(apiValue)\"\n          />\n        </template>\n      </InputURL>\n    </div>\n  </div>\n</template>\n",
+        "example": "<script setup lang=\"ts\">\nimport { ref } from 'vue'\nimport { InputURL, Button, Icon } from '@fewangsit/wangsvue'\n\nconst websiteValue = ref('')\nconst apiValue = ref('')\nconst docsValue = ref('')\n\nconst openUrl = (url: string) => {\n  if (url) {\n    window.open(url, '_blank')\n  }\n}\n\nconst testApi = (url: string) => {\n  if (url) {\n    console.log('Testing API endpoint:', url)\n    // Simulate API test\n  }\n}\n</script>\n\n<template>\n  <div class=\"flex flex-col gap-6\">\n    <div class=\"space-y-2\">\n      <h4 class=\"font-medium text-sm\">\n        Left Addon - Link Icon\n      </h4>\n      <InputURL\n        v-model=\"websiteValue\"\n        label=\"Website URL\"\n        placeholder=\"https://example.com\"\n        :use-protocol=\"true\"\n      >\n        <template #addon-left>\n          <Icon\n            icon=\"link\"\n            class=\"text-md\"\n          />\n        </template>\n      </InputURL>\n    </div>\n\n    <div class=\"space-y-2\">\n      <h4 class=\"font-medium text-sm\">\n        Right Addon - Open Button\n      </h4>\n      <InputURL\n        v-model=\"docsValue\"\n        label=\"Documentation URL\"\n        placeholder=\"https://docs.example.com\"\n        :use-protocol=\"true\"\n      >\n        <template #addon-right>\n          <Button\n            icon=\"external-link\"\n            severity=\"secondary\"\n            text\n            :disabled=\"!docsValue\"\n            @click=\"openUrl(docsValue)\"\n          />\n        </template>\n      </InputURL>\n    </div>\n\n    <div class=\"space-y-2\">\n      <h4 class=\"font-medium text-sm\">\n        Both Addons - API Endpoint\n      </h4>\n      <InputURL\n        v-model=\"apiValue\"\n        label=\"API Endpoint\"\n        placeholder=\"https://api.example.com/v1\"\n        :use-protocol=\"true\"\n      >\n        <template #addon-left>\n          GET\n        </template>\n        <template #addon-right>\n          <Button\n            icon=\"send-plane-line\"\n            severity=\"success\"\n            text\n            :disabled=\"!apiValue\"\n            @click=\"testApi(apiValue)\"\n          />\n        </template>\n      </InputURL>\n    </div>\n  </div>\n</template>\n",
         "hasExample": true,
         "examplePath": "inputurl/Slots"
       },

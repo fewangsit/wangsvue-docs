@@ -43,7 +43,10 @@ export const componentRegistry: Record<string, () => Promise<{ default: Componen
   'textarea/Basic': () => import('./textarea/Basic.vue'),
   'textarea/AutoResize': () => import('./textarea/AutoResize.vue'),
   'textarea/Validation': () => import('./textarea/Validation.vue'),
-  'textarea/Variants': () => import('./textarea/Variants.vue'),
+  'textarea/Size': () => import('./textarea/Size.vue'),
+  'textarea/CharacterLimit': () => import('./textarea/CharacterLimit.vue'),
+  'textarea/InvalidState': () => import('./textarea/InvalidState.vue'),
+  'textarea/Disabled': () => import('./textarea/Disabled.vue'),
   'textarea/FormIntegration': () => import('./textarea/FormIntegration.vue'),
 
   // InputNumber components

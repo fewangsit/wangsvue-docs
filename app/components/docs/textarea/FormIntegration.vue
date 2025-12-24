@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { Form, InputText, Textarea } from '@fewangsit/wangsvue'
+import { Form, Textarea } from '@fewangsit/wangsvue'
 
 const onSubmit = (payload: { formValues: Record<string, unknown> }) => {
-  console.log('Form submitted:', payload.formValues)
+  console.log('Textarea form submitted:', payload.formValues)
 }
 
 const onCancel = () => {
@@ -13,30 +13,18 @@ const onCancel = () => {
 <template>
   <Form
     :column-per-row="1"
+    :buttons-template="['submit', 'cancel', 'clear']"
+    submit-btn-label="Save Content"
     @submit="onSubmit"
     @cancel="onCancel"
   >
     <template #fields="{ formValues }">
-      <InputText
-        v-model="formValues.title"
-        label="Title"
-        field-name="title"
-        :use-validator="true"
-        :mandatory="true"
-        :max-length="100"
-        :validator-message="{
-          empty: 'Title is required',
-          exceed: 'Title must not exceed 100 characters'
-        }"
-      />
-
       <Textarea
-        v-model="formValues.description"
         label="Description"
         field-name="description"
         :use-validator="true"
         :mandatory="true"
-        :max-input="1000"
+        :maxlength="1000"
         :auto-resize="true"
         :rows="4"
         placeholder="Provide a detailed description"
@@ -48,11 +36,11 @@ const onCancel = () => {
       />
 
       <Textarea
-        v-model="formValues.notes"
         label="Additional Notes"
         field-name="notes"
         :use-validator="true"
-        :max-input="500"
+        :maxlength="500"
+        :prevent-input-on-max-length="false"
         :auto-resize="true"
         :rows="3"
         placeholder="Any additional notes (optional)"
@@ -60,6 +48,38 @@ const onCancel = () => {
           exceed: 'Notes must not exceed 500 characters'
         }"
       />
+
+      <Textarea
+        label="Comments"
+        field-name="comments"
+        :use-validator="true"
+        :maxlength="300"
+        :prevent-input-on-max-length="false"
+        :auto-resize="true"
+        :rows="2"
+        placeholder="Internal comments"
+        field-info="Only visible to team members"
+        :validator-message="{
+          exceed: 'Comments must not exceed 300 characters'
+        }"
+      />
+
+      <!-- Conditional field using formValues -->
+      <div v-if="formValues.description">
+        <Textarea
+          label="Summary"
+          field-name="summary"
+          :use-validator="true"
+          :maxlength="200"
+          :auto-resize="true"
+          :rows="2"
+          placeholder="Brief summary of the description"
+          field-info="Shown because description is provided"
+          :validator-message="{
+            exceed: 'Summary must not exceed 200 characters'
+          }"
+        />
+      </div>
     </template>
   </Form>
 </template>
