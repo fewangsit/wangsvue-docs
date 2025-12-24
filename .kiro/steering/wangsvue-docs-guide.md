@@ -74,18 +74,52 @@ import { ComponentName } from '@fewangsit/wangsvue'
 - **Avoid Redundancy**: Don't show normal state alongside special states if normal state is already demonstrated elsewhere
 - **Minimal Code**: Show only the essential code needed to demonstrate the feature
 
-### 7. Cross-References
+### 7. Form Integration Best Practices
+- **Always include buttons-template prop**: Form demos must include submit and clear buttons using the `buttons-template` prop
+- **Handle form events**: Implement both `@submit` event handlers
+- **Show form state**: Display form values or submission results when relevant
+
+#### Form Integration Template
+```vue
+<script setup lang="ts">
+import { Form, ComponentName } from '@fewangsit/wangsvue'
+
+const onSubmit = (payload: { formValues: Record<string, unknown> }) => {
+  console.log('Form submitted:', payload.formValues)
+}
+</script>
+
+<template>
+  <Form
+    :buttons-template="['submit', 'clear']"
+    @submit="onSubmit"
+  >
+    <template #fields="{ formValues }">
+      <ComponentName
+        v-model="formValues.fieldName"
+        label="Field Label"
+        field-name="fieldName"
+        :use-validator="true"
+        :mandatory="true"
+        :validator-message="{ empty: 'Field is required' }"
+      />
+    </template>
+  </Form>
+</template>
+```
+
+### 8. Cross-References
 - **Link Related Components**: Reference other components when relevant
 - **Use Proper Links**: `/components/component-name` format
 - **Context**: Explain relationships (e.g., Button uses WangsIcons)
 
-### 8. Forbidden Sections
+### 9. Forbidden Sections
 - ❌ **API Reference** - Do not document props, events, slots
 - ❌ **Types** - Do not list TypeScript definitions
 - ❌ **Accessibility** - Do not add accessibility guidelines
 - ❌ **Keyboard Support** - Do not document keyboard interactions
 
-### 9. Component Registry Updates
+### 10. Component Registry Updates
 Always update `app/utils/component-registry.ts`:
 ```js
 export const componentRegistry: Record<string, () => Promise<any>> = {
@@ -97,12 +131,12 @@ export const componentRegistry: Record<string, () => Promise<any>> = {
 }
 ```
 
-### 10. Import Best Practices
+### 11. Import Best Practices
 - **Main Package**: Always import from `@fewangsit/wangsvue`
-- **No Subpaths**: Avoid subpath imports like `@fewangsit/wangsvue/component`
-- **Types**: Import types from main package: `import type { TypeName } from '@fewangsit/wangsvue'`
+- **No Subpaths**: Avoid subpath imports like `@fewangsit/wangsvue/component` except type inports
+- **Types**: Import types from main package: `import type { TypeName } from '@fewangsit/wangsvue/component'`
 
-### 11. Demo Categories
+### 12. Demo Categories
 Common demo types to create:
 - **Basic**: Simple usage example
 - **Severity**: Different color variants
@@ -111,12 +145,12 @@ Common demo types to create:
 - **Interactive**: User interaction examples
 - **Template**: Custom content/slots usage
 
-### 12. File Naming Conventions
+### 13. File Naming Conventions
 - **Markdown**: `{number}.{component-name}.md` (e.g., `1.button.md`)
 - **Demo Components**: `{FeatureName}.vue` in PascalCase
 - **Directory**: `app/components/docs/{component}/`
 
-### 12. Quality Checklist
+### 14. Quality Checklist
 Before completing documentation:
 - [ ] MCP workflow followed completely
 - [ ] All demos work without errors

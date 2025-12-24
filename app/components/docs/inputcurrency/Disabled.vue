@@ -1,8 +1,9 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { InputCurrency } from '@fewangsit/wangsvue'
+import type { CurrencyValue } from '@fewangsit/wangsvue/inputcurrency'
 
-const value = ref<{ currency: string, value?: number }>()
+const value = ref<CurrencyValue>({ currency: 'USD', value: 1500 })
 </script>
 
 <template>
@@ -10,14 +11,8 @@ const value = ref<{ currency: string, value?: number }>()
     <InputCurrency
       v-model="value"
       label="Product Price"
-      placeholder="Enter product price"
-      :use-validator="true"
-      field-name="productPrice"
-      :mandatory="true"
-      :max="10000"
-      :validator-message="{
-        empty: 'Product price is required'
-      }"
+      placeholder="Enter price"
+      :disabled="true"
     />
     <p class="text-sm text-gray-600">
       Value: {{ value ? `${value.currency} ${value.value}` : 'Empty' }}

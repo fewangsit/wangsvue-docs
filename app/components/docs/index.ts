@@ -76,9 +76,11 @@ export const componentRegistry: Record<
 
   // InputCurrency components
   'inputcurrency/Basic': () => import('./inputcurrency/Basic.vue'),
-  'inputcurrency/Currencies': () => import('./inputcurrency/Currencies.vue'),
-  'inputcurrency/Validation': () => import('./inputcurrency/Validation.vue'),
-  'inputcurrency/Sizes': () => import('./inputcurrency/Sizes.vue'),
+  'inputcurrency/Disabled': () => import('./inputcurrency/Disabled.vue'),
+  'inputcurrency/Max': () => import('./inputcurrency/Max.vue'),
+  'inputcurrency/FormInitialValue': () => import('./inputcurrency/FormInitialValue.vue'),
+  'inputcurrency/VModelOutsideForm': () => import('./inputcurrency/VModelOutsideForm.vue'),
+  'inputcurrency/ValidationCustom': () => import('./inputcurrency/ValidationCustom.vue'),
   'inputcurrency/FormIntegration': () =>
     import('./inputcurrency/FormIntegration.vue'),
 
