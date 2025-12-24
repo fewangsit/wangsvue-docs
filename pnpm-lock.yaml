@@ -12,8 +12,8 @@ importers:
         specifier: 1.5.229-alpha.7
         version: 1.5.229-alpha.7(@stencil/core@4.39.0)(vue-router@4.6.4(vue@3.5.26(typescript@5.9.3)))(vue@3.5.26(typescript@5.9.3))
       '@fewangsit/wangsvue-presets':
-        specifier: 1.0.111-alpha.0
-        version: 1.0.111-alpha.0
+        specifier: 1.0.111-alpha.2
+        version: 1.0.111-alpha.2
       '@fewangsit/workspace-api-services':
         specifier: 1.0.18-alpha.1
         version: 1.0.18-alpha.1

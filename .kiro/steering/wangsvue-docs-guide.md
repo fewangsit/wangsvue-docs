@@ -68,18 +68,24 @@ import { ComponentName } from '@fewangsit/wangsvue'
 </template>
 ```
 
-### 6. Cross-References
+### 6. Demo Component Best Practices
+- **No Explanatory Text**: Focus on code examples, avoid `<p>` tags with explanations already covered in markdown
+- **State-Specific Examples**: When demonstrating specific states (disabled, loading, etc.), only show that state
+- **Avoid Redundancy**: Don't show normal state alongside special states if normal state is already demonstrated elsewhere
+- **Minimal Code**: Show only the essential code needed to demonstrate the feature
+
+### 7. Cross-References
 - **Link Related Components**: Reference other components when relevant
 - **Use Proper Links**: `/components/component-name` format
 - **Context**: Explain relationships (e.g., Button uses WangsIcons)
 
-### 7. Forbidden Sections
+### 8. Forbidden Sections
 - ❌ **API Reference** - Do not document props, events, slots
 - ❌ **Types** - Do not list TypeScript definitions
 - ❌ **Accessibility** - Do not add accessibility guidelines
 - ❌ **Keyboard Support** - Do not document keyboard interactions
 
-### 8. Component Registry Updates
+### 9. Component Registry Updates
 Always update `app/utils/component-registry.ts`:
 ```js
 export const componentRegistry: Record<string, () => Promise<any>> = {
@@ -91,12 +97,12 @@ export const componentRegistry: Record<string, () => Promise<any>> = {
 }
 ```
 
-### 9. Import Best Practices
+### 10. Import Best Practices
 - **Main Package**: Always import from `@fewangsit/wangsvue`
 - **No Subpaths**: Avoid subpath imports like `@fewangsit/wangsvue/component`
 - **Types**: Import types from main package: `import type { TypeName } from '@fewangsit/wangsvue'`
 
-### 10. Demo Categories
+### 11. Demo Categories
 Common demo types to create:
 - **Basic**: Simple usage example
 - **Severity**: Different color variants
@@ -105,7 +111,7 @@ Common demo types to create:
 - **Interactive**: User interaction examples
 - **Template**: Custom content/slots usage
 
-### 11. File Naming Conventions
+### 12. File Naming Conventions
 - **Markdown**: `{number}.{component-name}.md` (e.g., `1.button.md`)
 - **Demo Components**: `{FeatureName}.vue` in PascalCase
 - **Directory**: `app/components/docs/{component}/`

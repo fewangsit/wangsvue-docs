@@ -117,7 +117,7 @@ const props = withDefaults(defineProps<Props>(), {
   maxLines: 10
 })
 
-const dynamicComponent = ref<Component | null>(null)
+const dynamicComponent = shallowRef<Component | null>(null)
 const isLoading = ref(true)
 const loadingError = ref('')
 const sourceCode = ref('')

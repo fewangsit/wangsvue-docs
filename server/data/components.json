@@ -878,7 +878,7 @@
   {
     "name": "textarea",
     "title": "Textarea",
-    "description": "Textarea is a multi-line text input element.",
+    "description": "Textarea is a multi-line text input element. Textarea is designed for longer text content with features like character counting and automatic height adjustment",
     "sections": [
       {
         "id": "import-",
@@ -905,12 +905,36 @@
         "examplePath": "textarea/Basic"
       },
       {
+        "id": "size",
+        "label": "Size",
+        "description": "Control textarea dimensions with rows and cols properties.",
+        "example": "<script setup lang=\"ts\">\nimport { ref } from 'vue'\nimport { Textarea } from '@fewangsit/wangsvue'\n\nconst customValue = ref('')\n</script>\n\n<template>\n  <Textarea\n    v-model=\"customValue\"\n    label=\"Custom Textarea\"\n    placeholder=\"6 rows with 50 cols\"\n    :rows=\"3\"\n    :cols=\"50\"\n  />\n</template>\n",
+        "hasExample": true,
+        "examplePath": "textarea/Size"
+      },
+      {
         "id": "auto-resize-",
         "label": "Auto Resize\r",
         "description": "Textarea that automatically adjusts height based on content.",
         "example": "<script setup lang=\"ts\">\r\nimport { ref } from 'vue'\r\nimport { Textarea } from '@fewangsit/wangsvue'\r\n\r\nconst value = ref('')\r\n</script>\r\n\r\n<template>\r\n  <div class=\"flex flex-col gap-4\">\r\n    <Textarea\r\n      v-model=\"value\"\r\n      label=\"Auto Resize Text\"\r\n      placeholder=\"Start typing and watch it grow...\"\r\n      :auto-resize=\"true\"\r\n      :rows=\"2\"\r\n    />\r\n    <p class=\"text-sm text-gray-600\">\r\n      Lines: {{ value.split('\\n').length }}\r\n    </p>\r\n  </div>\r\n</template>\r\n",
         "hasExample": true,
         "examplePath": "textarea/AutoResize"
+      },
+      {
+        "id": "character-limit",
+        "label": "Character Limit",
+        "description": "Character counting and input prevention at maximum length.",
+        "example": "<script setup lang=\"ts\">\nimport { ref } from 'vue'\nimport { Textarea } from '@fewangsit/wangsvue'\n\nconst shortText = ref('')\nconst preventText = ref('')\n</script>\n\n<template>\n  <div class=\"flex flex-col gap-6\">\n    <div class=\"space-y-2\">\n      <h4 class=\"font-medium text-sm\">\n        Character Limit with Validation\n      </h4>\n      <Textarea\n        v-model=\"shortText\"\n        label=\"Short Description\"\n        placeholder=\"Enter a brief description\"\n        :use-validator=\"true\"\n        field-name=\"shortDescription\"\n        :maxlength=\"100\"\n        :prevent-input-on-max-length=\"false\"\n        :auto-resize=\"true\"\n        :rows=\"2\"\n        :validator-message=\"{\n          exceed: 'Description must not exceed 100 characters'\n        }\"\n      />\n      <p class=\"text-xs text-gray-600\">\n        {{ shortText.length }}/100 characters (<b>prevent-input-on-max-length=false</b> will allow input exceeds the maxlength but will error on validation)\n      </p>\n    </div>\n\n    <div class=\"space-y-2\">\n      <h4 class=\"font-medium text-sm\">\n        Prevent Input on Max Length\n      </h4>\n      <Textarea\n        v-model=\"preventText\"\n        label=\"Limited Input\"\n        placeholder=\"Try typing more than 50 characters\"\n        :maxlength=\"50\"\n        :prevent-input-on-max-length=\"true\"\n        :auto-resize=\"true\"\n        :rows=\"2\"\n        field-info=\"Input is blocked after 50 characters\"\n      />\n      <p class=\"text-xs text-gray-600\">\n        {{ preventText.length }}/50 characters (input blocked at limit)\n      </p>\n    </div>\n  </div>\n</template>\n",
+        "hasExample": true,
+        "examplePath": "textarea/CharacterLimit"
+      },
+      {
+        "id": "disabled-state",
+        "label": "Disabled State",
+        "description": "Disabled textarea for read-only content display.",
+        "example": "<script setup lang=\"ts\">\nimport { Textarea } from '@fewangsit/wangsvue'\n</script>\n\n<template>\n  <Textarea\n    label=\"Disabled\"\n    :disabled=\"true\"\n    :auto-resize=\"true\"\n    :rows=\"3\"\n    placeholder=\"Disabled textarea\"\n    field-info=\"This textarea is disabled\"\n  />\n</template>\n",
+        "hasExample": true,
+        "examplePath": "textarea/Disabled"
       },
       {
         "id": "validation-",
@@ -926,7 +950,7 @@
         "description": "Different visual styles for textarea.",
         "example": "<script setup lang=\"ts\">\r\nimport { ref } from 'vue'\r\nimport { Textarea } from '@fewangsit/wangsvue'\r\n\r\nconst outlined = ref('')\r\nconst filled = ref('')\r\n</script>\r\n\r\n<template>\r\n  <div class=\"flex flex-col gap-6\">\r\n    <div>\r\n      <h3 class=\"mb-2 font-semibold\">\r\n        Outlined (Default)\r\n      </h3>\r\n      <Textarea\r\n        v-model=\"outlined\"\r\n        label=\"Outlined Textarea\"\r\n        placeholder=\"Outlined variant\"\r\n        variant=\"outlined\"\r\n      />\r\n    </div>\r\n\r\n    <div>\r\n      <h3 class=\"mb-2 font-semibold\">\r\n        Filled\r\n      </h3>\r\n      <Textarea\r\n        v-model=\"filled\"\r\n        label=\"Filled Textarea\"\r\n        placeholder=\"Filled variant\"\r\n        variant=\"filled\"\r\n      />\r\n    </div>\r\n  </div>\r\n</template>\r\n",
         "hasExample": true,
-        "examplePath": "textarea/Variants"
+        "examplePath": "textarea/InvalidState"
       },
       {
         "id": "form-integration-",
