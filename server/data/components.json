@@ -424,14 +424,6 @@
         "examplePath": "checkbox/Disabled"
       },
       {
-        "id": "invalid-",
-        "label": "Invalid\r",
-        "description": "Invalid state shows validation error styling.",
-        "example": "<script setup lang=\"ts\">\r\nimport { ref } from 'vue'\r\nimport { Checkbox } from '@fewangsit/wangsvue'\r\n\r\nconst invalidValue = ref(false)\r\n</script>\r\n\r\n<template>\r\n  <div class=\"flex flex-wrap gap-3\">\r\n    <Checkbox\n      v-model=\"invalidValue\"\n      :invalid=\"true\"\n      label=\"Invalid checkbox\"\n    />\r\n  </div>\r\n</template>\r\n",
-        "hasExample": true,
-        "examplePath": "checkbox/Invalid"
-      },
-      {
         "id": "readonly-",
         "label": "Readonly\r",
         "description": "Readonly state prevents modification while keeping the value visible.",
@@ -462,6 +454,140 @@
         "example": "<script setup lang=\"ts\">\r\nimport { ref } from 'vue'\r\nimport { Checkbox } from '@fewangsit/wangsvue'\r\n\r\nconst tableValue = ref(false)\r\nconst regularValue = ref(false)\r\n</script>\r\n\r\n<template>\r\n  <div class=\"flex flex-col gap-4\">\r\n    <div class=\"border rounded-lg overflow-hidden\">\r\n      <table class=\"w-full\">\r\n        <thead class=\"bg-gray-50\">\r\n          <tr>\r\n            <th class=\"p-3 text-left\">\r\n              <Checkbox\r\n                v-model=\"tableValue\"\r\n                :within-table=\"true\"\r\n                label=\"Select all\"\r\n              />\r\n            </th>\r\n            <th class=\"p-3 text-left\">\n              Name\n            </th>\r\n            <th class=\"p-3 text-left\">\n              Status\n            </th>\r\n          </tr>\r\n        </thead>\r\n        <tbody>\r\n          <tr class=\"border-t\">\r\n            <td class=\"p-3\">\r\n              <Checkbox\n                v-model=\"regularValue\"\n                label=\"Item 1\"\n              />\r\n            </td>\r\n            <td class=\"p-3\">\n              John Doe\n            </td>\r\n            <td class=\"p-3\">\n              Active\n            </td>\r\n          </tr>\r\n        </tbody>\r\n      </table>\r\n    </div>\r\n    <p class=\"text-sm text-gray-600\">\r\n      Table header checkbox uses special styling with within-table prop\r\n    </p>\r\n  </div>\r\n</template>\r\n",
         "hasExample": true,
         "examplePath": "checkbox/WithinTable"
+      }
+    ]
+  },
+  {
+    "name": "toggleswitch",
+    "title": "ToggleSwitch",
+    "description": "ToggleSwitch is used to select a boolean value.",
+    "sections": [
+      {
+        "id": "import-",
+        "label": "Import\r",
+        "description": "```ts\r\nimport { ToggleSwitch } from '@fewangsit/wangsvue';\r\n```",
+        "example": "",
+        "hasExample": false,
+        "examplePath": null
+      },
+      {
+        "id": "basic-",
+        "label": "Basic\r",
+        "description": "Basic toggle switch with label.",
+        "example": "<script setup lang=\"ts\">\r\nimport { ref } from 'vue'\r\nimport { ToggleSwitch } from '@fewangsit/wangsvue'\r\n\r\nconst checked = ref(false)\r\n</script>\r\n\r\n<template>\r\n  <div class=\"flex flex-wrap gap-3\">\r\n    <ToggleSwitch\r\n      v-model=\"checked\"\r\n      label=\"Enable notifications\"\r\n    />\r\n    <p class=\"text-sm text-gray-600\">\n      Value: {{ checked }}\n    </p>\r\n  </div>\r\n</template>\n",
+        "hasExample": true,
+        "examplePath": "toggleswitch/Basic"
+      },
+      {
+        "id": "tri-state-",
+        "label": "Tri-State\r",
+        "description": "",
+        "example": "<script setup lang=\"ts\">\r\nimport { ref } from 'vue'\r\nimport { ToggleSwitch } from '@fewangsit/wangsvue'\r\n\r\nconst triStateValue = ref(null)\r\n</script>\r\n\r\n<template>\r\n  <div class=\"flex flex-wrap gap-3\">\r\n    <ToggleSwitch\r\n      v-model=\"triStateValue\"\r\n      :tri-state=\"true\"\r\n      label=\"Tri-state toggle\"\r\n    />\r\n    <p class=\"text-sm text-gray-600\">\r\n      Value: {{ triStateValue === null ? 'null (not checked)' : triStateValue === true ? 'true (checked)' : 'false (partial)' }}\r\n    </p>\r\n  </div>\r\n</template>\r\n",
+        "hasExample": true,
+        "examplePath": "toggleswitch/TriState"
+      },
+      {
+        "id": "disabled-",
+        "label": "Disabled\r",
+        "description": "Disabled state prevents user interaction.",
+        "example": "<script setup lang=\"ts\">\r\nimport { ref } from 'vue'\r\nimport { ToggleSwitch } from '@fewangsit/wangsvue'\r\n\r\nconst disabledOn = ref(true)\r\nconst disabledOff = ref(false)\r\n</script>\r\n\r\n<template>\r\n  <div class=\"flex flex-wrap gap-3\">\r\n    <ToggleSwitch\r\n      v-model=\"disabledOn\"\r\n      :disabled=\"true\"\r\n      label=\"Disabled (on)\"\r\n    />\r\n    <ToggleSwitch\r\n      v-model=\"disabledOff\"\r\n      :disabled=\"true\"\r\n      label=\"Disabled (off)\"\r\n    />\r\n  </div>\r\n</template>\r\n",
+        "hasExample": true,
+        "examplePath": "toggleswitch/Disabled"
+      },
+      {
+        "id": "invalid-",
+        "label": "Invalid\r",
+        "description": "Invalid state shows validation error styling.",
+        "example": "<script setup lang=\"ts\">\r\nimport { ref } from 'vue'\r\nimport { ToggleSwitch } from '@fewangsit/wangsvue'\r\n\r\nconst invalidValue = ref(false)\r\n</script>\r\n\r\n<template>\r\n  <div class=\"flex flex-wrap gap-3\">\r\n    <ToggleSwitch\r\n      v-model=\"invalidValue\"\r\n      :invalid=\"true\"\r\n      label=\"Invalid toggle switch\"\r\n    />\r\n  </div>\r\n</template>\n",
+        "hasExample": true,
+        "examplePath": "toggleswitch/Invalid"
+      },
+      {
+        "id": "readonly-",
+        "label": "Readonly\r",
+        "description": "Readonly state prevents modification while keeping the value visible.",
+        "example": "<script setup lang=\"ts\">\r\nimport { ref } from 'vue'\r\nimport { ToggleSwitch } from '@fewangsit/wangsvue'\r\n\r\nconst readonlyOn = ref(true)\r\nconst readonlyOff = ref(false)\r\n</script>\r\n\r\n<template>\r\n  <div class=\"flex flex-wrap gap-3\">\r\n    <ToggleSwitch\r\n      v-model=\"readonlyOn\"\r\n      :readonly=\"true\"\r\n      label=\"Readonly (on)\"\r\n    />\r\n    <ToggleSwitch\r\n      v-model=\"readonlyOff\"\r\n      :readonly=\"true\"\r\n      label=\"Readonly (off)\"\r\n    />\r\n  </div>\r\n</template>\n",
+        "hasExample": true,
+        "examplePath": "toggleswitch/Readonly"
+      },
+      {
+        "id": "tooltip-",
+        "label": "Tooltip\r",
+        "description": "Toggle switch with tooltip information displayed on hover.",
+        "example": "<script setup lang=\"ts\">\r\nimport { ref } from 'vue'\r\nimport { ToggleSwitch } from '@fewangsit/wangsvue'\r\n\r\nconst tooltipValue = ref(false)\r\n</script>\r\n\r\n<template>\r\n  <div class=\"flex flex-wrap gap-3\">\r\n    <ToggleSwitch\r\n      v-model=\"tooltipValue\"\r\n      label=\"Toggle with tooltip\"\r\n      tooltip=\"This enables dark mode\"\r\n      tooltip-pos=\"top\"\r\n    />\r\n    <ToggleSwitch\r\n      v-model=\"tooltipValue\"\r\n      label=\"Right tooltip\"\r\n      tooltip=\"Tooltip on the right\"\r\n      tooltip-pos=\"right\"\r\n    />\r\n  </div>\r\n</template>\r\n",
+        "hasExample": true,
+        "examplePath": "toggleswitch/Tooltip"
+      },
+      {
+        "id": "custom-values-",
+        "label": "Custom Values\r",
+        "description": "Toggle switch with custom true and false values instead of boolean.",
+        "example": "<script setup lang=\"ts\">\r\nimport { ref } from 'vue'\r\nimport { ToggleSwitch } from '@fewangsit/wangsvue'\r\n\r\nconst customValue = ref('off')\r\n</script>\r\n\r\n<template>\r\n  <div class=\"flex flex-wrap gap-3\">\r\n    <ToggleSwitch\r\n      v-model=\"customValue\"\r\n      true-value=\"on\"\r\n      false-value=\"off\"\r\n      label=\"Custom values toggle\"\r\n    />\r\n    <p class=\"text-sm text-gray-600\">\n      Value: {{ customValue }}\n    </p>\r\n  </div>\r\n</template>\n",
+        "hasExample": true,
+        "examplePath": "toggleswitch/CustomValues"
+      }
+    ]
+  },
+  {
+    "name": "menu",
+    "title": "Menu",
+    "description": "Menu is a navigation / command component that supports dynamic and static positioning.",
+    "sections": [
+      {
+        "id": "import-",
+        "label": "Import\r",
+        "description": "```ts\r\nimport { Menu } from '@fewangsit/wangsvue';\r\n```",
+        "example": "",
+        "hasExample": false,
+        "examplePath": null
+      },
+      {
+        "id": "basic-",
+        "label": "Basic\r",
+        "description": "Basic menu with navigation items.",
+        "example": "<script setup lang=\"ts\">\r\nimport { Menu } from '@fewangsit/wangsvue'\r\n\r\nconst items = [\r\n  {\r\n    label: 'New',\r\n    command: () => {\r\n      console.log('New clicked')\r\n    }\r\n  },\r\n  {\r\n    label: 'Open',\r\n    command: () => {\r\n      console.log('Open clicked')\r\n    }\r\n  },\r\n  {\r\n    separator: true\r\n  },\r\n  {\r\n    label: 'Save',\r\n    command: () => {\r\n      console.log('Save clicked')\r\n    }\r\n  },\r\n  {\r\n    label: 'Save As',\r\n    command: () => {\r\n      console.log('Save As clicked')\r\n    }\r\n  }\r\n]\r\n</script>\r\n\r\n<template>\r\n  <div class=\"flex flex-wrap gap-3\">\r\n    <Menu\r\n      :model=\"items\"\r\n      :popup=\"false\"\r\n    />\r\n  </div>\r\n</template>\n",
+        "hasExample": true,
+        "examplePath": "menu/Basic"
+      },
+      {
+        "id": "popup-",
+        "label": "Popup\r",
+        "description": "Menu displayed as a popup overlay triggered by a button.",
+        "example": "<script setup lang=\"ts\">\r\nimport { ref } from 'vue'\r\nimport { Menu, Button } from '@fewangsit/wangsvue'\r\n\r\nconst menu = ref()\r\n\r\nconst items = [\r\n  {\r\n    label: 'New',\r\n    command: () => {\r\n      console.log('New clicked')\r\n    }\r\n  },\r\n  {\r\n    label: 'Open',\r\n    command: () => {\r\n      console.log('Open clicked')\r\n    }\r\n  },\r\n  {\r\n    separator: true\r\n  },\r\n  {\r\n    label: 'Save',\r\n    command: () => {\r\n      console.log('Save clicked')\r\n    }\r\n  },\r\n  {\r\n    label: 'Save As',\r\n    command: () => {\r\n      console.log('Save As clicked')\r\n    }\r\n  }\r\n]\r\n\r\nconst toggle = (event: Event) => {\r\n  menu.value.toggle(event)\r\n}\r\n</script>\r\n\r\n<template>\r\n  <div class=\"flex flex-wrap gap-3\">\r\n    <Button\r\n      label=\"Show Menu\"\r\n      @click=\"toggle\"\r\n    />\r\n    <Menu\r\n      ref=\"menu\"\r\n      :model=\"items\"\r\n      :popup=\"true\"\r\n    />\r\n  </div>\r\n</template>\n",
+        "hasExample": true,
+        "examplePath": "menu/Popup"
+      },
+      {
+        "id": "nested-",
+        "label": "Nested\r",
+        "description": "Menu with nested submenu items and separators.",
+        "example": "<script setup lang=\"ts\">\r\nimport { Menu } from '@fewangsit/wangsvue'\r\n\r\nconst items = [\r\n  {\r\n    label: 'File',\r\n    items: [\r\n      {\r\n        label: 'New',\r\n        command: () => {\r\n          console.log('New clicked')\r\n        }\r\n      },\r\n      {\r\n        label: 'Open',\r\n        command: () => {\r\n          console.log('Open clicked')\r\n        }\r\n      }\r\n    ]\r\n  },\r\n  {\r\n    separator: true\r\n  },\r\n  {\r\n    label: 'Edit',\r\n    items: [\r\n      {\r\n        label: 'Cut',\r\n        command: () => {\r\n          console.log('Cut clicked')\r\n        }\r\n      },\r\n      {\r\n        label: 'Copy',\r\n        command: () => {\r\n          console.log('Copy clicked')\r\n        }\r\n      },\r\n      {\r\n        label: 'Paste',\r\n        command: () => {\r\n          console.log('Paste clicked')\r\n        }\r\n      }\r\n    ]\r\n  },\r\n  {\r\n    separator: true\r\n  },\r\n  {\r\n    label: 'Quit',\r\n    command: () => {\r\n      console.log('Quit clicked')\r\n    }\r\n  }\r\n]\r\n</script>\r\n\r\n<template>\r\n  <div class=\"flex flex-wrap gap-3\">\r\n    <Menu\r\n      :model=\"items\"\r\n      :popup=\"false\"\r\n    />\r\n  </div>\r\n</template>\r\n",
+        "hasExample": true,
+        "examplePath": "menu/Nested"
+      },
+      {
+        "id": "icons-",
+        "label": "Icons\r",
+        "description": "Menu items with icons from the [WangsIcons](/components/icon) collection.",
+        "example": "<script setup lang=\"ts\">\r\nimport { Menu } from '@fewangsit/wangsvue'\r\n\r\nconst items = [\r\n  {\r\n    label: 'New',\r\n    icon: 'file-add',\r\n    command: () => {\r\n      console.log('New clicked')\r\n    }\r\n  },\r\n  {\r\n    label: 'Open',\r\n    icon: 'folder',\r\n    command: () => {\r\n      console.log('Open clicked')\r\n    }\r\n  },\r\n  {\r\n    separator: true\r\n  },\r\n  {\r\n    label: 'Save',\r\n    icon: 'save',\r\n    command: () => {\r\n      console.log('Save clicked')\r\n    }\r\n  },\r\n  {\r\n    label: 'Print',\r\n    icon: 'printer',\r\n    command: () => {\r\n      console.log('Print clicked')\r\n    }\r\n  },\r\n  {\r\n    separator: true\r\n  },\r\n  {\r\n    label: 'Settings',\r\n    icon: 'settings',\r\n    command: () => {\r\n      console.log('Settings clicked')\r\n    }\r\n  }\r\n]\r\n</script>\r\n\r\n<template>\r\n  <div class=\"flex flex-wrap gap-3\">\r\n    <Menu\r\n      :model=\"items\"\r\n      :popup=\"false\"\r\n    />\r\n  </div>\r\n</template>\n",
+        "hasExample": true,
+        "examplePath": "menu/Icons"
+      },
+      {
+        "id": "router-integration-",
+        "label": "Router Integration\r",
+        "description": "Menu integrated with Vue Router for navigation.",
+        "example": "<script setup lang=\"ts\">\r\nimport { Menu } from '@fewangsit/wangsvue'\r\n\r\nconst items = [\r\n  {\r\n    label: 'Dashboard',\r\n    icon: 'dashboard',\r\n    target: '/dashboard'\r\n  },\r\n  {\r\n    label: 'Components',\r\n    icon: 'apps-2-line',\r\n    target: '/components'\r\n  },\r\n  {\r\n    separator: true\r\n  },\r\n  {\r\n    label: 'Profile',\r\n    icon: 'profile',\r\n    target: '/profile'\r\n  },\r\n  {\r\n    label: 'Settings',\r\n    icon: 'settings',\r\n    target: '/settings'\r\n  },\r\n  {\r\n    separator: true\r\n  },\r\n  {\r\n    label: 'External Link',\r\n    icon: 'external-link',\r\n    url: 'https://example.com'\r\n  }\r\n]\r\n</script>\r\n\r\n<template>\r\n  <div class=\"flex flex-wrap gap-3\">\r\n    <Menu\r\n      :model=\"items\"\r\n      :popup=\"false\"\r\n    />\r\n    <p class=\"text-sm text-gray-600\">\r\n      Menu items can navigate using Vue Router or external URLs\r\n    </p>\r\n  </div>\r\n</template>\r\n",
+        "hasExample": true,
+        "examplePath": "menu/Router"
+      },
+      {
+        "id": "custom-template-",
+        "label": "Custom Template\r",
+        "description": "Menu with custom item templates and slots.",
+        "example": "<script setup lang=\"ts\">\r\nimport { Menu } from '@fewangsit/wangsvue'\r\n\r\nconst items = [\r\n  {\r\n    label: 'New Document',\r\n    icon: 'file-add',\r\n    command: () => {\r\n      console.log('New Document clicked')\r\n    }\r\n  },\r\n  {\r\n    label: 'Recent Files',\r\n    icon: 'file-history',\r\n    command: () => {\r\n      console.log('Recent Files clicked')\r\n    }\r\n  },\r\n  {\r\n    separator: true\r\n  },\r\n  {\r\n    label: 'Premium Feature',\r\n    icon: 'star',\r\n    disabled: true\r\n  }\r\n]\r\n</script>\r\n\r\n<template>\r\n  <div class=\"flex flex-wrap gap-3\">\r\n    <Menu\r\n      :model=\"items\"\r\n      :popup=\"false\"\r\n    >\r\n      <template #start>\r\n        <div class=\"p-3 border-b border-gray-200\">\r\n          <h3 class=\"font-semibold text-gray-800\">\r\n            File Menu\r\n          </h3>\r\n        </div>\r\n      </template>\r\n\r\n      <template #item=\"{ item, props }\">\r\n        <a\r\n          v-bind=\"props.action\"\r\n          class=\"flex items-center justify-between w-full\"\r\n        >\r\n          <div class=\"flex items-center gap-2\">\r\n            <i\r\n              v-if=\"item.icon\"\r\n              :class=\"`wangs-icon-${item.icon}`\"\r\n            />\r\n            <span>{{ item.label }}</span>\r\n          </div>\r\n          <span\r\n            v-if=\"item.badge\"\r\n            class=\"px-2 py-1 text-xs bg-blue-100 text-blue-800 rounded-full\"\r\n          >\r\n            {{ item.badge }}\r\n          </span>\r\n        </a>\r\n      </template>\r\n\r\n      <template #end>\r\n        <div class=\"p-3 border-t border-gray-200 text-xs text-gray-500\">\r\n          Custom footer content\r\n        </div>\r\n      </template>\r\n    </Menu>\r\n  </div>\r\n</template>\r\n",
+        "hasExample": true,
+        "examplePath": "menu/Template"
       }
     ]
   },

@@ -154,5 +154,13 @@ export const componentRegistry: Record<
   'menu/Nested': () => import('./menu/Nested.vue'),
   'menu/Icons': () => import('./menu/Icons.vue'),
   'menu/Router': () => import('./menu/Router.vue'),
-  'menu/Template': () => import('./menu/Template.vue')
+  'menu/Template': () => import('./menu/Template.vue'),
+
+  // TabMenu components
+  'tabmenu/Basic': () => import('./tabmenu/Basic.vue'),
+  'tabmenu/Types': () => import('./tabmenu/Types.vue'),
+  'tabmenu/Icons': () => import('./tabmenu/Icons.vue'),
+  'tabmenu/Router': () => import('./tabmenu/Router.vue'),
+  'tabmenu/ActiveIndex': () => import('./tabmenu/ActiveIndex.vue'),
+  'tabmenu/TrailingLine': () => import('./tabmenu/TrailingLine.vue')
 }
