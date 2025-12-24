@@ -12,14 +12,14 @@
 - [ ] ButtonRadio
 - [ ] ButtonSearch
 - [ ] ButtonSelectTree
-- [ ] ButtonToggle
+- [x] ButtonToggle
 - [ ] Calendar
 - [ ] Card
-- [ ] Checkbox
+- [x] Checkbox
 - [ ] CodeSnippet
 - [ ] DataTable
-- [ ] Dialog
-- [ ] DialogConfirm
+- [x] Dialog
+- [x] DialogConfirm
 - [ ] DialogForm
 - [ ] DialogSelectTree
 - [ ] Dropdown
@@ -45,17 +45,17 @@
 - [ ] InvisibleField
 - [ ] LiteDropdown
 - [ ] Loading
-- [ ] Menu
+- [x] Menu
 - [ ] MultiSelect
 - [ ] OverlayPanel
 - [ ] Paginator
 - [ ] ProgressBar
 - [ ] QuickFilter
-- [ ] TabMenu
+- [x] TabMenu
 - [x] Textarea
 - [ ] Timeline
 - [ ] Toast
-- [ ] ToggleSwitch
+- [x] ToggleSwitch
 - [ ] TooltipSpan
 - [ ] Tree
 - [ ] UserGroup

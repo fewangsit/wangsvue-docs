@@ -174,5 +174,13 @@ export const componentRegistry: Record<
   'dialog/Maximizable': () => import('./dialog/Maximizable.vue'),
   'dialog/Draggable': () => import('./dialog/Draggable.vue'),
   'dialog/Responsive': () => import('./dialog/Responsive.vue'),
-  'dialog/Template': () => import('./dialog/Template.vue')
+  'dialog/Template': () => import('./dialog/Template.vue'),
+
+  // DialogConfirm components
+  'dialogconfirm/Basic': () => import('./dialogconfirm/Basic.vue'),
+  'dialogconfirm/Severity': () => import('./dialogconfirm/Severity.vue'),
+  'dialogconfirm/Messages': () => import('./dialogconfirm/Messages.vue'),
+  'dialogconfirm/Lists': () => import('./dialogconfirm/Lists.vue'),
+  'dialogconfirm/Buttons': () => import('./dialogconfirm/Buttons.vue'),
+  'dialogconfirm/Template': () => import('./dialogconfirm/Template.vue')
 }
