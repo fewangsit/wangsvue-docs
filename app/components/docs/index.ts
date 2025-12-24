@@ -182,5 +182,12 @@ export const componentRegistry: Record<
   'dialogconfirm/Messages': () => import('./dialogconfirm/Messages.vue'),
   'dialogconfirm/Lists': () => import('./dialogconfirm/Lists.vue'),
   'dialogconfirm/Buttons': () => import('./dialogconfirm/Buttons.vue'),
-  'dialogconfirm/Template': () => import('./dialogconfirm/Template.vue')
+  'dialogconfirm/Template': () => import('./dialogconfirm/Template.vue'),
+
+  // OverlayPanel components
+  'overlaypanel/Basic': () => import('./overlaypanel/Basic.vue'),
+  'overlaypanel/Dismissable': () => import('./overlaypanel/Dismissable.vue'),
+  'overlaypanel/CloseIcon': () => import('./overlaypanel/CloseIcon.vue'),
+  'overlaypanel/Responsive': () => import('./overlaypanel/Responsive.vue'),
+  'overlaypanel/Template': () => import('./overlaypanel/Template.vue')
 }

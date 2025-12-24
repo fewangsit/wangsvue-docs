@@ -47,7 +47,7 @@
 - [ ] Loading
 - [x] Menu
 - [ ] MultiSelect
-- [ ] OverlayPanel
+- [x] OverlayPanel
 - [ ] Paginator
 - [ ] ProgressBar
 - [ ] QuickFilter
