@@ -59,10 +59,14 @@ export const componentRegistry: Record<
 
   // InputNumber components
   'inputnumber/Basic': () => import('./inputnumber/Basic.vue'),
+  'inputnumber/Disabled': () => import('./inputnumber/Disabled.vue'),
   'inputnumber/MinMax': () => import('./inputnumber/MinMax.vue'),
-  'inputnumber/Currency': () => import('./inputnumber/Currency.vue'),
+  'inputnumber/Buttons': () => import('./inputnumber/Buttons.vue'),
+  'inputnumber/FractionDigits': () => import('./inputnumber/FractionDigits.vue'),
+  'inputnumber/Grouping': () => import('./inputnumber/Grouping.vue'),
+  'inputnumber/Locale': () => import('./inputnumber/Locale.vue'),
   'inputnumber/PrefixSuffix': () => import('./inputnumber/PrefixSuffix.vue'),
-  'inputnumber/Sizes': () => import('./inputnumber/Sizes.vue'),
+  'inputnumber/Currency': () => import('./inputnumber/Currency.vue'),
   'inputnumber/FormIntegration': () =>
     import('./inputnumber/FormIntegration.vue'),
 

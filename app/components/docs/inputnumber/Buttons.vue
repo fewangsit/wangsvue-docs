@@ -2,7 +2,7 @@
 import { ref } from 'vue'
 import { InputNumber } from '@fewangsit/wangsvue'
 
-const value = ref<number>()
+const value = ref(10)
 </script>
 
 <template>
@@ -10,10 +10,10 @@ const value = ref<number>()
     <InputNumber
       v-model="value"
       label="Quantity"
-      placeholder="Enter quantity"
+      :show-buttons="true"
     />
     <div class="text-sm text-gray-600">
-      Value: {{ value ?? 'Empty' }}
+      Value: {{ value }}
     </div>
   </div>
 </template>

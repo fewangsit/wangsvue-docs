@@ -962,15 +962,7 @@
       {
         "id": "import",
         "label": "Import",
-        "description": "```typescript\nimport { InputNumber } from '@fewangsit/wangsvue'\n```",
-        "example": "",
-        "hasExample": false,
-        "examplePath": null
-      },
-      {
-        "id": "examples",
-        "label": "Examples",
-        "description": "",
+        "description": "```ts\nimport { InputNumber } from '@fewangsit/wangsvue';\n```",
         "example": "",
         "hasExample": false,
         "examplePath": null
@@ -978,26 +970,42 @@
       {
         "id": "basic",
         "label": "Basic",
-        "description": "Basic number input with validation.",
-        "example": "<script setup lang=\"ts\">\nimport { ref } from 'vue'\nimport { InputNumber } from '@fewangsit/wangsvue'\n\nconst value = ref<number>()\n</script>\n\n<template>\n  <div class=\"flex flex-col gap-4\">\n    <InputNumber\n      v-model=\"value\"\n      label=\"Quantity\"\n      placeholder=\"Enter quantity\"\n    />\n    <p class=\"text-sm text-gray-600\">\n      Value: {{ value ?? 'Empty' }}\n    </p>\n  </div>\n</template>\n",
+        "description": "Basic number input with two-way data binding using v-model.",
+        "example": "<script setup lang=\"ts\">\nimport { ref } from 'vue'\nimport { InputNumber } from '@fewangsit/wangsvue'\n\nconst value = ref<number>()\n</script>\n\n<template>\n  <div class=\"flex flex-col gap-4\">\n    <InputNumber\n      v-model=\"value\"\n      label=\"Quantity\"\n      placeholder=\"Enter quantity\"\n    />\n    <div class=\"text-sm text-gray-600\">\n      Value: {{ value ?? 'Empty' }}\n    </div>\n  </div>\n</template>\n",
         "hasExample": true,
         "examplePath": "inputnumber/Basic"
+      },
+      {
+        "id": "disabled",
+        "label": "Disabled",
+        "description": "Number input in disabled state.",
+        "example": "<script setup lang=\"ts\">\nimport { InputNumber } from '@fewangsit/wangsvue'\n</script>\n\n<template>\n  <div class=\"flex flex-col gap-4\">\n    <InputNumber\n      :model-value=\"42\"\n      label=\"Disabled Input\"\n      :disabled=\"true\"\n    />\n  </div>\n</template>\n",
+        "hasExample": true,
+        "examplePath": "inputnumber/Disabled"
+      },
+      {
+        "id": "v-model-outside-form",
+        "label": "V-Model Outside Form",
+        "description": "Two-way data binding with v-model when used outside of form context.",
+        "example": "<script setup lang=\"ts\">\nimport { ref } from 'vue'\nimport { InputNumber } from '@fewangsit/wangsvue'\n\nconst quantity = ref(10)\nconst price = ref(25.99)\n</script>\n\n<template>\n  <div class=\"flex flex-col gap-4\">\n    <InputNumber\n      v-model=\"quantity\"\n      label=\"Quantity\"\n    />\n    <InputNumber\n      v-model=\"price\"\n      label=\"Price\"\n      :min-fraction-digits=\"2\"\n      :max-fraction-digits=\"2\"\n    />\n    <div class=\"text-sm text-gray-600\">\n      Total: {{ ((quantity || 0) * (price || 0)).toFixed(2) }}\n    </div>\n  </div>\n</template>\n",
+        "hasExample": true,
+        "examplePath": "inputnumber/VModelOutsideForm"
       },
       {
         "id": "min-max",
         "label": "Min Max",
         "description": "Number input with minimum and maximum value constraints.",
-        "example": "<script setup lang=\"ts\">\nimport { ref } from 'vue'\nimport { InputNumber } from '@fewangsit/wangsvue'\n\nconst value = ref<number>()\n</script>\n\n<template>\n  <div class=\"flex flex-col gap-4\">\n    <InputNumber\n      v-model=\"value\"\n      label=\"Age\"\n      placeholder=\"Enter age\"\n      :min=\"0\"\n      :max=\"120\"\n      :show-buttons=\"true\"\n    />\n    <p class=\"text-sm text-gray-600\">\n      Value: {{ value ?? 'Empty' }} (Min: 0, Max: 120)\n    </p>\n  </div>\n</template>\n",
+        "example": "<script setup lang=\"ts\">\nimport { ref } from 'vue'\nimport { InputNumber } from '@fewangsit/wangsvue'\n\nconst value = ref<number>()\n</script>\n\n<template>\n  <div class=\"flex flex-col gap-4\">\n    <InputNumber\n      v-model=\"value\"\n      label=\"Age\"\n      placeholder=\"Enter age (0-120)\"\n      :min=\"0\"\n      :max=\"120\"\n    />\n    <div class=\"text-sm text-gray-600\">\n      Value: {{ value ?? 'Empty' }}\n    </div>\n  </div>\n</template>\n",
         "hasExample": true,
         "examplePath": "inputnumber/MinMax"
       },
       {
-        "id": "currency",
-        "label": "Currency",
-        "description": "Number input configured for currency formatting.",
-        "example": "<script setup lang=\"ts\">\nimport { ref } from 'vue'\nimport { InputNumber } from '@fewangsit/wangsvue'\n\nconst value = ref<number>()\n</script>\n\n<template>\n  <div class=\"flex flex-col gap-4\">\n    <InputNumber\n      v-model=\"value\"\n      label=\"Price\"\n      placeholder=\"Enter price\"\n      mode=\"currency\"\n      currency=\"USD\"\n      locale=\"en-US\"\n      :use-grouping=\"true\"\n      :min-fraction-digits=\"2\"\n      :max-fraction-digits=\"2\"\n    />\n    <p class=\"text-sm text-gray-600\">\n      Value: {{ value ?? 'Empty' }}\n    </p>\n  </div>\n</template>\n",
+        "id": "buttons",
+        "label": "Buttons",
+        "description": "Number input with increment/decrement buttons.",
+        "example": "<script setup lang=\"ts\">\nimport { ref } from 'vue'\nimport { InputNumber } from '@fewangsit/wangsvue'\n\nconst value = ref(10)\n</script>\n\n<template>\n  <div class=\"flex flex-col gap-4\">\n    <InputNumber\n      v-model=\"value\"\n      label=\"Quantity\"\n      :show-buttons=\"true\"\n    />\n    <div class=\"text-sm text-gray-600\">\n      Value: {{ value }}\n    </div>\n  </div>\n</template>\n",
         "hasExample": true,
-        "examplePath": "inputnumber/Currency"
+        "examplePath": "inputnumber/Buttons"
       },
       {
         "id": "prefix-suffix",
@@ -1008,18 +1016,42 @@
         "examplePath": "inputnumber/PrefixSuffix"
       },
       {
-        "id": "sizes",
-        "label": "Sizes",
-        "description": "Different size variants for number input.",
-        "example": "<script setup lang=\"ts\">\nimport { ref } from 'vue'\nimport { InputNumber } from '@fewangsit/wangsvue'\n\nconst small = ref<number>()\nconst normal = ref<number>()\nconst full = ref<number>()\n</script>\n\n<template>\n  <div class=\"flex flex-col gap-6\">\n    <div>\n      <h3 class=\"mb-2 font-semibold\">\n        Small Size\n      </h3>\n      <InputNumber\n        v-model=\"small\"\n        label=\"Small Input\"\n        size=\"small\"\n        :show-buttons=\"true\"\n      />\n    </div>\n\n    <div>\n      <h3 class=\"mb-2 font-semibold\">\n        Normal Size\n      </h3>\n      <InputNumber\n        v-model=\"normal\"\n        label=\"Normal Input\"\n        size=\"normal\"\n        :show-buttons=\"true\"\n      />\n    </div>\n\n    <div>\n      <h3 class=\"mb-2 font-semibold\">\n        Full Width\n      </h3>\n      <InputNumber\n        v-model=\"full\"\n        label=\"Full Width Input\"\n        size=\"full\"\n        :show-buttons=\"true\"\n      />\n    </div>\n  </div>\n</template>\n",
+        "id": "fraction-digits",
+        "label": "Fraction Digits",
+        "description": "Number input with minimum and maximum fraction digits control.",
+        "example": "<script setup lang=\"ts\">\nimport { ref } from 'vue'\nimport { InputNumber } from '@fewangsit/wangsvue'\n\nconst minFraction = ref(3.14159)\nconst maxFraction = ref(123.456789)\nconst rangeFraction = ref(42.123456789)\n</script>\n\n<template>\n  <div class=\"flex flex-col gap-4\">\n    <InputNumber\n      v-model=\"minFraction\"\n      label=\"Min 2 Fraction Digits\"\n      :min-fraction-digits=\"2\"\n    />\n    <InputNumber\n      v-model=\"maxFraction\"\n      label=\"Max 2 Fraction Digits\"\n      :max-fraction-digits=\"2\"\n    />\n    <InputNumber\n      v-model=\"rangeFraction\"\n      label=\"Min 2, Max 4 Fraction Digits\"\n      :min-fraction-digits=\"2\"\n      :max-fraction-digits=\"4\"\n    />\n  </div>\n</template>\n",
         "hasExample": true,
-        "examplePath": "inputnumber/Sizes"
+        "examplePath": "inputnumber/FractionDigits"
+      },
+      {
+        "id": "grouping",
+        "label": "Grouping",
+        "description": "Number input with grouping separators (thousands separators).",
+        "example": "<script setup lang=\"ts\">\nimport { ref } from 'vue'\nimport { InputNumber } from '@fewangsit/wangsvue'\n\nconst withoutGrouping = ref(1234567.89)\nconst withGrouping = ref(1234567.89)\n</script>\n\n<template>\n  <div class=\"flex flex-col gap-4\">\n    <InputNumber\n      v-model=\"withoutGrouping\"\n      label=\"Without Grouping\"\n      :use-grouping=\"false\"\n      :min-fraction-digits=\"2\"\n      :max-fraction-digits=\"2\"\n    />\n    <InputNumber\n      v-model=\"withGrouping\"\n      label=\"With Grouping\"\n      :use-grouping=\"true\"\n      :min-fraction-digits=\"2\"\n      :max-fraction-digits=\"2\"\n    />\n  </div>\n</template>\n",
+        "hasExample": true,
+        "examplePath": "inputnumber/Grouping"
+      },
+      {
+        "id": "locale",
+        "label": "Locale",
+        "description": "Localization information such as grouping and decimal symbols are defined with the locale property which defaults to the user locale.",
+        "example": "<script setup lang=\"ts\">\nimport { ref } from 'vue'\nimport { InputNumber } from '@fewangsit/wangsvue'\n\nconst usValue = ref(1234567.89)\nconst deValue = ref(1234567.89)\nconst frValue = ref(1234567.89)\nconst idValue = ref(1234567.89)\n</script>\n\n<template>\n  <div class=\"flex flex-col gap-4\">\n    <InputNumber\n      v-model=\"usValue\"\n      label=\"US Locale (en-US)\"\n      locale=\"en-US\"\n      :use-grouping=\"true\"\n      :min-fraction-digits=\"2\"\n      :max-fraction-digits=\"2\"\n    />\n    <InputNumber\n      v-model=\"deValue\"\n      label=\"German Locale (de-DE)\"\n      locale=\"de-DE\"\n      :use-grouping=\"true\"\n      :min-fraction-digits=\"2\"\n      :max-fraction-digits=\"2\"\n    />\n    <InputNumber\n      v-model=\"frValue\"\n      label=\"French Locale (fr-FR)\"\n      locale=\"fr-FR\"\n      :use-grouping=\"true\"\n      :min-fraction-digits=\"2\"\n      :max-fraction-digits=\"2\"\n    />\n    <InputNumber\n      v-model=\"idValue\"\n      label=\"Indonesian Locale (id-ID)\"\n      locale=\"id-ID\"\n      :use-grouping=\"true\"\n      :min-fraction-digits=\"2\"\n      :max-fraction-digits=\"2\"\n    />\n  </div>\n</template>\n",
+        "hasExample": true,
+        "examplePath": "inputnumber/Locale"
+      },
+      {
+        "id": "currency",
+        "label": "Currency",
+        "description": "Number input configured for currency formatting with locale support.",
+        "example": "<script setup lang=\"ts\">\nimport { ref } from 'vue'\nimport { InputNumber } from '@fewangsit/wangsvue'\n\nconst usdPrice = ref<number>()\nconst eurPrice = ref<number>()\nconst idrPrice = ref<number>()\n</script>\n\n<template>\n  <div class=\"flex flex-col gap-4\">\n    <InputNumber\n      v-model=\"usdPrice\"\n      label=\"USD Price\"\n      mode=\"currency\"\n      currency=\"USD\"\n      locale=\"en-US\"\n      :use-grouping=\"true\"\n      :min-fraction-digits=\"2\"\n      :max-fraction-digits=\"2\"\n    />\n    <InputNumber\n      v-model=\"eurPrice\"\n      label=\"EUR Price\"\n      mode=\"currency\"\n      currency=\"EUR\"\n      locale=\"de-DE\"\n      :use-grouping=\"true\"\n      :min-fraction-digits=\"2\"\n      :max-fraction-digits=\"2\"\n    />\n    <InputNumber\n      v-model=\"idrPrice\"\n      label=\"IDR Price\"\n      mode=\"currency\"\n      currency=\"IDR\"\n      locale=\"id-ID\"\n      :use-grouping=\"true\"\n      :max-fraction-digits=\"0\"\n    />\n  </div>\n</template>\n",
+        "hasExample": true,
+        "examplePath": "inputnumber/Currency"
       },
       {
         "id": "form-integration",
         "label": "Form Integration",
-        "description": "Complete form example with number inputs.",
-        "example": "<script setup lang=\"ts\">\nimport { Form, InputText, InputNumber } from '@fewangsit/wangsvue'\n\nconst onSubmit = (payload: { formValues: Record<string, unknown> }) => {\n  console.log('Product form submitted:', payload.formValues)\n}\n\nconst onCancel = () => {\n  console.log('Form cancelled')\n}\n</script>\n\n<template>\n  <Form\n    :column-per-row=\"2\"\n    @submit=\"onSubmit\"\n    @cancel=\"onCancel\"\n  >\n    <template #fields=\"{ formValues }\">\n      <InputText\n        v-model=\"formValues.productName\"\n        label=\"Product Name\"\n        field-name=\"productName\"\n        :use-validator=\"true\"\n        :mandatory=\"true\"\n        :validator-message=\"{\n          empty: 'Product name is required'\n        }\"\n      />\n\n      <InputText\n        v-model=\"formValues.sku\"\n        label=\"SKU\"\n        field-name=\"sku\"\n        :use-validator=\"true\"\n        :mandatory=\"true\"\n        :validator-message=\"{\n          empty: 'SKU is required'\n        }\"\n      />\n\n      <InputNumber\n        v-model=\"formValues.price\"\n        label=\"Price\"\n        field-name=\"price\"\n        :use-validator=\"true\"\n        :mandatory=\"true\"\n        mode=\"currency\"\n        currency=\"USD\"\n        locale=\"en-US\"\n        :use-grouping=\"true\"\n        :min=\"0\"\n        :min-fraction-digits=\"2\"\n        :max-fraction-digits=\"2\"\n        :validator-message=\"{\n          empty: 'Price is required'\n        }\"\n      />\n\n      <InputNumber\n        v-model=\"formValues.quantity\"\n        label=\"Initial Stock\"\n        field-name=\"quantity\"\n        :use-validator=\"true\"\n        :mandatory=\"true\"\n        :min=\"0\"\n        :max=\"999999\"\n        :show-buttons=\"true\"\n        :validator-message=\"{\n          empty: 'Initial stock quantity is required'\n        }\"\n      />\n    </template>\n  </Form>\n</template>\n",
+        "description": "Complete form example with number inputs and validation.",
+        "example": "<script setup lang=\"ts\">\nimport { Form, InputNumber } from '@fewangsit/wangsvue'\n\nconst onSubmit = (payload: { formValues: Record<string, unknown> }) => {\n  console.log('Form submitted:', payload.formValues)\n}\n</script>\n\n<template>\n  <Form\n    :buttons-template=\"['submit', 'clear']\"\n    @submit=\"onSubmit\"\n  >\n    <template #fields=\"{ formValues }\">\n      <InputNumber\n        v-model=\"formValues.quantity\"\n        label=\"Quantity\"\n        field-name=\"quantity\"\n        :use-validator=\"true\"\n        :mandatory=\"true\"\n        :min=\"1\"\n        :max=\"999\"\n        :show-buttons=\"true\"\n        :validator-message=\"{\n          empty: 'Quantity is required'\n        }\"\n      />\n    </template>\n  </Form>\n</template>\n",
         "hasExample": true,
         "examplePath": "inputnumber/FormIntegration"
       }

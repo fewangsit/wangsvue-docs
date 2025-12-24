@@ -75,9 +75,11 @@ import { ComponentName } from '@fewangsit/wangsvue'
 - **Minimal Code**: Show only the essential code needed to demonstrate the feature
 
 ### 7. Form Integration Best Practices
+- **Keep it Simple**: Use only ONE field to demonstrate form integration - don't create complex multi-field forms
 - **Always include buttons-template prop**: Form demos must include submit and clear buttons using the `buttons-template` prop
-- **Handle form events**: Implement both `@submit` event handlers
-- **Show form state**: Display form values or submission results when relevant
+- **Handle form events**: Implement `@submit` event handler
+- **Focus on Component**: Show only the component being documented, avoid adding other input components
+- **Essential Props Only**: Include only the essential form-related props (use-validator, mandatory, field-name, validator-message)
 
 #### Form Integration Template
 ```vue
@@ -94,9 +96,8 @@ const onSubmit = (payload: { formValues: Record<string, unknown> }) => {
     :buttons-template="['submit', 'clear']"
     @submit="onSubmit"
   >
-    <template #fields="{ formValues }">
+    <template #fields>
       <ComponentName
-        v-model="formValues.fieldName"
         label="Field Label"
         field-name="fieldName"
         :use-validator="true"
