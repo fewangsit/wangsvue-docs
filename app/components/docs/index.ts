@@ -137,5 +137,14 @@ export const componentRegistry: Record<
   'checkbox/Readonly': () => import('./checkbox/Readonly.vue'),
   'checkbox/Tooltip': () => import('./checkbox/Tooltip.vue'),
   'checkbox/CustomValues': () => import('./checkbox/CustomValues.vue'),
-  'checkbox/WithinTable': () => import('./checkbox/WithinTable.vue')
+  'checkbox/WithinTable': () => import('./checkbox/WithinTable.vue'),
+
+  // ToggleSwitch components
+  'toggleswitch/Basic': () => import('./toggleswitch/Basic.vue'),
+  'toggleswitch/TriState': () => import('./toggleswitch/TriState.vue'),
+  'toggleswitch/Disabled': () => import('./toggleswitch/Disabled.vue'),
+  'toggleswitch/Invalid': () => import('./toggleswitch/Invalid.vue'),
+  'toggleswitch/Readonly': () => import('./toggleswitch/Readonly.vue'),
+  'toggleswitch/Tooltip': () => import('./toggleswitch/Tooltip.vue'),
+  'toggleswitch/CustomValues': () => import('./toggleswitch/CustomValues.vue')
 }
