@@ -146,5 +146,13 @@ export const componentRegistry: Record<
   'toggleswitch/Invalid': () => import('./toggleswitch/Invalid.vue'),
   'toggleswitch/Readonly': () => import('./toggleswitch/Readonly.vue'),
   'toggleswitch/Tooltip': () => import('./toggleswitch/Tooltip.vue'),
-  'toggleswitch/CustomValues': () => import('./toggleswitch/CustomValues.vue')
+  'toggleswitch/CustomValues': () => import('./toggleswitch/CustomValues.vue'),
+
+  // Menu components
+  'menu/Basic': () => import('./menu/Basic.vue'),
+  'menu/Popup': () => import('./menu/Popup.vue'),
+  'menu/Nested': () => import('./menu/Nested.vue'),
+  'menu/Icons': () => import('./menu/Icons.vue'),
+  'menu/Router': () => import('./menu/Router.vue'),
+  'menu/Template': () => import('./menu/Template.vue')
 }
