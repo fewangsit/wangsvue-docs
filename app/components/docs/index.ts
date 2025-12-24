@@ -162,5 +162,14 @@ export const componentRegistry: Record<
   'tabmenu/Icons': () => import('./tabmenu/Icons.vue'),
   'tabmenu/Router': () => import('./tabmenu/Router.vue'),
   'tabmenu/ActiveIndex': () => import('./tabmenu/ActiveIndex.vue'),
-  'tabmenu/TrailingLine': () => import('./tabmenu/TrailingLine.vue')
+  'tabmenu/TrailingLine': () => import('./tabmenu/TrailingLine.vue'),
+
+  // Dialog components
+  'dialog/Basic': () => import('./dialog/Basic.vue'),
+  'dialog/Modal': () => import('./dialog/Modal.vue'),
+  'dialog/Position': () => import('./dialog/Position.vue'),
+  'dialog/Maximizable': () => import('./dialog/Maximizable.vue'),
+  'dialog/Draggable': () => import('./dialog/Draggable.vue'),
+  'dialog/Responsive': () => import('./dialog/Responsive.vue'),
+  'dialog/Template': () => import('./dialog/Template.vue')
 }

@@ -569,7 +569,7 @@
         "id": "icons-",
         "label": "Icons\r",
         "description": "Menu items with icons from the [WangsIcons](/components/icon) collection.",
-        "example": "<script setup lang=\"ts\">\r\nimport { Menu } from '@fewangsit/wangsvue'\r\n\r\nconst items = [\r\n  {\r\n    label: 'New',\r\n    icon: 'file-add',\r\n    command: () => {\r\n      console.log('New clicked')\r\n    }\r\n  },\r\n  {\r\n    label: 'Open',\r\n    icon: 'folder',\r\n    command: () => {\r\n      console.log('Open clicked')\r\n    }\r\n  },\r\n  {\r\n    separator: true\r\n  },\r\n  {\r\n    label: 'Save',\r\n    icon: 'save',\r\n    command: () => {\r\n      console.log('Save clicked')\r\n    }\r\n  },\r\n  {\r\n    label: 'Print',\r\n    icon: 'printer',\r\n    command: () => {\r\n      console.log('Print clicked')\r\n    }\r\n  },\r\n  {\r\n    separator: true\r\n  },\r\n  {\r\n    label: 'Settings',\r\n    icon: 'settings',\r\n    command: () => {\r\n      console.log('Settings clicked')\r\n    }\r\n  }\r\n]\r\n</script>\r\n\r\n<template>\r\n  <div class=\"flex flex-wrap gap-3\">\r\n    <Menu\r\n      :model=\"items\"\r\n      :popup=\"false\"\r\n    />\r\n  </div>\r\n</template>\n",
+        "example": "<script setup lang=\"ts\">\r\nimport { Menu } from '@fewangsit/wangsvue'\r\nimport type { MenuItem } from '@fewangsit/wangsvue/menuitem'\r\n\r\nconst items: MenuItem[] = [\r\n  {\r\n    label: 'New',\r\n    icon: 'file-add',\r\n    command: () => {\r\n      console.log('New clicked')\r\n    }\r\n  },\r\n  {\r\n    label: 'Open',\r\n    icon: 'folder',\r\n    command: () => {\r\n      console.log('Open clicked')\r\n    }\r\n  },\r\n  {\r\n    separator: true\r\n  },\r\n  {\r\n    label: 'Save',\r\n    icon: 'save',\r\n    command: () => {\r\n      console.log('Save clicked')\r\n    }\r\n  },\r\n  {\r\n    label: 'Print',\r\n    icon: 'printer',\r\n    command: () => {\r\n      console.log('Print clicked')\r\n    }\r\n  },\r\n  {\r\n    separator: true\r\n  },\r\n  {\r\n    label: 'Settings',\r\n    icon: 'settings',\r\n    command: () => {\r\n      console.log('Settings clicked')\r\n    }\r\n  }\r\n]\r\n</script>\r\n\r\n<template>\r\n  <div class=\"flex flex-wrap gap-3\">\r\n    <Menu\r\n      :model=\"items\"\r\n      :popup=\"false\"\r\n    />\r\n  </div>\r\n</template>\r\n",
         "hasExample": true,
         "examplePath": "menu/Icons"
       },
@@ -577,7 +577,7 @@
         "id": "router-integration-",
         "label": "Router Integration\r",
         "description": "Menu integrated with Vue Router for navigation.",
-        "example": "<script setup lang=\"ts\">\r\nimport { Menu } from '@fewangsit/wangsvue'\r\n\r\nconst items = [\r\n  {\r\n    label: 'Dashboard',\r\n    icon: 'dashboard',\r\n    target: '/dashboard'\r\n  },\r\n  {\r\n    label: 'Components',\r\n    icon: 'apps-2-line',\r\n    target: '/components'\r\n  },\r\n  {\r\n    separator: true\r\n  },\r\n  {\r\n    label: 'Profile',\r\n    icon: 'profile',\r\n    target: '/profile'\r\n  },\r\n  {\r\n    label: 'Settings',\r\n    icon: 'settings',\r\n    target: '/settings'\r\n  },\r\n  {\r\n    separator: true\r\n  },\r\n  {\r\n    label: 'External Link',\r\n    icon: 'external-link',\r\n    url: 'https://example.com'\r\n  }\r\n]\r\n</script>\r\n\r\n<template>\r\n  <div class=\"flex flex-wrap gap-3\">\r\n    <Menu\r\n      :model=\"items\"\r\n      :popup=\"false\"\r\n    />\r\n    <p class=\"text-sm text-gray-600\">\r\n      Menu items can navigate using Vue Router or external URLs\r\n    </p>\r\n  </div>\r\n</template>\r\n",
+        "example": "<script setup lang=\"ts\">\r\nimport { Menu } from '@fewangsit/wangsvue'\r\nimport type { MenuItem } from '@fewangsit/wangsvue/menuitem'\r\n\r\nconst items: MenuItem[] = [\r\n  {\r\n    label: 'Dashboard',\r\n    icon: 'dashboard',\r\n    target: '/dashboard'\r\n  },\r\n  {\r\n    label: 'Components',\r\n    icon: 'apps-2-line',\r\n    target: '/components'\r\n  },\r\n  {\r\n    separator: true\r\n  },\r\n  {\r\n    label: 'Profile',\r\n    icon: 'profile',\r\n    target: '/profile'\r\n  },\r\n  {\r\n    label: 'Settings',\r\n    icon: 'settings',\r\n    target: '/settings'\r\n  },\r\n  {\r\n    separator: true\r\n  },\r\n  {\r\n    label: 'External Link',\r\n    icon: 'external-link',\r\n    url: 'https://example.com'\r\n  }\r\n]\r\n</script>\r\n\r\n<template>\r\n  <div class=\"flex flex-wrap gap-3\">\r\n    <Menu\r\n      :model=\"items\"\r\n      :popup=\"false\"\r\n    />\r\n    <p class=\"text-sm text-gray-600\">\r\n      Menu items can navigate using Vue Router or external URLs\r\n    </p>\r\n  </div>\r\n</template>\r\n",
         "hasExample": true,
         "examplePath": "menu/Router"
       },
@@ -585,9 +585,143 @@
         "id": "custom-template-",
         "label": "Custom Template\r",
         "description": "Menu with custom item templates and slots.",
-        "example": "<script setup lang=\"ts\">\r\nimport { Menu } from '@fewangsit/wangsvue'\r\n\r\nconst items = [\r\n  {\r\n    label: 'New Document',\r\n    icon: 'file-add',\r\n    command: () => {\r\n      console.log('New Document clicked')\r\n    }\r\n  },\r\n  {\r\n    label: 'Recent Files',\r\n    icon: 'file-history',\r\n    command: () => {\r\n      console.log('Recent Files clicked')\r\n    }\r\n  },\r\n  {\r\n    separator: true\r\n  },\r\n  {\r\n    label: 'Premium Feature',\r\n    icon: 'star',\r\n    disabled: true\r\n  }\r\n]\r\n</script>\r\n\r\n<template>\r\n  <div class=\"flex flex-wrap gap-3\">\r\n    <Menu\r\n      :model=\"items\"\r\n      :popup=\"false\"\r\n    >\r\n      <template #start>\r\n        <div class=\"p-3 border-b border-gray-200\">\r\n          <h3 class=\"font-semibold text-gray-800\">\r\n            File Menu\r\n          </h3>\r\n        </div>\r\n      </template>\r\n\r\n      <template #item=\"{ item, props }\">\r\n        <a\r\n          v-bind=\"props.action\"\r\n          class=\"flex items-center justify-between w-full\"\r\n        >\r\n          <div class=\"flex items-center gap-2\">\r\n            <i\r\n              v-if=\"item.icon\"\r\n              :class=\"`wangs-icon-${item.icon}`\"\r\n            />\r\n            <span>{{ item.label }}</span>\r\n          </div>\r\n          <span\r\n            v-if=\"item.badge\"\r\n            class=\"px-2 py-1 text-xs bg-blue-100 text-blue-800 rounded-full\"\r\n          >\r\n            {{ item.badge }}\r\n          </span>\r\n        </a>\r\n      </template>\r\n\r\n      <template #end>\r\n        <div class=\"p-3 border-t border-gray-200 text-xs text-gray-500\">\r\n          Custom footer content\r\n        </div>\r\n      </template>\r\n    </Menu>\r\n  </div>\r\n</template>\r\n",
+        "example": "<script setup lang=\"ts\">\r\nimport { Menu } from '@fewangsit/wangsvue'\r\nimport type { MenuItem } from '@fewangsit/wangsvue/menuitem'\r\n\r\nconst items: MenuItem[] = [\r\n  {\r\n    label: 'New Document',\r\n    icon: 'file-add',\r\n    command: () => {\r\n      console.log('New Document clicked')\r\n    }\r\n  },\r\n  {\r\n    label: 'Recent Files',\r\n    icon: 'file-history',\r\n    command: () => {\r\n      console.log('Recent Files clicked')\r\n    }\r\n  },\r\n  {\r\n    separator: true\r\n  },\r\n  {\r\n    label: 'Premium Feature',\r\n    icon: 'star',\r\n    disabled: true\r\n  }\r\n]\r\n</script>\r\n\r\n<template>\r\n  <div class=\"flex flex-wrap gap-3\">\r\n    <Menu\r\n      :model=\"items\"\r\n      :popup=\"false\"\r\n    >\r\n      <template #start>\r\n        <div class=\"p-3 border-b border-gray-200\">\r\n          <h3 class=\"font-semibold text-gray-800\">\r\n            File Menu\r\n          </h3>\r\n        </div>\r\n      </template>\r\n\r\n      <template #item=\"{ item, props }\">\r\n        <a\r\n          v-bind=\"props.action\"\r\n          class=\"flex items-center justify-between w-full\"\r\n        >\r\n          <div class=\"flex items-center gap-2\">\r\n            <i\r\n              v-if=\"item.icon\"\r\n              :class=\"`wangs-icon-${item.icon}`\"\r\n            />\r\n            <span>{{ item.label }}</span>\r\n          </div>\r\n          <span\r\n            v-if=\"item.badge\"\r\n            class=\"px-2 py-1 text-xs bg-blue-100 text-blue-800 rounded-full\"\r\n          >\r\n            {{ item.badge }}\r\n          </span>\r\n        </a>\r\n      </template>\r\n\r\n      <template #end>\r\n        <div class=\"p-3 border-t border-gray-200 text-xs text-gray-500\">\r\n          Custom footer content\r\n        </div>\r\n      </template>\r\n    </Menu>\r\n  </div>\r\n</template>\r\n",
         "hasExample": true,
         "examplePath": "menu/Template"
+      }
+    ]
+  },
+  {
+    "name": "tabmenu",
+    "title": "TabMenu",
+    "description": "TabMenu is a navigation component that displays items as tab headers. Example below uses nested routes with TabMenu.",
+    "sections": [
+      {
+        "id": "import-",
+        "label": "Import\r",
+        "description": "```ts\r\nimport { TabMenu } from '@fewangsit/wangsvue';\r\n```",
+        "example": "",
+        "hasExample": false,
+        "examplePath": null
+      },
+      {
+        "id": "basic-",
+        "label": "Basic\r",
+        "description": "Basic tab menu with navigation items.",
+        "example": "<script setup lang=\"ts\">\r\nimport { ref } from 'vue'\r\nimport { TabMenu } from '@fewangsit/wangsvue'\r\n\r\nconst activeIndex = ref(0)\r\n\r\nconst items = [\r\n  {\r\n    label: 'Dashboard',\r\n    command: () => {\r\n      console.log('Dashboard clicked')\r\n    }\r\n  },\r\n  {\r\n    label: 'Analytics',\r\n    command: () => {\r\n      console.log('Analytics clicked')\r\n    }\r\n  },\r\n  {\r\n    label: 'Reports',\r\n    command: () => {\r\n      console.log('Reports clicked')\r\n    }\r\n  },\r\n  {\r\n    label: 'Settings',\r\n    command: () => {\r\n      console.log('Settings clicked')\r\n    }\r\n  }\r\n]\r\n</script>\r\n\r\n<template>\r\n  <div class=\"flex flex-col gap-4\">\r\n    <TabMenu\r\n      v-model:active-index=\"activeIndex\"\r\n      :menu=\"items\"\r\n    />\r\n    <div class=\"p-4 border rounded-lg\">\r\n      <p class=\"text-sm text-gray-600\">\r\n        Active tab: {{ items[activeIndex]?.label }}\r\n      </p>\r\n    </div>\r\n  </div>\r\n</template>\n",
+        "hasExample": true,
+        "examplePath": "tabmenu/Basic"
+      },
+      {
+        "id": "types-",
+        "label": "Types\r",
+        "description": "",
+        "example": "<script setup lang=\"ts\">\r\nimport { ref } from 'vue'\r\nimport { TabMenu } from '@fewangsit/wangsvue'\r\n\r\nconst activeIndexTab = ref(0)\r\nconst activeIndexPill = ref(0)\r\nconst activeIndexSegmented = ref(0)\r\n\r\nconst items = [\r\n  { label: 'Home' },\r\n  { label: 'Products' },\r\n  { label: 'About' },\r\n  { label: 'Contact' }\r\n]\r\n</script>\r\n\r\n<template>\r\n  <div class=\"flex flex-col gap-6\">\r\n    <div>\r\n      <h4 class=\"mb-2 font-medium\">\r\n        Tab Type\r\n      </h4>\r\n      <TabMenu\r\n        v-model:active-index=\"activeIndexTab\"\r\n        :menu=\"items\"\r\n        type=\"tab\"\r\n      />\r\n    </div>\r\n\r\n    <div>\r\n      <h4 class=\"mb-2 font-medium\">\r\n        Pill Type\r\n      </h4>\r\n      <TabMenu\r\n        v-model:active-index=\"activeIndexPill\"\r\n        :menu=\"items\"\r\n        type=\"pill\"\r\n      />\r\n    </div>\r\n\r\n    <div>\r\n      <h4 class=\"mb-2 font-medium\">\r\n        Segmented Type\r\n      </h4>\r\n      <TabMenu\r\n        v-model:active-index=\"activeIndexSegmented\"\r\n        :menu=\"items\"\r\n        type=\"segmented\"\r\n      />\r\n    </div>\r\n  </div>\r\n</template>\r\n",
+        "hasExample": true,
+        "examplePath": "tabmenu/Types"
+      },
+      {
+        "id": "icons-",
+        "label": "Icons\r",
+        "description": "Tab menu items with icons from the [WangsIcons](/components/icon) collection.",
+        "example": "<script setup lang=\"ts\">\r\nimport { ref } from 'vue'\r\nimport { TabMenu } from '@fewangsit/wangsvue'\r\nimport type { MenuItem } from '@fewangsit/wangsvue/menuitem'\r\n\r\nconst activeIndex = ref(0)\r\n\r\nconst items: MenuItem[] = [\r\n  {\r\n    label: 'Dashboard',\r\n    icon: 'dashboard'\r\n  },\r\n  {\r\n    label: 'Analytics',\r\n    icon: 'line-chart'\r\n  },\r\n  {\r\n    label: 'Reports',\r\n    icon: 'file-chart-line'\r\n  },\r\n  {\r\n    label: 'Users',\r\n    icon: 'user'\r\n  },\r\n  {\r\n    label: 'Settings',\r\n    icon: 'settings'\r\n  }\r\n]\r\n</script>\r\n\r\n<template>\r\n  <div class=\"flex flex-col gap-4\">\r\n    <TabMenu\r\n      v-model:active-index=\"activeIndex\"\r\n      :menu=\"items\"\r\n    />\r\n    <div class=\"p-4 border rounded-lg\">\r\n      <p class=\"text-sm text-gray-600\">\r\n        Active tab: {{ items[activeIndex]?.label }}\r\n      </p>\r\n    </div>\r\n  </div>\r\n</template>\r\n",
+        "hasExample": true,
+        "examplePath": "tabmenu/Icons"
+      },
+      {
+        "id": "router-integration-",
+        "label": "Router Integration\r",
+        "description": "TabMenu integrated with Vue Router for navigation between routes.",
+        "example": "<script setup lang=\"ts\">\r\nimport { ref } from 'vue'\r\nimport { TabMenu } from '@fewangsit/wangsvue'\r\nimport type { MenuItem } from '@fewangsit/wangsvue/menuitem'\r\n\r\nconst activeIndex = ref(0)\r\n\r\nconst items: MenuItem[] = [\r\n  {\r\n    label: 'Home',\r\n    icon: 'dashboard',\r\n    route: '/'\r\n  },\r\n  {\r\n    label: 'Components',\r\n    icon: 'apps-2-line',\r\n    route: '/components'\r\n  },\r\n  {\r\n    label: 'Getting Started',\r\n    icon: 'star-fill',\r\n    route: '/getting-started'\r\n  },\r\n  {\r\n    label: 'GitHub',\r\n    icon: 'external-link',\r\n    url: 'https://github.com',\r\n    route: '_blank'\r\n  }\r\n]\r\n</script>\r\n\r\n<template>\r\n  <div class=\"flex flex-col gap-4\">\r\n    <TabMenu\r\n      v-model:active-index=\"activeIndex\"\r\n      :menu=\"items\"\r\n    />\r\n    <div class=\"p-4 border rounded-lg\">\r\n      <p class=\"text-sm text-gray-600\">\r\n        TabMenu can navigate using Vue Router (to) or external URLs (url)\r\n      </p>\r\n      <p class=\"text-xs text-gray-500 mt-1\">\r\n        Active tab: {{ items[activeIndex]?.label }}\r\n      </p>\r\n    </div>\r\n  </div>\r\n</template>\r\n",
+        "hasExample": true,
+        "examplePath": "tabmenu/Router"
+      },
+      {
+        "id": "active-index-",
+        "label": "Active Index\r",
+        "description": "Control the active tab programmatically using activeIndex.",
+        "example": "<script setup lang=\"ts\">\r\nimport { ref } from 'vue'\r\nimport { TabMenu, Button } from '@fewangsit/wangsvue'\r\n\r\nconst activeIndex = ref(0)\r\n\r\nconst items = [\r\n  { label: 'Tab 1' },\r\n  { label: 'Tab 2' },\r\n  { label: 'Tab 3' },\r\n  { label: 'Tab 4' }\r\n]\r\n\r\nconst setActiveTab = (index: number) => {\r\n  activeIndex.value = index\r\n}\r\n\r\nconst nextTab = () => {\r\n  activeIndex.value = (activeIndex.value + 1) % items.length\r\n}\r\n\r\nconst prevTab = () => {\r\n  activeIndex.value = activeIndex.value === 0 ? items.length - 1 : activeIndex.value - 1\r\n}\r\n</script>\r\n\r\n<template>\r\n  <div class=\"flex flex-col gap-4\">\r\n    <TabMenu\r\n      v-model:active-index=\"activeIndex\"\r\n      :menu=\"items\"\r\n    />\r\n\r\n    <div class=\"flex flex-wrap gap-2\">\r\n      <Button\r\n        label=\"Previous Tab\"\r\n        size=\"small\"\r\n        @click=\"prevTab\"\r\n      />\r\n      <Button\r\n        label=\"Next Tab\"\r\n        size=\"small\"\r\n        @click=\"nextTab\"\r\n      />\r\n      <Button\r\n        label=\"Go to Tab 3\"\r\n        size=\"small\"\r\n        @click=\"setActiveTab(2)\"\r\n      />\r\n    </div>\r\n\r\n    <div class=\"p-4 border rounded-lg\">\r\n      <p class=\"text-sm text-gray-600\">\r\n        Active Index: {{ activeIndex }} - {{ items[activeIndex]?.label }}\r\n      </p>\r\n    </div>\r\n  </div>\r\n</template>\r\n",
+        "hasExample": true,
+        "examplePath": "tabmenu/ActiveIndex"
+      },
+      {
+        "id": "trailing-line-",
+        "label": "Trailing Line\r",
+        "description": "Control the trailing line display at the end of tab menu.",
+        "example": "<script setup lang=\"ts\">\r\nimport { ref } from 'vue'\r\nimport { TabMenu } from '@fewangsit/wangsvue'\r\n\r\nconst activeIndexWithLine = ref(0)\r\nconst activeIndexWithoutLine = ref(0)\r\n\r\nconst items = [\r\n  { label: 'Home' },\r\n  { label: 'About' },\r\n  { label: 'Services' },\r\n  { label: 'Contact' }\r\n]\r\n</script>\r\n\r\n<template>\r\n  <div class=\"flex flex-col gap-6\">\r\n    <div>\r\n      <h4 class=\"mb-2 font-medium\">\n        With Trailing Line (default)\n      </h4>\r\n      <TabMenu\r\n        v-model:active-index=\"activeIndexWithLine\"\r\n        :menu=\"items\"\r\n        :use-trailing-line=\"true\"\r\n      />\r\n    </div>\r\n\r\n    <div>\r\n      <h4 class=\"mb-2 font-medium\">\n        Without Trailing Line\n      </h4>\r\n      <TabMenu\r\n        v-model:active-index=\"activeIndexWithoutLine\"\r\n        :menu=\"items\"\r\n        :use-trailing-line=\"false\"\r\n      />\r\n    </div>\r\n\r\n    <div class=\"p-4 border rounded-lg\">\r\n      <p class=\"text-sm text-gray-600\">\r\n        The trailing line extends the tab border to fill the remaining space\r\n      </p>\r\n    </div>\r\n  </div>\r\n</template>\n",
+        "hasExample": true,
+        "examplePath": "tabmenu/TrailingLine"
+      }
+    ]
+  },
+  {
+    "name": "dialog",
+    "title": "Dialog",
+    "description": "Dialog is a container to display content in an overlay window.",
+    "sections": [
+      {
+        "id": "import-",
+        "label": "Import\r",
+        "description": "```ts\r\nimport { Dialog } from '@fewangsit/wangsvue';\r\n```",
+        "example": "",
+        "hasExample": false,
+        "examplePath": null
+      },
+      {
+        "id": "basic-",
+        "label": "Basic\r",
+        "description": "Basic dialog with header, content, and footer.",
+        "example": "<script setup lang=\"ts\">\r\nimport { ref } from 'vue'\r\nimport { Dialog, Button } from '@fewangsit/wangsvue'\r\n\r\nconst visible = ref(false)\r\n\r\nconst showDialog = () => {\r\n  visible.value = true\r\n}\r\n\r\nconst hideDialog = () => {\r\n  visible.value = false\r\n}\r\n</script>\r\n\r\n<template>\r\n  <div class=\"flex flex-wrap gap-3\">\r\n    <Button\r\n      label=\"Show Dialog\"\r\n      @click=\"showDialog\"\r\n    />\r\n\r\n    <Dialog\r\n      v-model:visible=\"visible\"\r\n      header=\"Basic Dialog\"\r\n      footer=\"Dialog Footer\"\r\n      :style=\"{ width: '50vw' }\"\r\n    >\r\n      <p class=\"mb-4\">\r\n        This is a basic dialog with header, content, and footer sections.\r\n      </p>\r\n      <p>\r\n        You can close this dialog by clicking the X button or pressing Escape.\r\n      </p>\r\n\r\n      <template #footer>\r\n        <div class=\"flex justify-end gap-2\">\r\n          <Button\r\n            label=\"Cancel\"\r\n            severity=\"secondary\"\r\n            @click=\"hideDialog\"\r\n          />\r\n          <Button\r\n            label=\"Save\"\r\n            @click=\"hideDialog\"\r\n          />\r\n        </div>\r\n      </template>\r\n    </Dialog>\r\n  </div>\r\n</template>\r\n",
+        "hasExample": true,
+        "examplePath": "dialog/Basic"
+      },
+      {
+        "id": "modal-",
+        "label": "Modal\r",
+        "description": "Modal dialog that blocks background interaction.",
+        "example": "<script setup lang=\"ts\">\r\nimport { ref } from 'vue'\r\nimport { Dialog, Button } from '@fewangsit/wangsvue'\r\n\r\nconst modalVisible = ref(false)\r\nconst nonModalVisible = ref(false)\r\n</script>\r\n\r\n<template>\r\n  <div class=\"flex flex-wrap gap-3\">\r\n    <Button\r\n      label=\"Show Modal Dialog\"\r\n      @click=\"modalVisible = true\"\r\n    />\r\n    <Button\r\n      label=\"Show Non-Modal Dialog\"\r\n      @click=\"nonModalVisible = true\"\r\n    />\r\n\r\n    <!-- Modal Dialog -->\r\n    <Dialog\r\n      v-model:visible=\"modalVisible\"\r\n      header=\"Modal Dialog\"\r\n      :modal=\"true\"\r\n      :style=\"{ width: '50vw' }\"\r\n    >\r\n      <p class=\"mb-4\">\r\n        This is a modal dialog that blocks interaction with the background content.\r\n      </p>\r\n      <p>\r\n        The background is dimmed and you cannot interact with other elements until you close this dialog.\r\n      </p>\r\n    </Dialog>\r\n\r\n    <!-- Non-Modal Dialog -->\r\n    <Dialog\r\n      v-model:visible=\"nonModalVisible\"\r\n      header=\"Non-Modal Dialog\"\r\n      :modal=\"false\"\r\n      :style=\"{ width: '50vw' }\"\r\n    >\r\n      <p class=\"mb-4\">\r\n        This is a non-modal dialog that allows interaction with background content.\r\n      </p>\r\n      <p>\r\n        You can still interact with other elements on the page while this dialog is open.\r\n      </p>\r\n    </Dialog>\r\n  </div>\r\n</template>\r\n",
+        "hasExample": true,
+        "examplePath": "dialog/Modal"
+      },
+      {
+        "id": "position-",
+        "label": "Position\r",
+        "description": "Dialog can be positioned at different locations on the screen.",
+        "example": "<script setup lang=\"ts\">\r\nimport { ref } from 'vue'\r\nimport { Dialog, Button } from '@fewangsit/wangsvue'\r\n\r\nconst centerVisible = ref(false)\r\nconst topVisible = ref(false)\r\nconst bottomVisible = ref(false)\r\nconst leftVisible = ref(false)\r\nconst rightVisible = ref(false)\r\nconst topLeftVisible = ref(false)\r\n</script>\r\n\r\n<template>\r\n  <div class=\"flex flex-wrap gap-2\">\r\n    <Button\r\n      label=\"Center\"\r\n      size=\"small\"\r\n      @click=\"centerVisible = true\"\r\n    />\r\n    <Button\r\n      label=\"Top\"\r\n      size=\"small\"\r\n      @click=\"topVisible = true\"\r\n    />\r\n    <Button\r\n      label=\"Bottom\"\r\n      size=\"small\"\r\n      @click=\"bottomVisible = true\"\r\n    />\r\n    <Button\r\n      label=\"Left\"\r\n      size=\"small\"\r\n      @click=\"leftVisible = true\"\r\n    />\r\n    <Button\r\n      label=\"Right\"\r\n      size=\"small\"\r\n      @click=\"rightVisible = true\"\r\n    />\r\n    <Button\r\n      label=\"Top Left\"\r\n      size=\"small\"\r\n      @click=\"topLeftVisible = true\"\r\n    />\r\n\r\n    <!-- Center Position -->\r\n    <Dialog\r\n      v-model:visible=\"centerVisible\"\r\n      header=\"Center Position\"\r\n      position=\"center\"\r\n      :style=\"{ width: '30vw' }\"\r\n    >\r\n      <p>Dialog positioned at the center of the screen.</p>\r\n    </Dialog>\r\n\r\n    <!-- Top Position -->\r\n    <Dialog\r\n      v-model:visible=\"topVisible\"\r\n      header=\"Top Position\"\r\n      position=\"top\"\r\n      :style=\"{ width: '30vw' }\"\r\n    >\r\n      <p>Dialog positioned at the top of the screen.</p>\r\n    </Dialog>\r\n\r\n    <!-- Bottom Position -->\r\n    <Dialog\r\n      v-model:visible=\"bottomVisible\"\r\n      header=\"Bottom Position\"\r\n      position=\"bottom\"\r\n      :style=\"{ width: '30vw' }\"\r\n    >\r\n      <p>Dialog positioned at the bottom of the screen.</p>\r\n    </Dialog>\r\n\r\n    <!-- Left Position -->\r\n    <Dialog\r\n      v-model:visible=\"leftVisible\"\r\n      header=\"Left Position\"\r\n      position=\"left\"\r\n      :style=\"{ width: '30vw' }\"\r\n    >\r\n      <p>Dialog positioned at the left side of the screen.</p>\r\n    </Dialog>\r\n\r\n    <!-- Right Position -->\r\n    <Dialog\r\n      v-model:visible=\"rightVisible\"\r\n      header=\"Right Position\"\r\n      position=\"right\"\r\n      :style=\"{ width: '30vw' }\"\r\n    >\r\n      <p>Dialog positioned at the right side of the screen.</p>\r\n    </Dialog>\r\n\r\n    <!-- Top Left Position -->\r\n    <Dialog\r\n      v-model:visible=\"topLeftVisible\"\r\n      header=\"Top Left Position\"\r\n      position=\"topleft\"\r\n      :style=\"{ width: '30vw' }\"\r\n    >\r\n      <p>Dialog positioned at the top-left corner of the screen.</p>\r\n    </Dialog>\r\n  </div>\r\n</template>\r\n",
+        "hasExample": true,
+        "examplePath": "dialog/Position"
+      },
+      {
+        "id": "maximizable-",
+        "label": "Maximizable\r",
+        "description": "Dialog with maximize/minimize functionality.",
+        "example": "<script setup lang=\"ts\">\r\nimport { ref } from 'vue'\r\nimport { Dialog, Button } from '@fewangsit/wangsvue'\r\n\r\nconst visible = ref(false)\r\n</script>\r\n\r\n<template>\r\n  <div class=\"flex flex-wrap gap-3\">\r\n    <Button\r\n      label=\"Show Maximizable Dialog\"\r\n      @click=\"visible = true\"\r\n    />\r\n\r\n    <Dialog\r\n      v-model:visible=\"visible\"\r\n      header=\"Maximizable Dialog\"\r\n      :maximizable=\"true\"\r\n      :style=\"{ width: '50vw' }\"\r\n    >\r\n      <p class=\"mb-4\">\r\n        This dialog can be maximized to fill the entire screen.\r\n      </p>\r\n      <p class=\"mb-4\">\r\n        Click the maximize button in the header to toggle between normal and maximized states.\r\n      </p>\r\n      <p>\r\n        When maximized, the dialog will take up the full viewport. Click the minimize button to restore it to its original size.\r\n      </p>\r\n    </Dialog>\r\n  </div>\r\n</template>\n",
+        "hasExample": true,
+        "examplePath": "dialog/Maximizable"
+      },
+      {
+        "id": "draggable-",
+        "label": "Draggable\r",
+        "description": "Dialog that can be dragged around the screen.",
+        "example": "<script setup lang=\"ts\">\r\nimport { ref } from 'vue'\r\nimport { Dialog, Button } from '@fewangsit/wangsvue'\r\n\r\nconst draggableVisible = ref(false)\r\nconst nonDraggableVisible = ref(false)\r\n</script>\r\n\r\n<template>\r\n  <div class=\"flex flex-wrap gap-3\">\r\n    <Button\r\n      label=\"Show Draggable Dialog\"\r\n      @click=\"draggableVisible = true\"\r\n    />\r\n    <Button\r\n      label=\"Show Non-Draggable Dialog\"\r\n      @click=\"nonDraggableVisible = true\"\r\n    />\r\n\r\n    <!-- Draggable Dialog -->\r\n    <Dialog\r\n      v-model:visible=\"draggableVisible\"\r\n      header=\"Draggable Dialog\"\r\n      :draggable=\"true\"\r\n      :keep-in-view-port=\"true\"\r\n      :style=\"{ width: '50vw' }\"\r\n    >\r\n      <p class=\"mb-4\">\r\n        This dialog can be dragged around the screen by clicking and dragging the header.\r\n      </p>\r\n      <p>\r\n        The dialog is constrained to stay within the viewport boundaries.\r\n      </p>\r\n    </Dialog>\r\n\r\n    <!-- Non-Draggable Dialog -->\r\n    <Dialog\r\n      v-model:visible=\"nonDraggableVisible\"\r\n      header=\"Non-Draggable Dialog\"\r\n      :draggable=\"false\"\r\n      :style=\"{ width: '50vw' }\"\r\n    >\r\n      <p class=\"mb-4\">\r\n        This dialog cannot be moved from its position.\r\n      </p>\r\n      <p>\r\n        The header is not interactive for dragging.\r\n      </p>\r\n    </Dialog>\r\n  </div>\r\n</template>\r\n",
+        "hasExample": true,
+        "examplePath": "dialog/Draggable"
+      },
+      {
+        "id": "responsive-",
+        "label": "Responsive\r",
+        "description": "Dialog with responsive breakpoints for different screen sizes.",
+        "example": "<script setup lang=\"ts\">\r\nimport { ref } from 'vue'\r\nimport { Dialog, Button } from '@fewangsit/wangsvue'\r\n\r\nconst visible = ref(false)\r\n\r\nconst breakpoints = {\r\n  '960px': '75vw',\r\n  '640px': '90vw'\r\n}\r\n</script>\r\n\r\n<template>\r\n  <div class=\"flex flex-wrap gap-3\">\r\n    <Button\r\n      label=\"Show Responsive Dialog\"\r\n      @click=\"visible = true\"\r\n    />\r\n\r\n    <Dialog\r\n      v-model:visible=\"visible\"\r\n      header=\"Responsive Dialog\"\r\n      :breakpoints=\"breakpoints\"\r\n      :style=\"{ width: '50vw' }\"\r\n    >\r\n      <p class=\"mb-4\">\r\n        This dialog adapts its width based on screen size:\r\n      </p>\r\n      <ul class=\"list-disc list-inside space-y-2\">\r\n        <li>Desktop (>960px): 50% of viewport width</li>\r\n        <li>Tablet (≤960px): 75% of viewport width</li>\r\n        <li>Mobile (≤640px): 90% of viewport width</li>\r\n      </ul>\r\n      <p class=\"mt-4\">\r\n        Resize your browser window to see the responsive behavior in action.\r\n      </p>\r\n    </Dialog>\r\n  </div>\r\n</template>\r\n",
+        "hasExample": true,
+        "examplePath": "dialog/Responsive"
+      },
+      {
+        "id": "custom-template-",
+        "label": "Custom Template\r",
+        "description": "Dialog with custom header, content, and footer templates using slots.",
+        "example": "<script setup lang=\"ts\">\r\nimport { ref } from 'vue'\r\nimport { Dialog, Button } from '@fewangsit/wangsvue'\r\n\r\nconst visible = ref(false)\r\nconst formData = ref({\r\n  name: '',\r\n  email: ''\r\n})\r\n\r\nconst saveForm = () => {\r\n  console.log('Form saved:', formData.value)\r\n  visible.value = false\r\n}\r\n\r\nconst resetForm = () => {\r\n  formData.value = {\r\n    name: '',\r\n    email: ''\r\n  }\r\n}\r\n</script>\r\n\r\n<template>\r\n  <div class=\"flex flex-wrap gap-3\">\r\n    <Button\r\n      label=\"Show Custom Dialog\"\r\n      @click=\"visible = true\"\r\n    />\r\n\r\n    <Dialog\r\n      v-model:visible=\"visible\"\r\n      :style=\"{ width: '50vw' }\"\r\n      :show-header=\"false\"\r\n    >\r\n      <template #header>\r\n        <div class=\"flex items-center justify-between w-full p-4 bg-blue-50 border-b\">\r\n          <div class=\"flex items-center gap-2\">\r\n            <i class=\"wangs-icon-user text-blue-600\" />\r\n            <h3 class=\"text-lg font-semibold text-blue-800\">\r\n              User Information\r\n            </h3>\r\n          </div>\r\n          <Button\r\n            icon=\"close\"\r\n            severity=\"secondary\"\r\n            text\r\n            @click=\"visible = false\"\r\n          />\r\n        </div>\r\n      </template>\r\n\r\n      <div class=\"p-6\">\r\n        <div class=\"space-y-4\">\r\n          <div>\r\n            <label class=\"block text-sm font-medium mb-2\">Name</label>\r\n            <input\r\n              v-model=\"formData.name\"\r\n              type=\"text\"\r\n              class=\"w-full p-2 border rounded-md\"\r\n              placeholder=\"Enter your name\"\r\n            >\r\n          </div>\r\n          <div>\r\n            <label class=\"block text-sm font-medium mb-2\">Email</label>\r\n            <input\r\n              v-model=\"formData.email\"\r\n              type=\"email\"\r\n              class=\"w-full p-2 border rounded-md\"\r\n              placeholder=\"Enter your email\"\r\n            >\r\n          </div>\r\n        </div>\r\n      </div>\r\n\r\n      <template #footer>\r\n        <div class=\"flex justify-between items-center p-4 bg-gray-50 border-t\">\r\n          <Button\r\n            label=\"Reset\"\r\n            severity=\"secondary\"\r\n            text\r\n            @click=\"resetForm\"\r\n          />\r\n          <div class=\"flex gap-2\">\r\n            <Button\r\n              label=\"Cancel\"\r\n              severity=\"secondary\"\r\n              @click=\"visible = false\"\r\n            />\r\n            <Button\r\n              label=\"Save\"\r\n              @click=\"saveForm\"\r\n            />\r\n          </div>\r\n        </div>\r\n      </template>\r\n    </Dialog>\r\n  </div>\r\n</template>\r\n",
+        "hasExample": true,
+        "examplePath": "dialog/Template"
       }
     ]
   },
