@@ -9,7 +9,8 @@ const value = ref('')
   <div class="flex flex-col gap-4">
     <InputText
       v-model="value"
-      label="Full Name"
+      label="Label"
+      placeholder="Custom Placeholder"
     />
     <p class="text-sm text-gray-600">
       Value: {{ value || 'Empty' }}

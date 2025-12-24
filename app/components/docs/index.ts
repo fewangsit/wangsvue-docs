@@ -28,6 +28,7 @@ export const componentRegistry: Record<string, () => Promise<{ default: Componen
 
   // InputText components
   'inputtext/Basic': () => import('./inputtext/Basic.vue'),
+  'inputtext/Placeholder': () => import('./inputtext/Placeholder.vue'),
   'inputtext/CharacterRestrictions': () => import('./inputtext/CharacterRestrictions.vue'),
   'inputtext/MaxLengthPrevention': () => import('./inputtext/MaxLengthPrevention.vue'),
   'inputtext/ValidationOnBlur': () => import('./inputtext/ValidationOnBlur.vue'),
@@ -35,6 +36,7 @@ export const componentRegistry: Record<string, () => Promise<{ default: Componen
   'inputtext/ExistingValues': () => import('./inputtext/ExistingValues.vue'),
   'inputtext/ValidationStates': () => import('./inputtext/ValidationStates.vue'),
   'inputtext/Disabled': () => import('./inputtext/Disabled.vue'),
+  'inputtext/Slots': () => import('./inputtext/Slots.vue'),
   'inputtext/FormIntegration': () => import('./inputtext/FormIntegration.vue'),
 
   // Textarea components
@@ -76,7 +78,7 @@ export const componentRegistry: Record<string, () => Promise<{ default: Componen
   'inputurl/Basic': () => import('./inputurl/Basic.vue'),
   'inputurl/Protocol': () => import('./inputurl/Protocol.vue'),
   'inputurl/Validation': () => import('./inputurl/Validation.vue'),
-  'inputurl/Addons': () => import('./inputurl/Addons.vue'),
+  'inputurl/Slots': () => import('./inputurl/Slots.vue'),
   'inputurl/FormIntegration': () => import('./inputurl/FormIntegration.vue'),
 
   // InputBadge components

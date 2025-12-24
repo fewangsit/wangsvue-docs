@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { Form, InputText, InputURL, Textarea } from '@fewangsit/wangsvue'
+import { Form, InputURL } from '@fewangsit/wangsvue'
 
 const onSubmit = (payload: { formValues: Record<string, unknown> }) => {
-  console.log('Company profile submitted:', payload.formValues)
+  console.log('URL form submitted:', payload.formValues)
 }
 
 const onCancel = () => {
@@ -13,48 +13,27 @@ const onCancel = () => {
 <template>
   <Form
     :column-per-row="2"
-    submit-btn-label="Save Profile"
+    :buttons-template="['submit', 'cancel', 'clear']"
+    submit-btn-label="Save URLs"
     @submit="onSubmit"
     @cancel="onCancel"
   >
     <template #fields="{ formValues }">
-      <InputText
-        v-model="formValues.companyName"
-        label="Company Name"
-        field-name="companyName"
-        :use-validator="true"
-        :mandatory="true"
-        :validator-message="{
-          empty: 'Company name is required'
-        }"
-      />
-
-      <InputText
-        v-model="formValues.industry"
-        label="Industry"
-        field-name="industry"
-        :use-validator="true"
-        :mandatory="true"
-        :validator-message="{
-          empty: 'Industry is required'
-        }"
-      />
+      <div class="col-span-2">
+        <InputURL
+          label="Company Website"
+          field-name="website"
+          :use-validator="true"
+          :mandatory="true"
+          :use-protocol="true"
+          :validator-message="{
+            empty: 'Company website is required',
+            invalidFormat: 'Please enter a valid URL with protocol'
+          }"
+        />
+      </div>
 
       <InputURL
-        v-model="formValues.website"
-        label="Company Website"
-        field-name="website"
-        :use-validator="true"
-        :mandatory="true"
-        :use-protocol="true"
-        :validator-message="{
-          empty: 'Company website is required',
-          invalidFormat: 'Please enter a valid URL with protocol'
-        }"
-      />
-
-      <InputURL
-        v-model="formValues.linkedinUrl"
         label="LinkedIn Profile"
         field-name="linkedinUrl"
         :use-validator="true"
@@ -66,7 +45,6 @@ const onCancel = () => {
       />
 
       <InputURL
-        v-model="formValues.blogUrl"
         label="Company Blog"
         field-name="blogUrl"
         :use-validator="true"
@@ -78,7 +56,6 @@ const onCancel = () => {
       />
 
       <InputURL
-        v-model="formValues.supportUrl"
         label="Support Portal"
         field-name="supportUrl"
         :use-validator="true"
@@ -89,18 +66,30 @@ const onCancel = () => {
         }"
       />
 
-      <div class="col-span-2">
-        <Textarea
-          v-model="formValues.description"
-          label="Company Description"
-          field-name="description"
+      <InputURL
+        label="API Endpoint"
+        field-name="apiUrl"
+        :use-validator="true"
+        :use-protocol="true"
+        field-info="Optional API endpoint URL"
+        :validator-message="{
+          invalidFormat: 'Please enter a valid API URL'
+        }"
+      />
+
+      <!-- Conditional field using formValues -->
+      <div
+        v-if="formValues.website"
+        class="col-span-2"
+      >
+        <InputURL
+          label="Documentation URL"
+          field-name="docsUrl"
           :use-validator="true"
-          :max-input="1000"
-          :auto-resize="true"
-          :rows="4"
-          placeholder="Brief description of your company"
+          :use-protocol="true"
+          field-info="Shown because company website is provided"
           :validator-message="{
-            exceed: 'Description must not exceed 1000 characters'
+            invalidFormat: 'Please enter a valid documentation URL'
           }"
         />
       </div>

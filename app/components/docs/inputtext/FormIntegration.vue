@@ -10,7 +10,7 @@ const checkDomainAvailability = async (value: string): Promise<boolean> => {
 }
 
 const onSubmit = (payload: { formValues: Record<string, unknown> }) => {
-  console.log('Form submitted:', payload.formValues)
+  console.log('Text form submitted:', payload.formValues)
 }
 
 const onCancel = () => {
@@ -22,8 +22,7 @@ const onCancel = () => {
   <Form
     :column-per-row="2"
     :buttons-template="['submit', 'cancel', 'clear']"
-    :hide-stay-checkbox="true"
-    submit-btn-label="Create Account"
+    submit-btn-label="Save Profile"
     @submit="onSubmit"
     @cancel="onCancel"
   >
@@ -45,7 +44,6 @@ const onCancel = () => {
         }"
       />
 
-      <!-- Domain with async check -->
       <InputText
         label="Company Domain"
         field-name="companyDomain"
@@ -61,7 +59,6 @@ const onCancel = () => {
         }"
       />
 
-      <!-- Bio with character restrictions -->
       <div class="col-span-2">
         <InputText
           label="Bio"
@@ -78,7 +75,6 @@ const onCancel = () => {
         />
       </div>
 
-      <!-- Website URL -->
       <InputText
         label="Website"
         field-name="website"
@@ -92,7 +88,6 @@ const onCancel = () => {
         }"
       />
 
-      <!-- Phone with validation on blur -->
       <InputText
         label="Phone Number"
         field-name="phone"
@@ -103,7 +98,7 @@ const onCancel = () => {
         field-info="Numbers, +, -, spaces, parentheses only"
       />
 
-      <!-- Conditional field based on other form values -->
+      <!-- Conditional field using formValues -->
       <div
         v-if="formValues.companyDomain"
         class="col-span-2"

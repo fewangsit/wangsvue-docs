@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Form, InputText, InputEmail } from '@fewangsit/wangsvue'
+import { Form, InputEmail } from '@fewangsit/wangsvue'
 
 const checkEmailAvailability = async (email: string): Promise<boolean> => {
   // Simulate API call
@@ -9,49 +9,27 @@ const checkEmailAvailability = async (email: string): Promise<boolean> => {
 }
 
 const onSubmit = (payload: { formValues: Record<string, unknown> }) => {
-  console.log('Registration form submitted:', payload.formValues)
+  console.log('Email form submitted:', payload.formValues)
 }
 
 const onCancel = () => {
-  console.log('Registration cancelled')
+  console.log('Form cancelled')
 }
 </script>
 
 <template>
   <Form
     :column-per-row="2"
-    submit-btn-label="Create Account"
+    :buttons-template="['submit', 'cancel', 'clear']"
+    submit-btn-label="Save Emails"
     @submit="onSubmit"
     @cancel="onCancel"
   >
     <template #fields="{ formValues }">
-      <InputText
-        v-model="formValues.firstName"
-        label="First Name"
-        field-name="firstName"
-        :use-validator="true"
-        :mandatory="true"
-        :validator-message="{
-          empty: 'First name is required'
-        }"
-      />
-
-      <InputText
-        v-model="formValues.lastName"
-        label="Last Name"
-        field-name="lastName"
-        :use-validator="true"
-        :mandatory="true"
-        :validator-message="{
-          empty: 'Last name is required'
-        }"
-      />
-
       <div class="col-span-2">
         <InputEmail
-          v-model="formValues.email"
-          label="Email Address"
-          field-name="email"
+          label="Primary Email"
+          field-name="primaryEmail"
           :use-validator="true"
           :mandatory="true"
           :check-availability="checkEmailAvailability"
@@ -65,7 +43,6 @@ const onCancel = () => {
       </div>
 
       <InputEmail
-        v-model="formValues.recoveryEmail"
         label="Recovery Email"
         field-name="recoveryEmail"
         :use-validator="true"
@@ -76,7 +53,6 @@ const onCancel = () => {
       />
 
       <InputEmail
-        v-model="formValues.workEmail"
         label="Work Email"
         field-name="workEmail"
         :use-validator="true"
@@ -85,6 +61,22 @@ const onCancel = () => {
           invalidFormat: 'Please enter a valid email address'
         }"
       />
+
+      <!-- Conditional field using formValues -->
+      <div
+        v-if="formValues.primaryEmail"
+        class="col-span-2"
+      >
+        <InputEmail
+          label="Notification Email"
+          field-name="notificationEmail"
+          :use-validator="true"
+          field-info="Shown because primary email is provided"
+          :validator-message="{
+            invalidFormat: 'Please enter a valid email address'
+          }"
+        />
+      </div>
     </template>
   </Form>
 </template>
