@@ -7,8 +7,12 @@
     "wangsvue-mcp": {
       "type": "stdio",
       "command": "npx",
-      "args": ["wangsvue-mcp"],
-      "disabledTools": ["get_component_documentation"],
+      "args": [
+        "wangsvue-mcp"
+      ],
+      "disabledTools": [
+        "get_component_documentation"
+      ],
       "autoApprove": [
         "search_components",
         "analyze_component",
@@ -19,11 +23,17 @@
     },
     "gitbook-mcp": {
       "url": "https://fewangsit.gitbook.io/vue/~gitbook/mcp",
-      "autoApprove": ["searchDocumentation"]
+      "autoApprove": [
+        "searchDocumentation"
+      ]
     },
     "primevue": {
       "command": "npx",
-      "args": ["-y", "@primevue/mcp"]
+      "args": [
+        "-y",
+        "@primevue/mcp"
+      ],
+      "disabled": true
     }
   }
 }

@@ -34,7 +34,7 @@
 - [ ] ImageCompressor
 - [ ] InlineMessage
 - [x] InputBadge
-- [ ] InputCurrency
+- [x] InputCurrency
 - [x] InputEmail
 - [ ] InputNumber
 - [ ] InputPassword
