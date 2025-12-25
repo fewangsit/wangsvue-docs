@@ -8,7 +8,11 @@ const value = ref<number[]>([])
 <template>
   <InputRangeNumber
     v-model="value"
-    label="Price Range"
-    placeholder="Enter price range"
+    label="Budget Range"
+    min-placeholder="Minimum budget"
+    max-placeholder="Maximum budget"
+    :invalid="true"
+    use-validator
+    validator-message="Budget range is required for this project"
   />
 </template>

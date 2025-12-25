@@ -36,10 +36,10 @@
 - [x] InputBadge
 - [x] InputCurrency
 - [x] InputEmail
-- [ ] InputNumber
+- [x] InputNumber
 - [ ] InputPassword
 - [ ] InputPhoneNumber
-- [ ] InputRangeNumber
+- [x] InputRangeNumber
 - [x] InputText
 - [x] InputURL
 - [ ] InvisibleField

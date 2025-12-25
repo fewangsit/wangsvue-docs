@@ -118,6 +118,12 @@ export const componentRegistry: Record<
     import('./inputrangenumber/Placeholders.vue'),
   'inputrangenumber/Validation': () =>
     import('./inputrangenumber/Validation.vue'),
+  'inputrangenumber/Mandatory': () =>
+    import('./inputrangenumber/Mandatory.vue'),
+  'inputrangenumber/Disabled': () =>
+    import('./inputrangenumber/Disabled.vue'),
+  'inputrangenumber/Invalid': () =>
+    import('./inputrangenumber/Invalid.vue'),
   'inputrangenumber/FormIntegration': () =>
     import('./inputrangenumber/FormIntegration.vue'),
 

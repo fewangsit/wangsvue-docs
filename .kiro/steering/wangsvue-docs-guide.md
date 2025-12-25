@@ -94,6 +94,7 @@ const onSubmit = (payload: { formValues: Record<string, unknown> }) => {
 <template>
   <Form
     :buttons-template="['submit', 'clear']"
+    hide-stay-checkbox
     @submit="onSubmit"
   >
     <template #fields>

@@ -9,6 +9,12 @@ const value = ref<number[]>([])
   <InputRangeNumber
     v-model="value"
     label="Price Range"
-    placeholder="Enter price range"
+    min-placeholder="Min price"
+    max-placeholder="Max price"
+    :mandatory="true"
+    :use-validator="true"
+    min-field-name="minPrice"
+    max-field-name="maxPrice"
+    :validator-message="{ empty: 'Price range is required' }"
   />
 </template>
