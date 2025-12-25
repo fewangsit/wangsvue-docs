@@ -1,5 +1,12 @@
 {
     "editor.codeActionsOnSave": {
         "source.fixAll": "explicit"
+    },
+    "chat.mcp.serverSampling": {
+        "wangsvue-docs/.vscode/mcp.json: wangsvue-mcp": {
+            "allowedModels": [
+                "copilot/auto"
+            ]
+        }
     }
 }

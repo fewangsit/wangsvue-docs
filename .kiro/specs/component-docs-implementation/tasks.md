@@ -37,7 +37,7 @@
 - [x] InputCurrency
 - [x] InputEmail
 - [x] InputNumber
-- [ ] InputPassword
+- [x] InputPassword
 - [x] InputPhoneNumber
 - [x] InputRangeNumber
 - [x] InputText
@@ -60,4 +60,4 @@
 - [ ] Tree
 - [ ] UserGroup
 - [ ] UserName
-- [ ] ValidatorMessage
+- [x] ValidatorMessage

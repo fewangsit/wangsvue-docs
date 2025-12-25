@@ -1,0 +1,12 @@
+{
+	"servers": {
+		"wangsvue-mcp": {
+			"type": "stdio",
+			"command": "npx",
+			"args": [
+				"wangsvue-mcp"
+			],
+		},
+	},
+	"inputs": []
+}

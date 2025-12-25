@@ -758,7 +758,7 @@
         "id": "basic",
         "label": "Basic",
         "description": "Basic usage of dropdown with simple options.",
-        "example": "<script setup lang=\"ts\">\nimport { Dropdown } from '@fewangsit/wangsvue'\nimport { ref } from 'vue'\n\nconst selectedValue = ref()\nconst options = ['Option 1', 'Option 2', 'Option 3', 'Option 4']\n</script>\n\n<template>\n  <div class=\"flex flex-wrap gap-3\">\n    <Dropdown\n      v-model=\"selectedValue\"\n      label=\"Select Option\"\n      :options=\"options\"\n      placeholder=\"Choose an option\"\n    />\n  </div>\n</template>\n",
+        "example": "<script setup lang=\"ts\">\nimport { Dropdown } from '@fewangsit/wangsvue'\nimport { ref } from 'vue'\n\nconst selectedValue = ref()\nconst options = ['Option 1', 'Option 2', 'Option 3', 'Option 4']\n</script>\n\n<template>\n  <Dropdown\n    v-model=\"selectedValue\"\n    label=\"Select Option\"\n    :options=\"options\"\n    placeholder=\"Choose an option\"\n  />\n</template>\n",
         "hasExample": true,
         "examplePath": "dropdown/Basic"
       },
@@ -766,7 +766,7 @@
         "id": "object-options",
         "label": "Object Options",
         "description": "Dropdown with object options using `optionLabel` and `optionValue` properties.",
-        "example": "<script setup lang=\"ts\">\nimport { Dropdown } from '@fewangsit/wangsvue'\nimport { ref } from 'vue'\n\nconst selectedValue = ref()\nconst options = [\n  { name: 'New York', code: 'NY' },\n  { name: 'Rome', code: 'RM' },\n  { name: 'London', code: 'LDN' },\n  { name: 'Istanbul', code: 'IST' },\n  { name: 'Paris', code: 'PRS' }\n]\n</script>\n\n<template>\n  <div class=\"flex flex-wrap gap-3\">\n    <Dropdown\n      v-model=\"selectedValue\"\n      label=\"Select City\"\n      :options=\"options\"\n      option-label=\"name\"\n      option-value=\"code\"\n      placeholder=\"Choose a city\"\n    />\n  </div>\n</template>\n",
+        "example": "<script setup lang=\"ts\">\nimport { Dropdown } from '@fewangsit/wangsvue'\nimport { ref } from 'vue'\n\nconst selectedValue = ref()\nconst options = [\n  { name: 'New York', code: 'NY' },\n  { name: 'Rome', code: 'RM' },\n  { name: 'London', code: 'LDN' },\n  { name: 'Istanbul', code: 'IST' },\n  { name: 'Paris', code: 'PRS' }\n]\n</script>\n\n<template>\n  <Dropdown\n    v-model=\"selectedValue\"\n    label=\"Select City\"\n    :options=\"options\"\n    option-label=\"name\"\n    option-value=\"code\"\n    placeholder=\"Choose a city\"\n  />\n</template>\n",
         "hasExample": true,
         "examplePath": "dropdown/ObjectOptions"
       },
@@ -774,7 +774,7 @@
         "id": "badge-value",
         "label": "Badge Value",
         "description": "Display selected value as a badge using `valueType` property.",
-        "example": "<script setup lang=\"ts\">\nimport { Dropdown } from '@fewangsit/wangsvue'\nimport { ref } from 'vue'\n\nconst selectedValue = ref('success')\nconst options = [\n  { label: 'Success', value: 'success' },\n  { label: 'Info', value: 'info' },\n  { label: 'Warning', value: 'warning' },\n  { label: 'Danger', value: 'danger' }\n]\n</script>\n\n<template>\n  <div class=\"flex flex-wrap gap-3\">\n    <Dropdown\n      v-model=\"selectedValue\"\n      label=\"Select Status\"\n      :options=\"options\"\n      option-label=\"label\"\n      option-value=\"value\"\n      value-type=\"badge\"\n      :badge-value-props=\"{ severity: selectedValue }\"\n      placeholder=\"Choose status\"\n    />\n  </div>\n</template>\n",
+        "example": "<script setup lang=\"ts\">\nimport { Dropdown } from '@fewangsit/wangsvue'\nimport type { BadgeProps } from '@fewangsit/wangsvue/badge'\nimport { ref } from 'vue'\n\nconst selectedValue = ref<BadgeProps['severity']>('success')\nconst options = [\n  { label: 'Success', value: 'success' },\n  { label: 'Info', value: 'info' },\n  { label: 'Warning', value: 'warning' },\n  { label: 'Danger', value: 'danger' }\n]\n</script>\n\n<template>\n  <Dropdown\n    v-model=\"selectedValue\"\n    label=\"Select Status\"\n    :options=\"options\"\n    option-label=\"label\"\n    option-value=\"value\"\n    value-type=\"badge\"\n    :badge-value-props=\"{ severity: selectedValue }\"\n    placeholder=\"Choose status\"\n  />\n</template>\n",
         "hasExample": true,
         "examplePath": "dropdown/BadgeValue"
       },
@@ -782,7 +782,7 @@
         "id": "loading",
         "label": "Loading",
         "description": "Dropdown in loading state.",
-        "example": "<script setup lang=\"ts\">\nimport { Dropdown } from '@fewangsit/wangsvue'\nimport { ref } from 'vue'\n\nconst selectedValue = ref()\nconst options = ['Option 1', 'Option 2', 'Option 3', 'Option 4']\n</script>\n\n<template>\n  <div class=\"flex flex-wrap gap-3\">\n    <Dropdown\n      v-model=\"selectedValue\"\n      label=\"Select Option\"\n      :options=\"options\"\n      :loading=\"true\"\n      placeholder=\"Loading options...\"\n    />\n  </div>\n</template>\n",
+        "example": "<script setup lang=\"ts\">\nimport { ref } from 'vue'\nimport { Dropdown } from '@fewangsit/wangsvue'\n\nconst selectedValue = ref()\nconst options = ['Option 1', 'Option 2', 'Option 3', 'Option 4']\n</script>\n\n<template>\n  <Dropdown\n    v-model=\"selectedValue\"\n    label=\"Select Option\"\n    :options=\"options\"\n    :loading=\"true\"\n    placeholder=\"Loading options...\"\n  />\n</template>\n",
         "hasExample": true,
         "examplePath": "dropdown/Loading"
       },
@@ -790,7 +790,7 @@
         "id": "disabled",
         "label": "Disabled",
         "description": "Dropdown in disabled state.",
-        "example": "<script setup lang=\"ts\">\nimport { Dropdown } from '@fewangsit/wangsvue'\nimport { ref } from 'vue'\n\nconst selectedValue = ref('Option 2')\nconst options = ['Option 1', 'Option 2', 'Option 3', 'Option 4']\n</script>\n\n<template>\n  <div class=\"flex flex-wrap gap-3\">\n    <Dropdown\n      v-model=\"selectedValue\"\n      label=\"Select Option\"\n      :options=\"options\"\n      :disabled=\"true\"\n      placeholder=\"Choose an option\"\n    />\n  </div>\n</template>\n",
+        "example": "<script setup lang=\"ts\">\nimport { Dropdown } from '@fewangsit/wangsvue'\nimport { ref } from 'vue'\n\nconst selectedValue = ref('Option 2')\nconst options = ['Option 1', 'Option 2', 'Option 3', 'Option 4']\n</script>\n\n<template>\n  <Dropdown\n    v-model=\"selectedValue\"\n    label=\"Select Option\"\n    :options=\"options\"\n    :disabled=\"true\"\n    placeholder=\"Choose an option\"\n  />\n</template>\n",
         "hasExample": true,
         "examplePath": "dropdown/Disabled"
       },
@@ -798,7 +798,7 @@
         "id": "filter",
         "label": "Filter",
         "description": "Dropdown with search functionality enabled.",
-        "example": "<script setup lang=\"ts\">\nimport { Dropdown } from '@fewangsit/wangsvue'\nimport { ref } from 'vue'\n\nconst selectedValue = ref()\nconst options = [\n  'Australia', 'Brazil', 'China', 'Egypt', 'France',\n  'Germany', 'India', 'Japan', 'Spain', 'United States'\n]\n</script>\n\n<template>\n  <div class=\"flex flex-wrap gap-3\">\n    <Dropdown\n      v-model=\"selectedValue\"\n      label=\"Select Country\"\n      :options=\"options\"\n      :filter=\"true\"\n      filter-placeholder=\"Search countries...\"\n      placeholder=\"Choose a country\"\n    />\n  </div>\n</template>\n",
+        "example": "<script setup lang=\"ts\">\nimport { Dropdown } from '@fewangsit/wangsvue'\nimport { ref } from 'vue'\n\nconst selectedValue = ref()\nconst options = [\n  'Australia', 'Brazil', 'China', 'Egypt', 'France',\n  'Germany', 'India', 'Japan', 'Spain', 'United States'\n]\n</script>\n\n<template>\n  <Dropdown\n    v-model=\"selectedValue\"\n    label=\"Select Country\"\n    :options=\"options\"\n    :filter=\"true\"\n    filter-placeholder=\"Search countries...\"\n    placeholder=\"Choose a country\"\n  />\n</template>\n",
         "hasExample": true,
         "examplePath": "dropdown/Filter"
       },
@@ -892,7 +892,7 @@
         "id": "basic",
         "label": "Basic",
         "description": "Basic usage of multiselect with simple options.",
-        "example": "<script setup lang=\"ts\">\nimport { MultiSelect } from '@fewangsit/wangsvue'\nimport { ref } from 'vue'\n\nconst selectedValues = ref([])\nconst options = ['Option 1', 'Option 2', 'Option 3', 'Option 4', 'Option 5']\n</script>\n\n<template>\n  <div class=\"flex flex-wrap gap-3\">\n    <MultiSelect\n      v-model=\"selectedValues\"\n      label=\"Select Options\"\n      :options=\"options\"\n      placeholder=\"Choose options\"\n    />\n  </div>\n</template>\n",
+        "example": "<script setup lang=\"ts\">\nimport { MultiSelect } from '@fewangsit/wangsvue'\nimport { ref } from 'vue'\n\nconst selectedValues = ref([])\nconst options = ['Option 1', 'Option 2', 'Option 3', 'Option 4', 'Option 5']\n</script>\n\n<template>\n  <MultiSelect\n    v-model=\"selectedValues\"\n    label=\"Select Options\"\n    :options=\"options\"\n    placeholder=\"Choose options\"\n  />\n</template>\n",
         "hasExample": true,
         "examplePath": "multiselect/Basic"
       },
@@ -900,7 +900,7 @@
         "id": "object-options",
         "label": "Object Options",
         "description": "MultiSelect with object options using `optionLabel` and `optionValue` properties.",
-        "example": "<script setup lang=\"ts\">\nimport { MultiSelect } from '@fewangsit/wangsvue'\nimport { ref } from 'vue'\n\nconst selectedValues = ref([])\nconst options = [\n  { name: 'New York', code: 'NY' },\n  { name: 'Rome', code: 'RM' },\n  { name: 'London', code: 'LDN' },\n  { name: 'Istanbul', code: 'IST' },\n  { name: 'Paris', code: 'PRS' },\n  { name: 'Tokyo', code: 'TKY' }\n]\n</script>\n\n<template>\n  <div class=\"flex flex-wrap gap-3\">\n    <MultiSelect\n      v-model=\"selectedValues\"\n      label=\"Select Cities\"\n      :options=\"options\"\n      option-label=\"name\"\n      option-value=\"code\"\n      placeholder=\"Choose cities\"\n    />\n  </div>\n</template>\n",
+        "example": "<script setup lang=\"ts\">\nimport { MultiSelect } from '@fewangsit/wangsvue'\nimport { ref } from 'vue'\n\nconst selectedValues = ref([])\nconst options = [\n  { name: 'New York', code: 'NY' },\n  { name: 'Rome', code: 'RM' },\n  { name: 'London', code: 'LDN' },\n  { name: 'Istanbul', code: 'IST' },\n  { name: 'Paris', code: 'PRS' },\n  { name: 'Tokyo', code: 'TKY' }\n]\n</script>\n\n<template>\n  <MultiSelect\n    v-model=\"selectedValues\"\n    label=\"Select Cities\"\n    :options=\"options\"\n    option-label=\"name\"\n    option-value=\"code\"\n    placeholder=\"Choose cities\"\n  />\n</template>\n",
         "hasExample": true,
         "examplePath": "multiselect/ObjectOptions"
       },
@@ -916,7 +916,7 @@
         "id": "max-selected-labels",
         "label": "Max Selected Labels",
         "description": "Control how many selected items to show before displaying a summary.",
-        "example": "<script setup lang=\"ts\">\nimport { MultiSelect } from '@fewangsit/wangsvue'\nimport { ref } from 'vue'\n\nconst selectedValues = ref(['Option 1', 'Option 2', 'Option 3'])\nconst options = ['Option 1', 'Option 2', 'Option 3', 'Option 4', 'Option 5', 'Option 6', 'Option 7']\n</script>\n\n<template>\n  <div class=\"flex flex-wrap gap-3\">\n    <MultiSelect\n      v-model=\"selectedValues\"\n      label=\"Select Options\"\n      :options=\"options\"\n      :max-selected-labels=\"2\"\n      selected-items-label=\"items selected\"\n      placeholder=\"Choose options\"\n    />\n  </div>\n</template>\n",
+        "example": "<script setup lang=\"ts\">\nimport { MultiSelect } from '@fewangsit/wangsvue'\nimport { ref } from 'vue'\n\nconst selectedValues = ref(['Option 1', 'Option 2', 'Option 3'])\nconst options = ['Option 1', 'Option 2', 'Option 3', 'Option 4', 'Option 5', 'Option 6', 'Option 7']\n</script>\n\n<template>\n  <MultiSelect\n    v-model=\"selectedValues\"\n    label=\"Select Options\"\n    :options=\"options\"\n    :max-selected-labels=\"2\"\n    selected-items-label=\"items selected\"\n    placeholder=\"Choose options\"\n  />\n</template>\n",
         "hasExample": true,
         "examplePath": "multiselect/MaxSelectedLabels"
       },
@@ -924,7 +924,7 @@
         "id": "loading",
         "label": "Loading",
         "description": "MultiSelect in loading state.",
-        "example": "<script setup lang=\"ts\">\nimport { MultiSelect } from '@fewangsit/wangsvue'\nimport { ref } from 'vue'\n\nconst selectedValues = ref([])\nconst options = ['Option 1', 'Option 2', 'Option 3', 'Option 4']\n</script>\n\n<template>\n  <div class=\"flex flex-wrap gap-3\">\n    <MultiSelect\n      v-model=\"selectedValues\"\n      label=\"Select Options\"\n      :options=\"options\"\n      :loading=\"true\"\n      placeholder=\"Loading options...\"\n    />\n  </div>\n</template>\n",
+        "example": "<script setup lang=\"ts\">\nimport { MultiSelect } from '@fewangsit/wangsvue'\nimport { ref } from 'vue'\n\nconst selectedValues = ref([])\nconst options = ['Option 1', 'Option 2', 'Option 3', 'Option 4']\n</script>\n\n<template>\n  <MultiSelect\n    v-model=\"selectedValues\"\n    label=\"Select Options\"\n    :options=\"options\"\n    :loading=\"true\"\n    placeholder=\"Loading options...\"\n  />\n</template>\n",
         "hasExample": true,
         "examplePath": "multiselect/Loading"
       },
@@ -932,7 +932,7 @@
         "id": "disabled",
         "label": "Disabled",
         "description": "MultiSelect in disabled state.",
-        "example": "<script setup lang=\"ts\">\nimport { MultiSelect } from '@fewangsit/wangsvue'\nimport { ref } from 'vue'\n\nconst selectedValues = ref(['Option 1', 'Option 3'])\nconst options = ['Option 1', 'Option 2', 'Option 3', 'Option 4']\n</script>\n\n<template>\n  <div class=\"flex flex-wrap gap-3\">\n    <MultiSelect\n      v-model=\"selectedValues\"\n      label=\"Select Options\"\n      :options=\"options\"\n      :disabled=\"true\"\n      placeholder=\"Choose options\"\n    />\n  </div>\n</template>\n",
+        "example": "<script setup lang=\"ts\">\nimport { MultiSelect } from '@fewangsit/wangsvue'\nimport { ref } from 'vue'\n\nconst selectedValues = ref(['Option 1', 'Option 3'])\nconst options = ['Option 1', 'Option 2', 'Option 3', 'Option 4']\n</script>\n\n<template>\n  <MultiSelect\n    v-model=\"selectedValues\"\n    label=\"Select Options\"\n    :options=\"options\"\n    :disabled=\"true\"\n    placeholder=\"Choose options\"\n  />\n</template>\n",
         "hasExample": true,
         "examplePath": "multiselect/Disabled"
       },
@@ -940,7 +940,7 @@
         "id": "filter",
         "label": "Filter",
         "description": "MultiSelect with search functionality enabled.",
-        "example": "<script setup lang=\"ts\">\nimport { MultiSelect } from '@fewangsit/wangsvue'\nimport { ref } from 'vue'\n\nconst selectedValues = ref([])\nconst options = [\n  'Australia', 'Brazil', 'China', 'Egypt', 'France',\n  'Germany', 'India', 'Japan', 'Spain', 'United States'\n]\n</script>\n\n<template>\n  <div class=\"flex flex-wrap gap-3\">\n    <MultiSelect\n      v-model=\"selectedValues\"\n      label=\"Select Countries\"\n      :options=\"options\"\n      :filter=\"true\"\n      filter-placeholder=\"Search countries...\"\n      placeholder=\"Choose countries\"\n    />\n  </div>\n</template>\n",
+        "example": "<script setup lang=\"ts\">\nimport { MultiSelect } from '@fewangsit/wangsvue'\nimport { ref } from 'vue'\n\nconst selectedValues = ref([])\nconst options = [\n  'Australia', 'Brazil', 'China', 'Egypt', 'France',\n  'Germany', 'India', 'Japan', 'Spain', 'United States'\n]\n</script>\n\n<template>\n  <MultiSelect\n    v-model=\"selectedValues\"\n    label=\"Select Countries\"\n    :options=\"options\"\n    :filter=\"true\"\n    filter-placeholder=\"Search countries...\"\n    placeholder=\"Choose countries\"\n  />\n</template>\n",
         "hasExample": true,
         "examplePath": "multiselect/Filter"
       },
@@ -948,7 +948,7 @@
         "id": "hide-header-checkbox",
         "label": "Hide Header Checkbox",
         "description": "MultiSelect without select all functionality.",
-        "example": "<script setup lang=\"ts\">\nimport { MultiSelect } from '@fewangsit/wangsvue'\nimport { ref } from 'vue'\n\nconst selectedValues = ref([])\nconst options = ['Option 1', 'Option 2', 'Option 3', 'Option 4', 'Option 5']\n</script>\n\n<template>\n  <div class=\"flex flex-wrap gap-3\">\n    <MultiSelect\n      v-model=\"selectedValues\"\n      label=\"Select Options\"\n      :options=\"options\"\n      :hide-header-checkbox=\"true\"\n      placeholder=\"Choose options\"\n    />\n  </div>\n</template>\n",
+        "example": "<script setup lang=\"ts\">\nimport { MultiSelect } from '@fewangsit/wangsvue'\nimport { ref } from 'vue'\n\nconst selectedValues = ref([])\nconst options = ['Option 1', 'Option 2', 'Option 3', 'Option 4', 'Option 5']\n</script>\n\n<template>\n  <MultiSelect\n    v-model=\"selectedValues\"\n    label=\"Select Options\"\n    :options=\"options\"\n    :hide-header-checkbox=\"true\"\n    placeholder=\"Choose options\"\n  />\n</template>\n",
         "hasExample": true,
         "examplePath": "multiselect/HideHeaderCheckbox"
       },
@@ -959,6 +959,61 @@
         "example": "<script setup lang=\"ts\">\nimport { Form, MultiSelect } from '@fewangsit/wangsvue'\n\nconst options = ['JavaScript', 'TypeScript', 'Python', 'Java', 'C#', 'Go']\n\nconst onSubmit = (payload: { formValues: Record<string, unknown> }) => {\n  console.log('Form submitted:', payload.formValues)\n}\n</script>\n\n<template>\n  <Form\n    :buttons-template=\"['submit', 'clear']\"\n    hide-stay-checkbox\n    @submit=\"onSubmit\"\n  >\n    <template #fields>\n      <MultiSelect\n        label=\"Programming Languages\"\n        field-name=\"languages\"\n        :options=\"options\"\n        :use-validator=\"true\"\n        :mandatory=\"true\"\n        :validator-message=\"{ empty: 'At least one language is required' }\"\n        placeholder=\"Select languages\"\n      />\n    </template>\n  </Form>\n</template>\n",
         "hasExample": true,
         "examplePath": "multiselect/FormIntegration"
+      }
+    ]
+  },
+  {
+    "name": "inputpassword",
+    "title": "InputPassword",
+    "description": "InputPassword renders a password field to enter sensitive data with optional visibility toggle.",
+    "sections": [
+      {
+        "id": "import",
+        "label": "Import",
+        "description": "```ts\nimport { InputPassword } from '@fewangsit/wangsvue';\n```",
+        "example": "",
+        "hasExample": false,
+        "examplePath": null
+      },
+      {
+        "id": "basic",
+        "label": "Basic",
+        "description": "The basic usage of InputPassword with a placeholder.",
+        "example": "<script setup lang=\"ts\">\nimport { InputPassword } from '@fewangsit/wangsvue'\n\nconst password = ref('')\n</script>\n\n<template>\n  <div class=\"flex flex-wrap gap-3\">\n    <InputPassword\n      v-model=\"password\"\n      placeholder=\"Enter password\"\n    />\n  </div>\n</template>\n",
+        "hasExample": true,
+        "examplePath": "inputpassword/Basic"
+      },
+      {
+        "id": "label-and-placeholder",
+        "label": "Label and Placeholder",
+        "description": "InputPassword can have a label and placeholder for better user guidance.",
+        "example": "<script setup lang=\"ts\">\nimport { InputPassword } from '@fewangsit/wangsvue'\n\nconst password = ref('')\n</script>\n\n<template>\n  <div class=\"flex flex-wrap gap-3\">\n    <InputPassword\n      v-model=\"password\"\n      label=\"Password\"\n      placeholder=\"Enter your password\"\n    />\n  </div>\n</template>\n",
+        "hasExample": true,
+        "examplePath": "inputpassword/LabelPlaceholder"
+      },
+      {
+        "id": "invalid-state",
+        "label": "Invalid State",
+        "description": "Display validation feedback when the input is invalid.",
+        "example": "<script setup lang=\"ts\">\nimport { InputPassword } from '@fewangsit/wangsvue'\n\nconst password = ref('')\n</script>\n\n<template>\n  <div class=\"flex flex-wrap gap-3\">\n    <InputPassword\n      v-model=\"password\"\n      label=\"Password\"\n      placeholder=\"Enter password\"\n      :invalid=\"true\"\n      validator-message=\"Password is required\"\n    />\n  </div>\n</template>\n",
+        "hasExample": true,
+        "examplePath": "inputpassword/Invalid"
+      },
+      {
+        "id": "toggle-visibility",
+        "label": "Toggle Visibility",
+        "description": "The feedback prop enables a toggle button to show/hide the password.",
+        "example": "<script setup lang=\"ts\">\nimport { InputPassword } from '@fewangsit/wangsvue'\n\nconst password = ref('')\n</script>\n\n<template>\n  <div class=\"flex flex-wrap gap-3\">\n    <InputPassword\n      v-model=\"password\"\n      label=\"Password\"\n      placeholder=\"Enter password\"\n      :feedback=\"true\"\n    />\n  </div>\n</template>\n",
+        "hasExample": true,
+        "examplePath": "inputpassword/Toggle"
+      },
+      {
+        "id": "form-integration",
+        "label": "Form Integration",
+        "description": "InputPassword integrated within a Form component with validation.",
+        "example": "<script setup lang=\"ts\">\nimport { Form, InputPassword } from '@fewangsit/wangsvue'\n\nconst onSubmit = (payload: { formValues: Record<string, unknown> }) => {\n  console.log('Form submitted:', payload.formValues)\n}\n</script>\n\n<template>\n  <Form\n    :buttons-template=\"['submit', 'clear']\"\n    hide-stay-checkbox\n    @submit=\"onSubmit\"\n  >\n    <template #fields>\n      <InputPassword\n        label=\"Password\"\n        field-name=\"password\"\n        :use-validator=\"true\"\n        :mandatory=\"true\"\n        :validator-message=\"{ empty: 'Password is required' }\"\n      />\n    </template>\n  </Form>\n</template>\n",
+        "hasExample": true,
+        "examplePath": "inputpassword/Form"
       }
     ]
   },

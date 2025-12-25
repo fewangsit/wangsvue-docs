@@ -1,5 +1,5 @@
 ---
-inclusion: always
+applyTo: '**'
 ---
 
 # WangsVue Documentation Creation Guide

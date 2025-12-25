@@ -216,5 +216,12 @@ export const componentRegistry: Record<
   'multiselect/Disabled': () => import('./multiselect/Disabled.vue'),
   'multiselect/Filter': () => import('./multiselect/Filter.vue'),
   'multiselect/HideHeaderCheckbox': () => import('./multiselect/HideHeaderCheckbox.vue'),
-  'multiselect/FormIntegration': () => import('./multiselect/FormIntegration.vue')
+  'multiselect/FormIntegration': () => import('./multiselect/FormIntegration.vue'),
+
+  // InputPassword components
+  'inputpassword/Basic': () => import('./inputpassword/Basic.vue'),
+  'inputpassword/LabelPlaceholder': () => import('./inputpassword/LabelPlaceholder.vue'),
+  'inputpassword/Invalid': () => import('./inputpassword/Invalid.vue'),
+  'inputpassword/Form': () => import('./inputpassword/Form.vue'),
+  'inputpassword/Strength': () => import('./inputpassword/Strength.vue')
 }
