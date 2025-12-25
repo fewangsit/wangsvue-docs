@@ -8,7 +8,9 @@ const value = ref('')
 <template>
   <InputPhoneNumber
     v-model="value"
-    label="Phone Number"
-    placeholder="Enter phone number"
+    label="Emergency Contact"
+    placeholder="Enter emergency contact"
+    :invalid="true"
+    :validator-message="{ empty: 'Emergency contact is required for safety' }"
   />
 </template>

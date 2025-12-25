@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       '@fewangsit/wangsvue':
-        specifier: 1.5.229-alpha.8
-        version: 1.5.229-alpha.8(@stencil/core@4.39.0)(vue-router@4.6.4(vue@3.5.26(typescript@5.9.3)))(vue@3.5.26(typescript@5.9.3))
+        specifier: 1.5.229-alpha.11
+        version: 1.5.229-alpha.11(@stencil/core@4.39.0)(vue-router@4.6.4(vue@3.5.26(typescript@5.9.3)))(vue@3.5.26(typescript@5.9.3))
       '@fewangsit/wangsvue-presets':
         specifier: 1.0.111-alpha.2
         version: 1.0.111-alpha.2

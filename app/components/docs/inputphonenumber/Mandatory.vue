@@ -13,8 +13,6 @@ const value = ref('')
     :use-validator="true"
     field-name="contactNumber"
     :mandatory="true"
-    :validator-message="{
-      empty: 'Contact number is required'
-    }"
+    :validator-message="{ empty: 'Contact number is required' }"
   />
 </template>

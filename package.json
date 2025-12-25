@@ -11,7 +11,7 @@
     "generate:unified-data": "node scripts/generate-unified-data.mjs"
   },
   "dependencies": {
-    "@fewangsit/wangsvue": "1.5.229-alpha.8",
+    "@fewangsit/wangsvue": "1.5.229-alpha.11",
     "@fewangsit/wangsvue-presets": "1.0.111-alpha.2",
     "@fewangsit/workspace-api-services": "1.0.18-alpha.1",
     "@iconify-json/lucide": "^1.2.75",

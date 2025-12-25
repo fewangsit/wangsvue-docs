@@ -94,6 +94,14 @@ export const componentRegistry: Record<
     import('./inputphonenumber/Validation.vue'),
   'inputphonenumber/MaxDigits': () =>
     import('./inputphonenumber/MaxDigits.vue'),
+  'inputphonenumber/Mandatory': () =>
+    import('./inputphonenumber/Mandatory.vue'),
+  'inputphonenumber/Disabled': () =>
+    import('./inputphonenumber/Disabled.vue'),
+  'inputphonenumber/Invalid': () =>
+    import('./inputphonenumber/Invalid.vue'),
+  'inputphonenumber/FieldInfo': () =>
+    import('./inputphonenumber/FieldInfo.vue'),
   'inputphonenumber/FormIntegration': () =>
     import('./inputphonenumber/FormIntegration.vue'),
 

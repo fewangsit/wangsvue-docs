@@ -1199,15 +1199,7 @@
       {
         "id": "import",
         "label": "Import",
-        "description": "```typescript\nimport { InputPhoneNumber } from '@fewangsit/wangsvue'\n```",
-        "example": "",
-        "hasExample": false,
-        "examplePath": null
-      },
-      {
-        "id": "examples",
-        "label": "Examples",
-        "description": "",
+        "description": "```ts\nimport { InputPhoneNumber } from '@fewangsit/wangsvue';\n```",
         "example": "",
         "hasExample": false,
         "examplePath": null
@@ -1215,32 +1207,64 @@
       {
         "id": "basic",
         "label": "Basic",
-        "description": "Basic phone number input with formatting.",
-        "example": "<script setup lang=\"ts\">\nimport { ref } from 'vue'\nimport { InputPhoneNumber } from '@fewangsit/wangsvue'\n\nconst value = ref('')\n</script>\n\n<template>\n  <div class=\"flex flex-col gap-4\">\n    <InputPhoneNumber\n      v-model=\"value\"\n      label=\"Phone Number\"\n      placeholder=\"Enter phone number\"\n    />\n    <p class=\"text-sm text-gray-600\">\n      Value: {{ value || 'Empty' }}\n    </p>\n  </div>\n</template>\n",
+        "description": "Basic phone number input with two-way data binding using v-model.",
+        "example": "<script setup lang=\"ts\">\nimport { ref } from 'vue'\nimport { InputPhoneNumber } from '@fewangsit/wangsvue'\n\nconst value = ref('')\n</script>\n\n<template>\n  <InputPhoneNumber\n    v-model=\"value\"\n    label=\"Phone Number\"\n    placeholder=\"Enter phone number\"\n  />\n</template>\n",
         "hasExample": true,
         "examplePath": "inputphonenumber/Basic"
       },
       {
         "id": "validation",
         "label": "Validation",
-        "description": "Phone number input with validation and required field.",
-        "example": "<script setup lang=\"ts\">\nimport { ref } from 'vue'\nimport { InputPhoneNumber } from '@fewangsit/wangsvue'\n\nconst value = ref('')\n</script>\n\n<template>\n  <div class=\"flex flex-col gap-4\">\n    <InputPhoneNumber\n      v-model=\"value\"\n      label=\"Contact Number\"\n      placeholder=\"Enter contact number\"\n      :use-validator=\"true\"\n      field-name=\"contactNumber\"\n      :mandatory=\"true\"\n      :validator-message=\"{\n        empty: 'Contact number is required'\n      }\"\n    />\n    <p class=\"text-sm text-gray-600\">\n      Value: {{ value || 'Empty' }}\n    </p>\n  </div>\n</template>\n",
+        "description": "Phone number input with form validation and required field requirements.",
+        "example": "<script setup lang=\"ts\">\nimport { ref } from 'vue'\nimport { InputPhoneNumber } from '@fewangsit/wangsvue'\n\nconst value = ref('')\n</script>\n\n<template>\n  <InputPhoneNumber\n    v-model=\"value\"\n    label=\"Contact Number\"\n    placeholder=\"Enter contact number\"\n    :use-validator=\"true\"\n    field-name=\"contactNumber\"\n    :mandatory=\"true\"\n    :validator-message=\"{\n      empty: 'Contact number is required'\n    }\"\n  />\n</template>\n",
         "hasExample": true,
         "examplePath": "inputphonenumber/Validation"
       },
       {
         "id": "max-digits",
         "label": "Max Digits",
-        "description": "Control maximum number of digits allowed.",
-        "example": "<script setup lang=\"ts\">\nimport { ref } from 'vue'\nimport { InputPhoneNumber } from '@fewangsit/wangsvue'\n\nconst phone1 = ref('')\nconst phone2 = ref('')\n</script>\n\n<template>\n  <div class=\"flex flex-col gap-4\">\n    <InputPhoneNumber\n      v-model=\"phone1\"\n      label=\"Short Phone (10 digits)\"\n      placeholder=\"Enter phone number\"\n      :max-digit=\"10\"\n    />\n\n    <InputPhoneNumber\n      v-model=\"phone2\"\n      label=\"Long Phone (15 digits)\"\n      placeholder=\"Enter phone number\"\n      :max-digit=\"15\"\n    />\n\n    <div class=\"text-sm text-gray-600\">\n      <p>Short: {{ phone1 || 'Empty' }} ({{ phone1.length }}/10)</p>\n      <p>Long: {{ phone2 || 'Empty' }} ({{ phone2.length }}/15)</p>\n    </div>\n  </div>\n</template>\n",
+        "description": "Control the maximum number of digits allowed in the phone number input.",
+        "example": "<script setup lang=\"ts\">\nimport { ref } from 'vue'\nimport { InputPhoneNumber } from '@fewangsit/wangsvue'\n\nconst phone1 = ref('')\nconst phone2 = ref('')\n</script>\n\n<template>\n  <div class=\"flex flex-col gap-4\">\n    <InputPhoneNumber\n      v-model=\"phone1\"\n      label=\"Short Phone (10 digits)\"\n      placeholder=\"Enter phone number\"\n      :max-digit=\"10\"\n    />\n\n    <InputPhoneNumber\n      v-model=\"phone2\"\n      label=\"Long Phone (15 digits)\"\n      placeholder=\"Enter phone number\"\n      :max-digit=\"15\"\n    />\n  </div>\n</template>\n",
         "hasExample": true,
         "examplePath": "inputphonenumber/MaxDigits"
       },
       {
+        "id": "mandatory",
+        "label": "Mandatory",
+        "description": "Phone number input with mandatory validation and custom error messages.",
+        "example": "<script setup lang=\"ts\">\nimport { ref } from 'vue'\nimport { InputPhoneNumber } from '@fewangsit/wangsvue'\n\nconst value = ref('')\n</script>\n\n<template>\n  <InputPhoneNumber\n    v-model=\"value\"\n    label=\"Contact Number\"\n    placeholder=\"Enter contact number\"\n    :use-validator=\"true\"\n    field-name=\"contactNumber\"\n    :mandatory=\"true\"\n    :validator-message=\"{ empty: 'Contact number is required' }\"\n  />\n</template>\n",
+        "hasExample": true,
+        "examplePath": "inputphonenumber/Mandatory"
+      },
+      {
+        "id": "disabled",
+        "label": "Disabled",
+        "description": "Phone number input in disabled state prevents user interaction.",
+        "example": "<script setup lang=\"ts\">\nimport { ref } from 'vue'\nimport { InputPhoneNumber } from '@fewangsit/wangsvue'\n\nconst value = ref('+1 234567890')\n</script>\n\n<template>\n  <InputPhoneNumber\n    v-model=\"value\"\n    label=\"Phone Number (Disabled)\"\n    placeholder=\"Enter phone number\"\n    :disabled=\"true\"\n  />\n</template>\n",
+        "hasExample": true,
+        "examplePath": "inputphonenumber/Disabled"
+      },
+      {
+        "id": "invalid",
+        "label": "Invalid",
+        "description": "Phone number input showing invalid state with error message.",
+        "example": "<script setup lang=\"ts\">\nimport { ref } from 'vue'\nimport { InputPhoneNumber } from '@fewangsit/wangsvue'\n\nconst value = ref('')\n</script>\n\n<template>\n  <InputPhoneNumber\n    v-model=\"value\"\n    label=\"Emergency Contact\"\n    placeholder=\"Enter emergency contact\"\n    :invalid=\"true\"\n    :validator-message=\"{ empty: 'Emergency contact is required for safety' }\"\n  />\n</template>\n",
+        "hasExample": true,
+        "examplePath": "inputphonenumber/Invalid"
+      },
+      {
+        "id": "field-info",
+        "label": "Field Info",
+        "description": "Phone number input with helpful information text to guide users.",
+        "example": "<script setup lang=\"ts\">\nimport { ref } from 'vue'\nimport { InputPhoneNumber } from '@fewangsit/wangsvue'\n\nconst value = ref('')\n</script>\n\n<template>\n  <InputPhoneNumber\n    v-model=\"value\"\n    label=\"Business Phone\"\n    placeholder=\"Enter business phone\"\n    field-info=\"Include country code for international numbers\"\n  />\n</template>\n",
+        "hasExample": true,
+        "examplePath": "inputphonenumber/FieldInfo"
+      },
+      {
         "id": "form-integration",
         "label": "Form Integration",
-        "description": "Complete form example with phone number inputs.",
-        "example": "<script setup lang=\"ts\">\nimport { Form, InputPhoneNumber } from '@fewangsit/wangsvue'\n\nconst onSubmit = (payload: { formValues: Record<string, unknown> }) => {\n  console.log('Contact form submitted:', payload.formValues)\n}\n</script>\n\n<template>\n  <Form\n    :column-per-row=\"2\"\n    submit-btn-label=\"Save Contact\"\n    :buttons-template=\"['clear', 'submit']\"\n    @submit=\"onSubmit\"\n  >\n    <template #fields>\n      <InputPhoneNumber\n        label=\"Phone Number\"\n        field-name=\"phone\"\n        :use-validator=\"true\"\n        :mandatory=\"true\"\n        :max-digit=\"14\"\n        :validator-message=\"{\n          empty: 'Phone number is required'\n        }\"\n      />\n    </template>\n  </Form>\n</template>\n",
+        "description": "Similar to other input components like [InputText](/components/inputtext), InputPhoneNumber integrates seamlessly with form validation.",
+        "example": "<script setup lang=\"ts\">\nimport { Form, InputPhoneNumber } from '@fewangsit/wangsvue'\n\nconst onSubmit = (payload: { formValues: Record<string, unknown> }) => {\n  console.log('Form submitted:', payload.formValues)\n}\n</script>\n\n<template>\n  <Form\n    :buttons-template=\"['submit', 'clear']\"\n    @submit=\"onSubmit\"\n  >\n    <template #fields>\n      <InputPhoneNumber\n        label=\"Phone Number\"\n        field-name=\"phone\"\n        :use-validator=\"true\"\n        :mandatory=\"true\"\n        :validator-message=\"{\n          empty: 'Phone number is required'\n        }\"\n      />\n    </template>\n  </Form>\n</template>\n",
         "hasExample": true,
         "examplePath": "inputphonenumber/FormIntegration"
       }

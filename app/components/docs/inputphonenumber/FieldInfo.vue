@@ -8,7 +8,8 @@ const value = ref('')
 <template>
   <InputPhoneNumber
     v-model="value"
-    label="Phone Number"
-    placeholder="Enter phone number"
+    label="Business Phone"
+    placeholder="Enter business phone"
+    field-info="Include country code for international numbers"
   />
 </template>

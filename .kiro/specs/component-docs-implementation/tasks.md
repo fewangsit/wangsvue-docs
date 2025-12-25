@@ -38,7 +38,7 @@
 - [x] InputEmail
 - [x] InputNumber
 - [ ] InputPassword
-- [ ] InputPhoneNumber
+- [x] InputPhoneNumber
 - [x] InputRangeNumber
 - [x] InputText
 - [x] InputURL

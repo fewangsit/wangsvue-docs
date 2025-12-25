@@ -2,15 +2,13 @@
 import { Form, InputPhoneNumber } from '@fewangsit/wangsvue'
 
 const onSubmit = (payload: { formValues: Record<string, unknown> }) => {
-  console.log('Contact form submitted:', payload.formValues)
+  console.log('Form submitted:', payload.formValues)
 }
 </script>
 
 <template>
   <Form
-    :column-per-row="2"
-    submit-btn-label="Save Contact"
-    :buttons-template="['clear', 'submit']"
+    :buttons-template="['submit', 'clear']"
     @submit="onSubmit"
   >
     <template #fields>
@@ -19,7 +17,6 @@ const onSubmit = (payload: { formValues: Record<string, unknown> }) => {
         field-name="phone"
         :use-validator="true"
         :mandatory="true"
-        :max-digit="14"
         :validator-message="{
           empty: 'Phone number is required'
         }"
