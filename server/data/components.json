@@ -742,6 +742,93 @@
     ]
   },
   {
+    "name": "dropdown",
+    "title": "Dropdown",
+    "description": "Dropdown also known as Select, is used to choose an item from a collection of options.",
+    "sections": [
+      {
+        "id": "import",
+        "label": "Import",
+        "description": "```ts\nimport { Dropdown } from '@fewangsit/wangsvue';\n```",
+        "example": "",
+        "hasExample": false,
+        "examplePath": null
+      },
+      {
+        "id": "basic",
+        "label": "Basic",
+        "description": "Basic usage of dropdown with simple options.",
+        "example": "<script setup lang=\"ts\">\nimport { Dropdown } from '@fewangsit/wangsvue'\nimport { ref } from 'vue'\n\nconst selectedValue = ref()\nconst options = ['Option 1', 'Option 2', 'Option 3', 'Option 4']\n</script>\n\n<template>\n  <div class=\"flex flex-wrap gap-3\">\n    <Dropdown\n      v-model=\"selectedValue\"\n      label=\"Select Option\"\n      :options=\"options\"\n      placeholder=\"Choose an option\"\n    />\n  </div>\n</template>\n",
+        "hasExample": true,
+        "examplePath": "dropdown/Basic"
+      },
+      {
+        "id": "object-options",
+        "label": "Object Options",
+        "description": "Dropdown with object options using `optionLabel` and `optionValue` properties.",
+        "example": "<script setup lang=\"ts\">\nimport { Dropdown } from '@fewangsit/wangsvue'\nimport { ref } from 'vue'\n\nconst selectedValue = ref()\nconst options = [\n  { name: 'New York', code: 'NY' },\n  { name: 'Rome', code: 'RM' },\n  { name: 'London', code: 'LDN' },\n  { name: 'Istanbul', code: 'IST' },\n  { name: 'Paris', code: 'PRS' }\n]\n</script>\n\n<template>\n  <div class=\"flex flex-wrap gap-3\">\n    <Dropdown\n      v-model=\"selectedValue\"\n      label=\"Select City\"\n      :options=\"options\"\n      option-label=\"name\"\n      option-value=\"code\"\n      placeholder=\"Choose a city\"\n    />\n  </div>\n</template>\n",
+        "hasExample": true,
+        "examplePath": "dropdown/ObjectOptions"
+      },
+      {
+        "id": "badge-value",
+        "label": "Badge Value",
+        "description": "Display selected value as a badge using `valueType` property.",
+        "example": "<script setup lang=\"ts\">\nimport { Dropdown } from '@fewangsit/wangsvue'\nimport { ref } from 'vue'\n\nconst selectedValue = ref('success')\nconst options = [\n  { label: 'Success', value: 'success' },\n  { label: 'Info', value: 'info' },\n  { label: 'Warning', value: 'warning' },\n  { label: 'Danger', value: 'danger' }\n]\n</script>\n\n<template>\n  <div class=\"flex flex-wrap gap-3\">\n    <Dropdown\n      v-model=\"selectedValue\"\n      label=\"Select Status\"\n      :options=\"options\"\n      option-label=\"label\"\n      option-value=\"value\"\n      value-type=\"badge\"\n      :badge-value-props=\"{ severity: selectedValue }\"\n      placeholder=\"Choose status\"\n    />\n  </div>\n</template>\n",
+        "hasExample": true,
+        "examplePath": "dropdown/BadgeValue"
+      },
+      {
+        "id": "loading",
+        "label": "Loading",
+        "description": "Dropdown in loading state.",
+        "example": "<script setup lang=\"ts\">\nimport { Dropdown } from '@fewangsit/wangsvue'\nimport { ref } from 'vue'\n\nconst selectedValue = ref()\nconst options = ['Option 1', 'Option 2', 'Option 3', 'Option 4']\n</script>\n\n<template>\n  <div class=\"flex flex-wrap gap-3\">\n    <Dropdown\n      v-model=\"selectedValue\"\n      label=\"Select Option\"\n      :options=\"options\"\n      :loading=\"true\"\n      placeholder=\"Loading options...\"\n    />\n  </div>\n</template>\n",
+        "hasExample": true,
+        "examplePath": "dropdown/Loading"
+      },
+      {
+        "id": "disabled",
+        "label": "Disabled",
+        "description": "Dropdown in disabled state.",
+        "example": "<script setup lang=\"ts\">\nimport { Dropdown } from '@fewangsit/wangsvue'\nimport { ref } from 'vue'\n\nconst selectedValue = ref('Option 2')\nconst options = ['Option 1', 'Option 2', 'Option 3', 'Option 4']\n</script>\n\n<template>\n  <div class=\"flex flex-wrap gap-3\">\n    <Dropdown\n      v-model=\"selectedValue\"\n      label=\"Select Option\"\n      :options=\"options\"\n      :disabled=\"true\"\n      placeholder=\"Choose an option\"\n    />\n  </div>\n</template>\n",
+        "hasExample": true,
+        "examplePath": "dropdown/Disabled"
+      },
+      {
+        "id": "filter",
+        "label": "Filter",
+        "description": "Dropdown with search functionality enabled.",
+        "example": "<script setup lang=\"ts\">\nimport { Dropdown } from '@fewangsit/wangsvue'\nimport { ref } from 'vue'\n\nconst selectedValue = ref()\nconst options = [\n  'Australia', 'Brazil', 'China', 'Egypt', 'France',\n  'Germany', 'India', 'Japan', 'Spain', 'United States'\n]\n</script>\n\n<template>\n  <div class=\"flex flex-wrap gap-3\">\n    <Dropdown\n      v-model=\"selectedValue\"\n      label=\"Select Country\"\n      :options=\"options\"\n      :filter=\"true\"\n      filter-placeholder=\"Search countries...\"\n      placeholder=\"Choose a country\"\n    />\n  </div>\n</template>\n",
+        "hasExample": true,
+        "examplePath": "dropdown/Filter"
+      },
+      {
+        "id": "custom-placeholder",
+        "label": "Custom Placeholder",
+        "description": "Dropdown with custom placeholder text.",
+        "example": "<script setup lang=\"ts\">\nimport { Dropdown } from '@fewangsit/wangsvue'\nimport { ref } from 'vue'\n\nconst selectedValue = ref()\nconst options = ['Small', 'Medium', 'Large', 'Extra Large']\n</script>\n\n<template>\n  <div class=\"flex flex-wrap gap-3\">\n    <Dropdown\n      v-model=\"selectedValue\"\n      label=\"T-Shirt Size\"\n      :options=\"options\"\n      placeholder=\"Pick your size\"\n    />\n  </div>\n</template>\n",
+        "hasExample": true,
+        "examplePath": "dropdown/CustomPlaceholder"
+      },
+      {
+        "id": "form-integration",
+        "label": "Form Integration",
+        "description": "Dropdown integrated with form validation.",
+        "example": "<script setup lang=\"ts\">\nimport { Form, Dropdown } from '@fewangsit/wangsvue'\n\nconst options = ['Manager', 'Developer', 'Designer', 'Analyst']\n\nconst onSubmit = (payload: { formValues: Record<string, unknown> }) => {\n  console.log('Form submitted:', payload.formValues)\n}\n</script>\n\n<template>\n  <Form\n    :buttons-template=\"['submit', 'clear']\"\n    hide-stay-checkbox\n    @submit=\"onSubmit\"\n  >\n    <template #fields>\n      <Dropdown\n        label=\"Job Role\"\n        field-name=\"jobRole\"\n        :options=\"options\"\n        :use-validator=\"true\"\n        :mandatory=\"true\"\n        :validator-message=\"{ empty: 'Job role is required' }\"\n        placeholder=\"Select your role\"\n      />\n    </template>\n  </Form>\n</template>\n",
+        "hasExample": true,
+        "examplePath": "dropdown/FormIntegration"
+      },
+      {
+        "id": "custom-templates",
+        "label": "Custom Templates",
+        "description": "Dropdown with custom value and option templates using slots.",
+        "example": "<script setup lang=\"ts\">\nimport { Dropdown } from '@fewangsit/wangsvue'\nimport { ref } from 'vue'\n\nconst selectedValue = ref()\nconst options = [\n  { name: 'Australia', code: 'AU', flag: '🇦🇺' },\n  { name: 'Brazil', code: 'BR', flag: '🇧🇷' },\n  { name: 'China', code: 'CN', flag: '🇨🇳' },\n  { name: 'Egypt', code: 'EG', flag: '🇪🇬' },\n  { name: 'France', code: 'FR', flag: '🇫🇷' }\n]\n</script>\n\n<template>\n  <div class=\"flex flex-wrap gap-3\">\n    <Dropdown\n      v-model=\"selectedValue\"\n      label=\"Select Country\"\n      :options=\"options\"\n      option-label=\"name\"\n      option-value=\"code\"\n      placeholder=\"Choose a country\"\n    >\n      <template #value=\"{ originalValue }\">\n        <span v-if=\"originalValue\">\n          {{ originalValue.flag }} {{ originalValue.name }}\n        </span>\n      </template>\n\n      <template #option=\"{ option }\">\n        <div class=\"flex items-center gap-2\">\n          <span>{{ option.flag }}</span>\n          <span>{{ option.name }}</span>\n          <span class=\"text-gray-500\">({{ option.code }})</span>\n        </div>\n      </template>\n    </Dropdown>\n  </div>\n</template>\n",
+        "hasExample": true,
+        "examplePath": "dropdown/CustomTemplates"
+      }
+    ]
+  },
+  {
     "name": "icon",
     "title": "Icon",
     "description": "Display icon with svg backgrounds from the WangsIcons collection.",
@@ -785,6 +872,93 @@
         "example": "<script setup lang=\"ts\">\nimport { Icon } from '@fewangsit/wangsvue'\nimport type { WangsIcons } from '@fewangsit/wangsvue/icon'\n\n// Popular and commonly used icons organized by category\nconst iconCategories = {\n  'Navigation & Actions': [\n    'add', 'close', 'edit', 'delete-bin', 'search', 'filter',\n    'arrow-left', 'arrow-right', 'arrow-up-s', 'arrow-down',\n    'menu', 'more', 'settings', 'refresh'\n  ] as WangsIcons[],\n\n  'Files & Documents': [\n    'file-add', 'file-edit', 'file-copy', 'files', 'folder',\n    'pdf', 'csv', 'xls', 'doc', 'download', 'upload-2'\n  ] as WangsIcons[],\n\n  'Users & Communication': [\n    'user', 'user-add', 'team', 'profile', 'mail', 'chat',\n    'notification', 'bell', 'phone'\n  ] as WangsIcons[],\n\n  'Status & Feedback': [\n    'check', 'error', 'info', 'warning', 'success',\n    'loader-4', 'spinner', 'time', 'calendar'\n  ] as WangsIcons[],\n\n  'Business & Finance': [\n    'money-dollar-circle', 'coins', 'calculator', 'bank-card-line',\n    'shopping-cart-2', 'store'\n  ] as WangsIcons[],\n\n  'Technology': [\n    'database', 'cloud-line', 'qr', 'barcode', 'printer',\n    'smartphone', 'device', 'tools', 'code-line'\n  ] as WangsIcons[]\n}\n</script>\n\n<template>\n  <div class=\"space-y-8\">\n    <div\n      v-for=\"(icons, category) in iconCategories\"\n      :key=\"category\"\n      class=\"space-y-4\"\n    >\n      <h4 class=\"text-lg font-semibold text-gray-800\">\n        {{ category }}\n      </h4>\n      <div class=\"grid grid-cols-6 sm:grid-cols-8 md:grid-cols-10 lg:grid-cols-12 gap-4\">\n        <div\n          v-for=\"iconName in icons\"\n          :key=\"iconName\"\n          class=\"flex flex-col items-center gap-2 p-3 rounded-lg hover:bg-gray-50 transition-colors\"\n        >\n          <Icon\n            :icon=\"iconName\"\n            :info=\"iconName\"\n            class=\"text-xl\"\n          />\n          <span class=\"text-xs text-gray-600 text-center break-all\">\n            {{ iconName }}\n          </span>\n        </div>\n      </div>\n    </div>\n\n    <div class=\"mt-8 p-4 bg-blue-50 rounded-lg\">\n      <p class=\"text-sm text-blue-800\">\n        <Icon\n          icon=\"info\"\n          severity=\"info\"\n          class=\"inline mr-2\"\n        />\n        This gallery shows popular icons. The complete WangsIcons collection includes 200+ icons.\n        Hover over any icon to see its name, or check the TypeScript definitions for the full list.\n      </p>\n    </div>\n  </div>\n</template>\n",
         "hasExample": true,
         "examplePath": "icon/Gallery"
+      }
+    ]
+  },
+  {
+    "name": "multiselect",
+    "title": "MultiSelect",
+    "description": "MultiSelect also known as Select, is used to choose an item from a collection of options.",
+    "sections": [
+      {
+        "id": "import",
+        "label": "Import",
+        "description": "```ts\nimport { MultiSelect } from '@fewangsit/wangsvue';\n```",
+        "example": "",
+        "hasExample": false,
+        "examplePath": null
+      },
+      {
+        "id": "basic",
+        "label": "Basic",
+        "description": "Basic usage of multiselect with simple options.",
+        "example": "<script setup lang=\"ts\">\nimport { MultiSelect } from '@fewangsit/wangsvue'\nimport { ref } from 'vue'\n\nconst selectedValues = ref([])\nconst options = ['Option 1', 'Option 2', 'Option 3', 'Option 4', 'Option 5']\n</script>\n\n<template>\n  <div class=\"flex flex-wrap gap-3\">\n    <MultiSelect\n      v-model=\"selectedValues\"\n      label=\"Select Options\"\n      :options=\"options\"\n      placeholder=\"Choose options\"\n    />\n  </div>\n</template>\n",
+        "hasExample": true,
+        "examplePath": "multiselect/Basic"
+      },
+      {
+        "id": "object-options",
+        "label": "Object Options",
+        "description": "MultiSelect with object options using `optionLabel` and `optionValue` properties.",
+        "example": "<script setup lang=\"ts\">\nimport { MultiSelect } from '@fewangsit/wangsvue'\nimport { ref } from 'vue'\n\nconst selectedValues = ref([])\nconst options = [\n  { name: 'New York', code: 'NY' },\n  { name: 'Rome', code: 'RM' },\n  { name: 'London', code: 'LDN' },\n  { name: 'Istanbul', code: 'IST' },\n  { name: 'Paris', code: 'PRS' },\n  { name: 'Tokyo', code: 'TKY' }\n]\n</script>\n\n<template>\n  <div class=\"flex flex-wrap gap-3\">\n    <MultiSelect\n      v-model=\"selectedValues\"\n      label=\"Select Cities\"\n      :options=\"options\"\n      option-label=\"name\"\n      option-value=\"code\"\n      placeholder=\"Choose cities\"\n    />\n  </div>\n</template>\n",
+        "hasExample": true,
+        "examplePath": "multiselect/ObjectOptions"
+      },
+      {
+        "id": "display-modes",
+        "label": "Display Modes",
+        "description": "MultiSelect supports different display modes for selected items.",
+        "example": "<script setup lang=\"ts\">\nimport { MultiSelect } from '@fewangsit/wangsvue'\nimport { ref } from 'vue'\n\nconst selectedChip = ref(['Option 1', 'Option 2'])\nconst selectedComma = ref(['Option 3', 'Option 4'])\nconst options = ['Option 1', 'Option 2', 'Option 3', 'Option 4', 'Option 5']\n</script>\n\n<template>\n  <div class=\"flex flex-col gap-4\">\n    <MultiSelect\n      v-model=\"selectedChip\"\n      label=\"Chip Display\"\n      :options=\"options\"\n      display=\"chip\"\n      placeholder=\"Choose options (chip)\"\n    />\n\n    <MultiSelect\n      v-model=\"selectedComma\"\n      label=\"Comma Display\"\n      :options=\"options\"\n      display=\"comma\"\n      placeholder=\"Choose options (comma)\"\n    />\n  </div>\n</template>\n",
+        "hasExample": true,
+        "examplePath": "multiselect/DisplayModes"
+      },
+      {
+        "id": "max-selected-labels",
+        "label": "Max Selected Labels",
+        "description": "Control how many selected items to show before displaying a summary.",
+        "example": "<script setup lang=\"ts\">\nimport { MultiSelect } from '@fewangsit/wangsvue'\nimport { ref } from 'vue'\n\nconst selectedValues = ref(['Option 1', 'Option 2', 'Option 3'])\nconst options = ['Option 1', 'Option 2', 'Option 3', 'Option 4', 'Option 5', 'Option 6', 'Option 7']\n</script>\n\n<template>\n  <div class=\"flex flex-wrap gap-3\">\n    <MultiSelect\n      v-model=\"selectedValues\"\n      label=\"Select Options\"\n      :options=\"options\"\n      :max-selected-labels=\"2\"\n      selected-items-label=\"items selected\"\n      placeholder=\"Choose options\"\n    />\n  </div>\n</template>\n",
+        "hasExample": true,
+        "examplePath": "multiselect/MaxSelectedLabels"
+      },
+      {
+        "id": "loading",
+        "label": "Loading",
+        "description": "MultiSelect in loading state.",
+        "example": "<script setup lang=\"ts\">\nimport { MultiSelect } from '@fewangsit/wangsvue'\nimport { ref } from 'vue'\n\nconst selectedValues = ref([])\nconst options = ['Option 1', 'Option 2', 'Option 3', 'Option 4']\n</script>\n\n<template>\n  <div class=\"flex flex-wrap gap-3\">\n    <MultiSelect\n      v-model=\"selectedValues\"\n      label=\"Select Options\"\n      :options=\"options\"\n      :loading=\"true\"\n      placeholder=\"Loading options...\"\n    />\n  </div>\n</template>\n",
+        "hasExample": true,
+        "examplePath": "multiselect/Loading"
+      },
+      {
+        "id": "disabled",
+        "label": "Disabled",
+        "description": "MultiSelect in disabled state.",
+        "example": "<script setup lang=\"ts\">\nimport { MultiSelect } from '@fewangsit/wangsvue'\nimport { ref } from 'vue'\n\nconst selectedValues = ref(['Option 1', 'Option 3'])\nconst options = ['Option 1', 'Option 2', 'Option 3', 'Option 4']\n</script>\n\n<template>\n  <div class=\"flex flex-wrap gap-3\">\n    <MultiSelect\n      v-model=\"selectedValues\"\n      label=\"Select Options\"\n      :options=\"options\"\n      :disabled=\"true\"\n      placeholder=\"Choose options\"\n    />\n  </div>\n</template>\n",
+        "hasExample": true,
+        "examplePath": "multiselect/Disabled"
+      },
+      {
+        "id": "filter",
+        "label": "Filter",
+        "description": "MultiSelect with search functionality enabled.",
+        "example": "<script setup lang=\"ts\">\nimport { MultiSelect } from '@fewangsit/wangsvue'\nimport { ref } from 'vue'\n\nconst selectedValues = ref([])\nconst options = [\n  'Australia', 'Brazil', 'China', 'Egypt', 'France',\n  'Germany', 'India', 'Japan', 'Spain', 'United States'\n]\n</script>\n\n<template>\n  <div class=\"flex flex-wrap gap-3\">\n    <MultiSelect\n      v-model=\"selectedValues\"\n      label=\"Select Countries\"\n      :options=\"options\"\n      :filter=\"true\"\n      filter-placeholder=\"Search countries...\"\n      placeholder=\"Choose countries\"\n    />\n  </div>\n</template>\n",
+        "hasExample": true,
+        "examplePath": "multiselect/Filter"
+      },
+      {
+        "id": "hide-header-checkbox",
+        "label": "Hide Header Checkbox",
+        "description": "MultiSelect without select all functionality.",
+        "example": "<script setup lang=\"ts\">\nimport { MultiSelect } from '@fewangsit/wangsvue'\nimport { ref } from 'vue'\n\nconst selectedValues = ref([])\nconst options = ['Option 1', 'Option 2', 'Option 3', 'Option 4', 'Option 5']\n</script>\n\n<template>\n  <div class=\"flex flex-wrap gap-3\">\n    <MultiSelect\n      v-model=\"selectedValues\"\n      label=\"Select Options\"\n      :options=\"options\"\n      :hide-header-checkbox=\"true\"\n      placeholder=\"Choose options\"\n    />\n  </div>\n</template>\n",
+        "hasExample": true,
+        "examplePath": "multiselect/HideHeaderCheckbox"
+      },
+      {
+        "id": "form-integration",
+        "label": "Form Integration",
+        "description": "MultiSelect integrated with form validation.",
+        "example": "<script setup lang=\"ts\">\nimport { Form, MultiSelect } from '@fewangsit/wangsvue'\n\nconst options = ['JavaScript', 'TypeScript', 'Python', 'Java', 'C#', 'Go']\n\nconst onSubmit = (payload: { formValues: Record<string, unknown> }) => {\n  console.log('Form submitted:', payload.formValues)\n}\n</script>\n\n<template>\n  <Form\n    :buttons-template=\"['submit', 'clear']\"\n    hide-stay-checkbox\n    @submit=\"onSubmit\"\n  >\n    <template #fields>\n      <MultiSelect\n        label=\"Programming Languages\"\n        field-name=\"languages\"\n        :options=\"options\"\n        :use-validator=\"true\"\n        :mandatory=\"true\"\n        :validator-message=\"{ empty: 'At least one language is required' }\"\n        placeholder=\"Select languages\"\n      />\n    </template>\n  </Form>\n</template>\n",
+        "hasExample": true,
+        "examplePath": "multiselect/FormIntegration"
       }
     ]
   },

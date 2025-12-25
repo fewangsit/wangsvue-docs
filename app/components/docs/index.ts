@@ -194,5 +194,27 @@ export const componentRegistry: Record<
   'dialog/Maximizable': () => import('./dialog/Maximizable.vue'),
   'dialog/Draggable': () => import('./dialog/Draggable.vue'),
   'dialog/Responsive': () => import('./dialog/Responsive.vue'),
-  'dialog/Template': () => import('./dialog/Template.vue')
+  'dialog/Template': () => import('./dialog/Template.vue'),
+
+  // Dropdown components
+  'dropdown/Basic': () => import('./dropdown/Basic.vue'),
+  'dropdown/ObjectOptions': () => import('./dropdown/ObjectOptions.vue'),
+  'dropdown/BadgeValue': () => import('./dropdown/BadgeValue.vue'),
+  'dropdown/Loading': () => import('./dropdown/Loading.vue'),
+  'dropdown/Disabled': () => import('./dropdown/Disabled.vue'),
+  'dropdown/Filter': () => import('./dropdown/Filter.vue'),
+  'dropdown/CustomPlaceholder': () => import('./dropdown/CustomPlaceholder.vue'),
+  'dropdown/FormIntegration': () => import('./dropdown/FormIntegration.vue'),
+  'dropdown/CustomTemplates': () => import('./dropdown/CustomTemplates.vue'),
+
+  // MultiSelect components
+  'multiselect/Basic': () => import('./multiselect/Basic.vue'),
+  'multiselect/ObjectOptions': () => import('./multiselect/ObjectOptions.vue'),
+  'multiselect/DisplayModes': () => import('./multiselect/DisplayModes.vue'),
+  'multiselect/MaxSelectedLabels': () => import('./multiselect/MaxSelectedLabels.vue'),
+  'multiselect/Loading': () => import('./multiselect/Loading.vue'),
+  'multiselect/Disabled': () => import('./multiselect/Disabled.vue'),
+  'multiselect/Filter': () => import('./multiselect/Filter.vue'),
+  'multiselect/HideHeaderCheckbox': () => import('./multiselect/HideHeaderCheckbox.vue'),
+  'multiselect/FormIntegration': () => import('./multiselect/FormIntegration.vue')
 }
