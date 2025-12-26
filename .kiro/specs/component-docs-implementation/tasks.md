@@ -20,7 +20,7 @@
 - [ ] DataTable
 - [x] Dialog
 - [x] DialogConfirm
-- [ ] DialogForm
+- [x] DialogForm
 - [ ] DialogSelectTree
 - [ ] Dropdown
 - [ ] Editor
