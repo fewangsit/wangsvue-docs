@@ -110,6 +110,8 @@ export const componentRegistry: Record<
   'dialogform/CustomButtons': () => import('./dialogform/CustomButtons.vue'),
   'dialogform/AsideRight': () => import('./dialogform/AsideRight.vue'),
   'dialogform/ConfirmDialog': () => import('./dialogform/ConfirmDialog.vue'),
+  'dialogform/ValidationFunction': () => import('./dialogform/ValidationFunction.vue'),
+  'dialogform/CheckAvailability': () => import('./dialogform/CheckAvailability.vue'),
 
   // InputURL components
   'inputurl/Basic': () => import('./inputurl/Basic.vue'),

@@ -1,17 +1,18 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { DialogForm, InputText, InputEmail, Button } from '@fewangsit/wangsvue'
+import type { FormPayload } from '@fewangsit/wangsvue/form'
 
 const visible1 = ref(false)
 const visible2 = ref(false)
 
-const onSubmit = (payload: { formValues: Record<string, unknown>, stayAfterSubmit: boolean }) => {
+const onSubmit = (payload: FormPayload) => {
   console.log('Form submitted:', payload.formValues)
   console.log('Stay after submit:', payload.stayAfterSubmit)
   // For resetAfterSubmit=true demo, form resets automatically
 }
 
-const onSubmitNoReset = (payload: { formValues: Record<string, unknown>, stayAfterSubmit: boolean }) => {
+const onSubmitNoReset = (payload: FormPayload) => {
   console.log('Form submitted (no reset):', payload.formValues)
   console.log('Stay after submit:', payload.stayAfterSubmit)
 }

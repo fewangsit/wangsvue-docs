@@ -1,12 +1,13 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { DialogForm, InputText, Button } from '@fewangsit/wangsvue'
+import type { FormPayload } from '@fewangsit/wangsvue/form'
 
 const visibleSmall = ref(false)
 const visibleMedium = ref(false)
 const visibleLarge = ref(false)
 
-const onSubmit = (payload: { formValues: Record<string, unknown>, stayAfterSubmit: boolean }) => {
+const onSubmit = (payload: FormPayload) => {
   console.log('Form submitted:', payload.formValues)
 }
 </script>
