@@ -1,9 +1,10 @@
 <script setup lang="ts">
 import { Form, Dropdown } from '@fewangsit/wangsvue'
+import type { FormPayload } from '@fewangsit/wangsvue/form'
 
 const options = ['Manager', 'Developer', 'Designer', 'Analyst']
 
-const onSubmit = (payload: { formValues: Record<string, unknown> }) => {
+const onSubmit = (payload: FormPayload) => {
   console.log('Form submitted:', payload.formValues)
 }
 </script>

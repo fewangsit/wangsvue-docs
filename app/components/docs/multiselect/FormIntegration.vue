@@ -1,9 +1,10 @@
 <script setup lang="ts">
 import { Form, MultiSelect } from '@fewangsit/wangsvue'
+import type { FormPayload } from '@fewangsit/wangsvue/form'
 
 const options = ['JavaScript', 'TypeScript', 'Python', 'Java', 'C#', 'Go']
 
-const onSubmit = (payload: { formValues: Record<string, unknown> }) => {
+const onSubmit = (payload: FormPayload) => {
   console.log('Form submitted:', payload.formValues)
 }
 </script>

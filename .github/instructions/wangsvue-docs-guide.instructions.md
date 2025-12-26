@@ -83,8 +83,9 @@ import { ComponentName } from '@fewangsit/wangsvue'
 ```vue
 <script setup lang="ts">
 import { Form, ComponentName } from '@fewangsit/wangsvue'
+import type { FormPayload } from '@fewangsit/wangsvue/form'
 
-const onSubmit = (payload: { formValues: Record<string, unknown> }) => {
+const onSubmit = (payload: FormPayload) => {
   console.log('Form submitted:', payload.formValues)
 }
 </script>
