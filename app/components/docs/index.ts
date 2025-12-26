@@ -244,5 +244,20 @@ export const componentRegistry: Record<
   // Advanced Form demos
   'form/SetValues': () => import('./form/SetValues.vue'),
   'form/SetErrors': () => import('./form/SetErrors.vue'),
-  'form/ConditionalFields': () => import('./form/ConditionalFields.vue')
+  'form/ConditionalFields': () => import('./form/ConditionalFields.vue'),
+
+  // DialogConfirm components
+  'dialogconfirm/Basic': () => import('./dialogconfirm/Basic.vue'),
+  'dialogconfirm/Severity': () => import('./dialogconfirm/Severity.vue'),
+  'dialogconfirm/Messages': () => import('./dialogconfirm/Messages.vue'),
+  'dialogconfirm/Lists': () => import('./dialogconfirm/Lists.vue'),
+  'dialogconfirm/Buttons': () => import('./dialogconfirm/Buttons.vue'),
+  'dialogconfirm/Template': () => import('./dialogconfirm/Template.vue'),
+
+  // OverlayPanel components
+  'overlaypanel/Basic': () => import('./overlaypanel/Basic.vue'),
+  'overlaypanel/Dismissable': () => import('./overlaypanel/Dismissable.vue'),
+  'overlaypanel/CloseIcon': () => import('./overlaypanel/CloseIcon.vue'),
+  'overlaypanel/Responsive': () => import('./overlaypanel/Responsive.vue'),
+  'overlaypanel/Template': () => import('./overlaypanel/Template.vue')
 }
