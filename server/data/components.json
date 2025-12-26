@@ -7,7 +7,7 @@
       {
         "id": "import",
         "label": "Import",
-        "description": "```ts\nimport { Form } from '@fewangsit/wangsvue';\n```",
+        "description": "```ts\nimport { Form } from '@fewangsit/wangsvue';\nimport type { FormPayload } from '@fewangsit/wangsvue/form';\n```",
         "example": "",
         "hasExample": false,
         "examplePath": null
@@ -80,7 +80,7 @@
         "id": "conditional-fields",
         "label": "Conditional Fields",
         "description": "Use the formValues from the fields slot to conditionally render input fields based on other field values.",
-        "example": "<script setup lang=\"ts\">\nimport { Form, InputText, InputPassword } from '@fewangsit/wangsvue'\n\nconst onSubmit = (payload: { formValues: Record<string, unknown>, stayAfterSubmit: boolean }) => {\n  console.log('Form submitted:', payload)\n}\n</script>\n\n<template>\n  <Form @submit=\"onSubmit\">\n    <template #fields=\"{ formValues }\">\n      <InputText\n        label=\"User Type\"\n        field-name=\"userType\"\n        :use-validator=\"true\"\n        :mandatory=\"true\"\n        :validator-message=\"{ empty: 'User type is required' }\"\n      />\n      <InputPassword\n        v-if=\"formValues.userType === 'admin'\"\n        label=\"Admin Password\"\n        field-name=\"adminPassword\"\n        :use-validator=\"true\"\n        :mandatory=\"true\"\n        :validator-message=\"{ empty: 'Admin password is required' }\"\n      />\n    </template>\n  </Form>\n</template>\n",
+        "example": "<script setup lang=\"ts\">\nimport { Form, Dropdown, InputPassword } from '@fewangsit/wangsvue'\n\nconst onSubmit = (payload: { formValues: Record<string, unknown>, stayAfterSubmit: boolean }) => {\n  console.log('Form submitted:', payload)\n}\n</script>\n\n<template>\n  <Form @submit=\"onSubmit\">\n    <template #fields=\"{ formValues }\">\n      <Dropdown\n        label=\"User Type\"\n        field-name=\"userType\"\n        :use-validator=\"true\"\n        :mandatory=\"true\"\n        :validator-message=\"{ empty: 'User type is required' }\"\n        :options=\"[\n          { label: 'User', value: 'user' },\n          { label: 'Admin', value: 'admin' }\n        ]\"\n        option-label=\"label\"\n        option-value=\"value\"\n      />\n      <InputPassword\n        v-if=\"formValues.userType === 'admin'\"\n        label=\"Admin Password\"\n        field-name=\"adminPassword\"\n        placeholder=\"Enter admin password\"\n        :use-validator=\"true\"\n        :mandatory=\"true\"\n        :validator-message=\"{ empty: 'Admin password is required' }\"\n      />\n    </template>\n  </Form>\n</template>\n",
         "hasExample": true,
         "examplePath": "form/ConditionalFields"
       }
@@ -1101,6 +1101,93 @@
         "example": "<script setup lang=\"ts\">\nimport { Form, InputPassword } from '@fewangsit/wangsvue'\n\nconst onSubmit = (payload: { formValues: Record<string, unknown> }) => {\n  console.log('Form submitted:', payload.formValues)\n}\n</script>\n\n<template>\n  <Form\n    :buttons-template=\"['submit', 'clear']\"\n    hide-stay-checkbox\n    @submit=\"onSubmit\"\n  >\n    <template #fields>\n      <InputPassword\n        label=\"Password\"\n        field-name=\"password\"\n        :use-validator=\"true\"\n        :mandatory=\"true\"\n        :validator-message=\"{ empty: 'Password is required' }\"\n      />\n    </template>\n  </Form>\n</template>\n",
         "hasExample": true,
         "examplePath": "inputpassword/Form"
+      }
+    ]
+  },
+  {
+    "name": "dialogform",
+    "title": "DialogForm",
+    "description": "DialogForm is combination of Form and Dialog. Handles validation on submit using vee-validate. You need to install vee-validate while using this component.",
+    "sections": [
+      {
+        "id": "import",
+        "label": "Import",
+        "description": "```ts\nimport { DialogForm } from '@fewangsit/wangsvue';\nimport type { FormPayload } from '@fewangsit/wangsvue/form';\n```",
+        "example": "",
+        "hasExample": false,
+        "examplePath": null
+      },
+      {
+        "id": "basic",
+        "label": "Basic",
+        "description": "The basic usage of DialogForm with a simple text input field.",
+        "example": "<script setup lang=\"ts\">\nimport { ref } from 'vue'\nimport { DialogForm, InputText, Button } from '@fewangsit/wangsvue'\n\nconst visible = ref(false)\n\nconst onSubmit = (payload: { formValues: Record<string, unknown>, stayAfterSubmit: boolean }) => {\n  console.log('Form submitted:', payload.formValues)\n}\n</script>\n\n<template>\n  <Button\n    label=\"Open Dialog\"\n    @click=\"visible = true\"\n  />\n  <DialogForm\n    v-model:visible=\"visible\"\n    header=\"Basic Dialog Form\"\n    :buttons-template=\"['submit', 'clear']\"\n    @submit=\"onSubmit\"\n  >\n    <template #fields>\n      <InputText\n        label=\"Name\"\n        field-name=\"name\"\n        :use-validator=\"true\"\n        :mandatory=\"false\"\n      />\n    </template>\n  </DialogForm>\n</template>\n",
+        "hasExample": true,
+        "examplePath": "dialogform/Basic"
+      },
+      {
+        "id": "stay-after-submit",
+        "label": "Stay After Submit",
+        "description": "Demonstrates the stay after submit functionality with showStayCheckbox enabled.",
+        "example": "<script setup lang=\"ts\">\nimport { ref } from 'vue'\nimport { DialogForm, InputText, Button, InputEmail } from '@fewangsit/wangsvue'\n\nconst visible = ref(false)\n\nconst onSubmit = (payload: { formValues: Record<string, unknown>, stayAfterSubmit: boolean }) => {\n  console.log('Form submitted:', payload.formValues)\n  console.log('Stay after submit:', payload.stayAfterSubmit)\n  visible.value = payload.stayAfterSubmit\n}\n</script>\n\n<template>\n  <Button\n    label=\"Open Dialog\"\n    @click=\"visible = true\"\n  />\n  <DialogForm\n    v-model:visible=\"visible\"\n    header=\"Stay After Submit Dialog\"\n    :buttons-template=\"['submit', 'clear']\"\n    :show-stay-checkbox=\"true\"\n    @submit=\"onSubmit\"\n  >\n    <template #fields>\n      <InputText\n        label=\"Name\"\n        field-name=\"name\"\n        :use-validator=\"true\"\n        :mandatory=\"true\"\n        :validator-message=\"{ empty: 'Name is required' }\"\n      />\n      <InputEmail\n        label=\"Email\"\n        field-name=\"email\"\n        :use-validator=\"true\"\n        :mandatory=\"true\"\n        :validator-message=\"{ empty: 'Email is required' }\"\n      />\n    </template>\n  </DialogForm>\n</template>\n",
+        "hasExample": true,
+        "examplePath": "dialogform/StayAfterSubmit"
+      },
+      {
+        "id": "reset-after-submit",
+        "label": "Reset After Submit",
+        "description": "Demonstrates the reset after submit functionality. Compare how forms behave with resetAfterSubmit enabled (default) vs disabled.",
+        "example": "<script setup lang=\"ts\">\nimport { ref } from 'vue'\nimport { DialogForm, InputText, InputEmail, Button } from '@fewangsit/wangsvue'\n\nconst visible1 = ref(false)\nconst visible2 = ref(false)\n\nconst onSubmit = (payload: { formValues: Record<string, unknown>, stayAfterSubmit: boolean }) => {\n  console.log('Form submitted:', payload.formValues)\n  console.log('Stay after submit:', payload.stayAfterSubmit)\n  // For resetAfterSubmit=true demo, form resets automatically\n}\n\nconst onSubmitNoReset = (payload: { formValues: Record<string, unknown>, stayAfterSubmit: boolean }) => {\n  console.log('Form submitted (no reset):', payload.formValues)\n  console.log('Stay after submit:', payload.stayAfterSubmit)\n}\n</script>\n\n<template>\n  <div>\n    <div class=\"mb-4\">\n      <h4 class=\"text-lg font-semibold mb-2\">\n        Reset After Submit (Default)\n      </h4>\n      <p class=\"text-sm text-gray-600 mb-2\">\n        Form fields are automatically cleared after successful submission.\n      </p>\n      <Button\n        label=\"Open Dialog (Reset)\"\n        @click=\"visible1 = true\"\n      />\n    </div>\n\n    <div class=\"mb-4\">\n      <h4 class=\"text-lg font-semibold mb-2\">\n        No Reset After Submit\n      </h4>\n      <p class=\"text-sm text-gray-600 mb-2\">\n        Form fields retain their values after submission.\n      </p>\n      <Button\n        label=\"Open Dialog (No Reset)\"\n        @click=\"visible2 = true\"\n      />\n    </div>\n\n    <!-- Reset After Submit Dialog -->\n    <DialogForm\n      v-model:visible=\"visible1\"\n      header=\"Reset After Submit Dialog\"\n      :buttons-template=\"['submit', 'clear']\"\n      :reset-after-submit=\"true\"\n      :close-on-submit=\"false\"\n      @submit=\"onSubmit\"\n    >\n      <template #fields>\n        <InputText\n          label=\"Name\"\n          field-name=\"name\"\n          :use-validator=\"true\"\n          :mandatory=\"true\"\n          :validator-message=\"{ empty: 'Name is required' }\"\n        />\n        <InputEmail\n          label=\"Email\"\n          field-name=\"email\"\n          :use-validator=\"true\"\n          :mandatory=\"true\"\n          :validator-message=\"{ empty: 'Email is required' }\"\n        />\n      </template>\n    </DialogForm>\n\n    <!-- No Reset After Submit Dialog -->\n    <DialogForm\n      v-model:visible=\"visible2\"\n      header=\"No Reset After Submit Dialog\"\n      :buttons-template=\"['submit', 'clear']\"\n      :reset-after-submit=\"false\"\n      :close-on-submit=\"false\"\n      @submit=\"onSubmitNoReset\"\n    >\n      <template #fields>\n        <InputText\n          label=\"Name\"\n          field-name=\"name\"\n          :use-validator=\"true\"\n          :mandatory=\"true\"\n          :validator-message=\"{ empty: 'Name is required' }\"\n        />\n        <InputEmail\n          label=\"Email\"\n          field-name=\"email\"\n          :use-validator=\"true\"\n          :mandatory=\"true\"\n          :validator-message=\"{ empty: 'Email is required' }\"\n        />\n      </template>\n    </DialogForm>\n  </div>\n</template>\n",
+        "hasExample": true,
+        "examplePath": "dialogform/ResetAfterSubmit"
+      },
+      {
+        "id": "size",
+        "label": "Size",
+        "description": "",
+        "example": "<script setup lang=\"ts\">\nimport { ref } from 'vue'\nimport { DialogForm, InputText, Button } from '@fewangsit/wangsvue'\n\nconst visibleSmall = ref(false)\nconst visibleMedium = ref(false)\nconst visibleLarge = ref(false)\n\nconst onSubmit = (payload: { formValues: Record<string, unknown>, stayAfterSubmit: boolean }) => {\n  console.log('Form submitted:', payload.formValues)\n}\n</script>\n\n<template>\n  <div>\n    <Button\n      label=\"Small (default)\"\n      class=\"mb-2\"\n      @click=\"visibleSmall = true\"\n    />\n    <DialogForm\n      v-model:visible=\"visibleSmall\"\n      header=\"Small Dialog\"\n      width=\"small\"\n      :buttons-template=\"['submit']\"\n      @submit=\"onSubmit\"\n    >\n      <template #fields>\n        <InputText\n          label=\"Name\"\n          field-name=\"name\"\n        />\n      </template>\n    </DialogForm>\n\n    <Button\n      label=\"Medium\"\n      class=\"mb-2 ml-2\"\n      @click=\"visibleMedium = true\"\n    />\n    <DialogForm\n      v-model:visible=\"visibleMedium\"\n      header=\"Medium Dialog\"\n      width=\"medium\"\n      :buttons-template=\"['submit']\"\n      @submit=\"onSubmit\"\n    >\n      <template #fields>\n        <InputText\n          label=\"Name\"\n          field-name=\"name\"\n        />\n      </template>\n    </DialogForm>\n\n    <Button\n      class=\"mb-2 ml-2\"\n      label=\"Large\"\n      @click=\"visibleLarge = true\"\n    />\n    <DialogForm\n      v-model:visible=\"visibleLarge\"\n      header=\"Large Dialog\"\n      width=\"large\"\n      :buttons-template=\"['submit']\"\n      @submit=\"onSubmit\"\n    >\n      <template #fields>\n        <InputText\n          label=\"Name\"\n          field-name=\"name\"\n        />\n      </template>\n    </DialogForm>\n  </div>\n</template>\n",
+        "hasExample": true,
+        "examplePath": "dialogform/Size"
+      },
+      {
+        "id": "severity",
+        "label": "Severity",
+        "description": "",
+        "example": "<script setup lang=\"ts\">\nimport { ref } from 'vue'\nimport { DialogForm, InputText, Button } from '@fewangsit/wangsvue'\n\nconst visiblePrimary = ref(false)\nconst visibleSuccess = ref(false)\nconst visibleDanger = ref(false)\n\nconst onSubmit = (payload: { formValues: Record<string, unknown>, stayAfterSubmit: boolean }) => {\n  console.log('Form submitted:', payload.formValues)\n}\n</script>\n\n<template>\n  <div>\n    <Button\n      label=\"Primary\"\n      class=\"mb-2\"\n      @click=\"visiblePrimary = true\"\n    />\n    <DialogForm\n      v-model:visible=\"visiblePrimary\"\n      :severity=\"'primary'\"\n      header=\"Primary Dialog\"\n      :buttons-template=\"['submit']\"\n      @submit=\"onSubmit\"\n    >\n      <template #fields>\n        <InputText\n          label=\"Name\"\n          field-name=\"name\"\n        />\n      </template>\n    </DialogForm>\n\n    <Button\n      label=\"Success\"\n      class=\"mb-2 ml-2\"\n      @click=\"visibleSuccess = true\"\n    />\n    <DialogForm\n      v-model:visible=\"visibleSuccess\"\n      :severity=\"'success'\"\n      header=\"Success Dialog\"\n      :buttons-template=\"['submit']\"\n      @submit=\"onSubmit\"\n    >\n      <template #fields>\n        <InputText\n          label=\"Name\"\n          field-name=\"name\"\n        />\n      </template>\n    </DialogForm>\n\n    <Button\n      label=\"Danger\"\n      class=\"mb-2 ml-2\"\n      @click=\"visibleDanger = true\"\n    />\n\n    <DialogForm\n      v-model:visible=\"visibleDanger\"\n      :severity=\"'danger'\"\n      header=\"Danger Dialog\"\n      :buttons-template=\"['submit']\"\n      @submit=\"onSubmit\"\n    >\n      <template #fields>\n        <InputText\n          label=\"Name\"\n          field-name=\"name\"\n        />\n      </template>\n    </DialogForm>\n  </div>\n</template>\n",
+        "hasExample": true,
+        "examplePath": "dialogform/Severity"
+      },
+      {
+        "id": "validation",
+        "label": "Validation",
+        "description": "Demonstrates form validation with a mandatory field.",
+        "example": "<script setup lang=\"ts\">\nimport { ref } from 'vue'\nimport { DialogForm, InputText, Button } from '@fewangsit/wangsvue'\n\nconst visible = ref(false)\n\nconst onSubmit = (payload: { formValues: Record<string, unknown>, stayAfterSubmit: boolean }) => {\n  console.log('Form submitted:', payload.formValues)\n}\n</script>\n\n<template>\n  <Button\n    label=\"Open Dialog\"\n    @click=\"visible = true\"\n  />\n  <DialogForm\n    v-model:visible=\"visible\"\n    header=\"Validation Dialog\"\n    :buttons-template=\"['submit', 'clear']\"\n    @submit=\"onSubmit\"\n  >\n    <template #fields>\n      <InputText\n        label=\"Name\"\n        field-name=\"name\"\n        :use-validator=\"true\"\n        :mandatory=\"true\"\n        :validator-message=\"{ empty: 'Name is required' }\"\n      />\n    </template>\n  </DialogForm>\n</template>\n",
+        "hasExample": true,
+        "examplePath": "dialogform/Validation"
+      },
+      {
+        "id": "custom-header",
+        "label": "Custom Header",
+        "description": "Custom header using the header slot.",
+        "example": "<script setup lang=\"ts\">\nimport { ref } from 'vue'\nimport { DialogForm, InputText, Button } from '@fewangsit/wangsvue'\n\nconst visible = ref(false)\n\nconst onSubmit = (payload: { formValues: Record<string, unknown>, stayAfterSubmit: boolean }) => {\n  console.log('Form submitted:', payload.formValues)\n}\n</script>\n\n<template>\n  <Button\n    label=\"Open Dialog\"\n    @click=\"visible = true\"\n  />\n\n  <DialogForm\n    v-model:visible=\"visible\"\n    :buttons-template=\"['submit', 'clear']\"\n    @submit=\"onSubmit\"\n  >\n    <template #header>\n      <div class=\"flex items-center\">\n        <span class=\"text-2xl mr-2\">👋</span>\n        <span>Custom Header</span>\n      </div>\n    </template>\n    <template #fields>\n      <InputText\n        label=\"Name\"\n        field-name=\"name\"\n        :use-validator=\"true\"\n        :mandatory=\"false\"\n      />\n    </template>\n  </DialogForm>\n</template>\n",
+        "hasExample": true,
+        "examplePath": "dialogform/CustomHeader"
+      },
+      {
+        "id": "custom-buttons",
+        "label": "Custom Buttons",
+        "description": "Custom buttons using actionButtons slot.",
+        "example": "<script setup lang=\"ts\">\nimport { ref } from 'vue'\nimport { DialogForm, InputText, Button } from '@fewangsit/wangsvue'\n\nconst visible = ref(false)\nconst form = useTemplateRef<DialogForm>('dialogForm')\n\nconst onSubmit = (payload: { formValues: Record<string, unknown>, stayAfterSubmit: boolean }) => {\n  console.log('Form submitted:', payload.formValues)\n}\n\nconst clearFields = () => {\n  form.value?.clearField()\n}\n</script>\n\n<template>\n  <Button\n    label=\"Open Dialog\"\n    @click=\"visible = true\"\n  />\n  <DialogForm\n    ref=\"dialogForm\"\n    v-model:visible=\"visible\"\n    header=\"Custom Buttons Dialog\"\n    @submit=\"onSubmit\"\n  >\n    <template #fields>\n      <InputText\n        label=\"Name\"\n        field-name=\"name\"\n        :use-validator=\"true\"\n        :mandatory=\"false\"\n      />\n    </template>\n    <template #actionButtons=\"{ submit }\">\n      <Button\n        label=\"Clear\"\n        severity=\"secondary\"\n        @click=\"clearFields\"\n      />\n      <Button\n        label=\"Custom Save\"\n        class=\"mr-2\"\n        @click=\"submit\"\n      />\n    </template>\n  </DialogForm>\n</template>\n",
+        "hasExample": true,
+        "examplePath": "dialogform/CustomButtons"
+      },
+      {
+        "id": "aside-right-slot",
+        "label": "Aside Right Slot",
+        "description": "Demonstrates the aside-right slot for adding content to the right side of the dialog, such as previews or additional information.",
+        "example": "<script setup lang=\"ts\">\nimport { ref } from 'vue'\nimport { DialogForm, InputText, Button } from '@fewangsit/wangsvue'\nimport type { FormPayload } from '@fewangsit/wangsvue/form'\n\nconst visible = ref(false)\n\nconst onSubmit = (payload: FormPayload) => {\n  console.log('Form submitted:', payload.formValues)\n}\n</script>\n\n<template>\n  <Button\n    label=\"Open Dialog with Aside\"\n    @click=\"visible = true\"\n  />\n  <DialogForm\n    v-model:visible=\"visible\"\n    header=\"Dialog with Aside Right\"\n    :buttons-template=\"['submit', 'clear']\"\n    :aside-right-width=\"300\"\n    width=\"large\"\n    @submit=\"onSubmit\"\n  >\n    <template #fields>\n      <InputText\n        label=\"Name\"\n        field-name=\"name\"\n        :use-validator=\"true\"\n        :mandatory=\"true\"\n        :validator-message=\"{ empty: 'Name is required' }\"\n      />\n      <InputText\n        label=\"Description\"\n        field-name=\"description\"\n        :use-validator=\"true\"\n        :mandatory=\"false\"\n      />\n    </template>\n\n    <template #aside-right>\n      <div class=\"p-4\">\n        <h5 class=\"font-semibold mb-2\">\n          Preview\n        </h5>\n        <p class=\"text-sm text-gray-600 mb-2\">\n          This is the aside right content. It can contain:\n        </p>\n        <ul class=\"text-sm space-y-1\">\n          <li>• Summary information</li>\n          <li>• Preview panels</li>\n          <li>• Additional controls</li>\n          <li>• Help content</li>\n        </ul>\n        <div class=\"mt-4 p-3 bg-gray-50 rounded\">\n          <p class=\"text-xs text-gray-500\">\n            Aside width: 300px\n          </p>\n        </div>\n      </div>\n    </template>\n  </DialogForm>\n</template>\n",
+        "hasExample": true,
+        "examplePath": "dialogform/AsideRight"
       }
     ]
   },

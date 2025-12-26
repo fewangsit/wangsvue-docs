@@ -98,12 +98,18 @@ export const componentRegistry: Record<
     import('./inputphonenumber/Mandatory.vue'),
   'inputphonenumber/Disabled': () =>
     import('./inputphonenumber/Disabled.vue'),
-  'inputphonenumber/Invalid': () =>
-    import('./inputphonenumber/Invalid.vue'),
-  'inputphonenumber/FieldInfo': () =>
-    import('./inputphonenumber/FieldInfo.vue'),
-  'inputphonenumber/FormIntegration': () =>
-    import('./inputphonenumber/FormIntegration.vue'),
+
+  // DialogForm components
+  'dialogform/Basic': () => import('./dialogform/Basic.vue'),
+  'dialogform/Size': () => import('./dialogform/Size.vue'),
+  'dialogform/Severity': () => import('./dialogform/Severity.vue'),
+  'dialogform/Validation': () => import('./dialogform/Validation.vue'),
+  'dialogform/StayAfterSubmit': () => import('./dialogform/StayAfterSubmit.vue'),
+  'dialogform/ResetAfterSubmit': () => import('./dialogform/ResetAfterSubmit.vue'),
+  'dialogform/CustomHeader': () => import('./dialogform/CustomHeader.vue'),
+  'dialogform/CustomButtons': () => import('./dialogform/CustomButtons.vue'),
+  'dialogform/AsideRight': () => import('./dialogform/AsideRight.vue'),
+  'dialogform/ConfirmDialog': () => import('./dialogform/ConfirmDialog.vue'),
 
   // InputURL components
   'inputurl/Basic': () => import('./inputurl/Basic.vue'),

@@ -12,7 +12,7 @@
   },
   "dependencies": {
     "@fewangsit/wangsvue": "1.5.229-alpha.11",
-    "@fewangsit/wangsvue-presets": "1.0.111-alpha.2",
+    "@fewangsit/wangsvue-presets": "1.0.111-alpha.3",
     "@fewangsit/workspace-api-services": "1.0.18-alpha.1",
     "@iconify-json/lucide": "^1.2.75",
     "@iconify-json/simple-icons": "^1.2.60",
