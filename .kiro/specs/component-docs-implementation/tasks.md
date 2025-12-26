@@ -27,7 +27,7 @@
 - [ ] FieldWrapper
 - [ ] FileUpload
 - [ ] FilterContainer
-- [ ] Form
+- [x] Form
 - [ ] GalleryPreview
 - [x] Icon
 - [ ] Image

@@ -1,5 +1,92 @@
 [
   {
+    "name": "form",
+    "title": "Form",
+    "description": "Form is a component for creating forms with validation on submit using vee-validate. You need to install vee-validate while using this component.",
+    "sections": [
+      {
+        "id": "import",
+        "label": "Import",
+        "description": "```ts\nimport { Form } from '@fewangsit/wangsvue';\n```",
+        "example": "",
+        "hasExample": false,
+        "examplePath": null
+      },
+      {
+        "id": "basic",
+        "label": "Basic",
+        "description": "A basic form with submit button and a simple input field.",
+        "example": "<script setup lang=\"ts\">\nimport { Form, InputText } from '@fewangsit/wangsvue'\n\nconst onSubmit = (payload: { formValues: Record<string, unknown>, stayAfterSubmit: boolean }) => {\n  console.log('Form submitted:', payload)\n}\n</script>\n\n<template>\n  <Form\n    :buttons-template=\"['submit']\"\n    @submit=\"onSubmit\"\n  >\n    <template #fields>\n      <InputText\n        label=\"Name\"\n        field-name=\"name\"\n        :use-validator=\"true\"\n        :mandatory=\"true\"\n        :validator-message=\"{ empty: 'Name is required' }\"\n      />\n    </template>\n  </Form>\n</template>\n",
+        "hasExample": true,
+        "examplePath": "form/Basic"
+      },
+      {
+        "id": "custom-buttons",
+        "label": "Custom Buttons",
+        "description": "Customize button labels and template to include only specific actions like Save and Submit.",
+        "example": "<script setup lang=\"ts\">\nimport { Form, InputText } from '@fewangsit/wangsvue'\n\nconst onSubmit = (payload: { formValues: Record<string, unknown>, stayAfterSubmit: boolean }) => {\n  console.log('Form submitted:', payload)\n}\n\nconst onSave = (payload: { formValues: Record<string, unknown>, stayAfterSubmit: boolean }) => {\n  console.log('Form saved:', payload)\n}\n</script>\n\n<template>\n  <Form\n    :buttons-template=\"['save', 'submit']\"\n    :save-btn-label=\"'Save Draft'\"\n    :submit-btn-label=\"'Complete'\"\n    @submit=\"onSubmit\"\n    @save=\"onSave\"\n  >\n    <template #fields>\n      <InputText\n        label=\"Email\"\n        field-name=\"email\"\n        :use-validator=\"true\"\n        :mandatory=\"true\"\n        :validator-message=\"{ empty: 'Email is required', invalidFormat: 'Invalid email' }\"\n      />\n    </template>\n  </Form>\n</template>\n",
+        "hasExample": true,
+        "examplePath": "form/CustomButtons"
+      },
+      {
+        "id": "hide-footer",
+        "label": "Hide Footer",
+        "description": "Hide the form footer to manage buttons externally.",
+        "example": "<script setup lang=\"ts\">\nimport { Form, InputText, Button } from '@fewangsit/wangsvue'\nimport { useTemplateRef } from 'vue'\n\nconst form = useTemplateRef<Form>('form')\nconst onSubmit = () => {\n  form.value?.submit()\n}\n\nconst onClear = () => {\n  form.value?.clearField()\n}\n</script>\n\n<template>\n  <Form\n    ref=\"form\"\n    hide-footer\n  >\n    <template #fields>\n      <InputText\n        label=\"Message\"\n        field-name=\"message\"\n        :use-validator=\"true\"\n        :mandatory=\"true\"\n        :validator-message=\"{ empty: 'Message is required' }\"\n      />\n    </template>\n  </Form>\n  <div class=\"flex gap-2 mt-4\">\n    <Button\n      label=\"Clear\"\n      severity=\"secondary\"\n      @click=\"onClear\"\n    />\n    <Button\n      label=\"Submit\"\n      @click=\"onSubmit\"\n    />\n  </div>\n</template>\n",
+        "hasExample": true,
+        "examplePath": "form/HideFooter"
+      },
+      {
+        "id": "column-layout",
+        "label": "Column Layout",
+        "description": "Arrange form fields in multiple columns per row.",
+        "example": "<script setup lang=\"ts\">\nimport { Form, InputText } from '@fewangsit/wangsvue'\n\nconst onSubmit = (payload: { formValues: Record<string, unknown>, stayAfterSubmit: boolean }) => {\n  console.log('Form submitted:', payload)\n}\n</script>\n\n<template>\n  <Form\n    :column-per-row=\"2\"\n    @submit=\"onSubmit\"\n  >\n    <template #fields>\n      <InputText\n        label=\"First Name\"\n        field-name=\"firstName\"\n        :use-validator=\"true\"\n        :mandatory=\"true\"\n        :validator-message=\"{ empty: 'First name is required' }\"\n      />\n      <InputText\n        label=\"Last Name\"\n        field-name=\"lastName\"\n        :use-validator=\"true\"\n        :mandatory=\"true\"\n        :validator-message=\"{ empty: 'Last name is required' }\"\n      />\n    </template>\n  </Form>\n</template>\n",
+        "hasExample": true,
+        "examplePath": "form/Columns"
+      },
+      {
+        "id": "validation-on-save",
+        "label": "Validation on Save",
+        "description": "When buttonsTemplate includes 'save', set validateOnSave to true to perform form validation on save button click, just like submit.",
+        "example": "<script setup lang=\"ts\">\nimport { Form, InputText } from '@fewangsit/wangsvue'\n\nconst onSave = (payload: { formValues: Record<string, unknown>, stayAfterSubmit: boolean }) => {\n  console.log('Form saved:', payload)\n}\n</script>\n\n<template>\n  <Form\n    :buttons-template=\"['save']\"\n    :validate-on-save=\"true\"\n    @save=\"onSave\"\n  >\n    <template #fields>\n      <InputText\n        label=\"Username\"\n        field-name=\"username\"\n        :use-validator=\"true\"\n        :mandatory=\"true\"\n        :validator-message=\"{ empty: 'Username is required' }\"\n      />\n    </template>\n  </Form>\n</template>\n",
+        "hasExample": true,
+        "examplePath": "form/ValidateOnSave"
+      },
+      {
+        "id": "stay-after-submit",
+        "label": "Stay After Submit",
+        "description": "Include a checkbox to keep the form visible after submission without resetting. The form visibility is handled manually after submit by checking property `stayAfterSubmit`. To hide the checkbox, set hideStayCheckbox to `false` to the Form component.",
+        "example": "<script setup lang=\"ts\">\nimport { Form, InputText } from '@fewangsit/wangsvue'\n\nconst onSubmit = (payload: { formValues: Record<string, unknown>, stayAfterSubmit: boolean }) => {\n  console.log('Form submitted, stay after submit:', payload.stayAfterSubmit)\n}\n</script>\n\n<template>\n  <Form @submit=\"onSubmit\">\n    <template #fields>\n      <InputText\n        label=\"Feedback\"\n        field-name=\"feedback\"\n        :use-validator=\"true\"\n        :mandatory=\"true\"\n        :validator-message=\"{ empty: 'Feedback is required' }\"\n      />\n    </template>\n  </Form>\n</template>\n",
+        "hasExample": true,
+        "examplePath": "form/StayAfterSubmit"
+      },
+      {
+        "id": "set-values",
+        "label": "Set Values",
+        "description": "Use setValues to populate the form with existing data, typically for edit forms.",
+        "example": "<script setup lang=\"ts\">\nimport { Form, InputText } from '@fewangsit/wangsvue'\nimport { useTemplateRef } from 'vue'\n\nconst form = useTemplateRef<Form>('form')\nconst existingData = {\n  name: 'John Doe',\n  email: 'john@example.com'\n}\n\nconst loadData = () => {\n  form.value?.setValues(existingData)\n}\n</script>\n\n<template>\n  <div>\n    <button\n      class=\"mb-4 px-4 py-2 bg-blue-500 text-white rounded\"\n      @click=\"loadData\"\n    >\n      Load Existing Data\n    </button>\n    <Form ref=\"form\">\n      <template #fields>\n        <InputText\n          label=\"Name\"\n          field-name=\"name\"\n          :use-validator=\"true\"\n          :mandatory=\"true\"\n          :validator-message=\"{ empty: 'Name is required' }\"\n        />\n        <InputText\n          label=\"Email\"\n          field-name=\"email\"\n          :use-validator=\"true\"\n          :mandatory=\"true\"\n          :validator-message=\"{ empty: 'Email is required', invalidFormat: 'Invalid email' }\"\n        />\n      </template>\n    </Form>\n  </div>\n</template>\n",
+        "hasExample": true,
+        "examplePath": "form/SetValues"
+      },
+      {
+        "id": "set-errors",
+        "label": "Set Errors",
+        "description": "Manually set errors using setErrors, for example after receiving API response errors.",
+        "example": "<script setup lang=\"ts\">\nimport { Form, InputEmail } from '@fewangsit/wangsvue'\nimport { useTemplateRef } from 'vue'\n\nconst form = useTemplateRef<Form>('form')\nconst apiErrors = {\n  email: 'This email is already registered'\n}\n\nconst simulateApiError = async () => {\n  // Simulate an API call delay\n  await new Promise(resolve => setTimeout(resolve, 500))\n\n  // Set errors returned from the \"API\"\n  form.value?.setErrors(apiErrors)\n}\n</script>\n\n<template>\n  <Form\n    ref=\"form\"\n    :buttons-template=\"['submit']\"\n    :reset-after-submit=\"false\"\n    @submit=\"simulateApiError\"\n  >\n    <template #fields>\n      <InputEmail\n        label=\"Email\"\n        field-name=\"email\"\n        :use-validator=\"true\"\n        :mandatory=\"true\"\n        :validator-message=\"{ empty: 'Email is required' }\"\n      />\n    </template>\n  </Form>\n</template>\n",
+        "hasExample": true,
+        "examplePath": "form/SetErrors"
+      },
+      {
+        "id": "conditional-fields",
+        "label": "Conditional Fields",
+        "description": "Use the formValues from the fields slot to conditionally render input fields based on other field values.",
+        "example": "<script setup lang=\"ts\">\nimport { Form, InputText, InputPassword } from '@fewangsit/wangsvue'\n\nconst onSubmit = (payload: { formValues: Record<string, unknown>, stayAfterSubmit: boolean }) => {\n  console.log('Form submitted:', payload)\n}\n</script>\n\n<template>\n  <Form @submit=\"onSubmit\">\n    <template #fields=\"{ formValues }\">\n      <InputText\n        label=\"User Type\"\n        field-name=\"userType\"\n        :use-validator=\"true\"\n        :mandatory=\"true\"\n        :validator-message=\"{ empty: 'User type is required' }\"\n      />\n      <InputPassword\n        v-if=\"formValues.userType === 'admin'\"\n        label=\"Admin Password\"\n        field-name=\"adminPassword\"\n        :use-validator=\"true\"\n        :mandatory=\"true\"\n        :validator-message=\"{ empty: 'Admin password is required' }\"\n      />\n    </template>\n  </Form>\n</template>\n",
+        "hasExample": true,
+        "examplePath": "form/ConditionalFields"
+      }
+    ]
+  },
+  {
     "name": "button",
     "title": "Button",
     "description": "Button is an extension to standard button element with icons and theming.",
@@ -965,7 +1052,7 @@
   {
     "name": "inputpassword",
     "title": "InputPassword",
-    "description": "InputPassword renders a password field to enter sensitive data with optional visibility toggle.",
+    "description": "InputPassword is a password input field that displays a strength indicator when enabled.",
     "sections": [
       {
         "id": "import",
@@ -979,7 +1066,7 @@
         "id": "basic",
         "label": "Basic",
         "description": "The basic usage of InputPassword with a placeholder.",
-        "example": "<script setup lang=\"ts\">\nimport { InputPassword } from '@fewangsit/wangsvue'\n\nconst password = ref('')\n</script>\n\n<template>\n  <div class=\"flex flex-wrap gap-3\">\n    <InputPassword\n      v-model=\"password\"\n      placeholder=\"Enter password\"\n    />\n  </div>\n</template>\n",
+        "example": "<script setup lang=\"ts\">\nimport { InputPassword } from '@fewangsit/wangsvue'\n\nconst password = ref('')\n</script>\n\n<template>\n  <InputPassword\n    v-model=\"password\"\n    placeholder=\"Enter password\"\n  />\n</template>\n",
         "hasExample": true,
         "examplePath": "inputpassword/Basic"
       },
@@ -987,7 +1074,7 @@
         "id": "label-and-placeholder",
         "label": "Label and Placeholder",
         "description": "InputPassword can have a label and placeholder for better user guidance.",
-        "example": "<script setup lang=\"ts\">\nimport { InputPassword } from '@fewangsit/wangsvue'\n\nconst password = ref('')\n</script>\n\n<template>\n  <div class=\"flex flex-wrap gap-3\">\n    <InputPassword\n      v-model=\"password\"\n      label=\"Password\"\n      placeholder=\"Enter your password\"\n    />\n  </div>\n</template>\n",
+        "example": "<script setup lang=\"ts\">\nimport { InputPassword } from '@fewangsit/wangsvue'\n\nconst password = ref('')\n</script>\n\n<template>\n  <InputPassword\n    v-model=\"password\"\n    label=\"Password\"\n    placeholder=\"Enter your password\"\n  />\n</template>\n",
         "hasExample": true,
         "examplePath": "inputpassword/LabelPlaceholder"
       },
@@ -995,17 +1082,17 @@
         "id": "invalid-state",
         "label": "Invalid State",
         "description": "Display validation feedback when the input is invalid.",
-        "example": "<script setup lang=\"ts\">\nimport { InputPassword } from '@fewangsit/wangsvue'\n\nconst password = ref('')\n</script>\n\n<template>\n  <div class=\"flex flex-wrap gap-3\">\n    <InputPassword\n      v-model=\"password\"\n      label=\"Password\"\n      placeholder=\"Enter password\"\n      :invalid=\"true\"\n      validator-message=\"Password is required\"\n    />\n  </div>\n</template>\n",
+        "example": "<script setup lang=\"ts\">\nimport { InputPassword } from '@fewangsit/wangsvue'\n\nconst password = ref('')\n</script>\n\n<template>\n  <InputPassword\n    v-model=\"password\"\n    label=\"Password\"\n    placeholder=\"Enter password\"\n    :invalid=\"true\"\n    validator-message=\"Password is required\"\n  />\n</template>\n",
         "hasExample": true,
         "examplePath": "inputpassword/Invalid"
       },
       {
-        "id": "toggle-visibility",
-        "label": "Toggle Visibility",
-        "description": "The feedback prop enables a toggle button to show/hide the password.",
-        "example": "<script setup lang=\"ts\">\nimport { InputPassword } from '@fewangsit/wangsvue'\n\nconst password = ref('')\n</script>\n\n<template>\n  <div class=\"flex flex-wrap gap-3\">\n    <InputPassword\n      v-model=\"password\"\n      label=\"Password\"\n      placeholder=\"Enter password\"\n      :feedback=\"true\"\n    />\n  </div>\n</template>\n",
+        "id": "strength-indicator",
+        "label": "Strength Indicator",
+        "description": "The feedback prop displays a strength indicator for the entered password.",
+        "example": "<script setup lang=\"ts\">\nimport { InputPassword } from '@fewangsit/wangsvue'\n\nconst password = ref('')\n</script>\n\n<template>\n  <InputPassword\n    v-model=\"password\"\n    label=\"Password\"\n    placeholder=\"Enter password\"\n    :feedback=\"true\"\n  />\n</template>\n",
         "hasExample": true,
-        "examplePath": "inputpassword/Toggle"
+        "examplePath": "inputpassword/Strength"
       },
       {
         "id": "form-integration",

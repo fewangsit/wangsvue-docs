@@ -223,5 +223,18 @@ export const componentRegistry: Record<
   'inputpassword/LabelPlaceholder': () => import('./inputpassword/LabelPlaceholder.vue'),
   'inputpassword/Invalid': () => import('./inputpassword/Invalid.vue'),
   'inputpassword/Form': () => import('./inputpassword/Form.vue'),
-  'inputpassword/Strength': () => import('./inputpassword/Strength.vue')
+  'inputpassword/Strength': () => import('./inputpassword/Strength.vue'),
+
+  // Form components
+  'form/Basic': () => import('./form/Basic.vue'),
+  'form/CustomButtons': () => import('./form/CustomButtons.vue'),
+  'form/HideFooter': () => import('./form/HideFooter.vue'),
+  'form/Columns': () => import('./form/Columns.vue'),
+  'form/ValidateOnSave': () => import('./form/ValidateOnSave.vue'),
+  'form/StayAfterSubmit': () => import('./form/StayAfterSubmit.vue'),
+
+  // Advanced Form demos
+  'form/SetValues': () => import('./form/SetValues.vue'),
+  'form/SetErrors': () => import('./form/SetErrors.vue'),
+  'form/ConditionalFields': () => import('./form/ConditionalFields.vue')
 }
