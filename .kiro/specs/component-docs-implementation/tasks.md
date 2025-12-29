@@ -6,7 +6,7 @@
 - [x] Breadcrumb
 - [x] Button
 - [ ] ButtonBulkAction
-- [ ] ButtonCopy
+- [x] ButtonCopy
 - [ ] ButtonDownload
 - [ ] ButtonFilter
 - [ ] ButtonRadio

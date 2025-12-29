@@ -1223,6 +1223,61 @@
     ]
   },
   {
+    "name": "breadcrumb",
+    "title": "Breadcrumb",
+    "description": "Breadcrumb is a component for displaying a breadcrumb trail to help users navigate a website or application. It takes an array of menu items as a prop and displays each item as a link or label, with a separator between them.",
+    "sections": [
+      {
+        "id": "import-",
+        "label": "Import\r",
+        "description": "```ts\r\nimport { Breadcrumb } from '@fewangsit/wangsvue';\r\n```",
+        "example": "",
+        "hasExample": false,
+        "examplePath": null
+      },
+      {
+        "id": "basic-",
+        "label": "Basic\r",
+        "description": "Basic breadcrumb navigation with menu items.",
+        "example": "<script setup lang=\"ts\">\r\nimport { Breadcrumb } from '@fewangsit/wangsvue'\r\n\r\nconst basicMenus = [\r\n  { name: 'Home' },\r\n  { name: 'Products' },\r\n  { name: 'Electronics' },\r\n  { name: 'Smartphones' }\r\n]\r\n</script>\r\n\r\n<template>\r\n  <div class=\"flex flex-wrap gap-3\">\r\n    <Breadcrumb :menus=\"basicMenus\" />\r\n  </div>\r\n</template>\n",
+        "hasExample": true,
+        "examplePath": "breadcrumb/Basic"
+      },
+      {
+        "id": "with-routes-",
+        "label": "With Routes\r",
+        "description": "Breadcrumb items with navigation routes for clickable links.",
+        "example": "<script setup lang=\"ts\">\r\nimport { Breadcrumb } from '@fewangsit/wangsvue'\r\n\r\nconst routeMenus = [\r\n  { name: 'Home', route: '/' },\r\n  { name: 'Dashboard', route: '/dashboard' },\r\n  { name: 'Users', route: '/dashboard/users' },\r\n  { name: 'Profile' }\r\n]\r\n</script>\r\n\r\n<template>\r\n  <div class=\"flex flex-wrap gap-3\">\r\n    <Breadcrumb :menus=\"routeMenus\" />\r\n  </div>\r\n</template>\n",
+        "hasExample": true,
+        "examplePath": "breadcrumb/WithRoutes"
+      },
+      {
+        "id": "mixed-items-",
+        "label": "Mixed Items\r",
+        "description": "Breadcrumb with both clickable and non-clickable items.",
+        "example": "<script setup lang=\"ts\">\r\nimport { Breadcrumb } from '@fewangsit/wangsvue'\r\n\r\nconst mixedMenus = [\r\n  { name: 'Home', route: '/' },\r\n  { name: 'Categories' },\r\n  { name: 'Technology', route: '/categories/technology' },\r\n  { name: 'Articles' },\r\n  { name: 'Current Article' }\r\n]\r\n</script>\r\n\r\n<template>\r\n  <div class=\"flex flex-wrap gap-3\">\r\n    <Breadcrumb :menus=\"mixedMenus\" />\r\n  </div>\r\n</template>\n",
+        "hasExample": true,
+        "examplePath": "breadcrumb/MixedItems"
+      },
+      {
+        "id": "long-path-",
+        "label": "Long Path\r",
+        "description": "Breadcrumb handling longer navigation paths.",
+        "example": "<script setup lang=\"ts\">\r\nimport { Breadcrumb } from '@fewangsit/wangsvue'\r\n\r\nconst longPathMenus = [\r\n  { name: 'Home', route: '/' },\r\n  { name: 'Administration', route: '/admin' },\r\n  { name: 'User Management', route: '/admin/users' },\r\n  { name: 'Roles & Permissions', route: '/admin/users/roles' },\r\n  { name: 'Role Settings', route: '/admin/users/roles/settings' },\r\n  { name: 'Advanced Configuration' }\r\n]\r\n</script>\r\n\r\n<template>\r\n  <div class=\"flex flex-wrap gap-3\">\r\n    <Breadcrumb :menus=\"longPathMenus\" />\r\n  </div>\r\n</template>\n",
+        "hasExample": true,
+        "examplePath": "breadcrumb/LongPath"
+      },
+      {
+        "id": "custom-titles-",
+        "label": "Custom Titles\r",
+        "description": "Breadcrumb items with custom display titles different from names.",
+        "example": "<script setup lang=\"ts\">\r\nimport { Breadcrumb } from '@fewangsit/wangsvue'\r\n\r\nconst customTitleMenus = [\r\n  { name: 'home', title: 'Home Page', route: '/' },\r\n  { name: 'products', title: 'Product Catalog', route: '/products' },\r\n  { name: 'electronics', title: 'Electronics & Gadgets', route: '/products/electronics' },\r\n  { name: 'smartphone-detail', title: 'iPhone 15 Pro Max' }\r\n]\r\n</script>\r\n\r\n<template>\r\n  <div class=\"flex flex-wrap gap-3\">\r\n    <Breadcrumb :menus=\"customTitleMenus\" />\r\n  </div>\r\n</template>\n",
+        "hasExample": true,
+        "examplePath": "breadcrumb/CustomTitles"
+      }
+    ]
+  },
+  {
     "name": "dialogform",
     "title": "DialogForm",
     "description": "DialogForm is combination of Form and Dialog. Handles validation on submit using vee-validate. You need to install vee-validate while using this component.",
@@ -1330,6 +1385,61 @@
         "example": "<script setup lang=\"ts\">\r\nimport { ref } from 'vue'\r\nimport { DialogForm, InputText, Button, useToast, Toast } from '@fewangsit/wangsvue'\r\nimport type { FormPayload } from '@fewangsit/wangsvue/form'\r\n\r\nconst visible = ref(false)\r\nconst toast = useToast()\r\n\r\nconst checkUsernameAvailability = async (value: string): Promise<boolean> => {\r\n  // Simulate API call delay\r\n  await new Promise(resolve => setTimeout(resolve, 3000))\r\n\r\n  // Simulate unavailable usernames\r\n  const unavailableUsernames = [\r\n    'admin', 'user', 'test', 'demo', 'guest', 'root', 'system'\r\n  ]\r\n\r\n  return !unavailableUsernames.includes(value.toLowerCase())\r\n}\r\n\r\nconst onSubmit = (payload: FormPayload) => {\r\n  console.log('Form submitted:', payload.formValues)\r\n\r\n  // Show success toast\r\n  toast.add({\r\n    message: `User \"${payload.formValues.username}\" has been registered!`,\r\n    severity: 'success',\r\n    group: 'dialog-form'\r\n  })\r\n}\r\n</script>\r\n\r\n<template>\r\n  <div>\r\n    <Button\r\n      label=\"Open Registration Form\"\r\n      @click=\"visible = true\"\r\n    />\r\n\r\n    <DialogForm\r\n      v-model:visible=\"visible\"\r\n      header=\"User Registration\"\r\n      :buttons-template=\"['submit', 'clear']\"\r\n      :close-on-submit=\"false\"\r\n      @submit=\"onSubmit\"\r\n    >\r\n      <template #fields>\r\n        <InputText\r\n          label=\"Username\"\r\n          field-name=\"username\"\r\n          placeholder=\"Choose a username\"\r\n          :use-validator=\"true\"\r\n          :mandatory=\"true\"\r\n          :check-availability=\"checkUsernameAvailability\"\r\n          :validator-message=\"{\r\n            empty: 'Username is required',\r\n            exist: 'This username is already taken'\r\n          }\"\r\n        />\r\n\r\n        <p class=\"text-xs mt-1\">\r\n          <strong>Demo Tip:</strong> Enter any name and try submitting while \"Checking availability...\" is displayed. The form will wait for the check to complete.\r\n        </p>\r\n      </template>\r\n    </DialogForm>\r\n  </div>\r\n\r\n  <Toast group=\"dialog-form\" />\r\n</template>\r\n",
         "hasExample": true,
         "examplePath": "dialogform/CheckAvailability"
+      }
+    ]
+  },
+  {
+    "name": "buttoncopy",
+    "title": "ButtonCopy",
+    "description": "ButtonCopy is a component for copying text to the clipboard.",
+    "sections": [
+      {
+        "id": "import-",
+        "label": "Import\r",
+        "description": "```ts\r\nimport { ButtonCopy } from '@fewangsit/wangsvue';\r\n```",
+        "example": "",
+        "hasExample": false,
+        "examplePath": null
+      },
+      {
+        "id": "basic-",
+        "label": "Basic\r",
+        "description": "Basic copy button with text to copy to clipboard.",
+        "example": "<script setup lang=\"ts\">\r\nimport { ButtonCopy } from '@fewangsit/wangsvue'\r\n\r\nconst basicText = 'Hello, World!'\r\nconst emailText = 'contact@example.com'\r\nconst phoneText = '+1 (555) 123-4567'\r\n</script>\r\n\r\n<template>\r\n  <div class=\"flex flex-wrap gap-3\">\r\n    <div class=\"flex items-center gap-2\">\r\n      <span class=\"text-sm\">{{ basicText }}</span>\r\n      <ButtonCopy :text=\"basicText\" />\r\n    </div>\r\n\r\n    <div class=\"flex items-center gap-2\">\r\n      <span class=\"text-sm\">{{ emailText }}</span>\r\n      <ButtonCopy :text=\"emailText\" />\r\n    </div>\r\n\r\n    <div class=\"flex items-center gap-2\">\r\n      <span class=\"text-sm\">{{ phoneText }}</span>\r\n      <ButtonCopy :text=\"phoneText\" />\r\n    </div>\r\n  </div>\r\n</template>\n",
+        "hasExample": true,
+        "examplePath": "buttoncopy/Basic"
+      },
+      {
+        "id": "long-text-",
+        "label": "Long Text\r",
+        "description": "Copy button for longer text content.",
+        "example": "<script setup lang=\"ts\">\r\nimport { ButtonCopy } from '@fewangsit/wangsvue'\r\n\r\nconst longText = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'\r\n\r\nconst address = '1234 Main Street, Suite 567, Springfield, IL 62701, United States of America'\r\n</script>\r\n\r\n<template>\r\n  <div class=\"flex flex-col gap-4\">\r\n    <div class=\"flex items-start gap-2\">\r\n      <div class=\"flex-1\">\r\n        <p class=\"text-sm mb-2\">\r\n          Long paragraph:\r\n        </p>\r\n        <p class=\"text-sm border rounded p-3\">\r\n          {{ longText }}\r\n        </p>\r\n      </div>\r\n      <ButtonCopy :text=\"longText\" />\r\n    </div>\r\n\r\n    <div class=\"flex items-start gap-2\">\r\n      <div class=\"flex-1\">\r\n        <p class=\"text-sm mb-2\">\r\n          Address:\r\n        </p>\r\n        <p class=\"text-sm border rounded p-3\">\r\n          {{ address }}\r\n        </p>\r\n      </div>\r\n      <ButtonCopy :text=\"address\" />\r\n    </div>\r\n  </div>\r\n</template>\r\n",
+        "hasExample": true,
+        "examplePath": "buttoncopy/LongText"
+      },
+      {
+        "id": "urls-",
+        "label": "URLs\r",
+        "description": "Copy button for URLs and links.",
+        "example": "<script setup lang=\"ts\">\r\nimport { ButtonCopy } from '@fewangsit/wangsvue'\r\n\r\nconst websiteUrl = 'https://www.example.com'\r\nconst apiEndpoint = 'https://api.example.com/v1/users'\r\nconst githubRepo = 'https://github.com/username/repository'\r\n</script>\r\n\r\n<template>\r\n  <div class=\"flex flex-wrap gap-3\">\r\n    <div class=\"flex items-center gap-2\">\r\n      <span class=\"text-sm font-mono\">{{ websiteUrl }}</span>\r\n      <ButtonCopy :text=\"websiteUrl\" />\r\n    </div>\r\n\r\n    <div class=\"flex items-center gap-2\">\r\n      <span class=\"text-sm font-mono\">{{ apiEndpoint }}</span>\r\n      <ButtonCopy :text=\"apiEndpoint\" />\r\n    </div>\r\n\r\n    <div class=\"flex items-center gap-2\">\r\n      <span class=\"text-sm font-mono\">{{ githubRepo }}</span>\r\n      <ButtonCopy :text=\"githubRepo\" />\r\n    </div>\r\n  </div>\r\n</template>\n",
+        "hasExample": true,
+        "examplePath": "buttoncopy/URLs"
+      },
+      {
+        "id": "code-snippets-",
+        "label": "Code Snippets\r",
+        "description": "Copy button for code snippets and technical content.",
+        "example": "<script setup lang=\"ts\">\r\nimport { ButtonCopy } from '@fewangsit/wangsvue'\r\n\r\nconst jsCode = `const greeting = 'Hello, World!';\r\nconsole.log(greeting);`\r\n\r\nconst cssCode = `.button {\r\n  background-color: #007bff;\r\n  color: white;\r\n  padding: 8px 16px;\r\n  border-radius: 4px;\r\n}`\r\n\r\nconst htmlCode = `<div class=\"container\">\r\n  <h1>Welcome</h1>\r\n  <p>This is a sample HTML snippet.</p>\r\n</div>`\r\n</script>\r\n\r\n<template>\r\n  <div class=\"flex flex-col gap-4\">\r\n    <div class=\"flex items-start gap-2\">\r\n      <div class=\"flex-1\">\r\n        <p class=\"text-sm mb-2\">\r\n          JavaScript:\r\n        </p>\r\n        <pre class=\"text-sm border rounded p-3 overflow-x-auto\"><code>{{ jsCode }}</code></pre>\r\n      </div>\r\n      <ButtonCopy :text=\"jsCode\" />\r\n    </div>\r\n\r\n    <div class=\"flex items-start gap-2\">\r\n      <div class=\"flex-1\">\r\n        <p class=\"text-sm mb-2\">\r\n          CSS:\r\n        </p>\r\n        <pre class=\"text-sm border rounded p-3 overflow-x-auto\"><code>{{ cssCode }}</code></pre>\r\n      </div>\r\n      <ButtonCopy :text=\"cssCode\" />\r\n    </div>\r\n\r\n    <div class=\"flex items-start gap-2\">\r\n      <div class=\"flex-1\">\r\n        <p class=\"text-sm mb-2\">\r\n          HTML:\r\n        </p>\r\n        <pre class=\"text-sm border rounded p-3 overflow-x-auto\"><code>{{ htmlCode }}</code></pre>\r\n      </div>\r\n      <ButtonCopy :text=\"htmlCode\" />\r\n    </div>\r\n  </div>\r\n</template>\r\n",
+        "hasExample": true,
+        "examplePath": "buttoncopy/CodeSnippets"
+      },
+      {
+        "id": "json-data-",
+        "label": "JSON Data\r",
+        "description": "Copy button for JSON data and structured content.",
+        "example": "<script setup lang=\"ts\">\r\nimport { ButtonCopy } from '@fewangsit/wangsvue'\r\n\r\nconst userJson = JSON.stringify({\r\n  id: 1,\r\n  name: 'John Doe',\r\n  email: 'john.doe@example.com',\r\n  role: 'admin'\r\n}, null, 2)\r\n\r\nconst configJson = JSON.stringify({\r\n  apiUrl: 'https://api.example.com',\r\n  timeout: 5000,\r\n  retries: 3,\r\n  features: ['auth', 'logging', 'cache']\r\n}, null, 2)\r\n</script>\r\n\r\n<template>\r\n  <div class=\"flex flex-col gap-4\">\r\n    <div class=\"flex items-start gap-2\">\r\n      <div class=\"flex-1\">\r\n        <p class=\"text-sm mb-2\">\r\n          User data:\r\n        </p>\r\n        <pre class=\"text-sm border rounded p-3 overflow-x-auto\"><code>{{ userJson }}</code></pre>\r\n      </div>\r\n      <ButtonCopy :text=\"userJson\" />\r\n    </div>\r\n\r\n    <div class=\"flex items-start gap-2\">\r\n      <div class=\"flex-1\">\r\n        <p class=\"text-sm mb-2\">\r\n          Configuration:\r\n        </p>\r\n        <pre class=\"text-sm border rounded p-3 overflow-x-auto\"><code>{{ configJson }}</code></pre>\r\n      </div>\r\n      <ButtonCopy :text=\"configJson\" />\r\n    </div>\r\n  </div>\r\n</template>\r\n",
+        "hasExample": true,
+        "examplePath": "buttoncopy/JsonData"
       }
     ]
   },

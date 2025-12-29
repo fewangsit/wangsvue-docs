@@ -274,5 +274,12 @@ export const componentRegistry: Record<
   'breadcrumb/WithRoutes': () => import('./breadcrumb/WithRoutes.vue'),
   'breadcrumb/MixedItems': () => import('./breadcrumb/MixedItems.vue'),
   'breadcrumb/LongPath': () => import('./breadcrumb/LongPath.vue'),
-  'breadcrumb/CustomTitles': () => import('./breadcrumb/CustomTitles.vue')
+  'breadcrumb/CustomTitles': () => import('./breadcrumb/CustomTitles.vue'),
+
+  // ButtonCopy components
+  'buttoncopy/Basic': () => import('./buttoncopy/Basic.vue'),
+  'buttoncopy/LongText': () => import('./buttoncopy/LongText.vue'),
+  'buttoncopy/URLs': () => import('./buttoncopy/URLs.vue'),
+  'buttoncopy/CodeSnippets': () => import('./buttoncopy/CodeSnippets.vue'),
+  'buttoncopy/JsonData': () => import('./buttoncopy/JsonData.vue')
 }
