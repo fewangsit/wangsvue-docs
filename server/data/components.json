@@ -1791,6 +1791,69 @@
     ]
   },
   {
+    "name": "inlinemessage",
+    "title": "InlineMessage",
+    "description": "InlineMessage component is useful in cases where a single message needs to be displayed related to an element such as forms. It has one property, severity of the message.",
+    "sections": [
+      {
+        "id": "import-",
+        "label": "Import\r",
+        "description": "```ts\r\nimport { InlineMessage } from '@fewangsit/wangsvue';\r\n```",
+        "example": "",
+        "hasExample": false,
+        "examplePath": null
+      },
+      {
+        "id": "basic-",
+        "label": "Basic\r",
+        "description": "Basic inline message with default secondary severity and message text.",
+        "example": "<script setup lang=\"ts\">\r\nimport { InlineMessage } from '@fewangsit/wangsvue'\r\n</script>\r\n\r\n<template>\r\n  <InlineMessage message=\"This is a basic inline message.\" />\r\n</template>\n",
+        "hasExample": true,
+        "examplePath": "inlinemessage/Basic"
+      },
+      {
+        "id": "severity-",
+        "label": "Severity\r",
+        "description": "",
+        "example": "<script setup lang=\"ts\">\r\nimport { InlineMessage } from '@fewangsit/wangsvue'\r\n</script>\r\n\r\n<template>\r\n  <div class=\"flex flex-col gap-4\">\r\n    <InlineMessage\r\n      severity=\"success\"\r\n      message=\"Operation completed successfully!\"\r\n    />\r\n\r\n    <InlineMessage\r\n      severity=\"danger\"\r\n      message=\"An error occurred while processing your request.\"\r\n    />\r\n\r\n    <InlineMessage\r\n      severity=\"secondary\"\r\n      message=\"This is an informational message.\"\r\n    />\r\n  </div>\r\n</template>\r\n",
+        "hasExample": true,
+        "examplePath": "inlinemessage/Severity"
+      },
+      {
+        "id": "with-title-",
+        "label": "With Title\r",
+        "description": "InlineMessage with both title and message content.",
+        "example": "<script setup lang=\"ts\">\r\nimport { InlineMessage } from '@fewangsit/wangsvue'\r\n</script>\r\n\r\n<template>\r\n  <div class=\"flex flex-col gap-4\">\r\n    <InlineMessage\r\n      severity=\"success\"\r\n      title=\"Success\"\r\n      message=\"Your changes have been saved successfully.\"\r\n    />\r\n\r\n    <InlineMessage\r\n      severity=\"danger\"\r\n      title=\"Validation Error\"\r\n      message=\"Please check the following fields and try again.\"\r\n    />\r\n  </div>\r\n</template>\n",
+        "hasExample": true,
+        "examplePath": "inlinemessage/WithTitle"
+      },
+      {
+        "id": "with-lists-",
+        "label": "With Lists\r",
+        "description": "InlineMessage displaying a list of items after the main message.",
+        "example": "<script setup lang=\"ts\">\r\nimport { InlineMessage } from '@fewangsit/wangsvue'\r\n\r\nconst errorList = [\r\n  'Email field is required',\r\n  'Password must be at least 8 characters',\r\n  'Phone number format is invalid'\r\n]\r\n\r\nconst successList = [\r\n  'Profile updated',\r\n  'Email verified',\r\n  'Preferences saved'\r\n]\r\n</script>\r\n\r\n<template>\r\n  <div class=\"flex flex-col gap-4\">\r\n    <InlineMessage\r\n      severity=\"danger\"\r\n      title=\"Validation Errors\"\r\n      message=\"Please fix the following issues:\"\r\n      :lists=\"errorList\"\r\n    />\r\n\r\n    <InlineMessage\r\n      severity=\"success\"\r\n      title=\"Changes Applied\"\r\n      message=\"The following updates were completed:\"\r\n      :lists=\"successList\"\r\n    />\r\n  </div>\r\n</template>\r\n",
+        "hasExample": true,
+        "examplePath": "inlinemessage/WithLists"
+      },
+      {
+        "id": "removable-",
+        "label": "Removable\r",
+        "description": "InlineMessage with close button functionality for user dismissal.",
+        "example": "<script setup lang=\"ts\">\r\nimport { InlineMessage } from '@fewangsit/wangsvue'\r\nimport { ref } from 'vue'\r\n\r\nconst showMessage = ref(true)\r\n\r\nconst onClose = () => {\r\n  showMessage.value = false\r\n  setTimeout(() => {\r\n    showMessage.value = true\r\n  }, 2000)\r\n}\r\n</script>\r\n\r\n<template>\r\n  <div>\r\n    <InlineMessage\r\n      v-if=\"showMessage\"\r\n      severity=\"secondary\"\r\n      title=\"Dismissible Message\"\r\n      message=\"Click the close button to dismiss this message. It will reappear after 2 seconds.\"\r\n      :removable=\"true\"\r\n      @close=\"onClose\"\r\n    />\r\n    <p\r\n      v-else\r\n      class=\"text-gray-500 text-sm\"\r\n    >\r\n      Message dismissed. Will reappear in 2 seconds...\r\n    </p>\r\n  </div>\r\n</template>\n",
+        "hasExample": true,
+        "examplePath": "inlinemessage/Removable"
+      },
+      {
+        "id": "loading-state-",
+        "label": "Loading State\r",
+        "description": "InlineMessage with loading state display.",
+        "example": "<script setup lang=\"ts\">\r\nimport { InlineMessage } from '@fewangsit/wangsvue'\r\n</script>\r\n\r\n<template>\r\n  <div class=\"flex flex-col gap-4\">\r\n    <InlineMessage\r\n      severity=\"secondary\"\r\n      title=\"Processing\"\r\n      message=\"Please wait while we process your request...\"\r\n      :loading=\"true\"\r\n    />\r\n\r\n    <InlineMessage\r\n      severity=\"success\"\r\n      message=\"Loading complete!\"\r\n      :loading=\"false\"\r\n    />\r\n  </div>\r\n</template>\n",
+        "hasExample": true,
+        "examplePath": "inlinemessage/Loading"
+      }
+    ]
+  },
+  {
     "name": "textarea",
     "title": "Textarea",
     "description": "Textarea is a multi-line text input element. Textarea is designed for longer text content with features like character counting and automatic height adjustment",

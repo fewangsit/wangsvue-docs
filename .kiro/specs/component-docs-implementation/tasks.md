@@ -32,7 +32,7 @@
 - [x] Icon
 - [x] Image
 - [x] ImageCompressor
-- [ ] InlineMessage
+- [x] InlineMessage
 - [x] InputBadge
 - [x] InputCurrency
 - [x] InputEmail

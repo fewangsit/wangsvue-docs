@@ -304,5 +304,13 @@ export const componentRegistry: Record<
   'imagecompressor/Sizes': () => import('./imagecompressor/Sizes.vue'),
   'imagecompressor/Rounded': () => import('./imagecompressor/Rounded.vue'),
   'imagecompressor/FileTypes': () => import('./imagecompressor/FileTypes.vue'),
-  'imagecompressor/FormIntegration': () => import('./imagecompressor/FormIntegration.vue')
+  'imagecompressor/FormIntegration': () => import('./imagecompressor/FormIntegration.vue'),
+
+  // InlineMessage components
+  'inlinemessage/Basic': () => import('./inlinemessage/Basic.vue'),
+  'inlinemessage/Severity': () => import('./inlinemessage/Severity.vue'),
+  'inlinemessage/WithTitle': () => import('./inlinemessage/WithTitle.vue'),
+  'inlinemessage/WithLists': () => import('./inlinemessage/WithLists.vue'),
+  'inlinemessage/Removable': () => import('./inlinemessage/Removable.vue'),
+  'inlinemessage/Loading': () => import('./inlinemessage/Loading.vue')
 }
