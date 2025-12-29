@@ -267,5 +267,12 @@ export const componentRegistry: Record<
   'toast/Position': () => import('./toast/Position.vue'),
   'toast/LifeCycle': () => import('./toast/LifeCycle.vue'),
   'toast/Closable': () => import('./toast/Closable.vue'),
-  'toast/Template': () => import('./toast/Template.vue')
+  'toast/Template': () => import('./toast/Template.vue'),
+
+  // Breadcrumb components
+  'breadcrumb/Basic': () => import('./breadcrumb/Basic.vue'),
+  'breadcrumb/WithRoutes': () => import('./breadcrumb/WithRoutes.vue'),
+  'breadcrumb/MixedItems': () => import('./breadcrumb/MixedItems.vue'),
+  'breadcrumb/LongPath': () => import('./breadcrumb/LongPath.vue'),
+  'breadcrumb/CustomTitles': () => import('./breadcrumb/CustomTitles.vue')
 }

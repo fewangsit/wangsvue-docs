@@ -1223,69 +1223,6 @@
     ]
   },
   {
-    "name": "toast",
-    "title": "Toast",
-    "description": "Toast is used to display messages in an overlay.",
-    "sections": [
-      {
-        "id": "import-",
-        "label": "Import\r",
-        "description": "```ts\r\nimport { Toast, useToast } from '@fewangsit/wangsvue';\r\n```",
-        "example": "",
-        "hasExample": false,
-        "examplePath": null
-      },
-      {
-        "id": "basic-",
-        "label": "Basic\r",
-        "description": "Basic toast messages using the useToast composable.",
-        "example": "<script setup lang=\"ts\">\r\nimport { Toast, Button, useToast } from '@fewangsit/wangsvue'\r\n\r\nconst toast = useToast()\r\n\r\nconst showBasic = () => {\r\n  toast.add({\r\n    severity: 'info',\r\n    message: 'This is a basic toast message.',\r\n    life: 3000\r\n  })\r\n}\r\n</script>\r\n\r\n<template>\r\n  <div class=\"flex flex-wrap gap-3\">\r\n    <Button\r\n      label=\"Show Toast\"\r\n      @click=\"showBasic\"\r\n    />\r\n\r\n    <Toast />\r\n  </div>\r\n</template>\r\n",
-        "hasExample": true,
-        "examplePath": "toast/Basic"
-      },
-      {
-        "id": "severity-",
-        "label": "Severity\r",
-        "description": "",
-        "example": "<script setup lang=\"ts\">\r\nimport { Toast, Button, useToast } from '@fewangsit/wangsvue'\r\n\r\nconst toast = useToast()\r\n\r\nconst showSuccess = () => {\r\n  toast.add({\r\n    severity: 'success',\r\n    message: 'Operation completed successfully!',\r\n    life: 3000\r\n  })\r\n}\r\n\r\nconst showInfo = () => {\r\n  toast.add({\r\n    severity: 'info',\r\n    message: 'Here is some useful information.',\r\n    life: 3000\r\n  })\r\n}\r\n\r\nconst showError = () => {\r\n  toast.add({\r\n    severity: 'error',\r\n    message: 'Something went wrong!',\r\n    life: 3000\r\n  })\r\n}\r\n</script>\r\n\r\n<template>\r\n  <div class=\"flex flex-wrap gap-3\">\r\n    <Button\r\n      label=\"Success\"\r\n      severity=\"success\"\r\n      @click=\"showSuccess\"\r\n    />\r\n    <Button\r\n      label=\"Info\"\r\n      severity=\"info\"\r\n      @click=\"showInfo\"\r\n    />\r\n    <Button\r\n      label=\"Error\"\r\n      severity=\"danger\"\r\n      @click=\"showError\"\r\n    />\r\n\r\n    <Toast />\r\n  </div>\r\n</template>\r\n",
-        "hasExample": true,
-        "examplePath": "toast/Severity"
-      },
-      {
-        "id": "position-",
-        "label": "Position\r",
-        "description": "Toast messages can be positioned at different locations on the screen.",
-        "example": "<script setup lang=\"ts\">\r\nimport { Toast, Button, useToast } from '@fewangsit/wangsvue'\r\n\r\nconst toast = useToast()\r\n\r\nconst showTopLeft = () => {\r\n  toast.add({\r\n    severity: 'info',\r\n    message: 'Toast positioned at top-left',\r\n    life: 3000,\r\n    group: 'tl'\r\n  })\r\n}\r\n\r\nconst showTopCenter = () => {\r\n  toast.add({\r\n    severity: 'info',\r\n    message: 'Toast positioned at top-center',\r\n    life: 3000,\r\n    group: 'tc'\r\n  })\r\n}\r\n\r\nconst showTopRight = () => {\r\n  toast.add({\r\n    severity: 'info',\r\n    message: 'Toast positioned at top-right',\r\n    life: 3000,\r\n    group: 'tr'\r\n  })\r\n}\r\n\r\nconst showBottomLeft = () => {\r\n  toast.add({\r\n    severity: 'info',\r\n    message: 'Toast positioned at bottom-left',\r\n    life: 3000,\r\n    group: 'bl'\r\n  })\r\n}\r\n\r\nconst showBottomRight = () => {\r\n  toast.add({\r\n    severity: 'info',\r\n    message: 'Toast positioned at bottom-right',\r\n    life: 3000,\r\n    group: 'br'\r\n  })\r\n}\r\n</script>\r\n\r\n<template>\r\n  <div class=\"flex flex-wrap gap-2\">\r\n    <Button\r\n      label=\"Top Left\"\r\n      size=\"small\"\r\n      @click=\"showTopLeft\"\r\n    />\r\n    <Button\r\n      label=\"Top Center\"\r\n      size=\"small\"\r\n      @click=\"showTopCenter\"\r\n    />\r\n    <Button\r\n      label=\"Top Right\"\r\n      size=\"small\"\r\n      @click=\"showTopRight\"\r\n    />\r\n    <Button\r\n      label=\"Bottom Left\"\r\n      size=\"small\"\r\n      @click=\"showBottomLeft\"\r\n    />\r\n    <Button\r\n      label=\"Bottom Right\"\r\n      size=\"small\"\r\n      @click=\"showBottomRight\"\r\n    />\r\n\r\n    <!-- Toast containers for different positions -->\r\n    <Toast\r\n      group=\"tl\"\r\n      position=\"top-left\"\r\n    />\r\n    <Toast\r\n      group=\"tc\"\r\n      position=\"top-center\"\r\n    />\r\n    <Toast\r\n      group=\"tr\"\r\n      position=\"top-right\"\r\n    />\r\n    <Toast\r\n      group=\"bl\"\r\n      position=\"bottom-left\"\r\n    />\r\n    <Toast\r\n      group=\"br\"\r\n      position=\"bottom-right\"\r\n    />\r\n  </div>\r\n</template>\r\n",
-        "hasExample": true,
-        "examplePath": "toast/Position"
-      },
-      {
-        "id": "life-cycle-",
-        "label": "Life Cycle\r",
-        "description": "Control toast message duration and auto-dismiss behavior.",
-        "example": "<script setup lang=\"ts\">\r\nimport { Toast, Button, useToast } from '@fewangsit/wangsvue'\r\n\r\nconst toast = useToast()\r\n\r\nconst showShort = () => {\r\n  toast.add({\r\n    severity: 'info',\r\n    message: 'This toast will disappear in 1 second',\r\n    life: 1000\r\n  })\r\n}\r\n\r\nconst showLong = () => {\r\n  toast.add({\r\n    severity: 'info',\r\n    message: 'This toast will stay for 10 seconds',\r\n    life: 10000\r\n  })\r\n}\r\n</script>\r\n\r\n<template>\r\n  <div class=\"flex flex-wrap gap-3\">\r\n    <Button\r\n      label=\"Short (1s)\"\r\n      @click=\"showShort\"\r\n    />\r\n    <Button\r\n      label=\"Long (10s)\"\r\n      @click=\"showLong\"\r\n    />\r\n\r\n    <Toast />\r\n  </div>\r\n</template>\r\n",
-        "hasExample": true,
-        "examplePath": "toast/LifeCycle"
-      },
-      {
-        "id": "closable-",
-        "label": "Closable\r",
-        "description": "Control whether toast messages can be manually closed by users.",
-        "example": "<script setup lang=\"ts\">\r\nimport { Toast, Button, useToast } from '@fewangsit/wangsvue'\r\n\r\nconst toast = useToast()\r\n\r\nconst showClosable = () => {\r\n  toast.add({\r\n    severity: 'info',\r\n    message: 'This toast can be closed manually',\r\n    life: 0 // Infinite duration\r\n  })\r\n}\r\n\r\nconst showAutoClose = () => {\r\n  toast.add({\r\n    severity: 'success',\r\n    message: 'This toast will auto-close in 3 seconds',\r\n    life: 3000\r\n  })\r\n}\r\n</script>\r\n\r\n<template>\r\n  <div class=\"flex flex-wrap gap-3\">\r\n    <Button\r\n      label=\"Closable Toast\"\r\n      @click=\"showClosable\"\r\n    />\r\n    <Button\r\n      label=\"Auto-Close Toast\"\r\n      @click=\"showAutoClose\"\r\n    />\r\n\r\n    <Toast />\r\n  </div>\r\n</template>\r\n",
-        "hasExample": true,
-        "examplePath": "toast/Closable"
-      },
-      {
-        "id": "template-",
-        "label": "Template\r",
-        "description": "Custom toast message templates using slots.",
-        "example": "<script setup lang=\"ts\">\r\nimport { Toast, Button, useToast } from '@fewangsit/wangsvue'\r\n\r\nconst toast = useToast()\r\n\r\nconst showCustomMessage = () => {\r\n  toast.add({\r\n    severity: 'info',\r\n    message: 'This toast uses a custom message template',\r\n    life: 5000,\r\n    group: 'custom'\r\n  })\r\n}\r\n\r\nconst showCustomContainer = () => {\r\n  toast.add({\r\n    severity: 'success',\r\n    message: 'This toast uses a custom container template',\r\n    life: 5000,\r\n    group: 'container'\r\n  })\r\n}\r\n</script>\r\n\r\n<template>\r\n  <div class=\"flex flex-wrap gap-3\">\r\n    <Button\r\n      label=\"Custom Message\"\r\n      @click=\"showCustomMessage\"\r\n    />\r\n    <Button\r\n      label=\"Custom Container\"\r\n      @click=\"showCustomContainer\"\r\n    />\r\n\r\n    <!-- Custom Message Template -->\r\n    <Toast group=\"custom\">\r\n      <template #message=\"{ message }\">\r\n        <div class=\"flex items-center gap-3 p-4\">\r\n          <div class=\"w-10 h-10 bg-blue-500 rounded-full flex items-center justify-center\">\r\n            <i class=\"wangs-icon-info text-white\" />\r\n          </div>\r\n          <div class=\"flex-1\">\r\n            <h4 class=\"font-semibold text-blue-900\">\r\n              Custom Message\r\n            </h4>\r\n            <p class=\"text-sm text-blue-700\">\r\n              {{ message }}\r\n            </p>\r\n            <div class=\"mt-2 flex gap-2\">\r\n              <Button\r\n                label=\"Action\"\r\n                size=\"small\"\r\n                severity=\"primary\"\r\n              />\r\n              <Button\r\n                label=\"Dismiss\"\r\n                size=\"small\"\r\n                severity=\"secondary\"\r\n                text\r\n              />\r\n            </div>\r\n          </div>\r\n        </div>\r\n      </template>\r\n    </Toast>\r\n\r\n    <!-- Custom Container Template -->\r\n    <Toast group=\"container\">\r\n      <template #container=\"{ message, closeCallback }\">\r\n        <div class=\"bg-linear-to-r from-green-400 to-green-600 text-white p-4 rounded-lg shadow-lg\">\r\n          <div class=\"flex items-center justify-between\">\r\n            <div class=\"flex items-center gap-3\">\r\n              <i class=\"wangs-icon-check text-2xl\" />\r\n              <div>\r\n                <h4 class=\"font-bold\">\r\n                  Success\r\n                </h4>\r\n                <p class=\"text-sm opacity-90\">\r\n                  {{ message }}\r\n                </p>\r\n              </div>\r\n            </div>\r\n            <button\r\n              class=\"text-white hover:text-green-200\"\r\n              @click=\"closeCallback\"\r\n            >\r\n              <i class=\"wangs-icon-close\" />\r\n            </button>\r\n          </div>\r\n        </div>\r\n      </template>\r\n    </Toast>\r\n  </div>\r\n</template>\r\n",
-        "hasExample": true,
-        "examplePath": "toast/Template"
-      }
-    ]
-  },
-  {
     "name": "dialogform",
     "title": "DialogForm",
     "description": "DialogForm is combination of Form and Dialog. Handles validation on submit using vee-validate. You need to install vee-validate while using this component.",
@@ -1393,6 +1330,69 @@
         "example": "<script setup lang=\"ts\">\r\nimport { ref } from 'vue'\r\nimport { DialogForm, InputText, Button, useToast, Toast } from '@fewangsit/wangsvue'\r\nimport type { FormPayload } from '@fewangsit/wangsvue/form'\r\n\r\nconst visible = ref(false)\r\nconst toast = useToast()\r\n\r\nconst checkUsernameAvailability = async (value: string): Promise<boolean> => {\r\n  // Simulate API call delay\r\n  await new Promise(resolve => setTimeout(resolve, 3000))\r\n\r\n  // Simulate unavailable usernames\r\n  const unavailableUsernames = [\r\n    'admin', 'user', 'test', 'demo', 'guest', 'root', 'system'\r\n  ]\r\n\r\n  return !unavailableUsernames.includes(value.toLowerCase())\r\n}\r\n\r\nconst onSubmit = (payload: FormPayload) => {\r\n  console.log('Form submitted:', payload.formValues)\r\n\r\n  // Show success toast\r\n  toast.add({\r\n    message: `User \"${payload.formValues.username}\" has been registered!`,\r\n    severity: 'success',\r\n    group: 'dialog-form'\r\n  })\r\n}\r\n</script>\r\n\r\n<template>\r\n  <div>\r\n    <Button\r\n      label=\"Open Registration Form\"\r\n      @click=\"visible = true\"\r\n    />\r\n\r\n    <DialogForm\r\n      v-model:visible=\"visible\"\r\n      header=\"User Registration\"\r\n      :buttons-template=\"['submit', 'clear']\"\r\n      :close-on-submit=\"false\"\r\n      @submit=\"onSubmit\"\r\n    >\r\n      <template #fields>\r\n        <InputText\r\n          label=\"Username\"\r\n          field-name=\"username\"\r\n          placeholder=\"Choose a username\"\r\n          :use-validator=\"true\"\r\n          :mandatory=\"true\"\r\n          :check-availability=\"checkUsernameAvailability\"\r\n          :validator-message=\"{\r\n            empty: 'Username is required',\r\n            exist: 'This username is already taken'\r\n          }\"\r\n        />\r\n\r\n        <p class=\"text-xs mt-1\">\r\n          <strong>Demo Tip:</strong> Enter any name and try submitting while \"Checking availability...\" is displayed. The form will wait for the check to complete.\r\n        </p>\r\n      </template>\r\n    </DialogForm>\r\n  </div>\r\n\r\n  <Toast group=\"dialog-form\" />\r\n</template>\r\n",
         "hasExample": true,
         "examplePath": "dialogform/CheckAvailability"
+      }
+    ]
+  },
+  {
+    "name": "toast",
+    "title": "Toast",
+    "description": "Toast is used to display messages in an overlay.",
+    "sections": [
+      {
+        "id": "import-",
+        "label": "Import\r",
+        "description": "```ts\r\nimport { Toast, useToast } from '@fewangsit/wangsvue';\r\n```",
+        "example": "",
+        "hasExample": false,
+        "examplePath": null
+      },
+      {
+        "id": "basic-",
+        "label": "Basic\r",
+        "description": "Basic toast messages using the useToast composable.",
+        "example": "<script setup lang=\"ts\">\r\nimport { Toast, Button, useToast } from '@fewangsit/wangsvue'\r\n\r\nconst toast = useToast()\r\n\r\nconst showBasic = () => {\r\n  toast.add({\r\n    severity: 'info',\r\n    message: 'This is a basic toast message.',\r\n    life: 3000\r\n  })\r\n}\r\n</script>\r\n\r\n<template>\r\n  <div class=\"flex flex-wrap gap-3\">\r\n    <Button\r\n      label=\"Show Toast\"\r\n      @click=\"showBasic\"\r\n    />\r\n\r\n    <Toast />\r\n  </div>\r\n</template>\r\n",
+        "hasExample": true,
+        "examplePath": "toast/Basic"
+      },
+      {
+        "id": "severity-",
+        "label": "Severity\r",
+        "description": "",
+        "example": "<script setup lang=\"ts\">\r\nimport { Toast, Button, useToast } from '@fewangsit/wangsvue'\r\n\r\nconst toast = useToast()\r\n\r\nconst showSuccess = () => {\r\n  toast.add({\r\n    severity: 'success',\r\n    message: 'Operation completed successfully!',\r\n    life: 3000\r\n  })\r\n}\r\n\r\nconst showInfo = () => {\r\n  toast.add({\r\n    severity: 'info',\r\n    message: 'Here is some useful information.',\r\n    life: 3000\r\n  })\r\n}\r\n\r\nconst showError = () => {\r\n  toast.add({\r\n    severity: 'error',\r\n    message: 'Something went wrong!',\r\n    life: 3000\r\n  })\r\n}\r\n</script>\r\n\r\n<template>\r\n  <div class=\"flex flex-wrap gap-3\">\r\n    <Button\r\n      label=\"Success\"\r\n      severity=\"success\"\r\n      @click=\"showSuccess\"\r\n    />\r\n    <Button\r\n      label=\"Info\"\r\n      severity=\"info\"\r\n      @click=\"showInfo\"\r\n    />\r\n    <Button\r\n      label=\"Error\"\r\n      severity=\"danger\"\r\n      @click=\"showError\"\r\n    />\r\n\r\n    <Toast />\r\n  </div>\r\n</template>\r\n",
+        "hasExample": true,
+        "examplePath": "toast/Severity"
+      },
+      {
+        "id": "position-",
+        "label": "Position\r",
+        "description": "Toast messages can be positioned at different locations on the screen.",
+        "example": "<script setup lang=\"ts\">\r\nimport { Toast, Button, useToast } from '@fewangsit/wangsvue'\r\n\r\nconst toast = useToast()\r\n\r\nconst showTopLeft = () => {\r\n  toast.add({\r\n    severity: 'info',\r\n    message: 'Toast positioned at top-left',\r\n    life: 3000,\r\n    group: 'tl'\r\n  })\r\n}\r\n\r\nconst showTopCenter = () => {\r\n  toast.add({\r\n    severity: 'info',\r\n    message: 'Toast positioned at top-center',\r\n    life: 3000,\r\n    group: 'tc'\r\n  })\r\n}\r\n\r\nconst showTopRight = () => {\r\n  toast.add({\r\n    severity: 'info',\r\n    message: 'Toast positioned at top-right',\r\n    life: 3000,\r\n    group: 'tr'\r\n  })\r\n}\r\n\r\nconst showBottomLeft = () => {\r\n  toast.add({\r\n    severity: 'info',\r\n    message: 'Toast positioned at bottom-left',\r\n    life: 3000,\r\n    group: 'bl'\r\n  })\r\n}\r\n\r\nconst showBottomRight = () => {\r\n  toast.add({\r\n    severity: 'info',\r\n    message: 'Toast positioned at bottom-right',\r\n    life: 3000,\r\n    group: 'br'\r\n  })\r\n}\r\n</script>\r\n\r\n<template>\r\n  <div class=\"flex flex-wrap gap-2\">\r\n    <Button\r\n      label=\"Top Left\"\r\n      size=\"small\"\r\n      @click=\"showTopLeft\"\r\n    />\r\n    <Button\r\n      label=\"Top Center\"\r\n      size=\"small\"\r\n      @click=\"showTopCenter\"\r\n    />\r\n    <Button\r\n      label=\"Top Right\"\r\n      size=\"small\"\r\n      @click=\"showTopRight\"\r\n    />\r\n    <Button\r\n      label=\"Bottom Left\"\r\n      size=\"small\"\r\n      @click=\"showBottomLeft\"\r\n    />\r\n    <Button\r\n      label=\"Bottom Right\"\r\n      size=\"small\"\r\n      @click=\"showBottomRight\"\r\n    />\r\n\r\n    <!-- Toast containers for different positions -->\r\n    <Toast\r\n      group=\"tl\"\r\n      position=\"top-left\"\r\n    />\r\n    <Toast\r\n      group=\"tc\"\r\n      position=\"top-center\"\r\n    />\r\n    <Toast\r\n      group=\"tr\"\r\n      position=\"top-right\"\r\n    />\r\n    <Toast\r\n      group=\"bl\"\r\n      position=\"bottom-left\"\r\n    />\r\n    <Toast\r\n      group=\"br\"\r\n      position=\"bottom-right\"\r\n    />\r\n  </div>\r\n</template>\r\n",
+        "hasExample": true,
+        "examplePath": "toast/Position"
+      },
+      {
+        "id": "life-cycle-",
+        "label": "Life Cycle\r",
+        "description": "Control toast message duration and auto-dismiss behavior.",
+        "example": "<script setup lang=\"ts\">\r\nimport { Toast, Button, useToast } from '@fewangsit/wangsvue'\r\n\r\nconst toast = useToast()\r\n\r\nconst showShort = () => {\r\n  toast.add({\r\n    severity: 'info',\r\n    message: 'This toast will disappear in 1 second',\r\n    life: 1000\r\n  })\r\n}\r\n\r\nconst showLong = () => {\r\n  toast.add({\r\n    severity: 'info',\r\n    message: 'This toast will stay for 10 seconds',\r\n    life: 10000\r\n  })\r\n}\r\n</script>\r\n\r\n<template>\r\n  <div class=\"flex flex-wrap gap-3\">\r\n    <Button\r\n      label=\"Short (1s)\"\r\n      @click=\"showShort\"\r\n    />\r\n    <Button\r\n      label=\"Long (10s)\"\r\n      @click=\"showLong\"\r\n    />\r\n\r\n    <Toast />\r\n  </div>\r\n</template>\r\n",
+        "hasExample": true,
+        "examplePath": "toast/LifeCycle"
+      },
+      {
+        "id": "closable-",
+        "label": "Closable\r",
+        "description": "Control whether toast messages can be manually closed by users.",
+        "example": "<script setup lang=\"ts\">\r\nimport { Toast, Button, useToast } from '@fewangsit/wangsvue'\r\n\r\nconst toast = useToast()\r\n\r\nconst showClosable = () => {\r\n  toast.add({\r\n    severity: 'info',\r\n    message: 'This toast can be closed manually',\r\n    life: 0 // Infinite duration\r\n  })\r\n}\r\n\r\nconst showAutoClose = () => {\r\n  toast.add({\r\n    severity: 'success',\r\n    message: 'This toast will auto-close in 3 seconds',\r\n    life: 3000\r\n  })\r\n}\r\n</script>\r\n\r\n<template>\r\n  <div class=\"flex flex-wrap gap-3\">\r\n    <Button\r\n      label=\"Closable Toast\"\r\n      @click=\"showClosable\"\r\n    />\r\n    <Button\r\n      label=\"Auto-Close Toast\"\r\n      @click=\"showAutoClose\"\r\n    />\r\n\r\n    <Toast />\r\n  </div>\r\n</template>\r\n",
+        "hasExample": true,
+        "examplePath": "toast/Closable"
+      },
+      {
+        "id": "template-",
+        "label": "Template\r",
+        "description": "Custom toast message templates using slots.",
+        "example": "<script setup lang=\"ts\">\r\nimport { Toast, Button, useToast } from '@fewangsit/wangsvue'\r\n\r\nconst toast = useToast()\r\n\r\nconst showCustomMessage = () => {\r\n  toast.add({\r\n    severity: 'info',\r\n    message: 'This toast uses a custom message template',\r\n    life: 5000,\r\n    group: 'custom'\r\n  })\r\n}\r\n\r\nconst showCustomContainer = () => {\r\n  toast.add({\r\n    severity: 'success',\r\n    message: 'This toast uses a custom container template',\r\n    life: 5000,\r\n    group: 'container'\r\n  })\r\n}\r\n</script>\r\n\r\n<template>\r\n  <div class=\"flex flex-wrap gap-3\">\r\n    <Button\r\n      label=\"Custom Message\"\r\n      @click=\"showCustomMessage\"\r\n    />\r\n    <Button\r\n      label=\"Custom Container\"\r\n      @click=\"showCustomContainer\"\r\n    />\r\n\r\n    <!-- Custom Message Template -->\r\n    <Toast group=\"custom\">\r\n      <template #message=\"{ message }\">\r\n        <div class=\"flex items-center gap-3 p-4\">\r\n          <div class=\"w-10 h-10 bg-blue-500 rounded-full flex items-center justify-center\">\r\n            <i class=\"wangs-icon-info text-white\" />\r\n          </div>\r\n          <div class=\"flex-1\">\r\n            <h4 class=\"font-semibold text-blue-900\">\r\n              Custom Message\r\n            </h4>\r\n            <p class=\"text-sm text-blue-700\">\r\n              {{ message }}\r\n            </p>\r\n            <div class=\"mt-2 flex gap-2\">\r\n              <Button\r\n                label=\"Action\"\r\n                size=\"small\"\r\n                severity=\"primary\"\r\n              />\r\n              <Button\r\n                label=\"Dismiss\"\r\n                size=\"small\"\r\n                severity=\"secondary\"\r\n                text\r\n              />\r\n            </div>\r\n          </div>\r\n        </div>\r\n      </template>\r\n    </Toast>\r\n\r\n    <!-- Custom Container Template -->\r\n    <Toast group=\"container\">\r\n      <template #container=\"{ message, closeCallback }\">\r\n        <div class=\"bg-linear-to-r from-green-400 to-green-600 text-white p-4 rounded-lg shadow-lg\">\r\n          <div class=\"flex items-center justify-between\">\r\n            <div class=\"flex items-center gap-3\">\r\n              <i class=\"wangs-icon-check text-2xl\" />\r\n              <div>\r\n                <h4 class=\"font-bold\">\r\n                  Success\r\n                </h4>\r\n                <p class=\"text-sm opacity-90\">\r\n                  {{ message }}\r\n                </p>\r\n              </div>\r\n            </div>\r\n            <button\r\n              class=\"text-white hover:text-green-200\"\r\n              @click=\"closeCallback\"\r\n            >\r\n              <i class=\"wangs-icon-close\" />\r\n            </button>\r\n          </div>\r\n        </div>\r\n      </template>\r\n    </Toast>\r\n  </div>\r\n</template>\r\n",
+        "hasExample": true,
+        "examplePath": "toast/Template"
       }
     ]
   },
