@@ -288,5 +288,13 @@ export const componentRegistry: Record<
   'card/WithHeader': () => import('./card/WithHeader.vue'),
   'card/WithTitleSubtitle': () => import('./card/WithTitleSubtitle.vue'),
   'card/WithFooter': () => import('./card/WithFooter.vue'),
-  'card/CompleteCard': () => import('./card/CompleteCard.vue')
+  'card/CompleteCard': () => import('./card/CompleteCard.vue'),
+
+  // Image components
+  'image/Basic': () => import('./image/Basic.vue'),
+  'image/Sizes': () => import('./image/Sizes.vue'),
+  'image/CustomSize': () => import('./image/CustomSize.vue'),
+  'image/Rounded': () => import('./image/Rounded.vue'),
+  'image/WithoutPreview': () => import('./image/WithoutPreview.vue'),
+  'image/Gallery': () => import('./image/Gallery.vue')
 }

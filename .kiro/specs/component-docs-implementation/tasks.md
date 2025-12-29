@@ -30,7 +30,7 @@
 - [x] Form
 - [ ] GalleryPreview
 - [x] Icon
-- [ ] Image
+- [x] Image
 - [ ] ImageCompressor
 - [ ] InlineMessage
 - [x] InputBadge
