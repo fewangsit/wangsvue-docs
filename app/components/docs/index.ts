@@ -191,5 +191,13 @@ export const componentRegistry: Record<
   'overlaypanel/Dismissable': () => import('./overlaypanel/Dismissable.vue'),
   'overlaypanel/CloseIcon': () => import('./overlaypanel/CloseIcon.vue'),
   'overlaypanel/Responsive': () => import('./overlaypanel/Responsive.vue'),
-  'overlaypanel/Template': () => import('./overlaypanel/Template.vue')
+  'overlaypanel/Template': () => import('./overlaypanel/Template.vue'),
+
+  // Toast components
+  'toast/Basic': () => import('./toast/Basic.vue'),
+  'toast/Severity': () => import('./toast/Severity.vue'),
+  'toast/Position': () => import('./toast/Position.vue'),
+  'toast/LifeCycle': () => import('./toast/LifeCycle.vue'),
+  'toast/Closable': () => import('./toast/Closable.vue'),
+  'toast/Template': () => import('./toast/Template.vue')
 }
