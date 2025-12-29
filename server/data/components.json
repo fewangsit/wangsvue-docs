@@ -1507,6 +1507,61 @@
     ]
   },
   {
+    "name": "card",
+    "title": "Card",
+    "description": "Card is a flexible container component.",
+    "sections": [
+      {
+        "id": "import-",
+        "label": "Import\r",
+        "description": "```ts\r\nimport { Card } from '@fewangsit/wangsvue';\r\n```",
+        "example": "",
+        "hasExample": false,
+        "examplePath": null
+      },
+      {
+        "id": "basic-",
+        "label": "Basic\r",
+        "description": "Basic card with content slot.",
+        "example": "<script setup lang=\"ts\">\r\nimport { Card } from '@fewangsit/wangsvue'\r\n</script>\r\n\r\n<template>\r\n  <div class=\"flex flex-wrap gap-4\">\r\n    <Card class=\"w-80\">\r\n      <template #content>\r\n        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>\r\n      </template>\r\n    </Card>\r\n  </div>\r\n</template>\n",
+        "hasExample": true,
+        "examplePath": "card/Basic"
+      },
+      {
+        "id": "with-header-",
+        "label": "With Header\r",
+        "description": "Card with header slot for additional content.",
+        "example": "<script setup lang=\"ts\">\r\nimport { Card } from '@fewangsit/wangsvue'\r\n</script>\r\n\r\n<template>\r\n  <div class=\"flex flex-wrap gap-4\">\r\n    <Card class=\"w-80\">\r\n      <template #header>\r\n        <img\r\n          src=\"https://via.placeholder.com/320x160/4F46E5/FFFFFF?text=Header+Image\"\r\n          alt=\"Header\"\r\n          class=\"w-full h-40 object-cover\"\r\n        >\r\n      </template>\r\n      <template #content>\r\n        <p>This card includes a header section with an image. The header slot allows you to add any content above the main card body.</p>\r\n      </template>\r\n    </Card>\r\n  </div>\r\n</template>\r\n",
+        "hasExample": true,
+        "examplePath": "card/WithHeader"
+      },
+      {
+        "id": "with-title-and-subtitle-",
+        "label": "With Title and Subtitle\r",
+        "description": "Card with title and subtitle slots for structured content.",
+        "example": "<script setup lang=\"ts\">\r\nimport { Card } from '@fewangsit/wangsvue'\r\n</script>\r\n\r\n<template>\r\n  <div class=\"flex flex-wrap gap-4\">\r\n    <Card class=\"w-80\">\r\n      <template #title>\r\n        <h3 class=\"text-xl font-semibold text-gray-900\">\n          Card Title\n        </h3>\r\n      </template>\r\n      <template #subtitle>\r\n        <p class=\"text-sm text-gray-600 mt-1\">\n          This is a subtitle\n        </p>\r\n      </template>\r\n      <template #content>\r\n        <p class=\"mt-4\">\n          The title and subtitle slots provide a structured way to display card headers with consistent styling and hierarchy.\n        </p>\r\n      </template>\r\n    </Card>\r\n  </div>\r\n</template>\n",
+        "hasExample": true,
+        "examplePath": "card/WithTitleSubtitle"
+      },
+      {
+        "id": "with-footer-",
+        "label": "With Footer\r",
+        "description": "Card with footer slot for actions or additional information.",
+        "example": "<script setup lang=\"ts\">\r\nimport { Card, Button } from '@fewangsit/wangsvue'\r\n</script>\r\n\r\n<template>\r\n  <div class=\"flex flex-wrap gap-4\">\r\n    <Card class=\"w-80\">\r\n      <template #content>\r\n        <p>This card demonstrates the footer slot, which is perfect for action buttons or additional information at the bottom of the card.</p>\r\n      </template>\r\n      <template #footer>\r\n        <div class=\"flex gap-2 pt-4 border-t\">\r\n          <Button\n            label=\"Save\"\n            severity=\"primary\"\n            size=\"small\"\n          />\r\n          <Button\n            label=\"Cancel\"\n            severity=\"secondary\"\n            size=\"small\"\n          />\r\n        </div>\r\n      </template>\r\n    </Card>\r\n  </div>\r\n</template>\n",
+        "hasExample": true,
+        "examplePath": "card/WithFooter"
+      },
+      {
+        "id": "complete-card-",
+        "label": "Complete Card\r",
+        "description": "Card using all available slots for comprehensive content layout.",
+        "example": "<script setup lang=\"ts\">\r\nimport { Card, Button, Badge } from '@fewangsit/wangsvue'\r\n</script>\r\n\r\n<template>\r\n  <div class=\"flex flex-wrap gap-4\">\r\n    <Card class=\"w-96\">\r\n      <template #header>\r\n        <div class=\"relative\">\r\n          <img\r\n            src=\"https://via.placeholder.com/384x200/10B981/FFFFFF?text=Product+Image\"\r\n            alt=\"Product\"\r\n            class=\"w-full h-48 object-cover\"\r\n          >\r\n          <Badge\r\n            label=\"New\"\r\n            severity=\"success\"\r\n            class=\"absolute top-2 right-2\"\r\n          />\r\n        </div>\r\n      </template>\r\n      <template #title>\r\n        <h3 class=\"text-xl font-bold text-gray-900\">\r\n          Premium Product\r\n        </h3>\r\n      </template>\r\n      <template #subtitle>\r\n        <p class=\"text-sm text-gray-600\">\r\n          High-quality item with excellent features\r\n        </p>\r\n      </template>\r\n      <template #content>\r\n        <div class=\"space-y-3\">\r\n          <p class=\"text-gray-700\">\r\n            This comprehensive card example showcases all available slots working together to create a rich, structured layout.\r\n          </p>\r\n          <div class=\"flex items-center gap-2\">\r\n            <span class=\"text-2xl font-bold text-green-600\">$299</span>\r\n            <span class=\"text-sm text-gray-500 line-through\">$399</span>\r\n          </div>\r\n        </div>\r\n      </template>\r\n      <template #footer>\r\n        <div class=\"flex justify-between items-center pt-4 border-t\">\r\n          <div class=\"flex gap-2\">\r\n            <Button\r\n              label=\"Add to Cart\"\r\n              severity=\"primary\"\r\n              size=\"small\"\r\n            />\r\n            <Button\r\n              label=\"Wishlist\"\r\n              severity=\"secondary\"\r\n              size=\"small\"\r\n            />\r\n          </div>\r\n          <span class=\"text-xs text-gray-500\">Free shipping</span>\r\n        </div>\r\n      </template>\r\n    </Card>\r\n  </div>\r\n</template>\r\n",
+        "hasExample": true,
+        "examplePath": "card/CompleteCard"
+      }
+    ]
+  },
+  {
     "name": "inputtext",
     "title": "InputText",
     "description": "InputText renders a text field to enter data.",

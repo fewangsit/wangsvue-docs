@@ -14,7 +14,7 @@
 - [ ] ButtonSelectTree
 - [x] ButtonToggle
 - [ ] Calendar
-- [ ] Card
+- [x] Card
 - [x] Checkbox
 - [ ] CodeSnippet
 - [ ] DataTable

@@ -281,5 +281,12 @@ export const componentRegistry: Record<
   'buttoncopy/LongText': () => import('./buttoncopy/LongText.vue'),
   'buttoncopy/URLs': () => import('./buttoncopy/URLs.vue'),
   'buttoncopy/CodeSnippets': () => import('./buttoncopy/CodeSnippets.vue'),
-  'buttoncopy/JsonData': () => import('./buttoncopy/JsonData.vue')
+  'buttoncopy/JsonData': () => import('./buttoncopy/JsonData.vue'),
+
+  // Card components
+  'card/Basic': () => import('./card/Basic.vue'),
+  'card/WithHeader': () => import('./card/WithHeader.vue'),
+  'card/WithTitleSubtitle': () => import('./card/WithTitleSubtitle.vue'),
+  'card/WithFooter': () => import('./card/WithFooter.vue'),
+  'card/CompleteCard': () => import('./card/CompleteCard.vue')
 }
