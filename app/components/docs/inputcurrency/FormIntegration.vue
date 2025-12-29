@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import { Form, InputCurrency } from '@fewangsit/wangsvue'
+import type { FormPayload } from '@fewangsit/wangsvue/form'
 
-const onSubmit = (payload: { formValues: Record<string, unknown> }) => {
+const onSubmit = (payload: FormPayload) => {
   console.log('Form submitted:', payload.formValues)
 }
 </script>
@@ -11,9 +12,8 @@ const onSubmit = (payload: { formValues: Record<string, unknown> }) => {
     :buttons-template="['clear', 'submit']"
     @submit="onSubmit"
   >
-    <template #fields="{ formValues }">
+    <template #fields>
       <InputCurrency
-        v-model="formValues.price"
         label="Product Price"
         field-name="price"
         :use-validator="true"

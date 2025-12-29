@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import { Form, Textarea } from '@fewangsit/wangsvue'
+import type { FormPayload } from '@fewangsit/wangsvue/form'
 
-const onSubmit = (payload: { formValues: Record<string, unknown> }) => {
+const onSubmit = (payload: FormPayload) => {
   console.log('Textarea form submitted:', payload.formValues)
 }
 

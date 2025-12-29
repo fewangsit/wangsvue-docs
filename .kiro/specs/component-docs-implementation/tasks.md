@@ -20,14 +20,14 @@
 - [ ] DataTable
 - [x] Dialog
 - [x] DialogConfirm
-- [ ] DialogForm
+- [x] DialogForm
 - [ ] DialogSelectTree
 - [ ] Dropdown
 - [ ] Editor
 - [ ] FieldWrapper
 - [ ] FileUpload
 - [ ] FilterContainer
-- [ ] Form
+- [x] Form
 - [ ] GalleryPreview
 - [x] Icon
 - [ ] Image
@@ -36,10 +36,10 @@
 - [x] InputBadge
 - [x] InputCurrency
 - [x] InputEmail
-- [ ] InputNumber
-- [ ] InputPassword
-- [ ] InputPhoneNumber
-- [ ] InputRangeNumber
+- [x] InputNumber
+- [x] InputPassword
+- [x] InputPhoneNumber
+- [x] InputRangeNumber
 - [x] InputText
 - [x] InputURL
 - [ ] InvisibleField
@@ -60,4 +60,4 @@
 - [ ] Tree
 - [ ] UserGroup
 - [ ] UserName
-- [ ] ValidatorMessage
+- [x] ValidatorMessage

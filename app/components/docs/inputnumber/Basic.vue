@@ -12,8 +12,8 @@ const value = ref<number>()
       label="Quantity"
       placeholder="Enter quantity"
     />
-    <p class="text-sm text-gray-600">
+    <div class="text-sm text-gray-600">
       Value: {{ value ?? 'Empty' }}
-    </p>
+    </div>
   </div>
 </template>

@@ -58,13 +58,11 @@ import { ComponentName } from '@fewangsit/wangsvue'
 </script>
 
 <template>
-  <div class="flex flex-wrap gap-3">
-    <!-- Use exact props from MCP resolution -->
-    <ComponentName 
-      prop="value"
-      :boolean-prop="true"
-    />
-  </div>
+  <!-- Use exact props from MCP resolution -->
+  <ComponentName 
+    prop="value"
+    :boolean-prop="true"
+  />
 </template>
 ```
 
@@ -75,16 +73,19 @@ import { ComponentName } from '@fewangsit/wangsvue'
 - **Minimal Code**: Show only the essential code needed to demonstrate the feature
 
 ### 7. Form Integration Best Practices
+- **Keep it Simple**: Use only ONE field to demonstrate form integration - don't create complex multi-field forms
 - **Always include buttons-template prop**: Form demos must include submit and clear buttons using the `buttons-template` prop
-- **Handle form events**: Implement both `@submit` event handlers
-- **Show form state**: Display form values or submission results when relevant
+- **Handle form events**: Implement `@submit` event handler
+- **Focus on Component**: Show only the component being documented, avoid adding other input components
+- **Essential Props Only**: Include only the essential form-related props (use-validator, mandatory, field-name, validator-message)
 
 #### Form Integration Template
 ```vue
 <script setup lang="ts">
 import { Form, ComponentName } from '@fewangsit/wangsvue'
+import type { FormPayload } from '@fewangsit/wangsvue/form'
 
-const onSubmit = (payload: { formValues: Record<string, unknown> }) => {
+const onSubmit = (payload: FormPayload) => {
   console.log('Form submitted:', payload.formValues)
 }
 </script>
@@ -92,11 +93,11 @@ const onSubmit = (payload: { formValues: Record<string, unknown> }) => {
 <template>
   <Form
     :buttons-template="['submit', 'clear']"
+    hide-stay-checkbox
     @submit="onSubmit"
   >
-    <template #fields="{ formValues }">
+    <template #fields>
       <ComponentName
-        v-model="formValues.fieldName"
         label="Field Label"
         field-name="fieldName"
         :use-validator="true"
@@ -120,14 +121,14 @@ const onSubmit = (payload: { formValues: Record<string, unknown> }) => {
 - ❌ **Keyboard Support** - Do not document keyboard interactions
 
 ### 10. Component Registry Updates
-Always update `app/utils/component-registry.ts`:
+Always update `app/components/docs/index.ts`:
 ```js
 export const componentRegistry: Record<string, () => Promise<any>> = {
   // Existing components...
   
   // New component demos
-  'component/Basic': () => import('~/components/docs/component/Basic.vue'),
-  'component/Feature': () => import('~/components/docs/component/Feature.vue'),
+  'component/Basic': () => import('./component/Basic.vue'),
+  'component/Feature': () => import('./component/Feature.vue'),
 }
 ```
 

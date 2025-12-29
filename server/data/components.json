@@ -1,5 +1,92 @@
 [
   {
+    "name": "form",
+    "title": "Form",
+    "description": "Form is a component for creating forms with validation on submit using vee-validate. You need to install vee-validate while using this component.",
+    "sections": [
+      {
+        "id": "import-",
+        "label": "Import\r",
+        "description": "```ts\r\nimport { Form } from '@fewangsit/wangsvue';\r\nimport type { FormPayload } from '@fewangsit/wangsvue/form';\r\n```",
+        "example": "",
+        "hasExample": false,
+        "examplePath": null
+      },
+      {
+        "id": "basic-",
+        "label": "Basic\r",
+        "description": "A basic form with submit button and a simple input field.",
+        "example": "<script setup lang=\"ts\">\r\nimport { Form, InputText } from '@fewangsit/wangsvue'\r\nimport type { FormPayload } from '@fewangsit/wangsvue/form'\r\n\r\nconst onSubmit = (payload: FormPayload) => {\r\n  console.log('Form submitted:', payload)\r\n}\r\n</script>\r\n\r\n<template>\r\n  <Form\r\n    :buttons-template=\"['submit']\"\r\n    @submit=\"onSubmit\"\r\n  >\r\n    <template #fields>\r\n      <InputText\r\n        label=\"Name\"\r\n        field-name=\"name\"\r\n        :use-validator=\"true\"\r\n        :mandatory=\"true\"\r\n        :validator-message=\"{ empty: 'Name is required' }\"\r\n      />\r\n    </template>\r\n  </Form>\r\n</template>\r\n",
+        "hasExample": true,
+        "examplePath": "form/Basic"
+      },
+      {
+        "id": "custom-buttons-",
+        "label": "Custom Buttons\r",
+        "description": "Customize button labels and template to include only specific actions like Save and Submit.",
+        "example": "<script setup lang=\"ts\">\r\nimport { Form, InputText } from '@fewangsit/wangsvue'\r\nimport type { FormPayload } from '@fewangsit/wangsvue/form'\r\n\r\nconst onSubmit = (payload: FormPayload) => {\r\n  console.log('Form submitted:', payload)\r\n}\r\n\r\nconst onSave = (payload: FormPayload) => {\r\n  console.log('Form saved:', payload)\r\n}\r\n</script>\r\n\r\n<template>\r\n  <Form\r\n    :buttons-template=\"['save', 'submit']\"\r\n    :save-btn-label=\"'Save Draft'\"\r\n    :submit-btn-label=\"'Complete'\"\r\n    @submit=\"onSubmit\"\r\n    @save=\"onSave\"\r\n  >\r\n    <template #fields>\r\n      <InputText\r\n        label=\"Email\"\r\n        field-name=\"email\"\r\n        :use-validator=\"true\"\r\n        :mandatory=\"true\"\r\n        :validator-message=\"{ empty: 'Email is required', invalidFormat: 'Invalid email' }\"\r\n      />\r\n    </template>\r\n  </Form>\r\n</template>\r\n",
+        "hasExample": true,
+        "examplePath": "form/CustomButtons"
+      },
+      {
+        "id": "hide-footer-",
+        "label": "Hide Footer\r",
+        "description": "Hide the form footer to manage buttons externally.",
+        "example": "<script setup lang=\"ts\">\r\nimport { Form, InputText, Button } from '@fewangsit/wangsvue'\r\nimport { useTemplateRef } from 'vue'\r\n\r\nconst form = useTemplateRef<Form>('form')\r\nconst onSubmit = () => {\r\n  form.value?.submit()\r\n}\r\n\r\nconst onClear = () => {\r\n  form.value?.clearField()\r\n}\r\n</script>\r\n\r\n<template>\r\n  <Form\r\n    ref=\"form\"\r\n    hide-footer\r\n  >\r\n    <template #fields>\r\n      <InputText\r\n        label=\"Message\"\r\n        field-name=\"message\"\r\n        :use-validator=\"true\"\r\n        :mandatory=\"true\"\r\n        :validator-message=\"{ empty: 'Message is required' }\"\r\n      />\r\n    </template>\r\n  </Form>\r\n  <div class=\"flex gap-2 mt-4\">\r\n    <Button\r\n      label=\"Clear\"\r\n      severity=\"secondary\"\r\n      @click=\"onClear\"\r\n    />\r\n    <Button\r\n      label=\"Submit\"\r\n      @click=\"onSubmit\"\r\n    />\r\n  </div>\r\n</template>\r\n",
+        "hasExample": true,
+        "examplePath": "form/HideFooter"
+      },
+      {
+        "id": "column-layout-",
+        "label": "Column Layout\r",
+        "description": "Arrange form fields in multiple columns per row.",
+        "example": "<script setup lang=\"ts\">\r\nimport { Form, InputText } from '@fewangsit/wangsvue'\r\nimport type { FormPayload } from '@fewangsit/wangsvue/form'\r\n\r\nconst onSubmit = (payload: FormPayload) => {\r\n  console.log('Form submitted:', payload)\r\n}\r\n</script>\r\n\r\n<template>\r\n  <Form\r\n    :column-per-row=\"2\"\r\n    @submit=\"onSubmit\"\r\n  >\r\n    <template #fields>\r\n      <InputText\r\n        label=\"First Name\"\r\n        field-name=\"firstName\"\r\n        :use-validator=\"true\"\r\n        :mandatory=\"true\"\r\n        :validator-message=\"{ empty: 'First name is required' }\"\r\n      />\r\n      <InputText\r\n        label=\"Last Name\"\r\n        field-name=\"lastName\"\r\n        :use-validator=\"true\"\r\n        :mandatory=\"true\"\r\n        :validator-message=\"{ empty: 'Last name is required' }\"\r\n      />\r\n    </template>\r\n  </Form>\r\n</template>\r\n",
+        "hasExample": true,
+        "examplePath": "form/Columns"
+      },
+      {
+        "id": "validation-on-save-",
+        "label": "Validation on Save\r",
+        "description": "When buttonsTemplate includes 'save', set validateOnSave to true to perform form validation on save button click, just like submit.",
+        "example": "<script setup lang=\"ts\">\r\nimport { Form, InputText } from '@fewangsit/wangsvue'\r\nimport type { FormPayload } from '@fewangsit/wangsvue/form'\r\n\r\nconst onSave = (payload: FormPayload) => {\r\n  console.log('Form saved:', payload)\r\n}\r\n</script>\r\n\r\n<template>\r\n  <Form\r\n    :buttons-template=\"['save']\"\r\n    :validate-on-save=\"true\"\r\n    @save=\"onSave\"\r\n  >\r\n    <template #fields>\r\n      <InputText\r\n        label=\"Username\"\r\n        field-name=\"username\"\r\n        :use-validator=\"true\"\r\n        :mandatory=\"true\"\r\n        :validator-message=\"{ empty: 'Username is required' }\"\r\n      />\r\n    </template>\r\n  </Form>\r\n</template>\r\n",
+        "hasExample": true,
+        "examplePath": "form/ValidateOnSave"
+      },
+      {
+        "id": "stay-after-submit-",
+        "label": "Stay After Submit\r",
+        "description": "Include a checkbox to keep the form visible after submission without resetting. The form visibility is handled manually after submit by checking property `stayAfterSubmit`. To hide the checkbox, set hideStayCheckbox to `false` to the Form component.",
+        "example": "<script setup lang=\"ts\">\r\nimport { Form, InputText } from '@fewangsit/wangsvue'\r\nimport type { FormPayload } from '@fewangsit/wangsvue/form'\r\n\r\nconst onSubmit = (payload: FormPayload) => {\r\n  console.log('Form submitted, stay after submit:', payload.stayAfterSubmit)\r\n}\r\n</script>\r\n\r\n<template>\r\n  <Form @submit=\"onSubmit\">\r\n    <template #fields>\r\n      <InputText\r\n        label=\"Feedback\"\r\n        field-name=\"feedback\"\r\n        :use-validator=\"true\"\r\n        :mandatory=\"true\"\r\n        :validator-message=\"{ empty: 'Feedback is required' }\"\r\n      />\r\n    </template>\r\n  </Form>\r\n</template>\r\n",
+        "hasExample": true,
+        "examplePath": "form/StayAfterSubmit"
+      },
+      {
+        "id": "set-values-",
+        "label": "Set Values\r",
+        "description": "Use setValues to populate the form with existing data, typically for edit forms.",
+        "example": "<script setup lang=\"ts\">\r\nimport { Form, InputText } from '@fewangsit/wangsvue'\r\nimport { useTemplateRef } from 'vue'\r\n\r\nconst form = useTemplateRef<Form>('form')\r\nconst existingData = {\r\n  name: 'John Doe',\r\n  email: 'john@example.com'\r\n}\r\n\r\nconst loadData = () => {\r\n  form.value?.setValues(existingData)\r\n}\r\n</script>\r\n\r\n<template>\r\n  <div>\r\n    <button\r\n      class=\"mb-4 px-4 py-2 bg-blue-500 text-white rounded\"\r\n      @click=\"loadData\"\r\n    >\r\n      Load Existing Data\r\n    </button>\r\n    <Form ref=\"form\">\r\n      <template #fields>\r\n        <InputText\r\n          label=\"Name\"\r\n          field-name=\"name\"\r\n          :use-validator=\"true\"\r\n          :mandatory=\"true\"\r\n          :validator-message=\"{ empty: 'Name is required' }\"\r\n        />\r\n        <InputText\r\n          label=\"Email\"\r\n          field-name=\"email\"\r\n          :use-validator=\"true\"\r\n          :mandatory=\"true\"\r\n          :validator-message=\"{ empty: 'Email is required', invalidFormat: 'Invalid email' }\"\r\n        />\r\n      </template>\r\n    </Form>\r\n  </div>\r\n</template>\r\n",
+        "hasExample": true,
+        "examplePath": "form/SetValues"
+      },
+      {
+        "id": "set-errors-",
+        "label": "Set Errors\r",
+        "description": "Manually set errors using setErrors, for example after receiving API response errors.",
+        "example": "<script setup lang=\"ts\">\r\nimport { Form, InputEmail } from '@fewangsit/wangsvue'\r\nimport { useTemplateRef } from 'vue'\r\n\r\nconst form = useTemplateRef<Form>('form')\r\nconst apiErrors = {\r\n  email: 'This email is already registered'\r\n}\r\n\r\nconst simulateApiError = async () => {\r\n  // Simulate an API call delay\r\n  await new Promise(resolve => setTimeout(resolve, 500))\r\n\r\n  // Set errors returned from the \"API\"\r\n  form.value?.setErrors(apiErrors)\r\n}\r\n</script>\r\n\r\n<template>\r\n  <Form\r\n    ref=\"form\"\r\n    :buttons-template=\"['submit']\"\r\n    :reset-after-submit=\"false\"\r\n    @submit=\"simulateApiError\"\r\n  >\r\n    <template #fields>\r\n      <InputEmail\r\n        label=\"Email\"\r\n        field-name=\"email\"\r\n        :use-validator=\"true\"\r\n        :mandatory=\"true\"\r\n        :validator-message=\"{ empty: 'Email is required' }\"\r\n      />\r\n    </template>\r\n  </Form>\r\n</template>\r\n",
+        "hasExample": true,
+        "examplePath": "form/SetErrors"
+      },
+      {
+        "id": "conditional-fields-",
+        "label": "Conditional Fields\r",
+        "description": "Use the formValues from the fields slot to conditionally render input fields based on other field values.",
+        "example": "<script setup lang=\"ts\">\r\nimport { Form, Dropdown, InputPassword } from '@fewangsit/wangsvue'\r\nimport type { FormPayload } from '@fewangsit/wangsvue/form'\r\n\r\nconst onSubmit = (payload: FormPayload) => {\r\n  console.log('Form submitted:', payload)\r\n}\r\n</script>\r\n\r\n<template>\r\n  <Form @submit=\"onSubmit\">\r\n    <template #fields=\"{ formValues }\">\r\n      <Dropdown\r\n        label=\"User Type\"\r\n        field-name=\"userType\"\r\n        :use-validator=\"true\"\r\n        :mandatory=\"true\"\r\n        :validator-message=\"{ empty: 'User type is required' }\"\r\n        :options=\"[\r\n          { label: 'User', value: 'user' },\r\n          { label: 'Admin', value: 'admin' }\r\n        ]\"\r\n        option-label=\"label\"\r\n        option-value=\"value\"\r\n      />\r\n      <InputPassword\r\n        v-if=\"formValues.userType === 'admin'\"\r\n        label=\"Admin Password\"\r\n        field-name=\"adminPassword\"\r\n        placeholder=\"Enter admin password\"\r\n        :use-validator=\"true\"\r\n        :mandatory=\"true\"\r\n        :validator-message=\"{ empty: 'Admin password is required' }\"\r\n      />\r\n    </template>\r\n  </Form>\r\n</template>\r\n",
+        "hasExample": true,
+        "examplePath": "form/ConditionalFields"
+      }
+    ]
+  },
+  {
     "name": "button",
     "title": "Button",
     "description": "Button is an extension to standard button element with icons and theming.",
@@ -183,7 +270,7 @@
         "id": "form-integration-",
         "label": "Form Integration\r",
         "description": "Complete form example with input badge fields.",
-        "example": "<script setup lang=\"ts\">\r\nimport { Form, InputBadge } from '@fewangsit/wangsvue'\r\n\r\nconst onSubmit = (payload: { formValues: Record<string, unknown> }) => {\r\n  console.log('Form submitted:', payload.formValues)\r\n}\r\n\r\nconst onCancel = () => {\r\n  console.log('Form cancelled')\r\n}\r\n</script>\r\n\r\n<template>\r\n  <Form\r\n    :column-per-row=\"1\"\r\n    submit-btn-label=\"Save Tags\"\r\n    :buttons-template=\"['submit', 'cancel', 'clear']\"\r\n    :hide-stay-checkbox=\"true\"\r\n    @submit=\"onSubmit\"\r\n    @cancel=\"onCancel\"\r\n  >\r\n    <template #fields=\"{ formValues }\">\r\n      <InputBadge\r\n        label=\"Skills\"\r\n        field-name=\"skills\"\r\n        :use-validator=\"true\"\r\n        :mandatory=\"true\"\r\n        :initial-value=\"['JavaScript', 'Vue.js']\"\r\n        placeholder=\"Enter your skills\"\r\n        field-info=\"Press Enter to add each skill\"\r\n        :validator-message=\"{\r\n          empty: 'At least one skill is required'\r\n        }\"\r\n      />\r\n\r\n      <InputBadge\r\n        :use-validator=\"true\"\r\n        :initial-value=\"['Non Editable Tag']\"\r\n        :editable-values=\"['Frontend', 'Backend']\"\r\n        :removable-values=\"['Frontend', 'Backend', 'Database']\"\r\n        label=\"Project Tags\"\r\n        field-name=\"projectTags\"\r\n        placeholder=\"Enter project tags\"\r\n        field-info=\"Optional tags for categorization\"\r\n        remove-button-variant=\"disabled\"\r\n      />\r\n\r\n      <!-- Example of conditional rendering based on form values -->\r\n      <InputBadge\r\n        v-if=\"formValues.skills && (formValues.skills as string[]).includes('Vue.js')\"\r\n        label=\"Vue.js Libraries\"\r\n        field-name=\"vueLibraries\"\r\n        :use-validator=\"true\"\r\n        :initial-value=\"['Nuxt.js', 'Pinia']\"\r\n        placeholder=\"Enter Vue.js related libraries\"\r\n        field-info=\"Shown because Vue.js is in your skills\"\r\n      />\r\n    </template>\r\n  </Form>\r\n</template>\r\n",
+        "example": "<script setup lang=\"ts\">\r\nimport { Form, InputBadge } from '@fewangsit/wangsvue'\r\nimport type { FormPayload } from '@fewangsit/wangsvue/form'\r\n\r\nconst onSubmit = (payload: FormPayload) => {\r\n  console.log('Form submitted:', payload.formValues)\r\n}\r\n\r\nconst onCancel = () => {\r\n  console.log('Form cancelled')\r\n}\r\n</script>\r\n\r\n<template>\r\n  <Form\r\n    :column-per-row=\"1\"\r\n    submit-btn-label=\"Save Tags\"\r\n    :buttons-template=\"['submit', 'cancel', 'clear']\"\r\n    :hide-stay-checkbox=\"true\"\r\n    @submit=\"onSubmit\"\r\n    @cancel=\"onCancel\"\r\n  >\r\n    <template #fields=\"{ formValues }\">\r\n      <InputBadge\r\n        label=\"Skills\"\r\n        field-name=\"skills\"\r\n        :use-validator=\"true\"\r\n        :mandatory=\"true\"\r\n        :initial-value=\"['JavaScript', 'Vue.js']\"\r\n        placeholder=\"Enter your skills\"\r\n        field-info=\"Press Enter to add each skill\"\r\n        :validator-message=\"{\r\n          empty: 'At least one skill is required'\r\n        }\"\r\n      />\r\n\r\n      <InputBadge\r\n        :use-validator=\"true\"\r\n        :initial-value=\"['Non Editable Tag']\"\r\n        :editable-values=\"['Frontend', 'Backend']\"\r\n        :removable-values=\"['Frontend', 'Backend', 'Database']\"\r\n        label=\"Project Tags\"\r\n        field-name=\"projectTags\"\r\n        placeholder=\"Enter project tags\"\r\n        field-info=\"Optional tags for categorization\"\r\n        remove-button-variant=\"disabled\"\r\n      />\r\n\r\n      <!-- Example of conditional rendering based on form values -->\r\n      <InputBadge\r\n        v-if=\"formValues.skills && (formValues.skills as string[]).includes('Vue.js')\"\r\n        label=\"Vue.js Libraries\"\r\n        field-name=\"vueLibraries\"\r\n        :use-validator=\"true\"\r\n        :initial-value=\"['Nuxt.js', 'Pinia']\"\r\n        placeholder=\"Enter Vue.js related libraries\"\r\n        field-info=\"Shown because Vue.js is in your skills\"\r\n      />\r\n    </template>\r\n  </Form>\r\n</template>\r\n",
         "hasExample": true,
         "examplePath": "inputbadge/FormIntegration"
       }
@@ -197,15 +284,7 @@
       {
         "id": "import-",
         "label": "Import\r",
-        "description": "```typescript\r\nimport { InputRangeNumber } from '@fewangsit/wangsvue'\r\n```",
-        "example": "",
-        "hasExample": false,
-        "examplePath": null
-      },
-      {
-        "id": "examples-",
-        "label": "Examples\r",
-        "description": "",
+        "description": "```ts\r\nimport { InputRangeNumber } from '@fewangsit/wangsvue';\r\n```",
         "example": "",
         "hasExample": false,
         "examplePath": null
@@ -213,32 +292,56 @@
       {
         "id": "basic-",
         "label": "Basic\r",
-        "description": "Basic range number input with min and max values.",
-        "example": "<script setup lang=\"ts\">\r\nimport { ref } from 'vue'\r\nimport { InputRangeNumber } from '@fewangsit/wangsvue'\r\n\r\nconst value = ref<number[]>([])\r\n</script>\r\n\r\n<template>\r\n  <div class=\"flex flex-col gap-4\">\r\n    <InputRangeNumber\r\n      v-model=\"value\"\r\n      label=\"Price Range\"\r\n      placeholder=\"Enter price range\"\r\n    />\r\n    <p class=\"text-sm text-gray-600\">\r\n      Range: {{ value.length > 0 ? `${value[0]} - ${value[1]}` : 'Empty' }}\r\n    </p>\r\n  </div>\r\n</template>\r\n",
+        "description": "Basic range number input with two-way data binding using v-model.",
+        "example": "<script setup lang=\"ts\">\r\nimport { ref } from 'vue'\r\nimport { InputRangeNumber } from '@fewangsit/wangsvue'\r\n\r\nconst value = ref<number[]>([])\r\n</script>\r\n\r\n<template>\r\n  <InputRangeNumber\r\n    v-model=\"value\"\r\n    label=\"Price Range\"\r\n    placeholder=\"Enter price range\"\r\n  />\r\n</template>\r\n",
         "hasExample": true,
         "examplePath": "inputrangenumber/Basic"
       },
       {
         "id": "placeholders-",
         "label": "Placeholders\r",
-        "description": "Range input with custom placeholders for min and max fields.",
-        "example": "<script setup lang=\"ts\">\r\nimport { ref } from 'vue'\r\nimport { InputRangeNumber } from '@fewangsit/wangsvue'\r\n\r\nconst value = ref<number[]>([])\r\n</script>\r\n\r\n<template>\r\n  <div class=\"flex flex-col gap-4\">\r\n    <InputRangeNumber\r\n      v-model=\"value\"\r\n      label=\"Age Range\"\r\n      min-placeholder=\"Minimum age\"\r\n      max-placeholder=\"Maximum age\"\r\n    />\r\n    <p class=\"text-sm text-gray-600\">\r\n      Age Range: {{ value.length > 0 ? `${value[0]} - ${value[1]} years` : 'Empty' }}\r\n    </p>\r\n  </div>\r\n</template>\r\n",
+        "description": "Range input with custom placeholders for minimum and maximum fields.",
+        "example": "<script setup lang=\"ts\">\r\nimport { ref } from 'vue'\r\nimport { InputRangeNumber } from '@fewangsit/wangsvue'\r\n\r\nconst value = ref<number[]>([])\r\n</script>\r\n\r\n<template>\r\n  <InputRangeNumber\r\n    v-model=\"value\"\r\n    label=\"Age Range\"\r\n    min-placeholder=\"Minimum age\"\r\n    max-placeholder=\"Maximum age\"\r\n  />\r\n</template>\r\n",
         "hasExample": true,
         "examplePath": "inputrangenumber/Placeholders"
       },
       {
         "id": "validation-",
         "label": "Validation\r",
-        "description": "Range number input with form validation.",
-        "example": "<script setup lang=\"ts\">\r\nimport { ref } from 'vue'\r\nimport { InputRangeNumber } from '@fewangsit/wangsvue'\r\n\r\nconst value = ref<number[]>([])\r\n</script>\r\n\r\n<template>\r\n  <div class=\"flex flex-col gap-4\">\r\n    <InputRangeNumber\r\n      v-model=\"value\"\r\n      label=\"Salary Range\"\r\n      min-placeholder=\"Minimum salary\"\r\n      max-placeholder=\"Maximum salary\"\r\n      :use-validator=\"true\"\r\n      :mandatory=\"true\"\r\n      min-field-name=\"minSalary\"\r\n      max-field-name=\"maxSalary\"\r\n      :validator-message=\"{\r\n        empty: 'Salary range is required'\r\n      }\"\r\n    />\r\n    <p class=\"text-sm text-gray-600\">\r\n      Salary Range: {{ value.length > 0 ? `$${value[0]} - $${value[1]}` : 'Empty' }}\r\n    </p>\r\n  </div>\r\n</template>\r\n",
+        "description": "Range number input with form validation and mandatory field requirements.",
+        "example": "<script setup lang=\"ts\">\r\nimport { ref } from 'vue'\r\nimport { InputRangeNumber } from '@fewangsit/wangsvue'\r\n\r\nconst value = ref<number[]>([])\r\n</script>\r\n\r\n<template>\r\n  <InputRangeNumber\r\n    v-model=\"value\"\r\n    label=\"Salary Range\"\r\n    min-placeholder=\"Minimum salary\"\r\n    max-placeholder=\"Maximum salary\"\r\n    :use-validator=\"true\"\r\n    :mandatory=\"true\"\r\n    min-field-name=\"minSalary\"\r\n    max-field-name=\"maxSalary\"\r\n    :validator-message=\"{\r\n      empty: 'Salary range is required'\r\n    }\"\r\n  />\r\n</template>\r\n",
         "hasExample": true,
         "examplePath": "inputrangenumber/Validation"
       },
       {
+        "id": "mandatory-",
+        "label": "Mandatory\r",
+        "description": "Range input with mandatory validation and custom error messages.",
+        "example": "<script setup lang=\"ts\">\r\nimport { ref } from 'vue'\r\nimport { InputRangeNumber } from '@fewangsit/wangsvue'\r\n\r\nconst value = ref<number[]>([])\r\n</script>\r\n\r\n<template>\r\n  <InputRangeNumber\r\n    v-model=\"value\"\r\n    label=\"Price Range\"\r\n    min-placeholder=\"Min price\"\r\n    max-placeholder=\"Max price\"\r\n    :mandatory=\"true\"\r\n    :use-validator=\"true\"\r\n    min-field-name=\"minPrice\"\r\n    max-field-name=\"maxPrice\"\r\n    :validator-message=\"{ empty: 'Price range is required' }\"\r\n  />\r\n</template>\r\n",
+        "hasExample": true,
+        "examplePath": "inputrangenumber/Mandatory"
+      },
+      {
+        "id": "disabled-",
+        "label": "Disabled\r",
+        "description": "Range input in disabled state prevents user interaction.",
+        "example": "<script setup lang=\"ts\">\r\nimport { ref } from 'vue'\r\nimport { InputRangeNumber } from '@fewangsit/wangsvue'\r\n\r\nconst value = ref<number[]>([100, 500])\r\n</script>\r\n\r\n<template>\r\n  <InputRangeNumber\r\n    v-model=\"value\"\r\n    label=\"Price Range (Disabled)\"\r\n    min-placeholder=\"Min price\"\r\n    max-placeholder=\"Max price\"\r\n    :disabled=\"true\"\r\n  />\r\n</template>\r\n",
+        "hasExample": true,
+        "examplePath": "inputrangenumber/Disabled"
+      },
+      {
+        "id": "invalid-",
+        "label": "Invalid\r",
+        "description": "Range input showing invalid state with error message. Validator message will only be shown if `use-validator` set to true.",
+        "example": "<script setup lang=\"ts\">\r\nimport { ref } from 'vue'\r\nimport { InputRangeNumber } from '@fewangsit/wangsvue'\r\n\r\nconst value = ref<number[]>([])\r\n</script>\r\n\r\n<template>\r\n  <InputRangeNumber\r\n    v-model=\"value\"\r\n    label=\"Budget Range\"\r\n    min-placeholder=\"Minimum budget\"\r\n    max-placeholder=\"Maximum budget\"\r\n    :invalid=\"true\"\r\n    use-validator\r\n    validator-message=\"Budget range is required for this project\"\r\n  />\r\n</template>\r\n",
+        "hasExample": true,
+        "examplePath": "inputrangenumber/Invalid"
+      },
+      {
         "id": "form-integration-",
         "label": "Form Integration\r",
-        "description": "Complete form example with range number inputs.",
-        "example": "<script setup lang=\"ts\">\r\nimport { Form, InputText, InputRangeNumber } from '@fewangsit/wangsvue'\r\n\r\nconst onSubmit = (payload: { formValues: Record<string, unknown> }) => {\r\n  console.log('Job posting submitted:', payload.formValues)\r\n}\r\n\r\nconst onCancel = () => {\r\n  console.log('Form cancelled')\r\n}\r\n</script>\r\n\r\n<template>\r\n  <Form\r\n    :column-per-row=\"1\"\r\n    submit-btn-label=\"Post Job\"\r\n    @submit=\"onSubmit\"\r\n    @cancel=\"onCancel\"\r\n  >\r\n    <template #fields=\"{ formValues }\">\r\n      <InputText\r\n        v-model=\"formValues.jobTitle\"\r\n        label=\"Job Title\"\r\n        field-name=\"jobTitle\"\r\n        :use-validator=\"true\"\r\n        :mandatory=\"true\"\r\n        :validator-message=\"{\r\n          empty: 'Job title is required'\r\n        }\"\r\n      />\r\n\r\n      <InputRangeNumber\r\n        v-model=\"formValues.salaryRange\"\r\n        label=\"Salary Range (USD)\"\r\n        min-placeholder=\"Minimum salary\"\r\n        max-placeholder=\"Maximum salary\"\r\n        :use-validator=\"true\"\r\n        :mandatory=\"true\"\r\n        min-field-name=\"minSalary\"\r\n        max-field-name=\"maxSalary\"\r\n        field-info=\"Annual salary range in USD\"\r\n        :validator-message=\"{\r\n          empty: 'Salary range is required'\r\n        }\"\r\n      />\r\n\r\n      <InputRangeNumber\r\n        v-model=\"formValues.experienceRange\"\r\n        label=\"Experience Required (Years)\"\r\n        min-placeholder=\"Minimum years\"\r\n        max-placeholder=\"Maximum years\"\r\n        :use-validator=\"true\"\r\n        min-field-name=\"minExperience\"\r\n        max-field-name=\"maxExperience\"\r\n        field-info=\"Years of experience required\"\r\n      />\r\n\r\n      <InputRangeNumber\r\n        v-model=\"formValues.ageRange\"\r\n        label=\"Preferred Age Range\"\r\n        min-placeholder=\"Minimum age\"\r\n        max-placeholder=\"Maximum age\"\r\n        :use-validator=\"true\"\r\n        min-field-name=\"minAge\"\r\n        max-field-name=\"maxAge\"\r\n        field-info=\"Optional preferred age range\"\r\n      />\r\n    </template>\r\n  </Form>\r\n</template>\r\n",
+        "description": "Complete form example with range number input and validation. Similar to [InputNumber](/components/inputnumber), InputRangeNumber integrates seamlessly with form validation.",
+        "example": "<script setup lang=\"ts\">\r\nimport { Form, InputRangeNumber } from '@fewangsit/wangsvue'\r\nimport type { FormPayload } from '@fewangsit/wangsvue/form'\r\n\r\nconst onSubmit = (payload: FormPayload) => {\r\n  console.log('Form submitted:', payload.formValues)\r\n}\r\n</script>\r\n\r\n<template>\r\n  <Form\r\n    :buttons-template=\"['submit', 'clear']\"\r\n    hide-stay-checkbox\r\n    @submit=\"onSubmit\"\r\n  >\r\n    <template #fields>\r\n      <InputRangeNumber\r\n        label=\"Salary Range (USD)\"\r\n        min-placeholder=\"Minimum salary\"\r\n        max-placeholder=\"Maximum salary\"\r\n        :use-validator=\"true\"\r\n        :mandatory=\"true\"\r\n        min-field-name=\"minSalary\"\r\n        max-field-name=\"maxSalary\"\r\n        :validator-message=\"{ empty: 'Salary range is required' }\"\r\n      />\r\n    </template>\r\n  </Form>\r\n</template>\r\n",
         "hasExample": true,
         "examplePath": "inputrangenumber/FormIntegration"
       }
@@ -789,6 +892,93 @@
     ]
   },
   {
+    "name": "dropdown",
+    "title": "Dropdown",
+    "description": "Dropdown also known as Select, is used to choose an item from a collection of options.",
+    "sections": [
+      {
+        "id": "import-",
+        "label": "Import\r",
+        "description": "```ts\r\nimport { Dropdown } from '@fewangsit/wangsvue';\r\n```",
+        "example": "",
+        "hasExample": false,
+        "examplePath": null
+      },
+      {
+        "id": "basic-",
+        "label": "Basic\r",
+        "description": "Basic usage of dropdown with simple options.",
+        "example": "<script setup lang=\"ts\">\r\nimport { Dropdown } from '@fewangsit/wangsvue'\r\nimport { ref } from 'vue'\r\n\r\nconst selectedValue = ref()\r\nconst options = ['Option 1', 'Option 2', 'Option 3', 'Option 4']\r\n</script>\r\n\r\n<template>\r\n  <Dropdown\r\n    v-model=\"selectedValue\"\r\n    label=\"Select Option\"\r\n    :options=\"options\"\r\n    placeholder=\"Choose an option\"\r\n  />\r\n</template>\r\n",
+        "hasExample": true,
+        "examplePath": "dropdown/Basic"
+      },
+      {
+        "id": "object-options-",
+        "label": "Object Options\r",
+        "description": "Dropdown with object options using `optionLabel` and `optionValue` properties.",
+        "example": "<script setup lang=\"ts\">\r\nimport { Dropdown } from '@fewangsit/wangsvue'\r\nimport { ref } from 'vue'\r\n\r\nconst selectedValue = ref()\r\nconst options = [\r\n  { name: 'New York', code: 'NY' },\r\n  { name: 'Rome', code: 'RM' },\r\n  { name: 'London', code: 'LDN' },\r\n  { name: 'Istanbul', code: 'IST' },\r\n  { name: 'Paris', code: 'PRS' }\r\n]\r\n</script>\r\n\r\n<template>\r\n  <Dropdown\r\n    v-model=\"selectedValue\"\r\n    label=\"Select City\"\r\n    :options=\"options\"\r\n    option-label=\"name\"\r\n    option-value=\"code\"\r\n    placeholder=\"Choose a city\"\r\n  />\r\n</template>\r\n",
+        "hasExample": true,
+        "examplePath": "dropdown/ObjectOptions"
+      },
+      {
+        "id": "badge-value-",
+        "label": "Badge Value\r",
+        "description": "Display selected value as a badge using `valueType` property.",
+        "example": "<script setup lang=\"ts\">\r\nimport { Dropdown } from '@fewangsit/wangsvue'\r\nimport type { BadgeProps } from '@fewangsit/wangsvue/badge'\r\nimport { ref } from 'vue'\r\n\r\nconst selectedValue = ref<BadgeProps['severity']>('success')\r\nconst options = [\r\n  { label: 'Success', value: 'success' },\r\n  { label: 'Info', value: 'info' },\r\n  { label: 'Warning', value: 'warning' },\r\n  { label: 'Danger', value: 'danger' }\r\n]\r\n</script>\r\n\r\n<template>\r\n  <Dropdown\r\n    v-model=\"selectedValue\"\r\n    label=\"Select Status\"\r\n    :options=\"options\"\r\n    option-label=\"label\"\r\n    option-value=\"value\"\r\n    value-type=\"badge\"\r\n    :badge-value-props=\"{ severity: selectedValue }\"\r\n    placeholder=\"Choose status\"\r\n  />\r\n</template>\r\n",
+        "hasExample": true,
+        "examplePath": "dropdown/BadgeValue"
+      },
+      {
+        "id": "loading-",
+        "label": "Loading\r",
+        "description": "Dropdown in loading state.",
+        "example": "<script setup lang=\"ts\">\r\nimport { ref } from 'vue'\r\nimport { Dropdown } from '@fewangsit/wangsvue'\r\n\r\nconst selectedValue = ref()\r\nconst options = ['Option 1', 'Option 2', 'Option 3', 'Option 4']\r\n</script>\r\n\r\n<template>\r\n  <Dropdown\r\n    v-model=\"selectedValue\"\r\n    label=\"Select Option\"\r\n    :options=\"options\"\r\n    :loading=\"true\"\r\n    placeholder=\"Loading options...\"\r\n  />\r\n</template>\r\n",
+        "hasExample": true,
+        "examplePath": "dropdown/Loading"
+      },
+      {
+        "id": "disabled-",
+        "label": "Disabled\r",
+        "description": "Dropdown in disabled state.",
+        "example": "<script setup lang=\"ts\">\r\nimport { Dropdown } from '@fewangsit/wangsvue'\r\nimport { ref } from 'vue'\r\n\r\nconst selectedValue = ref('Option 2')\r\nconst options = ['Option 1', 'Option 2', 'Option 3', 'Option 4']\r\n</script>\r\n\r\n<template>\r\n  <Dropdown\r\n    v-model=\"selectedValue\"\r\n    label=\"Select Option\"\r\n    :options=\"options\"\r\n    :disabled=\"true\"\r\n    placeholder=\"Choose an option\"\r\n  />\r\n</template>\r\n",
+        "hasExample": true,
+        "examplePath": "dropdown/Disabled"
+      },
+      {
+        "id": "filter-",
+        "label": "Filter\r",
+        "description": "Dropdown with search functionality enabled.",
+        "example": "<script setup lang=\"ts\">\r\nimport { Dropdown } from '@fewangsit/wangsvue'\r\nimport { ref } from 'vue'\r\n\r\nconst selectedValue = ref()\r\nconst options = [\r\n  'Australia', 'Brazil', 'China', 'Egypt', 'France',\r\n  'Germany', 'India', 'Japan', 'Spain', 'United States'\r\n]\r\n</script>\r\n\r\n<template>\r\n  <Dropdown\r\n    v-model=\"selectedValue\"\r\n    label=\"Select Country\"\r\n    :options=\"options\"\r\n    :filter=\"true\"\r\n    filter-placeholder=\"Search countries...\"\r\n    placeholder=\"Choose a country\"\r\n  />\r\n</template>\r\n",
+        "hasExample": true,
+        "examplePath": "dropdown/Filter"
+      },
+      {
+        "id": "custom-placeholder-",
+        "label": "Custom Placeholder\r",
+        "description": "Dropdown with custom placeholder text.",
+        "example": "<script setup lang=\"ts\">\r\nimport { Dropdown } from '@fewangsit/wangsvue'\r\nimport { ref } from 'vue'\r\n\r\nconst selectedValue = ref()\r\nconst options = ['Small', 'Medium', 'Large', 'Extra Large']\r\n</script>\r\n\r\n<template>\r\n  <div class=\"flex flex-wrap gap-3\">\r\n    <Dropdown\r\n      v-model=\"selectedValue\"\r\n      label=\"T-Shirt Size\"\r\n      :options=\"options\"\r\n      placeholder=\"Pick your size\"\r\n    />\r\n  </div>\r\n</template>\r\n",
+        "hasExample": true,
+        "examplePath": "dropdown/CustomPlaceholder"
+      },
+      {
+        "id": "form-integration-",
+        "label": "Form Integration\r",
+        "description": "Dropdown integrated with form validation.",
+        "example": "<script setup lang=\"ts\">\r\nimport { Form, Dropdown } from '@fewangsit/wangsvue'\r\nimport type { FormPayload } from '@fewangsit/wangsvue/form'\r\n\r\nconst options = ['Manager', 'Developer', 'Designer', 'Analyst']\r\n\r\nconst onSubmit = (payload: FormPayload) => {\r\n  console.log('Form submitted:', payload.formValues)\r\n}\r\n</script>\r\n\r\n<template>\r\n  <Form\r\n    :buttons-template=\"['submit', 'clear']\"\r\n    hide-stay-checkbox\r\n    @submit=\"onSubmit\"\r\n  >\r\n    <template #fields>\r\n      <Dropdown\r\n        label=\"Job Role\"\r\n        field-name=\"jobRole\"\r\n        :options=\"options\"\r\n        :use-validator=\"true\"\r\n        :mandatory=\"true\"\r\n        :validator-message=\"{ empty: 'Job role is required' }\"\r\n        placeholder=\"Select your role\"\r\n      />\r\n    </template>\r\n  </Form>\r\n</template>\r\n",
+        "hasExample": true,
+        "examplePath": "dropdown/FormIntegration"
+      },
+      {
+        "id": "custom-templates-",
+        "label": "Custom Templates\r",
+        "description": "Dropdown with custom value and option templates using slots.",
+        "example": "<script setup lang=\"ts\">\r\nimport { Dropdown } from '@fewangsit/wangsvue'\r\nimport { ref } from 'vue'\r\n\r\nconst selectedValue = ref()\r\nconst options = [\r\n  { name: 'Australia', code: 'AU', flag: '🇦🇺' },\r\n  { name: 'Brazil', code: 'BR', flag: '🇧🇷' },\r\n  { name: 'China', code: 'CN', flag: '🇨🇳' },\r\n  { name: 'Egypt', code: 'EG', flag: '🇪🇬' },\r\n  { name: 'France', code: 'FR', flag: '🇫🇷' }\r\n]\r\n</script>\r\n\r\n<template>\r\n  <div class=\"flex flex-wrap gap-3\">\r\n    <Dropdown\r\n      v-model=\"selectedValue\"\r\n      label=\"Select Country\"\r\n      :options=\"options\"\r\n      option-label=\"name\"\r\n      option-value=\"code\"\r\n      placeholder=\"Choose a country\"\r\n    >\r\n      <template #value=\"{ originalValue }\">\r\n        <span v-if=\"originalValue\">\r\n          {{ originalValue.flag }} {{ originalValue.name }}\r\n        </span>\r\n      </template>\r\n\r\n      <template #option=\"{ option }\">\r\n        <div class=\"flex items-center gap-2\">\r\n          <span>{{ option.flag }}</span>\r\n          <span>{{ option.name }}</span>\r\n          <span class=\"text-gray-500\">({{ option.code }})</span>\r\n        </div>\r\n      </template>\r\n    </Dropdown>\r\n  </div>\r\n</template>\r\n",
+        "hasExample": true,
+        "examplePath": "dropdown/CustomTemplates"
+      }
+    ]
+  },
+  {
     "name": "icon",
     "title": "Icon",
     "description": "Display icon with svg backgrounds from the WangsIcons collection.",
@@ -832,6 +1022,93 @@
         "example": "<script setup lang=\"ts\">\r\nimport { Icon } from '@fewangsit/wangsvue'\r\nimport type { WangsIcons } from '@fewangsit/wangsvue/icon'\r\n\r\n// Popular and commonly used icons organized by category\r\nconst iconCategories = {\r\n  'Navigation & Actions': [\r\n    'add', 'close', 'edit', 'delete-bin', 'search', 'filter',\r\n    'arrow-left', 'arrow-right', 'arrow-up-s', 'arrow-down',\r\n    'menu', 'more', 'settings', 'refresh'\r\n  ] as WangsIcons[],\r\n\r\n  'Files & Documents': [\r\n    'file-add', 'file-edit', 'file-copy', 'files', 'folder',\r\n    'pdf', 'csv', 'xls', 'doc', 'download', 'upload-2'\r\n  ] as WangsIcons[],\r\n\r\n  'Users & Communication': [\r\n    'user', 'user-add', 'team', 'profile', 'mail', 'chat',\r\n    'notification', 'bell', 'phone'\r\n  ] as WangsIcons[],\r\n\r\n  'Status & Feedback': [\r\n    'check', 'error', 'info', 'warning', 'success',\r\n    'loader-4', 'spinner', 'time', 'calendar'\r\n  ] as WangsIcons[],\r\n\r\n  'Business & Finance': [\r\n    'money-dollar-circle', 'coins', 'calculator', 'bank-card-line',\r\n    'shopping-cart-2', 'store'\r\n  ] as WangsIcons[],\r\n\r\n  'Technology': [\r\n    'database', 'cloud-line', 'qr', 'barcode', 'printer',\r\n    'smartphone', 'device', 'tools', 'code-line'\r\n  ] as WangsIcons[]\r\n}\r\n</script>\r\n\r\n<template>\r\n  <div class=\"space-y-8\">\r\n    <div\r\n      v-for=\"(icons, category) in iconCategories\"\r\n      :key=\"category\"\r\n      class=\"space-y-4\"\r\n    >\r\n      <h4 class=\"text-lg font-semibold text-gray-800\">\r\n        {{ category }}\r\n      </h4>\r\n      <div class=\"grid grid-cols-6 sm:grid-cols-8 md:grid-cols-10 lg:grid-cols-12 gap-4\">\r\n        <div\r\n          v-for=\"iconName in icons\"\r\n          :key=\"iconName\"\r\n          class=\"flex flex-col items-center gap-2 p-3 rounded-lg hover:bg-gray-50 transition-colors\"\r\n        >\r\n          <Icon\r\n            :icon=\"iconName\"\r\n            :info=\"iconName\"\r\n            class=\"text-xl\"\r\n          />\r\n          <span class=\"text-xs text-gray-600 text-center break-all\">\r\n            {{ iconName }}\r\n          </span>\r\n        </div>\r\n      </div>\r\n    </div>\r\n\r\n    <div class=\"mt-8 p-4 bg-blue-50 rounded-lg\">\r\n      <p class=\"text-sm text-blue-800\">\r\n        <Icon\r\n          icon=\"info\"\r\n          severity=\"info\"\r\n          class=\"inline mr-2\"\r\n        />\r\n        This gallery shows popular icons. The complete WangsIcons collection includes 200+ icons.\r\n        Hover over any icon to see its name, or check the TypeScript definitions for the full list.\r\n      </p>\r\n    </div>\r\n  </div>\r\n</template>\r\n",
         "hasExample": true,
         "examplePath": "icon/Gallery"
+      }
+    ]
+  },
+  {
+    "name": "multiselect",
+    "title": "MultiSelect",
+    "description": "MultiSelect also known as Select, is used to choose an item from a collection of options.",
+    "sections": [
+      {
+        "id": "import-",
+        "label": "Import\r",
+        "description": "```ts\r\nimport { MultiSelect } from '@fewangsit/wangsvue';\r\n```",
+        "example": "",
+        "hasExample": false,
+        "examplePath": null
+      },
+      {
+        "id": "basic-",
+        "label": "Basic\r",
+        "description": "Basic usage of multiselect with simple options.",
+        "example": "<script setup lang=\"ts\">\r\nimport { MultiSelect } from '@fewangsit/wangsvue'\r\nimport { ref } from 'vue'\r\n\r\nconst selectedValues = ref([])\r\nconst options = ['Option 1', 'Option 2', 'Option 3', 'Option 4', 'Option 5']\r\n</script>\r\n\r\n<template>\r\n  <MultiSelect\r\n    v-model=\"selectedValues\"\r\n    label=\"Select Options\"\r\n    :options=\"options\"\r\n    placeholder=\"Choose options\"\r\n  />\r\n</template>\r\n",
+        "hasExample": true,
+        "examplePath": "multiselect/Basic"
+      },
+      {
+        "id": "object-options-",
+        "label": "Object Options\r",
+        "description": "MultiSelect with object options using `optionLabel` and `optionValue` properties.",
+        "example": "<script setup lang=\"ts\">\r\nimport { MultiSelect } from '@fewangsit/wangsvue'\r\nimport { ref } from 'vue'\r\n\r\nconst selectedValues = ref([])\r\nconst options = [\r\n  { name: 'New York', code: 'NY' },\r\n  { name: 'Rome', code: 'RM' },\r\n  { name: 'London', code: 'LDN' },\r\n  { name: 'Istanbul', code: 'IST' },\r\n  { name: 'Paris', code: 'PRS' },\r\n  { name: 'Tokyo', code: 'TKY' }\r\n]\r\n</script>\r\n\r\n<template>\r\n  <MultiSelect\r\n    v-model=\"selectedValues\"\r\n    label=\"Select Cities\"\r\n    :options=\"options\"\r\n    option-label=\"name\"\r\n    option-value=\"code\"\r\n    placeholder=\"Choose cities\"\r\n  />\r\n</template>\r\n",
+        "hasExample": true,
+        "examplePath": "multiselect/ObjectOptions"
+      },
+      {
+        "id": "display-modes-",
+        "label": "Display Modes\r",
+        "description": "MultiSelect supports different display modes for selected items.",
+        "example": "<script setup lang=\"ts\">\r\nimport { MultiSelect } from '@fewangsit/wangsvue'\r\nimport { ref } from 'vue'\r\n\r\nconst selectedChip = ref(['Option 1', 'Option 2'])\r\nconst selectedComma = ref(['Option 3', 'Option 4'])\r\nconst options = ['Option 1', 'Option 2', 'Option 3', 'Option 4', 'Option 5']\r\n</script>\r\n\r\n<template>\r\n  <div class=\"flex flex-col gap-4\">\r\n    <MultiSelect\r\n      v-model=\"selectedChip\"\r\n      label=\"Chip Display\"\r\n      :options=\"options\"\r\n      display=\"chip\"\r\n      placeholder=\"Choose options (chip)\"\r\n    />\r\n\r\n    <MultiSelect\r\n      v-model=\"selectedComma\"\r\n      label=\"Comma Display\"\r\n      :options=\"options\"\r\n      display=\"comma\"\r\n      placeholder=\"Choose options (comma)\"\r\n    />\r\n  </div>\r\n</template>\r\n",
+        "hasExample": true,
+        "examplePath": "multiselect/DisplayModes"
+      },
+      {
+        "id": "max-selected-labels-",
+        "label": "Max Selected Labels\r",
+        "description": "Control how many selected items to show before displaying a summary.",
+        "example": "<script setup lang=\"ts\">\r\nimport { MultiSelect } from '@fewangsit/wangsvue'\r\nimport { ref } from 'vue'\r\n\r\nconst selectedValues = ref(['Option 1', 'Option 2', 'Option 3'])\r\nconst options = ['Option 1', 'Option 2', 'Option 3', 'Option 4', 'Option 5', 'Option 6', 'Option 7']\r\n</script>\r\n\r\n<template>\r\n  <MultiSelect\r\n    v-model=\"selectedValues\"\r\n    label=\"Select Options\"\r\n    :options=\"options\"\r\n    :max-selected-labels=\"2\"\r\n    selected-items-label=\"items selected\"\r\n    placeholder=\"Choose options\"\r\n  />\r\n</template>\r\n",
+        "hasExample": true,
+        "examplePath": "multiselect/MaxSelectedLabels"
+      },
+      {
+        "id": "loading-",
+        "label": "Loading\r",
+        "description": "MultiSelect in loading state.",
+        "example": "<script setup lang=\"ts\">\r\nimport { MultiSelect } from '@fewangsit/wangsvue'\r\nimport { ref } from 'vue'\r\n\r\nconst selectedValues = ref([])\r\nconst options = ['Option 1', 'Option 2', 'Option 3', 'Option 4']\r\n</script>\r\n\r\n<template>\r\n  <MultiSelect\r\n    v-model=\"selectedValues\"\r\n    label=\"Select Options\"\r\n    :options=\"options\"\r\n    :loading=\"true\"\r\n    placeholder=\"Loading options...\"\r\n  />\r\n</template>\r\n",
+        "hasExample": true,
+        "examplePath": "multiselect/Loading"
+      },
+      {
+        "id": "disabled-",
+        "label": "Disabled\r",
+        "description": "MultiSelect in disabled state.",
+        "example": "<script setup lang=\"ts\">\r\nimport { MultiSelect } from '@fewangsit/wangsvue'\r\nimport { ref } from 'vue'\r\n\r\nconst selectedValues = ref(['Option 1', 'Option 3'])\r\nconst options = ['Option 1', 'Option 2', 'Option 3', 'Option 4']\r\n</script>\r\n\r\n<template>\r\n  <MultiSelect\r\n    v-model=\"selectedValues\"\r\n    label=\"Select Options\"\r\n    :options=\"options\"\r\n    :disabled=\"true\"\r\n    placeholder=\"Choose options\"\r\n  />\r\n</template>\r\n",
+        "hasExample": true,
+        "examplePath": "multiselect/Disabled"
+      },
+      {
+        "id": "filter-",
+        "label": "Filter\r",
+        "description": "MultiSelect with search functionality enabled.",
+        "example": "<script setup lang=\"ts\">\r\nimport { MultiSelect } from '@fewangsit/wangsvue'\r\nimport { ref } from 'vue'\r\n\r\nconst selectedValues = ref([])\r\nconst options = [\r\n  'Australia', 'Brazil', 'China', 'Egypt', 'France',\r\n  'Germany', 'India', 'Japan', 'Spain', 'United States'\r\n]\r\n</script>\r\n\r\n<template>\r\n  <MultiSelect\r\n    v-model=\"selectedValues\"\r\n    label=\"Select Countries\"\r\n    :options=\"options\"\r\n    :filter=\"true\"\r\n    filter-placeholder=\"Search countries...\"\r\n    placeholder=\"Choose countries\"\r\n  />\r\n</template>\r\n",
+        "hasExample": true,
+        "examplePath": "multiselect/Filter"
+      },
+      {
+        "id": "hide-header-checkbox-",
+        "label": "Hide Header Checkbox\r",
+        "description": "MultiSelect without select all functionality.",
+        "example": "<script setup lang=\"ts\">\r\nimport { MultiSelect } from '@fewangsit/wangsvue'\r\nimport { ref } from 'vue'\r\n\r\nconst selectedValues = ref([])\r\nconst options = ['Option 1', 'Option 2', 'Option 3', 'Option 4', 'Option 5']\r\n</script>\r\n\r\n<template>\r\n  <MultiSelect\r\n    v-model=\"selectedValues\"\r\n    label=\"Select Options\"\r\n    :options=\"options\"\r\n    :hide-header-checkbox=\"true\"\r\n    placeholder=\"Choose options\"\r\n  />\r\n</template>\r\n",
+        "hasExample": true,
+        "examplePath": "multiselect/HideHeaderCheckbox"
+      },
+      {
+        "id": "form-integration-",
+        "label": "Form Integration\r",
+        "description": "MultiSelect integrated with form validation.",
+        "example": "<script setup lang=\"ts\">\r\nimport { Form, MultiSelect } from '@fewangsit/wangsvue'\r\nimport type { FormPayload } from '@fewangsit/wangsvue/form'\r\n\r\nconst options = ['JavaScript', 'TypeScript', 'Python', 'Java', 'C#', 'Go']\r\n\r\nconst onSubmit = (payload: FormPayload) => {\r\n  console.log('Form submitted:', payload.formValues)\r\n}\r\n</script>\r\n\r\n<template>\r\n  <Form\r\n    :buttons-template=\"['submit', 'clear']\"\r\n    hide-stay-checkbox\r\n    @submit=\"onSubmit\"\r\n  >\r\n    <template #fields>\r\n      <MultiSelect\r\n        label=\"Programming Languages\"\r\n        field-name=\"languages\"\r\n        :options=\"options\"\r\n        :use-validator=\"true\"\r\n        :mandatory=\"true\"\r\n        :validator-message=\"{ empty: 'At least one language is required' }\"\r\n        placeholder=\"Select languages\"\r\n      />\r\n    </template>\r\n  </Form>\r\n</template>\r\n",
+        "hasExample": true,
+        "examplePath": "multiselect/FormIntegration"
       }
     ]
   },
@@ -891,6 +1168,61 @@
     ]
   },
   {
+    "name": "inputpassword",
+    "title": "InputPassword",
+    "description": "InputPassword is a password input field that displays a strength indicator when enabled.",
+    "sections": [
+      {
+        "id": "import-",
+        "label": "Import\r",
+        "description": "```ts\r\nimport { InputPassword } from '@fewangsit/wangsvue';\r\n```",
+        "example": "",
+        "hasExample": false,
+        "examplePath": null
+      },
+      {
+        "id": "basic-",
+        "label": "Basic\r",
+        "description": "The basic usage of InputPassword with a placeholder.",
+        "example": "<script setup lang=\"ts\">\r\nimport { InputPassword } from '@fewangsit/wangsvue'\r\n\r\nconst password = ref('')\r\n</script>\r\n\r\n<template>\r\n  <InputPassword\r\n    v-model=\"password\"\r\n    placeholder=\"Enter password\"\r\n  />\r\n</template>\r\n",
+        "hasExample": true,
+        "examplePath": "inputpassword/Basic"
+      },
+      {
+        "id": "label-and-placeholder-",
+        "label": "Label and Placeholder\r",
+        "description": "InputPassword can have a label and placeholder for better user guidance.",
+        "example": "<script setup lang=\"ts\">\r\nimport { InputPassword } from '@fewangsit/wangsvue'\r\n\r\nconst password = ref('')\r\n</script>\r\n\r\n<template>\r\n  <InputPassword\r\n    v-model=\"password\"\r\n    label=\"Password\"\r\n    placeholder=\"Enter your password\"\r\n  />\r\n</template>\r\n",
+        "hasExample": true,
+        "examplePath": "inputpassword/LabelPlaceholder"
+      },
+      {
+        "id": "invalid-state-",
+        "label": "Invalid State\r",
+        "description": "Display validation feedback when the input is invalid.",
+        "example": "<script setup lang=\"ts\">\r\nimport { InputPassword } from '@fewangsit/wangsvue'\r\n\r\nconst password = ref('')\r\n</script>\r\n\r\n<template>\r\n  <InputPassword\r\n    v-model=\"password\"\r\n    label=\"Password\"\r\n    placeholder=\"Enter password\"\r\n    :invalid=\"true\"\r\n    validator-message=\"Password is required\"\r\n  />\r\n</template>\r\n",
+        "hasExample": true,
+        "examplePath": "inputpassword/Invalid"
+      },
+      {
+        "id": "strength-indicator-",
+        "label": "Strength Indicator\r",
+        "description": "The feedback prop displays a strength indicator for the entered password.",
+        "example": "<script setup lang=\"ts\">\r\nimport { InputPassword } from '@fewangsit/wangsvue'\r\n\r\nconst password = ref('')\r\n</script>\r\n\r\n<template>\r\n  <InputPassword\r\n    v-model=\"password\"\r\n    label=\"Password\"\r\n    placeholder=\"Enter password\"\r\n    :feedback=\"true\"\r\n  />\r\n</template>\r\n",
+        "hasExample": true,
+        "examplePath": "inputpassword/Strength"
+      },
+      {
+        "id": "form-integration-",
+        "label": "Form Integration\r",
+        "description": "InputPassword integrated within a Form component with validation.",
+        "example": "<script setup lang=\"ts\">\r\nimport { Form, InputPassword } from '@fewangsit/wangsvue'\r\nimport type { FormPayload } from '@fewangsit/wangsvue/form'\r\n\r\nconst onSubmit = (payload: FormPayload) => {\r\n  console.log('Form submitted:', payload.formValues)\r\n}\r\n</script>\r\n\r\n<template>\r\n  <Form\r\n    :buttons-template=\"['submit', 'clear']\"\r\n    hide-stay-checkbox\r\n    @submit=\"onSubmit\"\r\n  >\r\n    <template #fields>\r\n      <InputPassword\r\n        label=\"Password\"\r\n        field-name=\"password\"\r\n        :use-validator=\"true\"\r\n        :mandatory=\"true\"\r\n        :validator-message=\"{ empty: 'Password is required' }\"\r\n      />\r\n    </template>\r\n  </Form>\r\n</template>\r\n",
+        "hasExample": true,
+        "examplePath": "inputpassword/Form"
+      }
+    ]
+  },
+  {
     "name": "toast",
     "title": "Toast",
     "description": "Toast is used to display messages in an overlay.",
@@ -907,7 +1239,7 @@
         "id": "basic-",
         "label": "Basic\r",
         "description": "Basic toast messages using the useToast composable.",
-        "example": "<script setup lang=\"ts\">\r\nimport { useToast, Toast, Button } from '@fewangsit/wangsvue'\r\n\r\nconst toast = useToast()\r\n\r\nconst showBasic = () => {\r\n  toast.add({\r\n    severity: 'info',\r\n    message: 'This is a basic toast message.',\r\n    life: 3000\r\n  })\r\n}\r\n</script>\r\n\r\n<template>\r\n  <div class=\"flex flex-wrap gap-3\">\r\n    <Button\r\n      label=\"Show Toast\"\r\n      @click=\"showBasic\"\r\n    />\r\n\r\n    <Toast />\r\n  </div>\r\n</template>\r\n",
+        "example": "<script setup lang=\"ts\">\r\nimport { Toast, Button, useToast } from '@fewangsit/wangsvue'\r\n\r\nconst toast = useToast()\r\n\r\nconst showBasic = () => {\r\n  toast.add({\r\n    severity: 'info',\r\n    message: 'This is a basic toast message.',\r\n    life: 3000\r\n  })\r\n}\r\n</script>\r\n\r\n<template>\r\n  <div class=\"flex flex-wrap gap-3\">\r\n    <Button\r\n      label=\"Show Toast\"\r\n      @click=\"showBasic\"\r\n    />\r\n\r\n    <Toast />\r\n  </div>\r\n</template>\r\n",
         "hasExample": true,
         "examplePath": "toast/Basic"
       },
@@ -915,7 +1247,7 @@
         "id": "severity-",
         "label": "Severity\r",
         "description": "",
-        "example": "<script setup lang=\"ts\">\r\nimport { useToast, Toast, Button } from '@fewangsit/wangsvue'\r\n\r\nconst toast = useToast()\r\n\r\nconst showSuccess = () => {\r\n  toast.add({\r\n    severity: 'success',\r\n    message: 'Operation completed successfully!',\r\n    life: 3000\r\n  })\r\n}\r\n\r\nconst showInfo = () => {\r\n  toast.add({\r\n    severity: 'info',\r\n    message: 'Here is some useful information.',\r\n    life: 3000\r\n  })\r\n}\r\n\r\nconst showError = () => {\r\n  toast.add({\r\n    severity: 'error',\r\n    message: 'Something went wrong!',\r\n    life: 3000\r\n  })\r\n}\r\n</script>\r\n\r\n<template>\r\n  <div class=\"flex flex-wrap gap-3\">\r\n    <Button\r\n      label=\"Success\"\r\n      severity=\"success\"\r\n      @click=\"showSuccess\"\r\n    />\r\n    <Button\r\n      label=\"Info\"\r\n      severity=\"info\"\r\n      @click=\"showInfo\"\r\n    />\r\n    <Button\r\n      label=\"Error\"\r\n      severity=\"danger\"\r\n      @click=\"showError\"\r\n    />\r\n\r\n    <Toast />\r\n  </div>\r\n</template>\r\n",
+        "example": "<script setup lang=\"ts\">\r\nimport { Toast, Button, useToast } from '@fewangsit/wangsvue'\r\n\r\nconst toast = useToast()\r\n\r\nconst showSuccess = () => {\r\n  toast.add({\r\n    severity: 'success',\r\n    message: 'Operation completed successfully!',\r\n    life: 3000\r\n  })\r\n}\r\n\r\nconst showInfo = () => {\r\n  toast.add({\r\n    severity: 'info',\r\n    message: 'Here is some useful information.',\r\n    life: 3000\r\n  })\r\n}\r\n\r\nconst showError = () => {\r\n  toast.add({\r\n    severity: 'error',\r\n    message: 'Something went wrong!',\r\n    life: 3000\r\n  })\r\n}\r\n</script>\r\n\r\n<template>\r\n  <div class=\"flex flex-wrap gap-3\">\r\n    <Button\r\n      label=\"Success\"\r\n      severity=\"success\"\r\n      @click=\"showSuccess\"\r\n    />\r\n    <Button\r\n      label=\"Info\"\r\n      severity=\"info\"\r\n      @click=\"showInfo\"\r\n    />\r\n    <Button\r\n      label=\"Error\"\r\n      severity=\"danger\"\r\n      @click=\"showError\"\r\n    />\r\n\r\n    <Toast />\r\n  </div>\r\n</template>\r\n",
         "hasExample": true,
         "examplePath": "toast/Severity"
       },
@@ -923,7 +1255,7 @@
         "id": "position-",
         "label": "Position\r",
         "description": "Toast messages can be positioned at different locations on the screen.",
-        "example": "<script setup lang=\"ts\">\r\nimport { useToast, Toast, Button } from '@fewangsit/wangsvue'\r\n\r\nconst toast = useToast()\r\n\r\nconst showTopLeft = () => {\r\n  toast.add({\r\n    severity: 'info',\r\n    message: 'Toast positioned at top-left',\r\n    life: 3000,\r\n    group: 'tl'\r\n  })\r\n}\r\n\r\nconst showTopCenter = () => {\r\n  toast.add({\r\n    severity: 'info',\r\n    message: 'Toast positioned at top-center',\r\n    life: 3000,\r\n    group: 'tc'\r\n  })\r\n}\r\n\r\nconst showTopRight = () => {\r\n  toast.add({\r\n    severity: 'info',\r\n    message: 'Toast positioned at top-right',\r\n    life: 3000,\r\n    group: 'tr'\r\n  })\r\n}\r\n\r\nconst showBottomLeft = () => {\r\n  toast.add({\r\n    severity: 'info',\r\n    message: 'Toast positioned at bottom-left',\r\n    life: 3000,\r\n    group: 'bl'\r\n  })\r\n}\r\n\r\nconst showBottomRight = () => {\r\n  toast.add({\r\n    severity: 'info',\r\n    message: 'Toast positioned at bottom-right',\r\n    life: 3000,\r\n    group: 'br'\r\n  })\r\n}\r\n</script>\r\n\r\n<template>\r\n  <div class=\"flex flex-wrap gap-2\">\r\n    <Button\r\n      label=\"Top Left\"\r\n      size=\"small\"\r\n      @click=\"showTopLeft\"\r\n    />\r\n    <Button\r\n      label=\"Top Center\"\r\n      size=\"small\"\r\n      @click=\"showTopCenter\"\r\n    />\r\n    <Button\r\n      label=\"Top Right\"\r\n      size=\"small\"\r\n      @click=\"showTopRight\"\r\n    />\r\n    <Button\r\n      label=\"Bottom Left\"\r\n      size=\"small\"\r\n      @click=\"showBottomLeft\"\r\n    />\r\n    <Button\r\n      label=\"Bottom Right\"\r\n      size=\"small\"\r\n      @click=\"showBottomRight\"\r\n    />\r\n\r\n    <!-- Toast containers for different positions -->\r\n    <Toast\r\n      group=\"tl\"\r\n      position=\"top-left\"\r\n    />\r\n    <Toast\r\n      group=\"tc\"\r\n      position=\"top-center\"\r\n    />\r\n    <Toast\r\n      group=\"tr\"\r\n      position=\"top-right\"\r\n    />\r\n    <Toast\r\n      group=\"bl\"\r\n      position=\"bottom-left\"\r\n    />\r\n    <Toast\r\n      group=\"br\"\r\n      position=\"bottom-right\"\r\n    />\r\n  </div>\r\n</template>\r\n",
+        "example": "<script setup lang=\"ts\">\r\nimport { Toast, Button, useToast } from '@fewangsit/wangsvue'\r\n\r\nconst toast = useToast()\r\n\r\nconst showTopLeft = () => {\r\n  toast.add({\r\n    severity: 'info',\r\n    message: 'Toast positioned at top-left',\r\n    life: 3000,\r\n    group: 'tl'\r\n  })\r\n}\r\n\r\nconst showTopCenter = () => {\r\n  toast.add({\r\n    severity: 'info',\r\n    message: 'Toast positioned at top-center',\r\n    life: 3000,\r\n    group: 'tc'\r\n  })\r\n}\r\n\r\nconst showTopRight = () => {\r\n  toast.add({\r\n    severity: 'info',\r\n    message: 'Toast positioned at top-right',\r\n    life: 3000,\r\n    group: 'tr'\r\n  })\r\n}\r\n\r\nconst showBottomLeft = () => {\r\n  toast.add({\r\n    severity: 'info',\r\n    message: 'Toast positioned at bottom-left',\r\n    life: 3000,\r\n    group: 'bl'\r\n  })\r\n}\r\n\r\nconst showBottomRight = () => {\r\n  toast.add({\r\n    severity: 'info',\r\n    message: 'Toast positioned at bottom-right',\r\n    life: 3000,\r\n    group: 'br'\r\n  })\r\n}\r\n</script>\r\n\r\n<template>\r\n  <div class=\"flex flex-wrap gap-2\">\r\n    <Button\r\n      label=\"Top Left\"\r\n      size=\"small\"\r\n      @click=\"showTopLeft\"\r\n    />\r\n    <Button\r\n      label=\"Top Center\"\r\n      size=\"small\"\r\n      @click=\"showTopCenter\"\r\n    />\r\n    <Button\r\n      label=\"Top Right\"\r\n      size=\"small\"\r\n      @click=\"showTopRight\"\r\n    />\r\n    <Button\r\n      label=\"Bottom Left\"\r\n      size=\"small\"\r\n      @click=\"showBottomLeft\"\r\n    />\r\n    <Button\r\n      label=\"Bottom Right\"\r\n      size=\"small\"\r\n      @click=\"showBottomRight\"\r\n    />\r\n\r\n    <!-- Toast containers for different positions -->\r\n    <Toast\r\n      group=\"tl\"\r\n      position=\"top-left\"\r\n    />\r\n    <Toast\r\n      group=\"tc\"\r\n      position=\"top-center\"\r\n    />\r\n    <Toast\r\n      group=\"tr\"\r\n      position=\"top-right\"\r\n    />\r\n    <Toast\r\n      group=\"bl\"\r\n      position=\"bottom-left\"\r\n    />\r\n    <Toast\r\n      group=\"br\"\r\n      position=\"bottom-right\"\r\n    />\r\n  </div>\r\n</template>\r\n",
         "hasExample": true,
         "examplePath": "toast/Position"
       },
@@ -931,7 +1263,7 @@
         "id": "life-cycle-",
         "label": "Life Cycle\r",
         "description": "Control toast message duration and auto-dismiss behavior.",
-        "example": "<script setup lang=\"ts\">\r\nimport { useToast, Toast, Button } from '@fewangsit/wangsvue'\r\n\r\nconst toast = useToast()\r\n\r\nconst showShort = () => {\r\n  toast.add({\r\n    severity: 'info',\r\n    icon: 'info',\r\n    message: 'This toast will disappear in 1 second',\r\n    life: 1000\r\n  })\r\n}\r\n\r\nconst showLong = () => {\r\n  toast.add({\r\n    severity: 'info',\r\n    icon: 'info',\r\n    message: 'This toast will stay for 10 seconds',\r\n    life: 10000\r\n  })\r\n}\r\n</script>\r\n\r\n<template>\r\n  <div class=\"flex flex-wrap gap-3\">\r\n    <Button\r\n      label=\"Short (1s)\"\r\n      @click=\"showShort\"\r\n    />\r\n    <Button\r\n      label=\"Long (10s)\"\r\n      @click=\"showLong\"\r\n    />\r\n\r\n    <Toast />\r\n  </div>\r\n</template>\r\n",
+        "example": "<script setup lang=\"ts\">\r\nimport { Toast, Button, useToast } from '@fewangsit/wangsvue'\r\n\r\nconst toast = useToast()\r\n\r\nconst showShort = () => {\r\n  toast.add({\r\n    severity: 'info',\r\n    message: 'This toast will disappear in 1 second',\r\n    life: 1000\r\n  })\r\n}\r\n\r\nconst showLong = () => {\r\n  toast.add({\r\n    severity: 'info',\r\n    message: 'This toast will stay for 10 seconds',\r\n    life: 10000\r\n  })\r\n}\r\n</script>\r\n\r\n<template>\r\n  <div class=\"flex flex-wrap gap-3\">\r\n    <Button\r\n      label=\"Short (1s)\"\r\n      @click=\"showShort\"\r\n    />\r\n    <Button\r\n      label=\"Long (10s)\"\r\n      @click=\"showLong\"\r\n    />\r\n\r\n    <Toast />\r\n  </div>\r\n</template>\r\n",
         "hasExample": true,
         "examplePath": "toast/LifeCycle"
       },
@@ -939,7 +1271,7 @@
         "id": "closable-",
         "label": "Closable\r",
         "description": "Control whether toast messages can be manually closed by users.",
-        "example": "<script setup lang=\"ts\">\r\nimport { useToast, Toast, Button } from '@fewangsit/wangsvue'\r\n\r\nconst toast = useToast()\r\n\r\nconst showClosable = () => {\r\n  toast.add({\r\n    severity: 'info',\r\n    message: 'This toast can be closed manually',\r\n    life: 0 // Infinite duration\r\n  })\r\n}\r\n\r\nconst showAutoClose = () => {\r\n  toast.add({\r\n    severity: 'success',\r\n    message: 'This toast will auto-close in 3 seconds',\r\n    life: 3000\r\n  })\r\n}\r\n</script>\r\n\r\n<template>\r\n  <div class=\"flex flex-wrap gap-3\">\r\n    <Button\r\n      label=\"Closable Toast\"\r\n      @click=\"showClosable\"\r\n    />\r\n    <Button\r\n      label=\"Auto-Close Toast\"\r\n      @click=\"showAutoClose\"\r\n    />\r\n\r\n    <Toast />\r\n  </div>\r\n</template>\n",
+        "example": "<script setup lang=\"ts\">\r\nimport { Toast, Button, useToast } from '@fewangsit/wangsvue'\r\n\r\nconst toast = useToast()\r\n\r\nconst showClosable = () => {\r\n  toast.add({\r\n    severity: 'info',\r\n    message: 'This toast can be closed manually',\r\n    life: 0 // Infinite duration\r\n  })\r\n}\r\n\r\nconst showAutoClose = () => {\r\n  toast.add({\r\n    severity: 'success',\r\n    message: 'This toast will auto-close in 3 seconds',\r\n    life: 3000\r\n  })\r\n}\r\n</script>\r\n\r\n<template>\r\n  <div class=\"flex flex-wrap gap-3\">\r\n    <Button\r\n      label=\"Closable Toast\"\r\n      @click=\"showClosable\"\r\n    />\r\n    <Button\r\n      label=\"Auto-Close Toast\"\r\n      @click=\"showAutoClose\"\r\n    />\r\n\r\n    <Toast />\r\n  </div>\r\n</template>\r\n",
         "hasExample": true,
         "examplePath": "toast/Closable"
       },
@@ -947,9 +1279,120 @@
         "id": "template-",
         "label": "Template\r",
         "description": "Custom toast message templates using slots.",
-        "example": "<script setup lang=\"ts\">\r\nimport { useToast, Toast, Button } from '@fewangsit/wangsvue'\r\n\r\nconst toast = useToast()\r\n\r\nconst showCustomMessage = () => {\r\n  toast.add({\r\n    severity: 'info',\r\n    message: 'This toast uses a custom message template',\r\n    life: 5000,\r\n    group: 'custom'\r\n  })\r\n}\r\n\r\nconst showCustomContainer = () => {\r\n  toast.add({\r\n    severity: 'success',\r\n    message: 'This toast uses a custom container template',\r\n    life: 5000,\r\n    group: 'container'\r\n  })\r\n}\r\n</script>\r\n\r\n<template>\r\n  <div class=\"flex flex-wrap gap-3\">\r\n    <Button\r\n      label=\"Custom Message\"\r\n      @click=\"showCustomMessage\"\r\n    />\r\n    <Button\r\n      label=\"Custom Container\"\r\n      @click=\"showCustomContainer\"\r\n    />\r\n\r\n    <!-- Custom Message Template -->\r\n    <Toast group=\"custom\">\r\n      <template #message=\"{ message }\">\r\n        <div class=\"flex items-center gap-3 p-4\">\r\n          <div class=\"w-10 h-10 bg-blue-500 rounded-full flex items-center justify-center\">\r\n            <i class=\"wangs-icon-info text-white\" />\r\n          </div>\r\n          <div class=\"flex-1\">\r\n            <h4 class=\"font-semibold text-blue-900\">\r\n              Custom Message\r\n            </h4>\r\n            <p class=\"text-sm text-blue-700\">\r\n              {{ message }}\r\n            </p>\r\n            <div class=\"mt-2 flex gap-2\">\r\n              <Button\r\n                label=\"Action\"\r\n                size=\"small\"\r\n                severity=\"primary\"\r\n              />\r\n              <Button\r\n                label=\"Dismiss\"\r\n                size=\"small\"\r\n                severity=\"secondary\"\r\n                text\r\n              />\r\n            </div>\r\n          </div>\r\n        </div>\r\n      </template>\r\n    </Toast>\r\n\r\n    <!-- Custom Container Template -->\r\n    <Toast group=\"container\">\r\n      <template #container=\"{ message, closeCallback }\">\r\n        <div class=\"bg-linear-to-r from-green-400 to-green-600 text-white p-4 rounded-lg shadow-lg\">\r\n          <div class=\"flex items-center justify-between\">\r\n            <div class=\"flex items-center gap-3\">\r\n              <i class=\"wangs-icon-check text-2xl\" />\r\n              <div>\r\n                <h4 class=\"font-bold\">\r\n                  Success\r\n                </h4>\r\n                <p class=\"text-sm opacity-90\">\r\n                  {{ message }}\r\n                </p>\r\n              </div>\r\n            </div>\r\n            <button\r\n              class=\"text-white hover:text-green-200\"\r\n              @click=\"closeCallback\"\r\n            >\r\n              <i class=\"wangs-icon-close\" />\r\n            </button>\r\n          </div>\r\n        </div>\r\n      </template>\r\n    </Toast>\r\n  </div>\r\n</template>\r\n",
+        "example": "<script setup lang=\"ts\">\r\nimport { Toast, Button, useToast } from '@fewangsit/wangsvue'\r\n\r\nconst toast = useToast()\r\n\r\nconst showCustomMessage = () => {\r\n  toast.add({\r\n    severity: 'info',\r\n    message: 'This toast uses a custom message template',\r\n    life: 5000,\r\n    group: 'custom'\r\n  })\r\n}\r\n\r\nconst showCustomContainer = () => {\r\n  toast.add({\r\n    severity: 'success',\r\n    message: 'This toast uses a custom container template',\r\n    life: 5000,\r\n    group: 'container'\r\n  })\r\n}\r\n</script>\r\n\r\n<template>\r\n  <div class=\"flex flex-wrap gap-3\">\r\n    <Button\r\n      label=\"Custom Message\"\r\n      @click=\"showCustomMessage\"\r\n    />\r\n    <Button\r\n      label=\"Custom Container\"\r\n      @click=\"showCustomContainer\"\r\n    />\r\n\r\n    <!-- Custom Message Template -->\r\n    <Toast group=\"custom\">\r\n      <template #message=\"{ message }\">\r\n        <div class=\"flex items-center gap-3 p-4\">\r\n          <div class=\"w-10 h-10 bg-blue-500 rounded-full flex items-center justify-center\">\r\n            <i class=\"wangs-icon-info text-white\" />\r\n          </div>\r\n          <div class=\"flex-1\">\r\n            <h4 class=\"font-semibold text-blue-900\">\r\n              Custom Message\r\n            </h4>\r\n            <p class=\"text-sm text-blue-700\">\r\n              {{ message }}\r\n            </p>\r\n            <div class=\"mt-2 flex gap-2\">\r\n              <Button\r\n                label=\"Action\"\r\n                size=\"small\"\r\n                severity=\"primary\"\r\n              />\r\n              <Button\r\n                label=\"Dismiss\"\r\n                size=\"small\"\r\n                severity=\"secondary\"\r\n                text\r\n              />\r\n            </div>\r\n          </div>\r\n        </div>\r\n      </template>\r\n    </Toast>\r\n\r\n    <!-- Custom Container Template -->\r\n    <Toast group=\"container\">\r\n      <template #container=\"{ message, closeCallback }\">\r\n        <div class=\"bg-linear-to-r from-green-400 to-green-600 text-white p-4 rounded-lg shadow-lg\">\r\n          <div class=\"flex items-center justify-between\">\r\n            <div class=\"flex items-center gap-3\">\r\n              <i class=\"wangs-icon-check text-2xl\" />\r\n              <div>\r\n                <h4 class=\"font-bold\">\r\n                  Success\r\n                </h4>\r\n                <p class=\"text-sm opacity-90\">\r\n                  {{ message }}\r\n                </p>\r\n              </div>\r\n            </div>\r\n            <button\r\n              class=\"text-white hover:text-green-200\"\r\n              @click=\"closeCallback\"\r\n            >\r\n              <i class=\"wangs-icon-close\" />\r\n            </button>\r\n          </div>\r\n        </div>\r\n      </template>\r\n    </Toast>\r\n  </div>\r\n</template>\r\n",
         "hasExample": true,
         "examplePath": "toast/Template"
+      }
+    ]
+  },
+  {
+    "name": "dialogform",
+    "title": "DialogForm",
+    "description": "DialogForm is combination of Form and Dialog. Handles validation on submit using vee-validate. You need to install vee-validate while using this component.",
+    "sections": [
+      {
+        "id": "import-",
+        "label": "Import\r",
+        "description": "```ts\r\nimport { DialogForm, DialogConfirm } from '@fewangsit/wangsvue';\r\nimport type { FormPayload } from '@fewangsit/wangsvue/form';\r\n```",
+        "example": "",
+        "hasExample": false,
+        "examplePath": null
+      },
+      {
+        "id": "basic-",
+        "label": "Basic\r",
+        "description": "The basic usage of DialogForm with a simple text input field.",
+        "example": "<script setup lang=\"ts\">\r\nimport { ref } from 'vue'\r\nimport { DialogForm, InputText, Button } from '@fewangsit/wangsvue'\r\nimport type { FormPayload } from '@fewangsit/wangsvue/form'\r\n\r\nconst visible = ref(false)\r\n\r\nconst onSubmit = (payload: FormPayload) => {\r\n  console.log('Form submitted:', payload.formValues)\r\n}\r\n</script>\r\n\r\n<template>\r\n  <Button\r\n    label=\"Open Dialog\"\r\n    @click=\"visible = true\"\r\n  />\r\n  <DialogForm\r\n    v-model:visible=\"visible\"\r\n    header=\"Basic Dialog Form\"\r\n    :buttons-template=\"['submit', 'clear']\"\r\n    @submit=\"onSubmit\"\r\n  >\r\n    <template #fields>\r\n      <InputText\r\n        label=\"Name\"\r\n        field-name=\"name\"\r\n        :use-validator=\"true\"\r\n        :mandatory=\"false\"\r\n      />\r\n    </template>\r\n  </DialogForm>\r\n</template>\r\n",
+        "hasExample": true,
+        "examplePath": "dialogform/Basic"
+      },
+      {
+        "id": "stay-after-submit-",
+        "label": "Stay After Submit\r",
+        "description": "Demonstrates the stay after submit functionality with showStayCheckbox enabled.",
+        "example": "<script setup lang=\"ts\">\r\nimport { ref } from 'vue'\r\nimport { DialogForm, InputText, Button, InputEmail } from '@fewangsit/wangsvue'\r\nimport type { FormPayload } from '@fewangsit/wangsvue/form'\r\n\r\nconst visible = ref(false)\r\n\r\nconst onSubmit = (payload: FormPayload) => {\r\n  console.log('Form submitted:', payload.formValues)\r\n  console.log('Stay after submit:', payload.stayAfterSubmit)\r\n  visible.value = payload.stayAfterSubmit\r\n}\r\n</script>\r\n\r\n<template>\r\n  <Button\r\n    label=\"Open Dialog\"\r\n    @click=\"visible = true\"\r\n  />\r\n  <DialogForm\r\n    v-model:visible=\"visible\"\r\n    header=\"Stay After Submit Dialog\"\r\n    :buttons-template=\"['submit', 'clear']\"\r\n    :show-stay-checkbox=\"true\"\r\n    @submit=\"onSubmit\"\r\n  >\r\n    <template #fields>\r\n      <InputText\r\n        label=\"Name\"\r\n        field-name=\"name\"\r\n        :use-validator=\"true\"\r\n        :mandatory=\"true\"\r\n        :validator-message=\"{ empty: 'Name is required' }\"\r\n      />\r\n      <InputEmail\r\n        label=\"Email\"\r\n        field-name=\"email\"\r\n        :use-validator=\"true\"\r\n        :mandatory=\"true\"\r\n        :validator-message=\"{ empty: 'Email is required' }\"\r\n      />\r\n    </template>\r\n  </DialogForm>\r\n</template>\r\n",
+        "hasExample": true,
+        "examplePath": "dialogform/StayAfterSubmit"
+      },
+      {
+        "id": "reset-after-submit-",
+        "label": "Reset After Submit\r",
+        "description": "Demonstrates the reset after submit functionality. Compare how forms behave with resetAfterSubmit enabled (default) vs disabled.",
+        "example": "<script setup lang=\"ts\">\r\nimport { ref } from 'vue'\r\nimport { DialogForm, InputText, InputEmail, Button } from '@fewangsit/wangsvue'\r\nimport type { FormPayload } from '@fewangsit/wangsvue/form'\r\n\r\nconst visible1 = ref(false)\r\nconst visible2 = ref(false)\r\n\r\nconst onSubmit = (payload: FormPayload) => {\r\n  console.log('Form submitted:', payload.formValues)\r\n  console.log('Stay after submit:', payload.stayAfterSubmit)\r\n  // For resetAfterSubmit=true demo, form resets automatically\r\n}\r\n\r\nconst onSubmitNoReset = (payload: FormPayload) => {\r\n  console.log('Form submitted (no reset):', payload.formValues)\r\n  console.log('Stay after submit:', payload.stayAfterSubmit)\r\n}\r\n</script>\r\n\r\n<template>\r\n  <div>\r\n    <div class=\"mb-4\">\r\n      <h4 class=\"text-lg font-semibold mb-2\">\r\n        Reset After Submit (Default)\r\n      </h4>\r\n      <p class=\"text-sm text-gray-600 mb-2\">\r\n        Form fields are automatically cleared after successful submission.\r\n      </p>\r\n      <Button\r\n        label=\"Open Dialog (Reset)\"\r\n        @click=\"visible1 = true\"\r\n      />\r\n    </div>\r\n\r\n    <div class=\"mb-4\">\r\n      <h4 class=\"text-lg font-semibold mb-2\">\r\n        No Reset After Submit\r\n      </h4>\r\n      <p class=\"text-sm text-gray-600 mb-2\">\r\n        Form fields retain their values after submission.\r\n      </p>\r\n      <Button\r\n        label=\"Open Dialog (No Reset)\"\r\n        @click=\"visible2 = true\"\r\n      />\r\n    </div>\r\n\r\n    <!-- Reset After Submit Dialog -->\r\n    <DialogForm\r\n      v-model:visible=\"visible1\"\r\n      header=\"Reset After Submit Dialog\"\r\n      :buttons-template=\"['submit', 'clear']\"\r\n      :reset-after-submit=\"true\"\r\n      :close-on-submit=\"false\"\r\n      @submit=\"onSubmit\"\r\n    >\r\n      <template #fields>\r\n        <InputText\r\n          label=\"Name\"\r\n          field-name=\"name\"\r\n          :use-validator=\"true\"\r\n          :mandatory=\"true\"\r\n          :validator-message=\"{ empty: 'Name is required' }\"\r\n        />\r\n        <InputEmail\r\n          label=\"Email\"\r\n          field-name=\"email\"\r\n          :use-validator=\"true\"\r\n          :mandatory=\"true\"\r\n          :validator-message=\"{ empty: 'Email is required' }\"\r\n        />\r\n      </template>\r\n    </DialogForm>\r\n\r\n    <!-- No Reset After Submit Dialog -->\r\n    <DialogForm\r\n      v-model:visible=\"visible2\"\r\n      header=\"No Reset After Submit Dialog\"\r\n      :buttons-template=\"['submit', 'clear']\"\r\n      :reset-after-submit=\"false\"\r\n      :close-on-submit=\"false\"\r\n      @submit=\"onSubmitNoReset\"\r\n    >\r\n      <template #fields>\r\n        <InputText\r\n          label=\"Name\"\r\n          field-name=\"name\"\r\n          :use-validator=\"true\"\r\n          :mandatory=\"true\"\r\n          :validator-message=\"{ empty: 'Name is required' }\"\r\n        />\r\n        <InputEmail\r\n          label=\"Email\"\r\n          field-name=\"email\"\r\n          :use-validator=\"true\"\r\n          :mandatory=\"true\"\r\n          :validator-message=\"{ empty: 'Email is required' }\"\r\n        />\r\n      </template>\r\n    </DialogForm>\r\n  </div>\r\n</template>\r\n",
+        "hasExample": true,
+        "examplePath": "dialogform/ResetAfterSubmit"
+      },
+      {
+        "id": "size-",
+        "label": "Size\r",
+        "description": "",
+        "example": "<script setup lang=\"ts\">\r\nimport { ref } from 'vue'\r\nimport { DialogForm, InputText, Button } from '@fewangsit/wangsvue'\r\nimport type { FormPayload } from '@fewangsit/wangsvue/form'\r\n\r\nconst visibleSmall = ref(false)\r\nconst visibleMedium = ref(false)\r\nconst visibleLarge = ref(false)\r\n\r\nconst onSubmit = (payload: FormPayload) => {\r\n  console.log('Form submitted:', payload.formValues)\r\n}\r\n</script>\r\n\r\n<template>\r\n  <div>\r\n    <Button\r\n      label=\"Small (default)\"\r\n      class=\"mb-2\"\r\n      @click=\"visibleSmall = true\"\r\n    />\r\n    <DialogForm\r\n      v-model:visible=\"visibleSmall\"\r\n      header=\"Small Dialog\"\r\n      width=\"small\"\r\n      :buttons-template=\"['submit']\"\r\n      @submit=\"onSubmit\"\r\n    >\r\n      <template #fields>\r\n        <InputText\r\n          label=\"Name\"\r\n          field-name=\"name\"\r\n        />\r\n      </template>\r\n    </DialogForm>\r\n\r\n    <Button\r\n      label=\"Medium\"\r\n      class=\"mb-2 ml-2\"\r\n      @click=\"visibleMedium = true\"\r\n    />\r\n    <DialogForm\r\n      v-model:visible=\"visibleMedium\"\r\n      header=\"Medium Dialog\"\r\n      width=\"medium\"\r\n      :buttons-template=\"['submit']\"\r\n      @submit=\"onSubmit\"\r\n    >\r\n      <template #fields>\r\n        <InputText\r\n          label=\"Name\"\r\n          field-name=\"name\"\r\n        />\r\n      </template>\r\n    </DialogForm>\r\n\r\n    <Button\r\n      class=\"mb-2 ml-2\"\r\n      label=\"Large\"\r\n      @click=\"visibleLarge = true\"\r\n    />\r\n    <DialogForm\r\n      v-model:visible=\"visibleLarge\"\r\n      header=\"Large Dialog\"\r\n      width=\"large\"\r\n      :buttons-template=\"['submit']\"\r\n      @submit=\"onSubmit\"\r\n    >\r\n      <template #fields>\r\n        <InputText\r\n          label=\"Name\"\r\n          field-name=\"name\"\r\n        />\r\n      </template>\r\n    </DialogForm>\r\n  </div>\r\n</template>\r\n",
+        "hasExample": true,
+        "examplePath": "dialogform/Size"
+      },
+      {
+        "id": "severity-",
+        "label": "Severity\r",
+        "description": "",
+        "example": "<script setup lang=\"ts\">\r\nimport { ref } from 'vue'\r\nimport { DialogForm, InputText, Button } from '@fewangsit/wangsvue'\r\nimport type { FormPayload } from '@fewangsit/wangsvue/form'\r\n\r\nconst visiblePrimary = ref(false)\r\nconst visibleSuccess = ref(false)\r\nconst visibleDanger = ref(false)\r\n\r\nconst onSubmit = (payload: FormPayload) => {\r\n  console.log('Form submitted:', payload.formValues)\r\n}\r\n</script>\r\n\r\n<template>\r\n  <div>\r\n    <Button\r\n      label=\"Primary\"\r\n      class=\"mb-2\"\r\n      @click=\"visiblePrimary = true\"\r\n    />\r\n    <DialogForm\r\n      v-model:visible=\"visiblePrimary\"\r\n      :severity=\"'primary'\"\r\n      header=\"Primary Dialog\"\r\n      :buttons-template=\"['submit']\"\r\n      @submit=\"onSubmit\"\r\n    >\r\n      <template #fields>\r\n        <InputText\r\n          label=\"Name\"\r\n          field-name=\"name\"\r\n        />\r\n      </template>\r\n    </DialogForm>\r\n\r\n    <Button\r\n      label=\"Success\"\r\n      class=\"mb-2 ml-2\"\r\n      @click=\"visibleSuccess = true\"\r\n    />\r\n    <DialogForm\r\n      v-model:visible=\"visibleSuccess\"\r\n      :severity=\"'success'\"\r\n      header=\"Success Dialog\"\r\n      :buttons-template=\"['submit']\"\r\n      @submit=\"onSubmit\"\r\n    >\r\n      <template #fields>\r\n        <InputText\r\n          label=\"Name\"\r\n          field-name=\"name\"\r\n        />\r\n      </template>\r\n    </DialogForm>\r\n\r\n    <Button\r\n      label=\"Danger\"\r\n      class=\"mb-2 ml-2\"\r\n      @click=\"visibleDanger = true\"\r\n    />\r\n\r\n    <DialogForm\r\n      v-model:visible=\"visibleDanger\"\r\n      :severity=\"'danger'\"\r\n      header=\"Danger Dialog\"\r\n      :buttons-template=\"['submit']\"\r\n      @submit=\"onSubmit\"\r\n    >\r\n      <template #fields>\r\n        <InputText\r\n          label=\"Name\"\r\n          field-name=\"name\"\r\n        />\r\n      </template>\r\n    </DialogForm>\r\n  </div>\r\n</template>\r\n",
+        "hasExample": true,
+        "examplePath": "dialogform/Severity"
+      },
+      {
+        "id": "validation-",
+        "label": "Validation\r",
+        "description": "Demonstrates form validation with a mandatory field.",
+        "example": "<script setup lang=\"ts\">\r\nimport { ref } from 'vue'\r\nimport { DialogForm, InputText, Button } from '@fewangsit/wangsvue'\r\nimport type { FormPayload } from '@fewangsit/wangsvue/form'\r\n\r\nconst visible = ref(false)\r\n\r\nconst onSubmit = (payload: FormPayload) => {\r\n  console.log('Form submitted:', payload.formValues)\r\n}\r\n</script>\r\n\r\n<template>\r\n  <Button\r\n    label=\"Open Dialog\"\r\n    @click=\"visible = true\"\r\n  />\r\n  <DialogForm\r\n    v-model:visible=\"visible\"\r\n    header=\"Validation Dialog\"\r\n    :buttons-template=\"['submit', 'clear']\"\r\n    @submit=\"onSubmit\"\r\n  >\r\n    <template #fields>\r\n      <InputText\r\n        label=\"Name\"\r\n        field-name=\"name\"\r\n        :use-validator=\"true\"\r\n        :mandatory=\"true\"\r\n        :validator-message=\"{ empty: 'Name is required' }\"\r\n      />\r\n    </template>\r\n  </DialogForm>\r\n</template>\r\n",
+        "hasExample": true,
+        "examplePath": "dialogform/Validation"
+      },
+      {
+        "id": "custom-header-",
+        "label": "Custom Header\r",
+        "description": "Custom header using the header slot.",
+        "example": "<script setup lang=\"ts\">\r\nimport { ref } from 'vue'\r\nimport { DialogForm, InputText, Button } from '@fewangsit/wangsvue'\r\nimport type { FormPayload } from '@fewangsit/wangsvue/form'\r\n\r\nconst visible = ref(false)\r\n\r\nconst onSubmit = (payload: FormPayload) => {\r\n  console.log('Form submitted:', payload.formValues)\r\n}\r\n</script>\r\n\r\n<template>\r\n  <Button\r\n    label=\"Open Dialog\"\r\n    @click=\"visible = true\"\r\n  />\r\n\r\n  <DialogForm\r\n    v-model:visible=\"visible\"\r\n    :buttons-template=\"['submit', 'clear']\"\r\n    @submit=\"onSubmit\"\r\n  >\r\n    <template #header>\r\n      <div class=\"flex items-center\">\r\n        <span class=\"text-2xl mr-2\">👋</span>\r\n        <span>Custom Header</span>\r\n      </div>\r\n    </template>\r\n    <template #fields>\r\n      <InputText\r\n        label=\"Name\"\r\n        field-name=\"name\"\r\n        :use-validator=\"true\"\r\n        :mandatory=\"false\"\r\n      />\r\n    </template>\r\n  </DialogForm>\r\n</template>\r\n",
+        "hasExample": true,
+        "examplePath": "dialogform/CustomHeader"
+      },
+      {
+        "id": "custom-buttons-",
+        "label": "Custom Buttons\r",
+        "description": "Custom buttons using actionButtons slot.",
+        "example": "<script setup lang=\"ts\">\r\nimport { ref } from 'vue'\r\nimport { DialogForm, InputText, Button } from '@fewangsit/wangsvue'\r\nimport type { FormPayload } from '@fewangsit/wangsvue/form'\r\n\r\nconst visible = ref(false)\r\nconst form = useTemplateRef<DialogForm>('dialogForm')\r\n\r\nconst onSubmit = (payload: FormPayload) => {\r\n  console.log('Form submitted:', payload.formValues)\r\n}\r\n\r\nconst clearFields = () => {\r\n  form.value?.clearField()\r\n}\r\n</script>\r\n\r\n<template>\r\n  <Button\r\n    label=\"Open Dialog\"\r\n    @click=\"visible = true\"\r\n  />\r\n  <DialogForm\r\n    ref=\"dialogForm\"\r\n    v-model:visible=\"visible\"\r\n    header=\"Custom Buttons Dialog\"\r\n    @submit=\"onSubmit\"\r\n  >\r\n    <template #fields>\r\n      <InputText\r\n        label=\"Name\"\r\n        field-name=\"name\"\r\n        :use-validator=\"true\"\r\n        :mandatory=\"false\"\r\n      />\r\n    </template>\r\n    <template #actionButtons=\"{ submit }\">\r\n      <Button\r\n        label=\"Clear\"\r\n        severity=\"secondary\"\r\n        @click=\"clearFields\"\r\n      />\r\n      <Button\r\n        label=\"Custom Save\"\r\n        class=\"mr-2\"\r\n        @click=\"submit\"\r\n      />\r\n    </template>\r\n  </DialogForm>\r\n</template>\r\n",
+        "hasExample": true,
+        "examplePath": "dialogform/CustomButtons"
+      },
+      {
+        "id": "aside-right-slot-",
+        "label": "Aside Right Slot\r",
+        "description": "Demonstrates the aside-right slot for adding content to the right side of the dialog, such as previews or additional information.",
+        "example": "<script setup lang=\"ts\">\r\nimport { ref } from 'vue'\r\nimport { DialogForm, InputText, Button } from '@fewangsit/wangsvue'\r\nimport type { FormPayload } from '@fewangsit/wangsvue/form'\r\n\r\nconst visible = ref(false)\r\n\r\nconst onSubmit = (payload: FormPayload) => {\r\n  console.log('Form submitted:', payload.formValues)\r\n}\r\n</script>\r\n\r\n<template>\r\n  <Button\r\n    label=\"Open Dialog with Aside\"\r\n    @click=\"visible = true\"\r\n  />\r\n  <DialogForm\r\n    v-model:visible=\"visible\"\r\n    header=\"Dialog with Aside Right\"\r\n    :buttons-template=\"['submit', 'clear']\"\r\n    :aside-right-width=\"300\"\r\n    width=\"medium\"\r\n    @submit=\"onSubmit\"\r\n  >\r\n    <template #fields>\r\n      <InputText\r\n        label=\"Name\"\r\n        field-name=\"name\"\r\n        :use-validator=\"true\"\r\n        :mandatory=\"true\"\r\n        :validator-message=\"{ empty: 'Name is required' }\"\r\n      />\r\n      <InputText\r\n        label=\"Description\"\r\n        field-name=\"description\"\r\n        :use-validator=\"true\"\r\n        :mandatory=\"false\"\r\n      />\r\n    </template>\r\n\r\n    <template #aside-right>\r\n      <div class=\"p-4\">\r\n        <h5 class=\"font-semibold mb-2\">\r\n          Preview\r\n        </h5>\r\n        <p class=\"text-sm text-gray-600 mb-2\">\r\n          This is the aside right content. It can contain:\r\n        </p>\r\n        <ul class=\"text-sm space-y-1\">\r\n          <li>• Summary information</li>\r\n          <li>• Preview panels</li>\r\n          <li>• Additional controls</li>\r\n          <li>• Help content</li>\r\n        </ul>\r\n        <div class=\"mt-4 p-3 bg-gray-50 rounded\">\r\n          <p class=\"text-xs text-gray-500\">\r\n            Aside width: 300px\r\n          </p>\r\n        </div>\r\n      </div>\r\n    </template>\r\n  </DialogForm>\r\n</template>\r\n",
+        "hasExample": true,
+        "examplePath": "dialogform/AsideRight"
+      },
+      {
+        "id": "confirm-dialog-",
+        "label": "Confirm Dialog\r",
+        "description": "",
+        "example": "<script setup lang=\"ts\">\r\nimport { ref } from 'vue'\r\nimport { DialogForm, InputText, DialogConfirm, Button } from '@fewangsit/wangsvue'\r\n\r\nconst visible = ref(false)\r\n\r\nconst handleFormSubmit = async (formValues: Record<string, unknown>) => {\r\n  console.log('Form submitted via confirm:', formValues)\r\n  // Here you would typically make an API call\r\n  // await api.submitForm(formValues)\r\n}\r\n</script>\r\n\r\n<template>\r\n  <Button\r\n    label=\"Open Dialog with Confirm\"\r\n    @click=\"visible = true\"\r\n  />\r\n  <DialogForm\r\n    v-model:visible=\"visible\"\r\n    header=\"Dialog with Confirmation\"\r\n    :buttons-template=\"['submit', 'clear']\"\r\n  >\r\n    <template #fields>\r\n      <InputText\r\n        label=\"Name\"\r\n        field-name=\"name\"\r\n        :use-validator=\"true\"\r\n        :mandatory=\"true\"\r\n        :validator-message=\"{ empty: 'Name is required' }\"\r\n      />\r\n      <InputText\r\n        label=\"Description\"\r\n        field-name=\"description\"\r\n        :use-validator=\"true\"\r\n        :mandatory=\"false\"\r\n      />\r\n    </template>\r\n\r\n    <template #confirm=\"{ visible: confirmVisible, hide, submit }\">\r\n      <DialogConfirm\r\n        :visible=\"confirmVisible\"\r\n        header=\"Confirm Submission\"\r\n        severity=\"primary\"\r\n        message=\"Are you sure you want to submit this form?\"\r\n        confirm-label=\"Yes, Submit\"\r\n        close-label=\"Cancel\"\r\n        @confirm=\"submit(handleFormSubmit)\"\r\n        @close=\"hide\"\r\n      />\r\n    </template>\r\n  </DialogForm>\r\n</template>\r\n",
+        "hasExample": true,
+        "examplePath": "dialogform/ConfirmDialog"
+      },
+      {
+        "id": "validation-function-",
+        "label": "Validation Function\r",
+        "description": "",
+        "example": "<script setup lang=\"ts\">\r\nimport { Button, DialogForm, InputText } from '@fewangsit/wangsvue'\r\nimport type { FormPayload } from '@fewangsit/wangsvue/form'\r\nimport { ref } from 'vue'\r\n\r\nconst visible = ref(false)\r\nconst invalid = ref(false)\r\nconst validationMessage = ref('')\r\nconst dialogForm = useTemplateRef('dialogForm')\r\n\r\nconst onSubmit = (payload: FormPayload) => {\r\n  console.log('Form submitted:', payload.formValues)\r\n}\r\n\r\n// Custom validation function that runs after built-in validation\r\nconst customValidation = async (values: FormPayload['formValues']) => {\r\n  console.log('Running custom validation with values:', values)\r\n\r\n  // Reset validation state\r\n  invalid.value = false\r\n  validationMessage.value = ''\r\n\r\n  // Example: Check if name contains forbidden words\r\n  const name = values.name as string\r\n  if (name && name.toLowerCase().includes('admin')) {\r\n    invalid.value = true\r\n    dialogForm.value?.setErrors({ name: 'Name cannot contain \"admin\"' })\r\n    validationMessage.value = 'Name cannot contain \"admin\"'\r\n    return\r\n  }\r\n\r\n  // Example: Simulate async validation (e.g., API call)\r\n  if (name && name.length > 0) {\r\n    // Simulate API delay\r\n    await new Promise(resolve => setTimeout(resolve, 500))\r\n\r\n    // Example: Check if name is already taken\r\n    const existingNames = ['john', 'jane', 'bob']\r\n    if (existingNames.includes(name.toLowerCase())) {\r\n      invalid.value = true\r\n      dialogForm.value?.setErrors({ name: 'This name is already taken' })\r\n      validationMessage.value = 'This name is already taken'\r\n      return\r\n    }\r\n  }\r\n\r\n  // If we reach here, validation passed\r\n  console.log('Custom validation passed')\r\n}\r\n\r\nwatch(() => dialogForm.value?.form?.values, () => {\r\n  // Reset validation state on input change\r\n  if (invalid.value) {\r\n    invalid.value = false\r\n    validationMessage.value = ''\r\n  }\r\n}, { deep: true })\r\n</script>\r\n\r\n<template>\r\n  <Button\r\n    label=\"Open Dialog with Custom Validation\"\r\n    @click=\"visible = true\"\r\n  />\r\n  <DialogForm\r\n    ref=\"dialogForm\"\r\n    v-model:visible=\"visible\"\r\n    header=\"Dialog with Custom Validation\"\r\n    :buttons-template=\"['submit', 'clear']\"\r\n    :invalid=\"invalid\"\r\n    :validator-message=\"validationMessage\"\r\n    :validation-function=\"customValidation\"\r\n    :reset-after-submit=\"false\"\r\n    @submit=\"onSubmit\"\r\n  >\r\n    <template #fields>\r\n      <InputText\r\n        label=\"Name\"\r\n        field-name=\"name\"\r\n        :use-validator=\"true\"\r\n        :mandatory=\"true\"\r\n        :validator-message=\"{ empty: 'Name is required' }\"\r\n      />\r\n\r\n      <span class=\"font-light\">Tip: Type 'admin' to make validation fail</span>\r\n    </template>\r\n  </DialogForm>\r\n</template>\r\n",
+        "hasExample": true,
+        "examplePath": "dialogform/ValidationFunction"
+      },
+      {
+        "id": "check-availability-integration-",
+        "label": "Check Availability Integration\r",
+        "description": "Demonstrates integration with InputText's checkAvailability feature. The form waits for availability validation to complete before allowing submission.",
+        "example": "<script setup lang=\"ts\">\r\nimport { ref } from 'vue'\r\nimport { DialogForm, InputText, Button, useToast, Toast } from '@fewangsit/wangsvue'\r\nimport type { FormPayload } from '@fewangsit/wangsvue/form'\r\n\r\nconst visible = ref(false)\r\nconst toast = useToast()\r\n\r\nconst checkUsernameAvailability = async (value: string): Promise<boolean> => {\r\n  // Simulate API call delay\r\n  await new Promise(resolve => setTimeout(resolve, 3000))\r\n\r\n  // Simulate unavailable usernames\r\n  const unavailableUsernames = [\r\n    'admin', 'user', 'test', 'demo', 'guest', 'root', 'system'\r\n  ]\r\n\r\n  return !unavailableUsernames.includes(value.toLowerCase())\r\n}\r\n\r\nconst onSubmit = (payload: FormPayload) => {\r\n  console.log('Form submitted:', payload.formValues)\r\n\r\n  // Show success toast\r\n  toast.add({\r\n    message: `User \"${payload.formValues.username}\" has been registered!`,\r\n    severity: 'success',\r\n    group: 'dialog-form'\r\n  })\r\n}\r\n</script>\r\n\r\n<template>\r\n  <div>\r\n    <Button\r\n      label=\"Open Registration Form\"\r\n      @click=\"visible = true\"\r\n    />\r\n\r\n    <DialogForm\r\n      v-model:visible=\"visible\"\r\n      header=\"User Registration\"\r\n      :buttons-template=\"['submit', 'clear']\"\r\n      :close-on-submit=\"false\"\r\n      @submit=\"onSubmit\"\r\n    >\r\n      <template #fields>\r\n        <InputText\r\n          label=\"Username\"\r\n          field-name=\"username\"\r\n          placeholder=\"Choose a username\"\r\n          :use-validator=\"true\"\r\n          :mandatory=\"true\"\r\n          :check-availability=\"checkUsernameAvailability\"\r\n          :validator-message=\"{\r\n            empty: 'Username is required',\r\n            exist: 'This username is already taken'\r\n          }\"\r\n        />\r\n\r\n        <p class=\"text-xs mt-1\">\r\n          <strong>Demo Tip:</strong> Enter any name and try submitting while \"Checking availability...\" is displayed. The form will wait for the check to complete.\r\n        </p>\r\n      </template>\r\n    </DialogForm>\r\n  </div>\r\n\r\n  <Toast group=\"dialog-form\" />\r\n</template>\r\n",
+        "hasExample": true,
+        "examplePath": "dialogform/CheckAvailability"
       }
     ]
   },
@@ -1050,7 +1493,7 @@
         "id": "form-integration-",
         "label": "Form Integration\r",
         "description": "Complete form example with multiple text inputs and all features.",
-        "example": "<script setup lang=\"ts\">\r\nimport { Form, InputText } from '@fewangsit/wangsvue'\r\n\r\nconst existingUsernames = ['admin', 'user', 'test', 'demo']\r\n\r\nconst checkDomainAvailability = async (value: string): Promise<boolean> => {\r\n  await new Promise(resolve => setTimeout(resolve, 800))\r\n  const unavailableDomains = ['google', 'facebook', 'microsoft']\r\n  return !unavailableDomains.some(domain => value.toLowerCase().includes(domain))\r\n}\r\n\r\nconst onSubmit = (payload: { formValues: Record<string, unknown> }) => {\r\n  console.log('Text form submitted:', payload.formValues)\r\n}\r\n\r\nconst onCancel = () => {\r\n  console.log('Form cancelled')\r\n}\r\n</script>\r\n\r\n<template>\r\n  <Form\r\n    :column-per-row=\"2\"\r\n    :buttons-template=\"['submit', 'cancel', 'clear']\"\r\n    submit-btn-label=\"Save Profile\"\r\n    @submit=\"onSubmit\"\r\n    @cancel=\"onCancel\"\r\n  >\r\n    <template #fields=\"{ formValues }\">\r\n      <InputText\r\n        label=\"Username\"\r\n        field-name=\"username\"\r\n        :use-validator=\"true\"\r\n        :mandatory=\"true\"\r\n        :max-length=\"20\"\r\n        :existing-values=\"existingUsernames\"\r\n        :prevent-input-on-max-length=\"true\"\r\n        placeholder=\"Choose username\"\r\n        field-info=\"Will be converted to uppercase\"\r\n        :validator-message=\"{\r\n          empty: 'Username is required',\r\n          exceed: 'Username must not exceed 20 characters',\r\n          exist: 'This username is already taken'\r\n        }\"\r\n      />\r\n\r\n      <InputText\r\n        label=\"Company Domain\"\r\n        field-name=\"companyDomain\"\r\n        :use-validator=\"true\"\r\n        :mandatory=\"true\"\r\n        :check-availability=\"checkDomainAvailability\"\r\n        :allowed-characters=\"/^[a-zA-Z0-9]*$/\"\r\n        placeholder=\"Enter company domain\"\r\n        field-info=\"Only letters and numbers allowed\"\r\n        :validator-message=\"{\r\n          empty: 'Company domain is required',\r\n          exist: 'This domain name is not available'\r\n        }\"\r\n      />\r\n\r\n      <div class=\"col-span-2\">\r\n        <InputText\r\n          label=\"Bio\"\r\n          field-name=\"bio\"\r\n          :use-validator=\"true\"\r\n          :max-length=\"200\"\r\n          :prevent-input-on-max-length=\"true\"\r\n          :allowed-characters=\"/^[a-zA-Z0-9\\s.,!?-]*$/\"\r\n          placeholder=\"Tell us about yourself\"\r\n          field-info=\"Letters, numbers, spaces and basic punctuation only\"\r\n          :validator-message=\"{\r\n            exceed: 'Bio must not exceed 200 characters'\r\n          }\"\r\n        />\r\n      </div>\r\n\r\n      <InputText\r\n        label=\"Website\"\r\n        field-name=\"website\"\r\n        :use-validator=\"true\"\r\n        type=\"url\"\r\n        :use-protocol=\"true\"\r\n        placeholder=\"https://example.com\"\r\n        field-info=\"Optional website URL\"\r\n        :validator-message=\"{\r\n          invalidFormat: 'Please enter a valid URL with protocol'\r\n        }\"\r\n      />\r\n\r\n      <InputText\r\n        label=\"Phone Number\"\r\n        field-name=\"phone\"\r\n        :use-validator=\"true\"\r\n        :allowed-characters=\"/^[0-9+\\-\\s()]*$/\"\r\n        :validate-on-blur=\"true\"\r\n        placeholder=\"Enter phone number\"\r\n        field-info=\"Numbers, +, -, spaces, parentheses only\"\r\n      />\r\n\r\n      <!-- Conditional field using formValues -->\r\n      <div\r\n        v-if=\"formValues.companyDomain\"\r\n        class=\"col-span-2\"\r\n      >\r\n        <InputText\r\n          label=\"Company Description\"\r\n          field-name=\"companyDescription\"\r\n          :use-validator=\"true\"\r\n          :max-length=\"500\"\r\n          placeholder=\"Describe your company\"\r\n          field-info=\"Shown because company domain is provided\"\r\n          :validator-message=\"{\r\n            exceed: 'Description must not exceed 500 characters'\r\n          }\"\r\n        />\r\n      </div>\r\n    </template>\r\n  </Form>\r\n</template>\r\n",
+        "example": "<script setup lang=\"ts\">\r\nimport { Form, InputText } from '@fewangsit/wangsvue'\r\nimport type { FormPayload } from '@fewangsit/wangsvue/form'\r\n\r\nconst existingUsernames = ['admin', 'user', 'test', 'demo']\r\n\r\nconst checkDomainAvailability = async (value: string): Promise<boolean> => {\r\n  await new Promise(resolve => setTimeout(resolve, 800))\r\n  const unavailableDomains = ['google', 'facebook', 'microsoft']\r\n  return !unavailableDomains.some(domain => value.toLowerCase().includes(domain))\r\n}\r\n\r\nconst onSubmit = (payload: FormPayload) => {\r\n  console.log('Text form submitted:', payload.formValues)\r\n}\r\n\r\nconst onCancel = () => {\r\n  console.log('Form cancelled')\r\n}\r\n</script>\r\n\r\n<template>\r\n  <Form\r\n    :column-per-row=\"2\"\r\n    :buttons-template=\"['submit', 'cancel', 'clear']\"\r\n    submit-btn-label=\"Save Profile\"\r\n    @submit=\"onSubmit\"\r\n    @cancel=\"onCancel\"\r\n  >\r\n    <template #fields=\"{ formValues }\">\r\n      <InputText\r\n        label=\"Username\"\r\n        field-name=\"username\"\r\n        :use-validator=\"true\"\r\n        :mandatory=\"true\"\r\n        :max-length=\"20\"\r\n        :existing-values=\"existingUsernames\"\r\n        :prevent-input-on-max-length=\"true\"\r\n        placeholder=\"Choose username\"\r\n        field-info=\"Will be converted to uppercase\"\r\n        :validator-message=\"{\r\n          empty: 'Username is required',\r\n          exceed: 'Username must not exceed 20 characters',\r\n          exist: 'This username is already taken'\r\n        }\"\r\n      />\r\n\r\n      <InputText\r\n        label=\"Company Domain\"\r\n        field-name=\"companyDomain\"\r\n        :use-validator=\"true\"\r\n        :mandatory=\"true\"\r\n        :check-availability=\"checkDomainAvailability\"\r\n        :allowed-characters=\"/^[a-zA-Z0-9]*$/\"\r\n        placeholder=\"Enter company domain\"\r\n        field-info=\"Only letters and numbers allowed\"\r\n        :validator-message=\"{\r\n          empty: 'Company domain is required',\r\n          exist: 'This domain name is not available'\r\n        }\"\r\n      />\r\n\r\n      <div class=\"col-span-2\">\r\n        <InputText\r\n          label=\"Bio\"\r\n          field-name=\"bio\"\r\n          :use-validator=\"true\"\r\n          :max-length=\"200\"\r\n          :prevent-input-on-max-length=\"true\"\r\n          :allowed-characters=\"/^[a-zA-Z0-9\\s.,!?-]*$/\"\r\n          placeholder=\"Tell us about yourself\"\r\n          field-info=\"Letters, numbers, spaces and basic punctuation only\"\r\n          :validator-message=\"{\r\n            exceed: 'Bio must not exceed 200 characters'\r\n          }\"\r\n        />\r\n      </div>\r\n\r\n      <InputText\r\n        label=\"Website\"\r\n        field-name=\"website\"\r\n        :use-validator=\"true\"\r\n        type=\"url\"\r\n        :use-protocol=\"true\"\r\n        placeholder=\"https://example.com\"\r\n        field-info=\"Optional website URL\"\r\n        :validator-message=\"{\r\n          invalidFormat: 'Please enter a valid URL with protocol'\r\n        }\"\r\n      />\r\n\r\n      <InputText\r\n        label=\"Phone Number\"\r\n        field-name=\"phone\"\r\n        :use-validator=\"true\"\r\n        :allowed-characters=\"/^[0-9+\\-\\s()]*$/\"\r\n        :validate-on-blur=\"true\"\r\n        placeholder=\"Enter phone number\"\r\n        field-info=\"Numbers, +, -, spaces, parentheses only\"\r\n      />\r\n\r\n      <!-- Conditional field using formValues -->\r\n      <div\r\n        v-if=\"formValues.companyDomain\"\r\n        class=\"col-span-2\"\r\n      >\r\n        <InputText\r\n          label=\"Company Description\"\r\n          field-name=\"companyDescription\"\r\n          :use-validator=\"true\"\r\n          :max-length=\"500\"\r\n          placeholder=\"Describe your company\"\r\n          field-info=\"Shown because company domain is provided\"\r\n          :validator-message=\"{\r\n            exceed: 'Description must not exceed 500 characters'\r\n          }\"\r\n        />\r\n      </div>\r\n    </template>\r\n  </Form>\r\n</template>\r\n",
         "hasExample": true,
         "examplePath": "inputtext/FormIntegration"
       }
@@ -1129,7 +1572,7 @@
         "id": "form-integration-",
         "label": "Form Integration\r",
         "description": "Complete form example demonstrating textarea in a form context.",
-        "example": "<script setup lang=\"ts\">\r\nimport { Form, Textarea } from '@fewangsit/wangsvue'\r\n\r\nconst onSubmit = (payload: { formValues: Record<string, unknown> }) => {\r\n  console.log('Textarea form submitted:', payload.formValues)\r\n}\r\n\r\nconst onCancel = () => {\r\n  console.log('Form cancelled')\r\n}\r\n</script>\r\n\r\n<template>\r\n  <Form\r\n    :column-per-row=\"1\"\r\n    :buttons-template=\"['submit', 'cancel', 'clear']\"\r\n    submit-btn-label=\"Save Content\"\r\n    @submit=\"onSubmit\"\r\n    @cancel=\"onCancel\"\r\n  >\r\n    <template #fields=\"{ formValues }\">\r\n      <Textarea\r\n        label=\"Description\"\r\n        field-name=\"description\"\r\n        :use-validator=\"true\"\r\n        :mandatory=\"true\"\r\n        :maxlength=\"1000\"\r\n        :auto-resize=\"true\"\r\n        :rows=\"4\"\r\n        placeholder=\"Provide a detailed description\"\r\n        field-info=\"This will be visible to all users\"\r\n        :validator-message=\"{\r\n          empty: 'Description is required',\r\n          exceed: 'Description must not exceed 1000 characters'\r\n        }\"\r\n      />\r\n\r\n      <Textarea\r\n        label=\"Additional Notes\"\r\n        field-name=\"notes\"\r\n        :use-validator=\"true\"\r\n        :maxlength=\"500\"\r\n        :prevent-input-on-max-length=\"false\"\r\n        :auto-resize=\"true\"\r\n        :rows=\"3\"\r\n        placeholder=\"Any additional notes (optional)\"\r\n        :validator-message=\"{\r\n          exceed: 'Notes must not exceed 500 characters'\r\n        }\"\r\n      />\r\n\r\n      <Textarea\r\n        label=\"Comments\"\r\n        field-name=\"comments\"\r\n        :use-validator=\"true\"\r\n        :maxlength=\"300\"\r\n        :prevent-input-on-max-length=\"false\"\r\n        :auto-resize=\"true\"\r\n        :rows=\"2\"\r\n        placeholder=\"Internal comments\"\r\n        field-info=\"Only visible to team members\"\r\n        :validator-message=\"{\r\n          exceed: 'Comments must not exceed 300 characters'\r\n        }\"\r\n      />\r\n\r\n      <!-- Conditional field using formValues -->\r\n      <div v-if=\"formValues.description\">\r\n        <Textarea\r\n          label=\"Summary\"\r\n          field-name=\"summary\"\r\n          :use-validator=\"true\"\r\n          :maxlength=\"200\"\r\n          :auto-resize=\"true\"\r\n          :rows=\"2\"\r\n          placeholder=\"Brief summary of the description\"\r\n          field-info=\"Shown because description is provided\"\r\n          :validator-message=\"{\r\n            exceed: 'Summary must not exceed 200 characters'\r\n          }\"\r\n        />\r\n      </div>\r\n    </template>\r\n  </Form>\r\n</template>\r\n",
+        "example": "<script setup lang=\"ts\">\r\nimport { Form, Textarea } from '@fewangsit/wangsvue'\r\nimport type { FormPayload } from '@fewangsit/wangsvue/form'\r\n\r\nconst onSubmit = (payload: FormPayload) => {\r\n  console.log('Textarea form submitted:', payload.formValues)\r\n}\r\n\r\nconst onCancel = () => {\r\n  console.log('Form cancelled')\r\n}\r\n</script>\r\n\r\n<template>\r\n  <Form\r\n    :column-per-row=\"1\"\r\n    :buttons-template=\"['submit', 'cancel', 'clear']\"\r\n    submit-btn-label=\"Save Content\"\r\n    @submit=\"onSubmit\"\r\n    @cancel=\"onCancel\"\r\n  >\r\n    <template #fields=\"{ formValues }\">\r\n      <Textarea\r\n        label=\"Description\"\r\n        field-name=\"description\"\r\n        :use-validator=\"true\"\r\n        :mandatory=\"true\"\r\n        :maxlength=\"1000\"\r\n        :auto-resize=\"true\"\r\n        :rows=\"4\"\r\n        placeholder=\"Provide a detailed description\"\r\n        field-info=\"This will be visible to all users\"\r\n        :validator-message=\"{\r\n          empty: 'Description is required',\r\n          exceed: 'Description must not exceed 1000 characters'\r\n        }\"\r\n      />\r\n\r\n      <Textarea\r\n        label=\"Additional Notes\"\r\n        field-name=\"notes\"\r\n        :use-validator=\"true\"\r\n        :maxlength=\"500\"\r\n        :prevent-input-on-max-length=\"false\"\r\n        :auto-resize=\"true\"\r\n        :rows=\"3\"\r\n        placeholder=\"Any additional notes (optional)\"\r\n        :validator-message=\"{\r\n          exceed: 'Notes must not exceed 500 characters'\r\n        }\"\r\n      />\r\n\r\n      <Textarea\r\n        label=\"Comments\"\r\n        field-name=\"comments\"\r\n        :use-validator=\"true\"\r\n        :maxlength=\"300\"\r\n        :prevent-input-on-max-length=\"false\"\r\n        :auto-resize=\"true\"\r\n        :rows=\"2\"\r\n        placeholder=\"Internal comments\"\r\n        field-info=\"Only visible to team members\"\r\n        :validator-message=\"{\r\n          exceed: 'Comments must not exceed 300 characters'\r\n        }\"\r\n      />\r\n\r\n      <!-- Conditional field using formValues -->\r\n      <div v-if=\"formValues.description\">\r\n        <Textarea\r\n          label=\"Summary\"\r\n          field-name=\"summary\"\r\n          :use-validator=\"true\"\r\n          :maxlength=\"200\"\r\n          :auto-resize=\"true\"\r\n          :rows=\"2\"\r\n          placeholder=\"Brief summary of the description\"\r\n          field-info=\"Shown because description is provided\"\r\n          :validator-message=\"{\r\n            exceed: 'Summary must not exceed 200 characters'\r\n          }\"\r\n        />\r\n      </div>\r\n    </template>\r\n  </Form>\r\n</template>\r\n",
         "hasExample": true,
         "examplePath": "textarea/FormIntegration"
       }
@@ -1143,15 +1586,7 @@
       {
         "id": "import-",
         "label": "Import\r",
-        "description": "```typescript\r\nimport { InputNumber } from '@fewangsit/wangsvue'\r\n```",
-        "example": "",
-        "hasExample": false,
-        "examplePath": null
-      },
-      {
-        "id": "examples-",
-        "label": "Examples\r",
-        "description": "",
+        "description": "```ts\r\nimport { InputNumber } from '@fewangsit/wangsvue';\r\n```",
         "example": "",
         "hasExample": false,
         "examplePath": null
@@ -1159,26 +1594,34 @@
       {
         "id": "basic-",
         "label": "Basic\r",
-        "description": "Basic number input with validation.",
-        "example": "<script setup lang=\"ts\">\r\nimport { ref } from 'vue'\r\nimport { InputNumber } from '@fewangsit/wangsvue'\r\n\r\nconst value = ref<number>()\r\n</script>\r\n\r\n<template>\r\n  <div class=\"flex flex-col gap-4\">\r\n    <InputNumber\r\n      v-model=\"value\"\r\n      label=\"Quantity\"\r\n      placeholder=\"Enter quantity\"\r\n    />\r\n    <p class=\"text-sm text-gray-600\">\r\n      Value: {{ value ?? 'Empty' }}\r\n    </p>\r\n  </div>\r\n</template>\r\n",
+        "description": "Basic number input with two-way data binding using v-model.",
+        "example": "<script setup lang=\"ts\">\r\nimport { ref } from 'vue'\r\nimport { InputNumber } from '@fewangsit/wangsvue'\r\n\r\nconst value = ref<number>()\r\n</script>\r\n\r\n<template>\r\n  <div class=\"flex flex-col gap-4\">\r\n    <InputNumber\r\n      v-model=\"value\"\r\n      label=\"Quantity\"\r\n      placeholder=\"Enter quantity\"\r\n    />\r\n    <div class=\"text-sm text-gray-600\">\r\n      Value: {{ value ?? 'Empty' }}\r\n    </div>\r\n  </div>\r\n</template>\r\n",
         "hasExample": true,
         "examplePath": "inputnumber/Basic"
+      },
+      {
+        "id": "form-integration-",
+        "label": "Form Integration\r",
+        "description": "Complete form example with number inputs and validation.",
+        "example": "<script setup lang=\"ts\">\r\nimport { Form, InputNumber } from '@fewangsit/wangsvue'\r\nimport type { FormPayload } from '@fewangsit/wangsvue/form'\r\n\r\nconst onSubmit = (payload: FormPayload) => {\r\n  console.log('Form submitted:', payload.formValues)\r\n}\r\n</script>\r\n\r\n<template>\r\n  <Form\r\n    :buttons-template=\"['submit', 'clear']\"\r\n    @submit=\"onSubmit\"\r\n  >\r\n    <template #fields>\r\n      <InputNumber\r\n        label=\"Quantity\"\r\n        field-name=\"quantity\"\r\n        :use-validator=\"true\"\r\n        :mandatory=\"true\"\r\n        :min=\"1\"\r\n        :max=\"999\"\r\n        :show-buttons=\"true\"\r\n        :validator-message=\"{\r\n          empty: 'Quantity is required'\r\n        }\"\r\n      />\r\n    </template>\r\n  </Form>\r\n</template>\r\n",
+        "hasExample": true,
+        "examplePath": "inputnumber/FormIntegration"
       },
       {
         "id": "min-max-",
         "label": "Min Max\r",
         "description": "Number input with minimum and maximum value constraints.",
-        "example": "<script setup lang=\"ts\">\r\nimport { ref } from 'vue'\r\nimport { InputNumber } from '@fewangsit/wangsvue'\r\n\r\nconst value = ref<number>()\r\n</script>\r\n\r\n<template>\r\n  <div class=\"flex flex-col gap-4\">\r\n    <InputNumber\r\n      v-model=\"value\"\r\n      label=\"Age\"\r\n      placeholder=\"Enter age\"\r\n      :min=\"0\"\r\n      :max=\"120\"\r\n      :show-buttons=\"true\"\r\n    />\r\n    <p class=\"text-sm text-gray-600\">\r\n      Value: {{ value ?? 'Empty' }} (Min: 0, Max: 120)\r\n    </p>\r\n  </div>\r\n</template>\r\n",
+        "example": "<script setup lang=\"ts\">\r\nimport { ref } from 'vue'\r\nimport { InputNumber } from '@fewangsit/wangsvue'\r\n\r\nconst value = ref<number>()\r\n</script>\r\n\r\n<template>\r\n  <div class=\"flex flex-col gap-4\">\r\n    <InputNumber\r\n      v-model=\"value\"\r\n      label=\"Age\"\r\n      placeholder=\"Enter age (0-120)\"\r\n      :min=\"0\"\r\n      :max=\"120\"\r\n    />\r\n    <div class=\"text-sm text-gray-600\">\r\n      Value: {{ value ?? 'Empty' }}\r\n    </div>\r\n  </div>\r\n</template>\r\n",
         "hasExample": true,
         "examplePath": "inputnumber/MinMax"
       },
       {
-        "id": "currency-",
-        "label": "Currency\r",
-        "description": "Number input configured for currency formatting.",
-        "example": "<script setup lang=\"ts\">\r\nimport { ref } from 'vue'\r\nimport { InputNumber } from '@fewangsit/wangsvue'\r\n\r\nconst value = ref<number>()\r\n</script>\r\n\r\n<template>\r\n  <div class=\"flex flex-col gap-4\">\r\n    <InputNumber\r\n      v-model=\"value\"\r\n      label=\"Price\"\r\n      placeholder=\"Enter price\"\r\n      mode=\"currency\"\r\n      currency=\"USD\"\r\n      locale=\"en-US\"\r\n      :use-grouping=\"true\"\r\n      :min-fraction-digits=\"2\"\r\n      :max-fraction-digits=\"2\"\r\n    />\r\n    <p class=\"text-sm text-gray-600\">\r\n      Value: {{ value ?? 'Empty' }}\r\n    </p>\r\n  </div>\r\n</template>\r\n",
+        "id": "buttons-",
+        "label": "Buttons\r",
+        "description": "Number input with increment/decrement buttons.",
+        "example": "<script setup lang=\"ts\">\r\nimport { ref } from 'vue'\r\nimport { InputNumber } from '@fewangsit/wangsvue'\r\n\r\nconst value = ref(10)\r\n</script>\r\n\r\n<template>\r\n  <div class=\"flex flex-col gap-4\">\r\n    <InputNumber\r\n      v-model=\"value\"\r\n      label=\"Quantity\"\r\n      :show-buttons=\"true\"\r\n    />\r\n    <div class=\"text-sm text-gray-600\">\r\n      Value: {{ value }}\r\n    </div>\r\n  </div>\r\n</template>\r\n",
         "hasExample": true,
-        "examplePath": "inputnumber/Currency"
+        "examplePath": "inputnumber/Buttons"
       },
       {
         "id": "prefix-suffix-",
@@ -1189,20 +1632,44 @@
         "examplePath": "inputnumber/PrefixSuffix"
       },
       {
-        "id": "sizes-",
-        "label": "Sizes\r",
-        "description": "Different size variants for number input.",
-        "example": "<script setup lang=\"ts\">\r\nimport { ref } from 'vue'\r\nimport { InputNumber } from '@fewangsit/wangsvue'\r\n\r\nconst small = ref<number>()\r\nconst normal = ref<number>()\r\nconst full = ref<number>()\r\n</script>\r\n\r\n<template>\r\n  <div class=\"flex flex-col gap-6\">\r\n    <div>\r\n      <h3 class=\"mb-2 font-semibold\">\r\n        Small Size\r\n      </h3>\r\n      <InputNumber\r\n        v-model=\"small\"\r\n        label=\"Small Input\"\r\n        size=\"small\"\r\n        :show-buttons=\"true\"\r\n      />\r\n    </div>\r\n\r\n    <div>\r\n      <h3 class=\"mb-2 font-semibold\">\r\n        Normal Size\r\n      </h3>\r\n      <InputNumber\r\n        v-model=\"normal\"\r\n        label=\"Normal Input\"\r\n        size=\"normal\"\r\n        :show-buttons=\"true\"\r\n      />\r\n    </div>\r\n\r\n    <div>\r\n      <h3 class=\"mb-2 font-semibold\">\r\n        Full Width\r\n      </h3>\r\n      <InputNumber\r\n        v-model=\"full\"\r\n        label=\"Full Width Input\"\r\n        size=\"full\"\r\n        :show-buttons=\"true\"\r\n      />\r\n    </div>\r\n  </div>\r\n</template>\r\n",
+        "id": "fraction-digits-",
+        "label": "Fraction Digits\r",
+        "description": "Number input with minimum and maximum fraction digits control.",
+        "example": "<script setup lang=\"ts\">\r\nimport { ref } from 'vue'\r\nimport { InputNumber } from '@fewangsit/wangsvue'\r\n\r\nconst minFraction = ref(3.14159)\r\nconst maxFraction = ref(123.456789)\r\nconst rangeFraction = ref(42.123456789)\r\n</script>\r\n\r\n<template>\r\n  <div class=\"flex flex-col gap-4\">\r\n    <InputNumber\r\n      v-model=\"minFraction\"\r\n      label=\"Min 2 Fraction Digits\"\r\n      :min-fraction-digits=\"2\"\r\n    />\r\n    <InputNumber\r\n      v-model=\"maxFraction\"\r\n      label=\"Max 2 Fraction Digits\"\r\n      :max-fraction-digits=\"2\"\r\n    />\r\n    <InputNumber\r\n      v-model=\"rangeFraction\"\r\n      label=\"Min 2, Max 4 Fraction Digits\"\r\n      :min-fraction-digits=\"2\"\r\n      :max-fraction-digits=\"4\"\r\n    />\r\n  </div>\r\n</template>\r\n",
         "hasExample": true,
-        "examplePath": "inputnumber/Sizes"
+        "examplePath": "inputnumber/FractionDigits"
       },
       {
-        "id": "form-integration-",
-        "label": "Form Integration\r",
-        "description": "Complete form example with number inputs.",
-        "example": "<script setup lang=\"ts\">\r\nimport { Form, InputText, InputNumber } from '@fewangsit/wangsvue'\r\n\r\nconst onSubmit = (payload: { formValues: Record<string, unknown> }) => {\r\n  console.log('Product form submitted:', payload.formValues)\r\n}\r\n\r\nconst onCancel = () => {\r\n  console.log('Form cancelled')\r\n}\r\n</script>\r\n\r\n<template>\r\n  <Form\r\n    :column-per-row=\"2\"\r\n    @submit=\"onSubmit\"\r\n    @cancel=\"onCancel\"\r\n  >\r\n    <template #fields=\"{ formValues }\">\r\n      <InputText\r\n        v-model=\"formValues.productName\"\r\n        label=\"Product Name\"\r\n        field-name=\"productName\"\r\n        :use-validator=\"true\"\r\n        :mandatory=\"true\"\r\n        :validator-message=\"{\r\n          empty: 'Product name is required'\r\n        }\"\r\n      />\r\n\r\n      <InputText\r\n        v-model=\"formValues.sku\"\r\n        label=\"SKU\"\r\n        field-name=\"sku\"\r\n        :use-validator=\"true\"\r\n        :mandatory=\"true\"\r\n        :validator-message=\"{\r\n          empty: 'SKU is required'\r\n        }\"\r\n      />\r\n\r\n      <InputNumber\r\n        v-model=\"formValues.price\"\r\n        label=\"Price\"\r\n        field-name=\"price\"\r\n        :use-validator=\"true\"\r\n        :mandatory=\"true\"\r\n        mode=\"currency\"\r\n        currency=\"USD\"\r\n        locale=\"en-US\"\r\n        :use-grouping=\"true\"\r\n        :min=\"0\"\r\n        :min-fraction-digits=\"2\"\r\n        :max-fraction-digits=\"2\"\r\n        :validator-message=\"{\r\n          empty: 'Price is required'\r\n        }\"\r\n      />\r\n\r\n      <InputNumber\r\n        v-model=\"formValues.quantity\"\r\n        label=\"Initial Stock\"\r\n        field-name=\"quantity\"\r\n        :use-validator=\"true\"\r\n        :mandatory=\"true\"\r\n        :min=\"0\"\r\n        :max=\"999999\"\r\n        :show-buttons=\"true\"\r\n        :validator-message=\"{\r\n          empty: 'Initial stock quantity is required'\r\n        }\"\r\n      />\r\n    </template>\r\n  </Form>\r\n</template>\r\n",
+        "id": "grouping-",
+        "label": "Grouping\r",
+        "description": "Number input with grouping separators (thousands separators).",
+        "example": "<script setup lang=\"ts\">\r\nimport { ref } from 'vue'\r\nimport { InputNumber } from '@fewangsit/wangsvue'\r\n\r\nconst withoutGrouping = ref(1234567.89)\r\nconst withGrouping = ref(1234567.89)\r\n</script>\r\n\r\n<template>\r\n  <div class=\"flex flex-col gap-4\">\r\n    <InputNumber\r\n      v-model=\"withoutGrouping\"\r\n      label=\"Without Grouping\"\r\n      :use-grouping=\"false\"\r\n      :min-fraction-digits=\"2\"\r\n      :max-fraction-digits=\"2\"\r\n    />\r\n    <InputNumber\r\n      v-model=\"withGrouping\"\r\n      label=\"With Grouping\"\r\n      :use-grouping=\"true\"\r\n      :min-fraction-digits=\"2\"\r\n      :max-fraction-digits=\"2\"\r\n    />\r\n  </div>\r\n</template>\r\n",
         "hasExample": true,
-        "examplePath": "inputnumber/FormIntegration"
+        "examplePath": "inputnumber/Grouping"
+      },
+      {
+        "id": "locale-",
+        "label": "Locale\r",
+        "description": "Localization information such as grouping and decimal symbols are defined with the locale property which defaults to the user locale.",
+        "example": "<script setup lang=\"ts\">\r\nimport { ref } from 'vue'\r\nimport { InputNumber } from '@fewangsit/wangsvue'\r\n\r\nconst usValue = ref(1234567.89)\r\nconst deValue = ref(1234567.89)\r\nconst frValue = ref(1234567.89)\r\nconst idValue = ref(1234567.89)\r\n</script>\r\n\r\n<template>\r\n  <div class=\"flex flex-col gap-4\">\r\n    <InputNumber\r\n      v-model=\"usValue\"\r\n      label=\"US Locale (en-US)\"\r\n      locale=\"en-US\"\r\n      :use-grouping=\"true\"\r\n      :min-fraction-digits=\"2\"\r\n      :max-fraction-digits=\"2\"\r\n    />\r\n    <InputNumber\r\n      v-model=\"deValue\"\r\n      label=\"German Locale (de-DE)\"\r\n      locale=\"de-DE\"\r\n      :use-grouping=\"true\"\r\n      :min-fraction-digits=\"2\"\r\n      :max-fraction-digits=\"2\"\r\n    />\r\n    <InputNumber\r\n      v-model=\"frValue\"\r\n      label=\"French Locale (fr-FR)\"\r\n      locale=\"fr-FR\"\r\n      :use-grouping=\"true\"\r\n      :min-fraction-digits=\"2\"\r\n      :max-fraction-digits=\"2\"\r\n    />\r\n    <InputNumber\r\n      v-model=\"idValue\"\r\n      label=\"Indonesian Locale (id-ID)\"\r\n      locale=\"id-ID\"\r\n      :use-grouping=\"true\"\r\n      :min-fraction-digits=\"2\"\r\n      :max-fraction-digits=\"2\"\r\n    />\r\n  </div>\r\n</template>\r\n",
+        "hasExample": true,
+        "examplePath": "inputnumber/Locale"
+      },
+      {
+        "id": "currency-",
+        "label": "Currency\r",
+        "description": "Number input configured for currency formatting with locale support.",
+        "example": "<script setup lang=\"ts\">\r\nimport { ref } from 'vue'\r\nimport { InputNumber } from '@fewangsit/wangsvue'\r\n\r\nconst usdPrice = ref<number>()\r\nconst eurPrice = ref<number>()\r\nconst idrPrice = ref<number>()\r\n</script>\r\n\r\n<template>\r\n  <div class=\"flex flex-col gap-4\">\r\n    <InputNumber\r\n      v-model=\"usdPrice\"\r\n      label=\"USD Price\"\r\n      mode=\"currency\"\r\n      currency=\"USD\"\r\n      locale=\"en-US\"\r\n      :use-grouping=\"true\"\r\n      :min-fraction-digits=\"2\"\r\n      :max-fraction-digits=\"2\"\r\n    />\r\n    <InputNumber\r\n      v-model=\"eurPrice\"\r\n      label=\"EUR Price\"\r\n      mode=\"currency\"\r\n      currency=\"EUR\"\r\n      locale=\"de-DE\"\r\n      :use-grouping=\"true\"\r\n      :min-fraction-digits=\"2\"\r\n      :max-fraction-digits=\"2\"\r\n    />\r\n    <InputNumber\r\n      v-model=\"idrPrice\"\r\n      label=\"IDR Price\"\r\n      mode=\"currency\"\r\n      currency=\"IDR\"\r\n      locale=\"id-ID\"\r\n      :use-grouping=\"true\"\r\n      :max-fraction-digits=\"0\"\r\n    />\r\n  </div>\r\n</template>\r\n",
+        "hasExample": true,
+        "examplePath": "inputnumber/Currency"
+      },
+      {
+        "id": "disabled-",
+        "label": "Disabled\r",
+        "description": "Number input in disabled state.",
+        "example": "<script setup lang=\"ts\">\r\nimport { InputNumber } from '@fewangsit/wangsvue'\r\n</script>\r\n\r\n<template>\r\n  <div class=\"flex flex-col gap-4\">\r\n    <InputNumber\r\n      :model-value=\"42\"\r\n      label=\"Disabled Input\"\r\n      :disabled=\"true\"\r\n    />\r\n  </div>\r\n</template>\r\n",
+        "hasExample": true,
+        "examplePath": "inputnumber/Disabled"
       }
     ]
   },
@@ -1255,7 +1722,7 @@
         "id": "form-integration-",
         "label": "Form Integration\r",
         "description": "Complete form example demonstrating email inputs in a form context.",
-        "example": "<script setup lang=\"ts\">\r\nimport { Form, InputEmail } from '@fewangsit/wangsvue'\r\n\r\nconst checkEmailAvailability = async (email: string): Promise<boolean> => {\r\n  // Simulate API call\r\n  await new Promise(resolve => setTimeout(resolve, 800))\r\n  const existingEmails = ['admin@test.com', 'user@test.com']\r\n  return !existingEmails.includes(email.toLowerCase())\r\n}\r\n\r\nconst onSubmit = (payload: { formValues: Record<string, unknown> }) => {\r\n  console.log('Email form submitted:', payload.formValues)\r\n}\r\n\r\nconst onCancel = () => {\r\n  console.log('Form cancelled')\r\n}\r\n</script>\r\n\r\n<template>\r\n  <Form\r\n    :column-per-row=\"2\"\r\n    :buttons-template=\"['submit', 'cancel', 'clear']\"\r\n    submit-btn-label=\"Save Emails\"\r\n    @submit=\"onSubmit\"\r\n    @cancel=\"onCancel\"\r\n  >\r\n    <template #fields=\"{ formValues }\">\r\n      <div class=\"col-span-2\">\r\n        <InputEmail\r\n          label=\"Primary Email\"\r\n          field-name=\"primaryEmail\"\r\n          :use-validator=\"true\"\r\n          :mandatory=\"true\"\r\n          :check-availability=\"checkEmailAvailability\"\r\n          field-info=\"This will be your login email\"\r\n          :validator-message=\"{\r\n            empty: 'Email address is required',\r\n            invalidFormat: 'Please enter a valid email address',\r\n            exist: 'This email is already registered'\r\n          }\"\r\n        />\r\n      </div>\r\n\r\n      <InputEmail\r\n        label=\"Recovery Email\"\r\n        field-name=\"recoveryEmail\"\r\n        :use-validator=\"true\"\r\n        field-info=\"Optional backup email for account recovery\"\r\n        :validator-message=\"{\r\n          invalidFormat: 'Please enter a valid email address'\r\n        }\"\r\n      />\r\n\r\n      <InputEmail\r\n        label=\"Work Email\"\r\n        field-name=\"workEmail\"\r\n        :use-validator=\"true\"\r\n        field-info=\"Optional work email for professional contacts\"\r\n        :validator-message=\"{\r\n          invalidFormat: 'Please enter a valid email address'\r\n        }\"\r\n      />\r\n\r\n      <!-- Conditional field using formValues -->\r\n      <div\r\n        v-if=\"formValues.primaryEmail\"\r\n        class=\"col-span-2\"\r\n      >\r\n        <InputEmail\r\n          label=\"Notification Email\"\r\n          field-name=\"notificationEmail\"\r\n          :use-validator=\"true\"\r\n          field-info=\"Shown because primary email is provided\"\r\n          :validator-message=\"{\r\n            invalidFormat: 'Please enter a valid email address'\r\n          }\"\r\n        />\r\n      </div>\r\n    </template>\r\n  </Form>\r\n</template>\r\n",
+        "example": "<script setup lang=\"ts\">\r\nimport { Form, InputEmail } from '@fewangsit/wangsvue'\r\nimport type { FormPayload } from '@fewangsit/wangsvue/form'\r\n\r\nconst checkEmailAvailability = async (email: string): Promise<boolean> => {\r\n  // Simulate API call\r\n  await new Promise(resolve => setTimeout(resolve, 800))\r\n  const existingEmails = ['admin@test.com', 'user@test.com']\r\n  return !existingEmails.includes(email.toLowerCase())\r\n}\r\n\r\nconst onSubmit = (payload: FormPayload) => {\r\n  console.log('Email form submitted:', payload.formValues)\r\n}\r\n\r\nconst onCancel = () => {\r\n  console.log('Form cancelled')\r\n}\r\n</script>\r\n\r\n<template>\r\n  <Form\r\n    :column-per-row=\"2\"\r\n    :buttons-template=\"['submit', 'cancel', 'clear']\"\r\n    submit-btn-label=\"Save Emails\"\r\n    @submit=\"onSubmit\"\r\n    @cancel=\"onCancel\"\r\n  >\r\n    <template #fields=\"{ formValues }\">\r\n      <div class=\"col-span-2\">\r\n        <InputEmail\r\n          label=\"Primary Email\"\r\n          field-name=\"primaryEmail\"\r\n          :use-validator=\"true\"\r\n          :mandatory=\"true\"\r\n          :check-availability=\"checkEmailAvailability\"\r\n          field-info=\"This will be your login email\"\r\n          :validator-message=\"{\r\n            empty: 'Email address is required',\r\n            invalidFormat: 'Please enter a valid email address',\r\n            exist: 'This email is already registered'\r\n          }\"\r\n        />\r\n      </div>\r\n\r\n      <InputEmail\r\n        label=\"Recovery Email\"\r\n        field-name=\"recoveryEmail\"\r\n        :use-validator=\"true\"\r\n        field-info=\"Optional backup email for account recovery\"\r\n        :validator-message=\"{\r\n          invalidFormat: 'Please enter a valid email address'\r\n        }\"\r\n      />\r\n\r\n      <InputEmail\r\n        label=\"Work Email\"\r\n        field-name=\"workEmail\"\r\n        :use-validator=\"true\"\r\n        field-info=\"Optional work email for professional contacts\"\r\n        :validator-message=\"{\r\n          invalidFormat: 'Please enter a valid email address'\r\n        }\"\r\n      />\r\n\r\n      <!-- Conditional field using formValues -->\r\n      <div\r\n        v-if=\"formValues.primaryEmail\"\r\n        class=\"col-span-2\"\r\n      >\r\n        <InputEmail\r\n          label=\"Notification Email\"\r\n          field-name=\"notificationEmail\"\r\n          :use-validator=\"true\"\r\n          field-info=\"Shown because primary email is provided\"\r\n          :validator-message=\"{\r\n            invalidFormat: 'Please enter a valid email address'\r\n          }\"\r\n        />\r\n      </div>\r\n    </template>\r\n  </Form>\r\n</template>\r\n",
         "hasExample": true,
         "examplePath": "inputemail/FormIntegration"
       }
@@ -1326,7 +1793,7 @@
         "id": "form-integration-",
         "label": "Form Integration\r",
         "description": "Complete form example with currency inputs and validation.",
-        "example": "<script setup lang=\"ts\">\r\nimport { Form, InputCurrency } from '@fewangsit/wangsvue'\r\n\r\nconst onSubmit = (payload: { formValues: Record<string, unknown> }) => {\r\n  console.log('Form submitted:', payload.formValues)\r\n}\r\n</script>\r\n\r\n<template>\r\n  <Form\r\n    :buttons-template=\"['clear', 'submit']\"\r\n    @submit=\"onSubmit\"\r\n  >\r\n    <template #fields=\"{ formValues }\">\r\n      <InputCurrency\r\n        v-model=\"formValues.price\"\r\n        label=\"Product Price\"\r\n        field-name=\"price\"\r\n        :use-validator=\"true\"\r\n        :mandatory=\"true\"\r\n        :max=\"100000\"\r\n        :validator-message=\"{ empty: 'Product price is required' }\"\r\n        field-info=\"Enter the product price in your preferred currency\"\r\n      />\r\n    </template>\r\n  </Form>\r\n</template>\r\n",
+        "example": "<script setup lang=\"ts\">\r\nimport { Form, InputCurrency } from '@fewangsit/wangsvue'\r\nimport type { FormPayload } from '@fewangsit/wangsvue/form'\r\n\r\nconst onSubmit = (payload: FormPayload) => {\r\n  console.log('Form submitted:', payload.formValues)\r\n}\r\n</script>\r\n\r\n<template>\r\n  <Form\r\n    :buttons-template=\"['clear', 'submit']\"\r\n    @submit=\"onSubmit\"\r\n  >\r\n    <template #fields>\r\n      <InputCurrency\r\n        label=\"Product Price\"\r\n        field-name=\"price\"\r\n        :use-validator=\"true\"\r\n        :mandatory=\"true\"\r\n        :max=\"100000\"\r\n        :validator-message=\"{ empty: 'Product price is required' }\"\r\n        field-info=\"Enter the product price in your preferred currency\"\r\n      />\r\n    </template>\r\n  </Form>\r\n</template>\r\n",
         "hasExample": true,
         "examplePath": "inputcurrency/FormIntegration"
       }
@@ -1340,15 +1807,7 @@
       {
         "id": "import-",
         "label": "Import\r",
-        "description": "```typescript\r\nimport { InputPhoneNumber } from '@fewangsit/wangsvue'\r\n```",
-        "example": "",
-        "hasExample": false,
-        "examplePath": null
-      },
-      {
-        "id": "examples-",
-        "label": "Examples\r",
-        "description": "",
+        "description": "```ts\r\nimport { InputPhoneNumber } from '@fewangsit/wangsvue';\r\n```",
         "example": "",
         "hasExample": false,
         "examplePath": null
@@ -1356,32 +1815,64 @@
       {
         "id": "basic-",
         "label": "Basic\r",
-        "description": "Basic phone number input with formatting.",
-        "example": "<script setup lang=\"ts\">\r\nimport { ref } from 'vue'\r\nimport { InputPhoneNumber } from '@fewangsit/wangsvue'\r\n\r\nconst value = ref('')\r\n</script>\r\n\r\n<template>\r\n  <div class=\"flex flex-col gap-4\">\r\n    <InputPhoneNumber\r\n      v-model=\"value\"\r\n      label=\"Phone Number\"\r\n      placeholder=\"Enter phone number\"\r\n    />\r\n    <p class=\"text-sm text-gray-600\">\r\n      Value: {{ value || 'Empty' }}\r\n    </p>\r\n  </div>\r\n</template>\r\n",
+        "description": "Basic phone number input with two-way data binding using v-model.",
+        "example": "<script setup lang=\"ts\">\r\nimport { ref } from 'vue'\r\nimport { InputPhoneNumber } from '@fewangsit/wangsvue'\r\n\r\nconst value = ref('')\r\n</script>\r\n\r\n<template>\r\n  <InputPhoneNumber\r\n    v-model=\"value\"\r\n    label=\"Phone Number\"\r\n    placeholder=\"Enter phone number\"\r\n  />\r\n</template>\r\n",
         "hasExample": true,
         "examplePath": "inputphonenumber/Basic"
       },
       {
         "id": "validation-",
         "label": "Validation\r",
-        "description": "Phone number input with validation and required field.",
-        "example": "<script setup lang=\"ts\">\r\nimport { ref } from 'vue'\r\nimport { InputPhoneNumber } from '@fewangsit/wangsvue'\r\n\r\nconst value = ref('')\r\n</script>\r\n\r\n<template>\r\n  <div class=\"flex flex-col gap-4\">\r\n    <InputPhoneNumber\r\n      v-model=\"value\"\r\n      label=\"Contact Number\"\r\n      placeholder=\"Enter contact number\"\r\n      :use-validator=\"true\"\r\n      field-name=\"contactNumber\"\r\n      :mandatory=\"true\"\r\n      :validator-message=\"{\r\n        empty: 'Contact number is required'\r\n      }\"\r\n    />\r\n    <p class=\"text-sm text-gray-600\">\r\n      Value: {{ value || 'Empty' }}\r\n    </p>\r\n  </div>\r\n</template>\r\n",
+        "description": "Phone number input with form validation and required field requirements.",
+        "example": "<script setup lang=\"ts\">\r\nimport { ref } from 'vue'\r\nimport { InputPhoneNumber } from '@fewangsit/wangsvue'\r\n\r\nconst value = ref('')\r\n</script>\r\n\r\n<template>\r\n  <InputPhoneNumber\r\n    v-model=\"value\"\r\n    label=\"Contact Number\"\r\n    placeholder=\"Enter contact number\"\r\n    :use-validator=\"true\"\r\n    field-name=\"contactNumber\"\r\n    :mandatory=\"true\"\r\n    :validator-message=\"{\r\n      empty: 'Contact number is required'\r\n    }\"\r\n  />\r\n</template>\r\n",
         "hasExample": true,
         "examplePath": "inputphonenumber/Validation"
       },
       {
         "id": "max-digits-",
         "label": "Max Digits\r",
-        "description": "Control maximum number of digits allowed.",
-        "example": "<script setup lang=\"ts\">\r\nimport { ref } from 'vue'\r\nimport { InputPhoneNumber } from '@fewangsit/wangsvue'\r\n\r\nconst phone1 = ref('')\r\nconst phone2 = ref('')\r\n</script>\r\n\r\n<template>\r\n  <div class=\"flex flex-col gap-4\">\r\n    <InputPhoneNumber\r\n      v-model=\"phone1\"\r\n      label=\"Short Phone (10 digits)\"\r\n      placeholder=\"Enter phone number\"\r\n      :max-digit=\"10\"\r\n    />\r\n\r\n    <InputPhoneNumber\r\n      v-model=\"phone2\"\r\n      label=\"Long Phone (15 digits)\"\r\n      placeholder=\"Enter phone number\"\r\n      :max-digit=\"15\"\r\n    />\r\n\r\n    <div class=\"text-sm text-gray-600\">\r\n      <p>Short: {{ phone1 || 'Empty' }} ({{ phone1.length }}/10)</p>\r\n      <p>Long: {{ phone2 || 'Empty' }} ({{ phone2.length }}/15)</p>\r\n    </div>\r\n  </div>\r\n</template>\r\n",
+        "description": "Control the maximum number of digits allowed in the phone number input.",
+        "example": "<script setup lang=\"ts\">\r\nimport { ref } from 'vue'\r\nimport { InputPhoneNumber } from '@fewangsit/wangsvue'\r\n\r\nconst phone1 = ref('')\r\nconst phone2 = ref('')\r\n</script>\r\n\r\n<template>\r\n  <div class=\"flex flex-col gap-4\">\r\n    <InputPhoneNumber\r\n      v-model=\"phone1\"\r\n      label=\"Short Phone (10 digits)\"\r\n      placeholder=\"Enter phone number\"\r\n      :max-digit=\"10\"\r\n    />\r\n\r\n    <InputPhoneNumber\r\n      v-model=\"phone2\"\r\n      label=\"Long Phone (15 digits)\"\r\n      placeholder=\"Enter phone number\"\r\n      :max-digit=\"15\"\r\n    />\r\n  </div>\r\n</template>\r\n",
         "hasExample": true,
         "examplePath": "inputphonenumber/MaxDigits"
       },
       {
+        "id": "mandatory-",
+        "label": "Mandatory\r",
+        "description": "Phone number input with mandatory validation and custom error messages.",
+        "example": "<script setup lang=\"ts\">\r\nimport { ref } from 'vue'\r\nimport { InputPhoneNumber } from '@fewangsit/wangsvue'\r\n\r\nconst value = ref('')\r\n</script>\r\n\r\n<template>\r\n  <InputPhoneNumber\r\n    v-model=\"value\"\r\n    label=\"Contact Number\"\r\n    placeholder=\"Enter contact number\"\r\n    :use-validator=\"true\"\r\n    field-name=\"contactNumber\"\r\n    :mandatory=\"true\"\r\n    :validator-message=\"{ empty: 'Contact number is required' }\"\r\n  />\r\n</template>\r\n",
+        "hasExample": true,
+        "examplePath": "inputphonenumber/Mandatory"
+      },
+      {
+        "id": "disabled-",
+        "label": "Disabled\r",
+        "description": "Phone number input in disabled state prevents user interaction.",
+        "example": "<script setup lang=\"ts\">\r\nimport { ref } from 'vue'\r\nimport { InputPhoneNumber } from '@fewangsit/wangsvue'\r\n\r\nconst value = ref('+1 234567890')\r\n</script>\r\n\r\n<template>\r\n  <InputPhoneNumber\r\n    v-model=\"value\"\r\n    label=\"Phone Number (Disabled)\"\r\n    placeholder=\"Enter phone number\"\r\n    :disabled=\"true\"\r\n  />\r\n</template>\r\n",
+        "hasExample": true,
+        "examplePath": "inputphonenumber/Disabled"
+      },
+      {
+        "id": "invalid-",
+        "label": "Invalid\r",
+        "description": "Phone number input showing invalid state with error message.",
+        "example": "<script setup lang=\"ts\">\r\nimport { ref } from 'vue'\r\nimport { InputPhoneNumber } from '@fewangsit/wangsvue'\r\n\r\nconst value = ref('')\r\n</script>\r\n\r\n<template>\r\n  <InputPhoneNumber\r\n    v-model=\"value\"\r\n    label=\"Emergency Contact\"\r\n    placeholder=\"Enter emergency contact\"\r\n    :invalid=\"true\"\r\n    :validator-message=\"{ empty: 'Emergency contact is required for safety' }\"\r\n  />\r\n</template>\r\n",
+        "hasExample": true,
+        "examplePath": "inputphonenumber/Invalid"
+      },
+      {
+        "id": "field-info-",
+        "label": "Field Info\r",
+        "description": "Phone number input with helpful information text to guide users.",
+        "example": "<script setup lang=\"ts\">\r\nimport { ref } from 'vue'\r\nimport { InputPhoneNumber } from '@fewangsit/wangsvue'\r\n\r\nconst value = ref('')\r\n</script>\r\n\r\n<template>\r\n  <InputPhoneNumber\r\n    v-model=\"value\"\r\n    label=\"Business Phone\"\r\n    placeholder=\"Enter business phone\"\r\n    field-info=\"Include country code for international numbers\"\r\n  />\r\n</template>\r\n",
+        "hasExample": true,
+        "examplePath": "inputphonenumber/FieldInfo"
+      },
+      {
         "id": "form-integration-",
         "label": "Form Integration\r",
-        "description": "Complete form example with phone number inputs.",
-        "example": "<script setup lang=\"ts\">\r\nimport { Form, InputText, InputEmail, InputPhoneNumber } from '@fewangsit/wangsvue'\r\n\r\nconst onSubmit = (payload: { formValues: Record<string, unknown> }) => {\r\n  console.log('Contact form submitted:', payload.formValues)\r\n}\r\n\r\nconst onCancel = () => {\r\n  console.log('Form cancelled')\r\n}\r\n</script>\r\n\r\n<template>\r\n  <Form\r\n    :column-per-row=\"2\"\r\n    submit-btn-label=\"Save Contact\"\r\n    @submit=\"onSubmit\"\r\n    @cancel=\"onCancel\"\r\n  >\r\n    <template #fields=\"{ formValues }\">\r\n      <InputText\r\n        v-model=\"formValues.firstName\"\r\n        label=\"First Name\"\r\n        field-name=\"firstName\"\r\n        :use-validator=\"true\"\r\n        :mandatory=\"true\"\r\n        :validator-message=\"{\r\n          empty: 'First name is required'\r\n        }\"\r\n      />\r\n\r\n      <InputText\r\n        v-model=\"formValues.lastName\"\r\n        label=\"Last Name\"\r\n        field-name=\"lastName\"\r\n        :use-validator=\"true\"\r\n        :mandatory=\"true\"\r\n        :validator-message=\"{\r\n          empty: 'Last name is required'\r\n        }\"\r\n      />\r\n\r\n      <InputEmail\r\n        v-model=\"formValues.email\"\r\n        label=\"Email Address\"\r\n        field-name=\"email\"\r\n        :use-validator=\"true\"\r\n        :mandatory=\"true\"\r\n        :validator-message=\"{\r\n          empty: 'Email is required',\r\n          invalidFormat: 'Please enter a valid email address'\r\n        }\"\r\n      />\r\n\r\n      <InputPhoneNumber\r\n        v-model=\"formValues.phone\"\r\n        label=\"Phone Number\"\r\n        field-name=\"phone\"\r\n        :use-validator=\"true\"\r\n        :mandatory=\"true\"\r\n        :max-digit=\"14\"\r\n        :validator-message=\"{\r\n          empty: 'Phone number is required'\r\n        }\"\r\n      />\r\n\r\n      <InputPhoneNumber\r\n        v-model=\"formValues.workPhone\"\r\n        label=\"Work Phone\"\r\n        field-name=\"workPhone\"\r\n        :use-validator=\"true\"\r\n        :max-digit=\"14\"\r\n        field-info=\"Optional work phone number\"\r\n      />\r\n\r\n      <InputPhoneNumber\r\n        v-model=\"formValues.emergencyPhone\"\r\n        label=\"Emergency Contact\"\r\n        field-name=\"emergencyPhone\"\r\n        :use-validator=\"true\"\r\n        :max-digit=\"14\"\r\n        field-info=\"Emergency contact number\"\r\n      />\r\n    </template>\r\n  </Form>\r\n</template>\r\n",
+        "description": "Similar to other input components like [InputText](/components/inputtext), InputPhoneNumber integrates seamlessly with form validation.",
+        "example": "<script setup lang=\"ts\">\r\nimport { Form, InputPhoneNumber } from '@fewangsit/wangsvue'\r\nimport type { FormPayload } from '@fewangsit/wangsvue/form'\r\n\r\nconst onSubmit = (payload: FormPayload) => {\r\n  console.log('Form submitted:', payload.formValues)\r\n}\r\n</script>\r\n\r\n<template>\r\n  <Form\r\n    :buttons-template=\"['submit', 'clear']\"\r\n    @submit=\"onSubmit\"\r\n  >\r\n    <template #fields>\r\n      <InputPhoneNumber\r\n        label=\"Phone Number\"\r\n        field-name=\"phone\"\r\n        :use-validator=\"true\"\r\n        :mandatory=\"true\"\r\n        :validator-message=\"{\r\n          empty: 'Phone number is required'\r\n        }\"\r\n      />\r\n    </template>\r\n  </Form>\r\n</template>\r\n",
         "hasExample": true,
         "examplePath": "inputphonenumber/FormIntegration"
       }
@@ -1436,7 +1927,7 @@
         "id": "form-integration-",
         "label": "Form Integration\r",
         "description": "Complete form example demonstrating URL inputs in a form context.",
-        "example": "<script setup lang=\"ts\">\r\nimport { Form, InputURL } from '@fewangsit/wangsvue'\r\n\r\nconst onSubmit = (payload: { formValues: Record<string, unknown> }) => {\r\n  console.log('URL form submitted:', payload.formValues)\r\n}\r\n\r\nconst onCancel = () => {\r\n  console.log('Form cancelled')\r\n}\r\n</script>\r\n\r\n<template>\r\n  <Form\r\n    :column-per-row=\"2\"\r\n    :buttons-template=\"['submit', 'cancel', 'clear']\"\r\n    submit-btn-label=\"Save URLs\"\r\n    @submit=\"onSubmit\"\r\n    @cancel=\"onCancel\"\r\n  >\r\n    <template #fields=\"{ formValues }\">\r\n      <div class=\"col-span-2\">\r\n        <InputURL\r\n          label=\"Company Website\"\r\n          field-name=\"website\"\r\n          :use-validator=\"true\"\r\n          :mandatory=\"true\"\r\n          :use-protocol=\"true\"\r\n          :validator-message=\"{\r\n            empty: 'Company website is required',\r\n            invalidFormat: 'Please enter a valid URL with protocol'\r\n          }\"\r\n        />\r\n      </div>\r\n\r\n      <InputURL\r\n        label=\"LinkedIn Profile\"\r\n        field-name=\"linkedinUrl\"\r\n        :use-validator=\"true\"\r\n        :use-protocol=\"true\"\r\n        field-info=\"Optional LinkedIn company page\"\r\n        :validator-message=\"{\r\n          invalidFormat: 'Please enter a valid LinkedIn URL'\r\n        }\"\r\n      />\r\n\r\n      <InputURL\r\n        label=\"Company Blog\"\r\n        field-name=\"blogUrl\"\r\n        :use-validator=\"true\"\r\n        :use-protocol=\"true\"\r\n        field-info=\"Optional company blog URL\"\r\n        :validator-message=\"{\r\n          invalidFormat: 'Please enter a valid blog URL'\r\n        }\"\r\n      />\r\n\r\n      <InputURL\r\n        label=\"Support Portal\"\r\n        field-name=\"supportUrl\"\r\n        :use-validator=\"true\"\r\n        :use-protocol=\"true\"\r\n        field-info=\"Customer support portal URL\"\r\n        :validator-message=\"{\r\n          invalidFormat: 'Please enter a valid support URL'\r\n        }\"\r\n      />\r\n\r\n      <InputURL\r\n        label=\"API Endpoint\"\r\n        field-name=\"apiUrl\"\r\n        :use-validator=\"true\"\r\n        :use-protocol=\"true\"\r\n        field-info=\"Optional API endpoint URL\"\r\n        :validator-message=\"{\r\n          invalidFormat: 'Please enter a valid API URL'\r\n        }\"\r\n      />\r\n\r\n      <!-- Conditional field using formValues -->\r\n      <div\r\n        v-if=\"formValues.website\"\r\n        class=\"col-span-2\"\r\n      >\r\n        <InputURL\r\n          label=\"Documentation URL\"\r\n          field-name=\"docsUrl\"\r\n          :use-validator=\"true\"\r\n          :use-protocol=\"true\"\r\n          field-info=\"Shown because company website is provided\"\r\n          :validator-message=\"{\r\n            invalidFormat: 'Please enter a valid documentation URL'\r\n          }\"\r\n        />\r\n      </div>\r\n    </template>\r\n  </Form>\r\n</template>\r\n",
+        "example": "<script setup lang=\"ts\">\r\nimport { Form, InputURL } from '@fewangsit/wangsvue'\r\nimport type { FormPayload } from '@fewangsit/wangsvue/form'\r\n\r\nconst onSubmit = (payload: FormPayload) => {\r\n  console.log('URL form submitted:', payload.formValues)\r\n}\r\n\r\nconst onCancel = () => {\r\n  console.log('Form cancelled')\r\n}\r\n</script>\r\n\r\n<template>\r\n  <Form\r\n    :column-per-row=\"2\"\r\n    :buttons-template=\"['submit', 'cancel', 'clear']\"\r\n    submit-btn-label=\"Save URLs\"\r\n    @submit=\"onSubmit\"\r\n    @cancel=\"onCancel\"\r\n  >\r\n    <template #fields=\"{ formValues }\">\r\n      <div class=\"col-span-2\">\r\n        <InputURL\r\n          label=\"Company Website\"\r\n          field-name=\"website\"\r\n          :use-validator=\"true\"\r\n          :mandatory=\"true\"\r\n          :use-protocol=\"true\"\r\n          :validator-message=\"{\r\n            empty: 'Company website is required',\r\n            invalidFormat: 'Please enter a valid URL with protocol'\r\n          }\"\r\n        />\r\n      </div>\r\n\r\n      <InputURL\r\n        label=\"LinkedIn Profile\"\r\n        field-name=\"linkedinUrl\"\r\n        :use-validator=\"true\"\r\n        :use-protocol=\"true\"\r\n        field-info=\"Optional LinkedIn company page\"\r\n        :validator-message=\"{\r\n          invalidFormat: 'Please enter a valid LinkedIn URL'\r\n        }\"\r\n      />\r\n\r\n      <InputURL\r\n        label=\"Company Blog\"\r\n        field-name=\"blogUrl\"\r\n        :use-validator=\"true\"\r\n        :use-protocol=\"true\"\r\n        field-info=\"Optional company blog URL\"\r\n        :validator-message=\"{\r\n          invalidFormat: 'Please enter a valid blog URL'\r\n        }\"\r\n      />\r\n\r\n      <InputURL\r\n        label=\"Support Portal\"\r\n        field-name=\"supportUrl\"\r\n        :use-validator=\"true\"\r\n        :use-protocol=\"true\"\r\n        field-info=\"Customer support portal URL\"\r\n        :validator-message=\"{\r\n          invalidFormat: 'Please enter a valid support URL'\r\n        }\"\r\n      />\r\n\r\n      <InputURL\r\n        label=\"API Endpoint\"\r\n        field-name=\"apiUrl\"\r\n        :use-validator=\"true\"\r\n        :use-protocol=\"true\"\r\n        field-info=\"Optional API endpoint URL\"\r\n        :validator-message=\"{\r\n          invalidFormat: 'Please enter a valid API URL'\r\n        }\"\r\n      />\r\n\r\n      <!-- Conditional field using formValues -->\r\n      <div\r\n        v-if=\"formValues.website\"\r\n        class=\"col-span-2\"\r\n      >\r\n        <InputURL\r\n          label=\"Documentation URL\"\r\n          field-name=\"docsUrl\"\r\n          :use-validator=\"true\"\r\n          :use-protocol=\"true\"\r\n          field-info=\"Shown because company website is provided\"\r\n          :validator-message=\"{\r\n            invalidFormat: 'Please enter a valid documentation URL'\r\n          }\"\r\n        />\r\n      </div>\r\n    </template>\r\n  </Form>\r\n</template>\r\n",
         "hasExample": true,
         "examplePath": "inputurl/FormIntegration"
       }

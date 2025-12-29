@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { Form, InputEmail } from '@fewangsit/wangsvue'
+import type { FormPayload } from '@fewangsit/wangsvue/form'
 
 const checkEmailAvailability = async (email: string): Promise<boolean> => {
   // Simulate API call
@@ -8,7 +9,7 @@ const checkEmailAvailability = async (email: string): Promise<boolean> => {
   return !existingEmails.includes(email.toLowerCase())
 }
 
-const onSubmit = (payload: { formValues: Record<string, unknown> }) => {
+const onSubmit = (payload: FormPayload) => {
   console.log('Email form submitted:', payload.formValues)
 }
 

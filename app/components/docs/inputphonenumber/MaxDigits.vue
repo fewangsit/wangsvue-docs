@@ -21,10 +21,5 @@ const phone2 = ref('')
       placeholder="Enter phone number"
       :max-digit="15"
     />
-
-    <div class="text-sm text-gray-600">
-      <p>Short: {{ phone1 || 'Empty' }} ({{ phone1.length }}/10)</p>
-      <p>Long: {{ phone2 || 'Empty' }} ({{ phone2.length }}/15)</p>
-    </div>
   </div>
 </template>

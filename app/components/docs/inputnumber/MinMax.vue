@@ -10,13 +10,12 @@ const value = ref<number>()
     <InputNumber
       v-model="value"
       label="Age"
-      placeholder="Enter age"
+      placeholder="Enter age (0-120)"
       :min="0"
       :max="120"
-      :show-buttons="true"
     />
-    <p class="text-sm text-gray-600">
-      Value: {{ value ?? 'Empty' }} (Min: 0, Max: 120)
-    </p>
+    <div class="text-sm text-gray-600">
+      Value: {{ value ?? 'Empty' }}
+    </div>
   </div>
 </template>

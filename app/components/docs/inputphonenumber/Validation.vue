@@ -6,20 +6,15 @@ const value = ref('')
 </script>
 
 <template>
-  <div class="flex flex-col gap-4">
-    <InputPhoneNumber
-      v-model="value"
-      label="Contact Number"
-      placeholder="Enter contact number"
-      :use-validator="true"
-      field-name="contactNumber"
-      :mandatory="true"
-      :validator-message="{
-        empty: 'Contact number is required'
-      }"
-    />
-    <p class="text-sm text-gray-600">
-      Value: {{ value || 'Empty' }}
-    </p>
-  </div>
+  <InputPhoneNumber
+    v-model="value"
+    label="Contact Number"
+    placeholder="Enter contact number"
+    :use-validator="true"
+    field-name="contactNumber"
+    :mandatory="true"
+    :validator-message="{
+      empty: 'Contact number is required'
+    }"
+  />
 </template>
