@@ -3,7 +3,7 @@
 - [x] Badge
 - [ ] BadgeGroup
 - [ ] BaseTree
-- [ ] Breadcrumb
+- [x] Breadcrumb
 - [x] Button
 - [ ] ButtonBulkAction
 - [ ] ButtonCopy
@@ -54,7 +54,7 @@
 - [x] TabMenu
 - [x] Textarea
 - [ ] Timeline
-- [ ] Toast
+- [x] Toast
 - [x] ToggleSwitch
 - [ ] TooltipSpan
 - [ ] Tree
