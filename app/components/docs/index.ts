@@ -296,5 +296,13 @@ export const componentRegistry: Record<
   'image/CustomSize': () => import('./image/CustomSize.vue'),
   'image/Rounded': () => import('./image/Rounded.vue'),
   'image/WithoutPreview': () => import('./image/WithoutPreview.vue'),
-  'image/Gallery': () => import('./image/Gallery.vue')
+  'image/Gallery': () => import('./image/Gallery.vue'),
+
+  // ImageCompressor components
+  'imagecompressor/Basic': () => import('./imagecompressor/Basic.vue'),
+  'imagecompressor/Multiple': () => import('./imagecompressor/Multiple.vue'),
+  'imagecompressor/Sizes': () => import('./imagecompressor/Sizes.vue'),
+  'imagecompressor/Rounded': () => import('./imagecompressor/Rounded.vue'),
+  'imagecompressor/FileTypes': () => import('./imagecompressor/FileTypes.vue'),
+  'imagecompressor/FormIntegration': () => import('./imagecompressor/FormIntegration.vue')
 }

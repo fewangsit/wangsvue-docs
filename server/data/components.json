@@ -1728,14 +1728,14 @@
     ]
   },
   {
-    "name": "gallerypreview",
-    "title": "GalleryPreview",
-    "description": "Preview component for displaying multiple files with metadata.",
+    "name": "imagecompressor",
+    "title": "ImageCompressor",
+    "description": "Handle image input and compression.",
     "sections": [
       {
         "id": "import-",
         "label": "Import\r",
-        "description": "```ts\r\nimport { GalleryPreview } from '@fewangsit/wangsvue';\r\n```",
+        "description": "```ts\r\nimport { ImageCompressor } from '@fewangsit/wangsvue';\r\n```",
         "example": "",
         "hasExample": false,
         "examplePath": null
@@ -1743,26 +1743,50 @@
       {
         "id": "basic-",
         "label": "Basic\r",
-        "description": "Basic file gallery preview with multiple files. The component displays files with their metadata including name, type, and creation date.",
-        "example": "<script setup lang=\"ts\">\r\nimport { GalleryPreview } from '@fewangsit/wangsvue'\r\nimport type { File } from '@fewangsit/wangsvue/gallerypreview'\r\n\r\nconst files: File[] = [\r\n  {\r\n    _id: '1',\r\n    name: 'sample-image-1.jpg',\r\n    type: 'image/jpeg',\r\n    src: 'https://picsum.photos/400/300?random=1',\r\n    createdAt: '2024-01-15T10:30:00Z'\r\n  },\r\n  {\r\n    _id: '2',\r\n    name: 'sample-image-2.jpg',\r\n    type: 'image/jpeg',\r\n    src: 'https://picsum.photos/400/300?random=2',\r\n    createdAt: '2024-01-16T14:20:00Z'\r\n  },\r\n  {\r\n    _id: '3',\r\n    name: 'sample-image-3.jpg',\r\n    type: 'image/jpeg',\r\n    src: 'https://picsum.photos/400/300?random=3',\r\n    createdAt: '2024-01-17T09:45:00Z'\r\n  }\r\n]\r\n</script>\r\n\r\n<template>\r\n  <GalleryPreview :files=\"files\" />\r\n</template>\n",
+        "description": "Basic image compressor with single image input and compression functionality.",
+        "example": "<script setup lang=\"ts\">\r\nimport { ImageCompressor } from '@fewangsit/wangsvue'\r\nimport type { ImageCompressorPayload } from '@fewangsit/wangsvue/imagecompressor'\r\n\r\nconst onApply = (payload: ImageCompressorPayload) => {\r\n  console.log('Image compressed:', payload)\r\n}\r\n</script>\r\n\r\n<template>\r\n  <ImageCompressor @apply=\"onApply\" />\r\n</template>\n",
         "hasExample": true,
-        "examplePath": "gallerypreview/Basic"
+        "examplePath": "imagecompressor/Basic"
       },
       {
-        "id": "image-files-",
-        "label": "Image Files\r",
-        "description": "Gallery preview specifically for image files with different formats.",
-        "example": "<script setup lang=\"ts\">\r\nimport { GalleryPreview } from '@fewangsit/wangsvue'\r\nimport type { File } from '@fewangsit/wangsvue/gallerypreview'\r\n\r\nconst imageFiles: File[] = [\r\n  {\r\n    _id: '1',\r\n    name: 'landscape.jpg',\r\n    type: 'image/jpeg',\r\n    src: 'https://picsum.photos/600/400?random=10',\r\n    createdAt: '2024-01-15T10:30:00Z'\r\n  },\r\n  {\r\n    _id: '2',\r\n    name: 'portrait.png',\r\n    type: 'image/png',\r\n    src: 'https://picsum.photos/400/600?random=11',\r\n    createdAt: '2024-01-16T14:20:00Z'\r\n  },\r\n  {\r\n    _id: '3',\r\n    name: 'square.webp',\r\n    type: 'image/webp',\r\n    src: 'https://picsum.photos/500/500?random=12',\r\n    createdAt: '2024-01-17T09:45:00Z'\r\n  },\r\n  {\r\n    _id: '4',\r\n    name: 'wide.jpg',\r\n    type: 'image/jpeg',\r\n    src: 'https://picsum.photos/800/300?random=13',\r\n    createdAt: '2024-01-18T16:15:00Z'\r\n  }\r\n]\r\n</script>\r\n\r\n<template>\r\n  <GalleryPreview :files=\"imageFiles\" />\r\n</template>\n",
+        "id": "multiple-images-",
+        "label": "Multiple Images\r",
+        "description": "Image compressor that allows multiple image selection and compression.",
+        "example": "<script setup lang=\"ts\">\r\nimport { ImageCompressor } from '@fewangsit/wangsvue'\r\nimport type { ImageCompressorPayload } from '@fewangsit/wangsvue/imagecompressor'\r\n\r\nconst onApply = (payload: ImageCompressorPayload) => {\r\n  console.log('Multiple images compressed:', payload)\r\n}\r\n</script>\r\n\r\n<template>\r\n  <ImageCompressor\r\n    :multiple=\"true\"\r\n    @apply=\"onApply\"\r\n  />\r\n</template>\n",
         "hasExample": true,
-        "examplePath": "gallerypreview/ImageFiles"
+        "examplePath": "imagecompressor/Multiple"
       },
       {
-        "id": "mixed-file-types-",
-        "label": "Mixed File Types\r",
-        "description": "Gallery preview with mixed file types including images, documents, and other file formats.",
-        "example": "<script setup lang=\"ts\">\r\nimport { GalleryPreview } from '@fewangsit/wangsvue'\r\nimport type { File } from '@fewangsit/wangsvue/gallerypreview'\r\n\r\nconst mixedFiles: File[] = [\r\n  {\r\n    _id: '1',\r\n    name: 'photo.jpg',\r\n    type: 'image/jpeg',\r\n    src: 'https://picsum.photos/400/300?random=20',\r\n    createdAt: '2024-01-15T10:30:00Z'\r\n  },\r\n  {\r\n    _id: '2',\r\n    name: 'document.pdf',\r\n    type: 'application/pdf',\r\n    src: 'https://picsum.photos/400/300?random=21',\r\n    createdAt: '2024-01-16T14:20:00Z'\r\n  },\r\n  {\r\n    _id: '3',\r\n    name: 'spreadsheet.xlsx',\r\n    type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',\r\n    src: 'https://picsum.photos/400/300?random=22',\r\n    createdAt: '2024-01-17T09:45:00Z'\r\n  },\r\n  {\r\n    _id: '4',\r\n    name: 'presentation.pptx',\r\n    type: 'application/vnd.openxmlformats-officedocument.presentationml.presentation',\r\n    src: 'https://picsum.photos/400/300?random=23',\r\n    createdAt: '2024-01-18T16:15:00Z'\r\n  },\r\n  {\r\n    _id: '5',\r\n    name: 'video.mp4',\r\n    type: 'video/mp4',\r\n    src: 'https://picsum.photos/400/300?random=24',\r\n    createdAt: '2024-01-19T11:30:00Z'\r\n  }\r\n]\r\n</script>\r\n\r\n<template>\r\n  <GalleryPreview :files=\"mixedFiles\" />\r\n</template>\n",
+        "id": "sizes-",
+        "label": "Sizes\r",
+        "description": "",
+        "example": "<script setup lang=\"ts\">\r\nimport { ImageCompressor } from '@fewangsit/wangsvue'\r\nimport type { ImageCompressorPayload } from '@fewangsit/wangsvue/imagecompressor'\r\n\r\nconst onApply = (payload: ImageCompressorPayload) => {\r\n  console.log('Image compressed:', payload)\r\n}\r\n</script>\r\n\r\n<template>\r\n  <div class=\"flex flex-wrap items-end gap-6\">\r\n    <div class=\"text-center\">\r\n      <ImageCompressor\r\n        image-preview-size=\"small\"\r\n        @apply=\"onApply\"\r\n      />\r\n      <p class=\"text-xs text-gray-600 mt-2\">\r\n        Small (30px)\r\n      </p>\r\n    </div>\r\n\r\n    <div class=\"text-center\">\r\n      <ImageCompressor\r\n        image-preview-size=\"medium\"\r\n        @apply=\"onApply\"\r\n      />\r\n      <p class=\"text-xs text-gray-600 mt-2\">\r\n        Medium (80px)\r\n      </p>\r\n    </div>\r\n\r\n    <div class=\"text-center\">\r\n      <ImageCompressor\r\n        image-preview-size=\"big\"\r\n        @apply=\"onApply\"\r\n      />\r\n      <p class=\"text-xs text-gray-600 mt-2\">\r\n        Big (125px)\r\n      </p>\r\n    </div>\r\n  </div>\r\n</template>\r\n",
         "hasExample": true,
-        "examplePath": "gallerypreview/MixedFiles"
+        "examplePath": "imagecompressor/Sizes"
+      },
+      {
+        "id": "rounded-",
+        "label": "Rounded\r",
+        "description": "Image compressor with rounded preview display.",
+        "example": "<script setup lang=\"ts\">\r\nimport { ImageCompressor } from '@fewangsit/wangsvue'\r\nimport type { ImageCompressorPayload } from '@fewangsit/wangsvue/imagecompressor'\r\n\r\nconst onApply = (payload: ImageCompressorPayload) => {\r\n  console.log('Image compressed:', payload)\r\n}\r\n</script>\r\n\r\n<template>\r\n  <div class=\"flex flex-wrap items-center gap-6\">\r\n    <div class=\"text-center\">\r\n      <ImageCompressor\r\n        image-preview-size=\"big\"\r\n        @apply=\"onApply\"\r\n      />\r\n      <p class=\"text-xs text-gray-600 mt-2\">\r\n        Default\r\n      </p>\r\n    </div>\r\n\r\n    <div class=\"text-center\">\r\n      <ImageCompressor\r\n        image-preview-size=\"big\"\r\n        :rounded=\"true\"\r\n        @apply=\"onApply\"\r\n      />\r\n      <p class=\"text-xs text-gray-600 mt-2\">\r\n        Rounded\r\n      </p>\r\n    </div>\r\n  </div>\r\n</template>\r\n",
+        "hasExample": true,
+        "examplePath": "imagecompressor/Rounded"
+      },
+      {
+        "id": "file-types-",
+        "label": "File Types\r",
+        "description": "Image compressor with different output file types (WebP, JPEG, JPG).",
+        "example": "<script setup lang=\"ts\">\r\nimport { ImageCompressor } from '@fewangsit/wangsvue'\r\nimport type { ImageCompressorPayload } from '@fewangsit/wangsvue/imagecompressor'\r\n\r\nconst onApply = (payload: ImageCompressorPayload) => {\r\n  console.log('Image compressed as:', payload.compressed.type, payload)\r\n}\r\n</script>\r\n\r\n<template>\r\n  <div class=\"flex flex-wrap items-center gap-6\">\r\n    <div class=\"text-center\">\r\n      <ImageCompressor\r\n        file-type=\"webp\"\r\n        @apply=\"onApply\"\r\n      />\r\n      <p class=\"text-xs text-gray-600 mt-2\">\r\n        WebP Format\r\n      </p>\r\n    </div>\r\n\r\n    <div class=\"text-center\">\r\n      <ImageCompressor\r\n        file-type=\"jpeg\"\r\n        @apply=\"onApply\"\r\n      />\r\n      <p class=\"text-xs text-gray-600 mt-2\">\r\n        JPEG Format\r\n      </p>\r\n    </div>\r\n\r\n    <div class=\"text-center\">\r\n      <ImageCompressor\r\n        file-type=\"jpg\"\r\n        @apply=\"onApply\"\r\n      />\r\n      <p class=\"text-xs text-gray-600 mt-2\">\r\n        JPG Format\r\n      </p>\r\n    </div>\r\n  </div>\r\n</template>\r\n",
+        "hasExample": true,
+        "examplePath": "imagecompressor/FileTypes"
+      },
+      {
+        "id": "form-integration-",
+        "label": "Form Integration\r",
+        "description": "Image compressor integrated with form validation including field labels and validation messages.",
+        "example": "<script setup lang=\"ts\">\r\nimport { Form, ImageCompressor } from '@fewangsit/wangsvue'\r\nimport type { FormPayload } from '@fewangsit/wangsvue/form'\r\n\r\nconst onSubmit = (payload: FormPayload) => {\r\n  console.log('Form submitted:', payload.formValues)\r\n}\r\n</script>\r\n\r\n<template>\r\n  <Form\r\n    :buttons-template=\"['submit', 'clear']\"\r\n    hide-stay-checkbox\r\n    @submit=\"onSubmit\"\r\n  >\r\n    <template #fields>\r\n      <ImageCompressor\r\n        label=\"Profile Photo\"\r\n        field-name=\"profilePhoto\"\r\n        :use-validator=\"true\"\r\n        :mandatory=\"true\"\r\n        :validator-message=\"{ empty: 'Profile photo is required' }\"\r\n      />\r\n    </template>\r\n  </Form>\r\n</template>\n",
+        "hasExample": true,
+        "examplePath": "imagecompressor/FormIntegration"
       }
     ]
   },

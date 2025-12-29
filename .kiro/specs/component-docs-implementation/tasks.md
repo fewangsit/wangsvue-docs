@@ -31,7 +31,7 @@
 - [ ] GalleryPreview
 - [x] Icon
 - [x] Image
-- [ ] ImageCompressor
+- [x] ImageCompressor
 - [ ] InlineMessage
 - [x] InputBadge
 - [x] InputCurrency
