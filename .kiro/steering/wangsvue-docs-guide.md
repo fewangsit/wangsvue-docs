@@ -1,7 +1,6 @@
 ---
 inclusion: always
 ---
-
 # WangsVue Documentation Creation Guide
 
 ## Mandatory Rules for Documentation
@@ -50,6 +49,7 @@ Description of the feature being demonstrated.
 3. **Resolve**: `mcp_wangsvue_mcp_resolve_type_definition` with `{"includeRelated": true}`
 4. **Implement**: Use exact prop names and types from resolution
 5. **Lint**: Run `npx eslint . --fix` until clean
+5. **Fix IDE Errors**: See the IDE errors from your generated files and fix them manually.
 
 ### 5. Demo Component Template
 ```vue
@@ -147,7 +147,8 @@ Common demo types to create:
 - **Template**: Custom content/slots usage
 
 ### 13. File Naming Conventions
-- **Markdown**: `{number}.{component-name}.md` (e.g., `1.button.md`)
+- **Markdown File Name**: `{component-name}.md` (e.g., `button.md`)
+- **Markdown Directory**: `content/4.components/{file-name}`
 - **Demo Components**: `{FeatureName}.vue` in PascalCase
 - **Directory**: `app/components/docs/{component}/`
 
