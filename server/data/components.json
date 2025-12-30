@@ -1854,6 +1854,77 @@
     ]
   },
   {
+    "name": "progressbar",
+    "title": "ProgressBar",
+    "description": "Display progress of a task with customizable appearance and value positioning.",
+    "sections": [
+      {
+        "id": "import-",
+        "label": "Import\r",
+        "description": "```ts\r\nimport { ProgressBar } from '@fewangsit/wangsvue';\r\n```",
+        "example": "",
+        "hasExample": false,
+        "examplePath": null
+      },
+      {
+        "id": "basic-",
+        "label": "Basic\r",
+        "description": "Basic progress bar with determinate mode showing current progress value.",
+        "example": "<script setup lang=\"ts\">\r\nimport { ProgressBar } from '@fewangsit/wangsvue'\r\n</script>\r\n\r\n<template>\r\n  <div class=\"flex flex-col gap-4\">\r\n    <ProgressBar\r\n      :value=\"25\"\r\n      severity=\"primary\"\r\n    />\r\n\r\n    <ProgressBar\r\n      :value=\"50\"\r\n      severity=\"primary\"\r\n    />\r\n\r\n    <ProgressBar\r\n      :value=\"75\"\r\n      severity=\"primary\"\r\n    />\r\n\r\n    <ProgressBar\r\n      :value=\"100\"\r\n      severity=\"primary\"\r\n    />\r\n  </div>\r\n</template>\r\n",
+        "hasExample": true,
+        "examplePath": "progressbar/Basic"
+      },
+      {
+        "id": "severity-",
+        "label": "Severity\r",
+        "description": "",
+        "example": "<script setup lang=\"ts\">\r\nimport { ProgressBar } from '@fewangsit/wangsvue'\r\n</script>\r\n\r\n<template>\r\n  <div class=\"flex flex-col gap-4\">\r\n    <ProgressBar\r\n      :value=\"60\"\r\n      severity=\"primary\"\r\n    />\r\n\r\n    <ProgressBar\r\n      :value=\"60\"\r\n      severity=\"success\"\r\n    />\r\n\r\n    <ProgressBar\r\n      :value=\"60\"\r\n      severity=\"danger\"\r\n    />\r\n\r\n    <ProgressBar\r\n      :value=\"60\"\r\n      severity=\"warning\"\r\n    />\r\n\r\n    <ProgressBar\r\n      :value=\"60\"\r\n      severity=\"dark\"\r\n    />\r\n  </div>\r\n</template>\n",
+        "hasExample": true,
+        "examplePath": "progressbar/Severity"
+      },
+      {
+        "id": "value-position-",
+        "label": "Value Position\r",
+        "description": "",
+        "example": "<script setup lang=\"ts\">\r\nimport { ProgressBar } from '@fewangsit/wangsvue'\r\n</script>\r\n\r\n<template>\r\n  <div class=\"flex flex-col gap-6\">\r\n    <div>\r\n      <p class=\"text-sm text-gray-600 mb-2\">\r\n        Right Side (Default)\r\n      </p>\r\n      <ProgressBar\r\n        :value=\"45\"\r\n        severity=\"primary\"\r\n        value-position=\"right-side\"\r\n      />\r\n    </div>\r\n\r\n    <div>\r\n      <p class=\"text-sm text-gray-600 mb-2\">\r\n        Left Side\r\n      </p>\r\n      <ProgressBar\r\n        :value=\"45\"\r\n        severity=\"success\"\r\n        value-position=\"left-side\"\r\n      />\r\n    </div>\r\n\r\n    <div>\r\n      <p class=\"text-sm text-gray-600 mb-2\">\r\n        Inside\r\n      </p>\r\n      <ProgressBar\r\n        :value=\"45\"\r\n        severity=\"warning\"\r\n        value-position=\"inside\"\r\n      />\r\n    </div>\r\n\r\n    <div>\r\n      <p class=\"text-sm text-gray-600 mb-2\">\r\n        Bottom\r\n      </p>\r\n      <ProgressBar\r\n        :value=\"45\"\r\n        severity=\"danger\"\r\n        value-position=\"bottom\"\r\n      />\r\n    </div>\r\n  </div>\r\n</template>\n",
+        "hasExample": true,
+        "examplePath": "progressbar/ValuePosition"
+      },
+      {
+        "id": "indeterminate-mode-",
+        "label": "Indeterminate Mode\r",
+        "description": "ProgressBar in indeterminate mode for unknown progress duration.",
+        "example": "<script setup lang=\"ts\">\r\nimport { ProgressBar } from '@fewangsit/wangsvue'\r\n</script>\r\n\r\n<template>\r\n  <div class=\"flex flex-col gap-4\">\r\n    <ProgressBar\r\n      mode=\"indeterminate\"\r\n      severity=\"primary\"\r\n    />\r\n\r\n    <ProgressBar\r\n      mode=\"indeterminate\"\r\n      severity=\"success\"\r\n    />\r\n  </div>\r\n</template>\n",
+        "hasExample": true,
+        "examplePath": "progressbar/Indeterminate"
+      },
+      {
+        "id": "without-value-",
+        "label": "Without Value\r",
+        "description": "ProgressBar with value display disabled.",
+        "example": "<script setup lang=\"ts\">\r\nimport { ProgressBar } from '@fewangsit/wangsvue'\r\n</script>\r\n\r\n<template>\r\n  <div class=\"flex flex-col gap-4\">\r\n    <ProgressBar\r\n      :value=\"70\"\r\n      severity=\"primary\"\r\n      :show-value=\"false\"\r\n    />\r\n\r\n    <ProgressBar\r\n      :value=\"40\"\r\n      severity=\"success\"\r\n      :show-value=\"false\"\r\n    />\r\n  </div>\r\n</template>\n",
+        "hasExample": true,
+        "examplePath": "progressbar/WithoutValue"
+      },
+      {
+        "id": "custom-label-",
+        "label": "Custom Label\r",
+        "description": "ProgressBar with custom label content using the label slot.",
+        "example": "<script setup lang=\"ts\">\r\nimport { ProgressBar } from '@fewangsit/wangsvue'\r\n</script>\r\n\r\n<template>\r\n  <div class=\"flex flex-col gap-4\">\r\n    <ProgressBar\r\n      :value=\"35\"\r\n      severity=\"primary\"\r\n    >\r\n      <template #label=\"{ value }\">\r\n        {{ value }}% Complete\r\n      </template>\r\n    </ProgressBar>\r\n\r\n    <ProgressBar\r\n      :value=\"80\"\r\n      severity=\"success\"\r\n    >\r\n      <template #label=\"{ value }\">\r\n        {{ value }}/100 Tasks\r\n      </template>\r\n    </ProgressBar>\r\n\r\n    <ProgressBar\r\n      :value=\"15\"\r\n      severity=\"warning\"\r\n    >\r\n      <template #label=\"{ value }\">\r\n        Loading... {{ value }}%\r\n      </template>\r\n    </ProgressBar>\r\n  </div>\r\n</template>\n",
+        "hasExample": true,
+        "examplePath": "progressbar/CustomLabel"
+      },
+      {
+        "id": "animated-",
+        "label": "Animated\r",
+        "description": "ProgressBar with animated progress that cycles between 0 and 100 automatically.",
+        "example": "<script setup lang=\"ts\">\r\nimport { ProgressBar } from '@fewangsit/wangsvue'\r\nimport { ref, onMounted, onUnmounted } from 'vue'\r\n\r\nconst progress = ref(0)\r\nconst isIncreasing = ref(true)\r\nlet intervalId: NodeJS.Timeout | null = null\r\n\r\nconst updateProgress = () => {\r\n  if (isIncreasing.value) {\r\n    progress.value += 1\r\n    if (progress.value >= 100) {\r\n      isIncreasing.value = false\r\n    }\r\n  } else {\r\n    progress.value -= 1\r\n    if (progress.value <= 0) {\r\n      isIncreasing.value = true\r\n    }\r\n  }\r\n}\r\n\r\nonMounted(() => {\r\n  intervalId = setInterval(updateProgress, 500)\r\n})\r\n\r\nonUnmounted(() => {\r\n  if (intervalId) {\r\n    clearInterval(intervalId)\r\n  }\r\n})\r\n</script>\r\n\r\n<template>\r\n  <div class=\"flex flex-col gap-4\">\r\n    <ProgressBar\r\n      :value=\"progress\"\r\n      severity=\"primary\"\r\n    />\r\n\r\n    <ProgressBar\r\n      :value=\"progress\"\r\n      severity=\"success\"\r\n      value-position=\"inside\"\r\n    >\r\n      <template #label=\"{ value }\">\r\n        {{ isIncreasing ? 'Loading' : 'Unloading' }}... {{ value }}%\r\n      </template>\r\n    </ProgressBar>\r\n  </div>\r\n</template>\r\n",
+        "hasExample": true,
+        "examplePath": "progressbar/Animated"
+      }
+    ]
+  },
+  {
     "name": "textarea",
     "title": "Textarea",
     "description": "Textarea is a multi-line text input element. Textarea is designed for longer text content with features like character counting and automatic height adjustment",

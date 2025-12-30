@@ -312,5 +312,14 @@ export const componentRegistry: Record<
   'inlinemessage/WithTitle': () => import('./inlinemessage/WithTitle.vue'),
   'inlinemessage/WithLists': () => import('./inlinemessage/WithLists.vue'),
   'inlinemessage/Removable': () => import('./inlinemessage/Removable.vue'),
-  'inlinemessage/Loading': () => import('./inlinemessage/Loading.vue')
+  'inlinemessage/Loading': () => import('./inlinemessage/Loading.vue'),
+
+  // ProgressBar components
+  'progressbar/Basic': () => import('./progressbar/Basic.vue'),
+  'progressbar/Severity': () => import('./progressbar/Severity.vue'),
+  'progressbar/ValuePosition': () => import('./progressbar/ValuePosition.vue'),
+  'progressbar/Indeterminate': () => import('./progressbar/Indeterminate.vue'),
+  'progressbar/WithoutValue': () => import('./progressbar/WithoutValue.vue'),
+  'progressbar/CustomLabel': () => import('./progressbar/CustomLabel.vue'),
+  'progressbar/Animated': () => import('./progressbar/Animated.vue')
 }

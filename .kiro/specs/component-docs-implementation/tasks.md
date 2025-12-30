@@ -49,7 +49,7 @@
 - [ ] MultiSelect
 - [x] OverlayPanel
 - [ ] Paginator
-- [ ] ProgressBar
+- [x] ProgressBar
 - [ ] QuickFilter
 - [x] TabMenu
 - [x] Textarea
