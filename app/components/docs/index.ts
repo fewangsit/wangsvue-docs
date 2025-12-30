@@ -371,5 +371,12 @@ export const componentRegistry: Record<
   'tree/Selection': () => import('./tree/Selection.vue'),
   'tree/Filter': () => import('./tree/Filter.vue'),
   'tree/Loading': () => import('./tree/Loading.vue'),
-  'tree/CustomTemplate': () => import('./tree/CustomTemplate.vue')
+  'tree/CustomTemplate': () => import('./tree/CustomTemplate.vue'),
+
+  // Calendar components
+  'calendar/Basic': () => import('./calendar/Basic.vue'),
+  'calendar/SelectionModes': () => import('./calendar/SelectionModes.vue'),
+  'calendar/WithTime': () => import('./calendar/WithTime.vue'),
+  'calendar/DateRestrictions': () => import('./calendar/DateRestrictions.vue'),
+  'calendar/FormIntegration': () => import('./calendar/FormIntegration.vue')
 }

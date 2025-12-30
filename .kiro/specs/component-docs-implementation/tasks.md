@@ -13,7 +13,7 @@
 - [ ] ButtonSearch
 - [ ] ButtonSelectTree
 - [x] ButtonToggle
-- [ ] Calendar
+- [x] Calendar
 - [x] Card
 - [x] Checkbox
 - [ ] CodeSnippet
