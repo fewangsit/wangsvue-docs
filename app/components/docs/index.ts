@@ -271,5 +271,98 @@ export const componentRegistry: Record<
   'filtercontainer/MultiSelect': () => import('./filtercontainer/MultiSelect.vue'),
   'filtercontainer/Dropdown': () => import('./filtercontainer/Dropdown.vue'),
   'filtercontainer/Calendar': () => import('./filtercontainer/Calendar.vue'),
-  'filtercontainer/RangeNumber': () => import('./filtercontainer/RangeNumber.vue')
+  'filtercontainer/RangeNumber': () => import('./filtercontainer/RangeNumber.vue'),
+
+  // Toast components
+  'toast/Basic': () => import('./toast/Basic.vue'),
+  'toast/Severity': () => import('./toast/Severity.vue'),
+  'toast/Position': () => import('./toast/Position.vue'),
+  'toast/LifeCycle': () => import('./toast/LifeCycle.vue'),
+  'toast/Closable': () => import('./toast/Closable.vue'),
+  'toast/Template': () => import('./toast/Template.vue'),
+
+  // Breadcrumb components
+  'breadcrumb/Basic': () => import('./breadcrumb/Basic.vue'),
+  'breadcrumb/WithRoutes': () => import('./breadcrumb/WithRoutes.vue'),
+  'breadcrumb/MixedItems': () => import('./breadcrumb/MixedItems.vue'),
+  'breadcrumb/LongPath': () => import('./breadcrumb/LongPath.vue'),
+  'breadcrumb/CustomTitles': () => import('./breadcrumb/CustomTitles.vue'),
+
+  // ButtonCopy components
+  'buttoncopy/Basic': () => import('./buttoncopy/Basic.vue'),
+  'buttoncopy/LongText': () => import('./buttoncopy/LongText.vue'),
+  'buttoncopy/URLs': () => import('./buttoncopy/URLs.vue'),
+  'buttoncopy/CodeSnippets': () => import('./buttoncopy/CodeSnippets.vue'),
+  'buttoncopy/JsonData': () => import('./buttoncopy/JsonData.vue'),
+
+  // Card components
+  'card/Basic': () => import('./card/Basic.vue'),
+  'card/WithHeader': () => import('./card/WithHeader.vue'),
+  'card/WithTitleSubtitle': () => import('./card/WithTitleSubtitle.vue'),
+  'card/WithFooter': () => import('./card/WithFooter.vue'),
+  'card/CompleteCard': () => import('./card/CompleteCard.vue'),
+
+  // Image components
+  'image/Basic': () => import('./image/Basic.vue'),
+  'image/Sizes': () => import('./image/Sizes.vue'),
+  'image/CustomSize': () => import('./image/CustomSize.vue'),
+  'image/Rounded': () => import('./image/Rounded.vue'),
+  'image/WithoutPreview': () => import('./image/WithoutPreview.vue'),
+  'image/Gallery': () => import('./image/Gallery.vue'),
+
+  // ImageCompressor components
+  'imagecompressor/Basic': () => import('./imagecompressor/Basic.vue'),
+  'imagecompressor/Multiple': () => import('./imagecompressor/Multiple.vue'),
+  'imagecompressor/Sizes': () => import('./imagecompressor/Sizes.vue'),
+  'imagecompressor/Rounded': () => import('./imagecompressor/Rounded.vue'),
+  'imagecompressor/FileTypes': () => import('./imagecompressor/FileTypes.vue'),
+  'imagecompressor/FormIntegration': () => import('./imagecompressor/FormIntegration.vue'),
+
+  // InlineMessage components
+  'inlinemessage/Basic': () => import('./inlinemessage/Basic.vue'),
+  'inlinemessage/Severity': () => import('./inlinemessage/Severity.vue'),
+  'inlinemessage/WithTitle': () => import('./inlinemessage/WithTitle.vue'),
+  'inlinemessage/WithLists': () => import('./inlinemessage/WithLists.vue'),
+  'inlinemessage/Removable': () => import('./inlinemessage/Removable.vue'),
+  'inlinemessage/Loading': () => import('./inlinemessage/Loading.vue'),
+
+  // ProgressBar components
+  'progressbar/Basic': () => import('./progressbar/Basic.vue'),
+  'progressbar/Severity': () => import('./progressbar/Severity.vue'),
+  'progressbar/ValuePosition': () => import('./progressbar/ValuePosition.vue'),
+  'progressbar/Indeterminate': () => import('./progressbar/Indeterminate.vue'),
+  'progressbar/WithoutValue': () => import('./progressbar/WithoutValue.vue'),
+  'progressbar/CustomLabel': () => import('./progressbar/CustomLabel.vue'),
+  'progressbar/Animated': () => import('./progressbar/Animated.vue'),
+
+  // Animation components
+  'animation/Basic': () => import('./animation/Basic.vue'),
+  'animation/Types': () => import('./animation/Types.vue'),
+  'animation/Autoplay': () => import('./animation/Autoplay.vue'),
+  'animation/Loop': () => import('./animation/Loop.vue'),
+
+  // Loading components
+  'loading/Basic': () => import('./loading/Basic.vue'),
+  'loading/WithMessage': () => import('./loading/WithMessage.vue'),
+  'loading/Interactive': () => import('./loading/Interactive.vue'),
+
+  // Timeline components
+  'timeline/Basic': () => import('./timeline/Basic.vue'),
+  'timeline/WithUsers': () => import('./timeline/WithUsers.vue'),
+  'timeline/WithDetails': () => import('./timeline/WithDetails.vue'),
+  'timeline/AlignedDetails': () => import('./timeline/AlignedDetails.vue'),
+  'timeline/CustomTemplates': () => import('./timeline/CustomTemplates.vue'),
+
+  // UserName components
+  'username/Basic': () => import('./username/Basic.vue'),
+  'username/IconType': () => import('./username/IconType.vue'),
+  'username/WithoutName': () => import('./username/WithoutName.vue'),
+  'username/CustomFields': () => import('./username/CustomFields.vue'),
+  'username/DetailPanel': () => import('./username/DetailPanel.vue'),
+
+  // UserGroup components
+  'usergroup/Basic': () => import('./usergroup/Basic.vue'),
+  'usergroup/WithLimit': () => import('./usergroup/WithLimit.vue'),
+  'usergroup/DialogDetail': () => import('./usergroup/DialogDetail.vue'),
+  'usergroup/LargeGroup': () => import('./usergroup/LargeGroup.vue')
 }

@@ -1,12 +1,12 @@
 
-- [ ] Animation
+- [x] Animation
 - [x] Badge
 - [ ] BadgeGroup
 - [ ] BaseTree
-- [ ] Breadcrumb
+- [x] Breadcrumb
 - [x] Button
 - [ ] ButtonBulkAction
-- [ ] ButtonCopy
+- [x] ButtonCopy
 - [ ] ButtonDownload
 - [ ] ButtonFilter
 - [ ] ButtonRadio
@@ -14,7 +14,7 @@
 - [ ] ButtonSelectTree
 - [x] ButtonToggle
 - [ ] Calendar
-- [ ] Card
+- [x] Card
 - [x] Checkbox
 - [ ] CodeSnippet
 - [ ] DataTable
@@ -30,9 +30,9 @@
 - [x] Form
 - [ ] GalleryPreview
 - [x] Icon
-- [ ] Image
-- [ ] ImageCompressor
-- [ ] InlineMessage
+- [x] Image
+- [x] ImageCompressor
+- [x] InlineMessage
 - [x] InputBadge
 - [x] InputCurrency
 - [x] InputEmail
@@ -44,20 +44,20 @@
 - [x] InputURL
 - [ ] InvisibleField
 - [ ] LiteDropdown
-- [ ] Loading
+- [x] Loading
 - [x] Menu
 - [x] MultiSelect
 - [x] OverlayPanel
 - [ ] Paginator
-- [ ] ProgressBar
+- [x] ProgressBar
 - [ ] QuickFilter
 - [x] TabMenu
 - [x] Textarea
-- [ ] Timeline
-- [ ] Toast
+- [x] Timeline
+- [x] Toast
 - [x] ToggleSwitch
 - [ ] TooltipSpan
 - [ ] Tree
-- [ ] UserGroup
-- [ ] UserName
+- [x] UserGroup
+- [x] UserName
 - [x] ValidatorMessage

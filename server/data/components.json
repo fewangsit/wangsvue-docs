@@ -963,6 +963,53 @@
     ]
   },
   {
+    "name": "icon",
+    "title": "Icon",
+    "description": "Display icon with svg backgrounds from the WangsIcons collection.",
+    "sections": [
+      {
+        "id": "import",
+        "label": "Import",
+        "description": "```ts\nimport { Icon } from '@fewangsit/wangsvue';\nimport type { WangsIcons } from '@fewangsit/wangsvue/icon';\n```",
+        "example": "",
+        "hasExample": false,
+        "examplePath": null
+      },
+      {
+        "id": "basic",
+        "label": "Basic",
+        "description": "Icons are displayed using the `icon` property with any value from the `WangsIcons` type.",
+        "example": "<script setup lang=\"ts\">\nimport { Icon } from '@fewangsit/wangsvue'\n</script>\n\n<template>\n  <div class=\"flex flex-wrap gap-4 items-center\">\n    <Icon icon=\"add\" />\n    <Icon icon=\"edit\" />\n    <Icon icon=\"delete-bin\" />\n    <Icon icon=\"search\" />\n    <Icon icon=\"settings\" />\n    <Icon icon=\"user\" />\n    <Icon icon=\"mail\" />\n    <Icon icon=\"calendar\" />\n  </div>\n</template>\n",
+        "hasExample": true,
+        "examplePath": "icon/Basic"
+      },
+      {
+        "id": "severity",
+        "label": "Severity",
+        "description": "Icons can be styled with different severities using the `severity` property.",
+        "example": "<script setup lang=\"ts\">\nimport { Icon } from '@fewangsit/wangsvue'\n</script>\n\n<template>\n  <div class=\"flex flex-wrap gap-4 items-center\">\n    <div class=\"flex flex-col items-center gap-2\">\n      <Icon\n        icon=\"info\"\n        severity=\"primary\"\n      />\n      <span class=\"text-xs text-gray-600\">Primary</span>\n    </div>\n    <div class=\"flex flex-col items-center gap-2\">\n      <Icon\n        icon=\"check\"\n        severity=\"success\"\n      />\n      <span class=\"text-xs text-gray-600\">Success</span>\n    </div>\n    <div class=\"flex flex-col items-center gap-2\">\n      <Icon\n        icon=\"information-line\"\n        severity=\"info\"\n      />\n      <span class=\"text-xs text-gray-600\">Info</span>\n    </div>\n    <div class=\"flex flex-col items-center gap-2\">\n      <Icon\n        icon=\"error\"\n        severity=\"warning\"\n      />\n      <span class=\"text-xs text-gray-600\">Warning</span>\n    </div>\n    <div class=\"flex flex-col items-center gap-2\">\n      <Icon\n        icon=\"close-circle\"\n        severity=\"danger\"\n      />\n      <span class=\"text-xs text-gray-600\">Danger</span>\n    </div>\n    <div class=\"flex flex-col items-center gap-2\">\n      <Icon\n        icon=\"menu\"\n        severity=\"secondary\"\n      />\n      <span class=\"text-xs text-gray-600\">Secondary</span>\n    </div>\n  </div>\n</template>\n",
+        "hasExample": true,
+        "examplePath": "icon/Severity"
+      },
+      {
+        "id": "tooltip",
+        "label": "Tooltip",
+        "description": "Icons can display helpful information on hover using the `info` property.",
+        "example": "<script setup lang=\"ts\">\nimport { Icon } from '@fewangsit/wangsvue'\n</script>\n\n<template>\n  <div class=\"flex flex-wrap gap-6 items-center\">\n    <Icon\n      icon=\"info\"\n      info=\"This is helpful information\"\n      severity=\"info\"\n    />\n    <Icon\n      icon=\"settings\"\n      info=\"Open settings panel\"\n      tooltip-pos=\"top\"\n      severity=\"primary\"\n    />\n    <Icon\n      icon=\"user\"\n      info=\"User profile\"\n      tooltip-pos=\"right\"\n      severity=\"secondary\"\n    />\n    <Icon\n      icon=\"bell\"\n      info=\"View notifications\"\n      tooltip-pos=\"left\"\n      severity=\"warning\"\n    />\n  </div>\n</template>\n",
+        "hasExample": true,
+        "examplePath": "icon/Tooltip"
+      },
+      {
+        "id": "icon-gallery",
+        "label": "Icon Gallery",
+        "description": "Browse all available icons in the WangsIcons collection.",
+        "example": "<script setup lang=\"ts\">\nimport { Icon } from '@fewangsit/wangsvue'\nimport type { WangsIcons } from '@fewangsit/wangsvue/icon'\n\n// Popular and commonly used icons organized by category\nconst iconCategories = {\n  'Navigation & Actions': [\n    'add', 'close', 'edit', 'delete-bin', 'search', 'filter',\n    'arrow-left', 'arrow-right', 'arrow-up-s', 'arrow-down',\n    'menu', 'more', 'settings', 'refresh'\n  ] as WangsIcons[],\n\n  'Files & Documents': [\n    'file-add', 'file-edit', 'file-copy', 'files', 'folder',\n    'pdf', 'csv', 'xls', 'doc', 'download', 'upload-2'\n  ] as WangsIcons[],\n\n  'Users & Communication': [\n    'user', 'user-add', 'team', 'profile', 'mail', 'chat',\n    'notification', 'bell', 'phone'\n  ] as WangsIcons[],\n\n  'Status & Feedback': [\n    'check', 'error', 'info', 'warning', 'success',\n    'loader-4', 'spinner', 'time', 'calendar'\n  ] as WangsIcons[],\n\n  'Business & Finance': [\n    'money-dollar-circle', 'coins', 'calculator', 'bank-card-line',\n    'shopping-cart-2', 'store'\n  ] as WangsIcons[],\n\n  'Technology': [\n    'database', 'cloud-line', 'qr', 'barcode', 'printer',\n    'smartphone', 'device', 'tools', 'code-line'\n  ] as WangsIcons[]\n}\n</script>\n\n<template>\n  <div class=\"space-y-8\">\n    <div\n      v-for=\"(icons, category) in iconCategories\"\n      :key=\"category\"\n      class=\"space-y-4\"\n    >\n      <h4 class=\"text-lg font-semibold text-gray-800\">\n        {{ category }}\n      </h4>\n      <div class=\"grid grid-cols-6 sm:grid-cols-8 md:grid-cols-10 lg:grid-cols-12 gap-4\">\n        <div\n          v-for=\"iconName in icons\"\n          :key=\"iconName\"\n          class=\"flex flex-col items-center gap-2 p-3 rounded-lg hover:bg-gray-50 transition-colors\"\n        >\n          <Icon\n            :icon=\"iconName\"\n            :info=\"iconName\"\n            class=\"text-xl\"\n          />\n          <span class=\"text-xs text-gray-600 text-center break-all\">\n            {{ iconName }}\n          </span>\n        </div>\n      </div>\n    </div>\n\n    <div class=\"mt-8 p-4 bg-blue-50 rounded-lg\">\n      <p class=\"text-sm text-blue-800\">\n        <Icon\n          icon=\"info\"\n          severity=\"info\"\n          class=\"inline mr-2\"\n        />\n        This gallery shows popular icons. The complete WangsIcons collection includes 200+ icons.\n        Hover over any icon to see its name, or check the TypeScript definitions for the full list.\n      </p>\n    </div>\n  </div>\n</template>\n",
+        "hasExample": true,
+        "examplePath": "icon/Gallery"
+      }
+    ]
+  },
+  {
     "name": "dropdown",
     "title": "Dropdown",
     "description": "Dropdown also known as Select, is used to choose an item from a collection of options.",
@@ -1027,7 +1074,7 @@
         "id": "custom-placeholder",
         "label": "Custom Placeholder",
         "description": "Dropdown with custom placeholder text.",
-        "example": "<script setup lang=\"ts\">\nimport { Dropdown } from '@fewangsit/wangsvue'\nimport { ref } from 'vue'\n\nconst selectedValue = ref()\nconst options = ['Small', 'Medium', 'Large', 'Extra Large']\n</script>\n\n<template>\n  <div class=\"flex flex-wrap gap-3\">\n    <Dropdown\n      v-model=\"selectedValue\"\n      label=\"T-Shirt Size\"\n      :options=\"options\"\n      placeholder=\"Pick your size\"\n    />\n  </div>\n</template>\n",
+        "example": "<script setup lang=\"ts\">\nimport { Dropdown } from '@fewangsit/wangsvue'\nimport { ref } from 'vue'\n\nconst selectedValue = ref()\nconst options = ['Small', 'Medium', 'Large', 'Extra Large']\n</script>\n\n<template>\n  <Dropdown\n    v-model=\"selectedValue\"\n    label=\"T-Shirt Size\"\n    :options=\"options\"\n    placeholder=\"Pick your size\"\n  />\n</template>\n",
         "hasExample": true,
         "examplePath": "dropdown/CustomPlaceholder"
       },
@@ -1043,56 +1090,9 @@
         "id": "custom-templates",
         "label": "Custom Templates",
         "description": "Dropdown with custom value and option templates using slots.",
-        "example": "<script setup lang=\"ts\">\nimport { Dropdown } from '@fewangsit/wangsvue'\nimport { ref } from 'vue'\n\nconst selectedValue = ref()\nconst options = [\n  { name: 'Australia', code: 'AU', flag: '🇦🇺' },\n  { name: 'Brazil', code: 'BR', flag: '🇧🇷' },\n  { name: 'China', code: 'CN', flag: '🇨🇳' },\n  { name: 'Egypt', code: 'EG', flag: '🇪🇬' },\n  { name: 'France', code: 'FR', flag: '🇫🇷' }\n]\n</script>\n\n<template>\n  <div class=\"flex flex-wrap gap-3\">\n    <Dropdown\n      v-model=\"selectedValue\"\n      label=\"Select Country\"\n      :options=\"options\"\n      option-label=\"name\"\n      option-value=\"code\"\n      placeholder=\"Choose a country\"\n    >\n      <template #value=\"{ originalValue }\">\n        <span v-if=\"originalValue\">\n          {{ originalValue.flag }} {{ originalValue.name }}\n        </span>\n      </template>\n\n      <template #option=\"{ option }\">\n        <div class=\"flex items-center gap-2\">\n          <span>{{ option.flag }}</span>\n          <span>{{ option.name }}</span>\n          <span class=\"text-gray-500\">({{ option.code }})</span>\n        </div>\n      </template>\n    </Dropdown>\n  </div>\n</template>\n",
+        "example": "<script setup lang=\"ts\">\nimport { ref } from 'vue'\nimport { Dropdown } from '@fewangsit/wangsvue'\n\ninterface Country {\n  name: string\n  code: string\n  flag: string\n}\n\nconst selectedValue = ref<Country>()\nconst options: Country[] = [\n  { name: 'Australia', code: 'AU', flag: '🇦🇺' },\n  { name: 'Brazil', code: 'BR', flag: '🇧🇷' },\n  { name: 'China', code: 'CN', flag: '🇨🇳' },\n  { name: 'Egypt', code: 'EG', flag: '🇪🇬' },\n  { name: 'France', code: 'FR', flag: '🇫🇷' }\n]\n</script>\n\n<template>\n  <Dropdown\n    v-model=\"selectedValue\"\n    label=\"Select Country\"\n    :options=\"options\"\n    placeholder=\"Choose a country\"\n  >\n    <template #value=\"{ originalValue }\">\n      <span v-if=\"originalValue\">\n        {{ originalValue.flag }} {{ originalValue.name }}\n      </span>\n    </template>\n\n    <template #option=\"{ option }\">\n      <div class=\"flex items-center gap-2\">\n        <span>{{ option.flag }}</span>\n        <span>{{ option.name }}</span>\n        <span class=\"text-gray-500\">({{ option.code }})</span>\n      </div>\n    </template>\n  </Dropdown>\n</template>\n",
         "hasExample": true,
         "examplePath": "dropdown/CustomTemplates"
-      }
-    ]
-  },
-  {
-    "name": "icon",
-    "title": "Icon",
-    "description": "Display icon with svg backgrounds from the WangsIcons collection.",
-    "sections": [
-      {
-        "id": "import",
-        "label": "Import",
-        "description": "```ts\nimport { Icon } from '@fewangsit/wangsvue';\nimport type { WangsIcons } from '@fewangsit/wangsvue/icon';\n```",
-        "example": "",
-        "hasExample": false,
-        "examplePath": null
-      },
-      {
-        "id": "basic",
-        "label": "Basic",
-        "description": "Icons are displayed using the `icon` property with any value from the `WangsIcons` type.",
-        "example": "<script setup lang=\"ts\">\nimport { Icon } from '@fewangsit/wangsvue'\n</script>\n\n<template>\n  <div class=\"flex flex-wrap gap-4 items-center\">\n    <Icon icon=\"add\" />\n    <Icon icon=\"edit\" />\n    <Icon icon=\"delete-bin\" />\n    <Icon icon=\"search\" />\n    <Icon icon=\"settings\" />\n    <Icon icon=\"user\" />\n    <Icon icon=\"mail\" />\n    <Icon icon=\"calendar\" />\n  </div>\n</template>\n",
-        "hasExample": true,
-        "examplePath": "icon/Basic"
-      },
-      {
-        "id": "severity",
-        "label": "Severity",
-        "description": "Icons can be styled with different severities using the `severity` property.",
-        "example": "<script setup lang=\"ts\">\nimport { Icon } from '@fewangsit/wangsvue'\n</script>\n\n<template>\n  <div class=\"flex flex-wrap gap-4 items-center\">\n    <div class=\"flex flex-col items-center gap-2\">\n      <Icon\n        icon=\"info\"\n        severity=\"primary\"\n      />\n      <span class=\"text-xs text-gray-600\">Primary</span>\n    </div>\n    <div class=\"flex flex-col items-center gap-2\">\n      <Icon\n        icon=\"check\"\n        severity=\"success\"\n      />\n      <span class=\"text-xs text-gray-600\">Success</span>\n    </div>\n    <div class=\"flex flex-col items-center gap-2\">\n      <Icon\n        icon=\"information-line\"\n        severity=\"info\"\n      />\n      <span class=\"text-xs text-gray-600\">Info</span>\n    </div>\n    <div class=\"flex flex-col items-center gap-2\">\n      <Icon\n        icon=\"error\"\n        severity=\"warning\"\n      />\n      <span class=\"text-xs text-gray-600\">Warning</span>\n    </div>\n    <div class=\"flex flex-col items-center gap-2\">\n      <Icon\n        icon=\"close-circle\"\n        severity=\"danger\"\n      />\n      <span class=\"text-xs text-gray-600\">Danger</span>\n    </div>\n    <div class=\"flex flex-col items-center gap-2\">\n      <Icon\n        icon=\"menu\"\n        severity=\"secondary\"\n      />\n      <span class=\"text-xs text-gray-600\">Secondary</span>\n    </div>\n  </div>\n</template>\n",
-        "hasExample": true,
-        "examplePath": "icon/Severity"
-      },
-      {
-        "id": "tooltip",
-        "label": "Tooltip",
-        "description": "Icons can display helpful information on hover using the `info` property.",
-        "example": "<script setup lang=\"ts\">\nimport { Icon } from '@fewangsit/wangsvue'\n</script>\n\n<template>\n  <div class=\"flex flex-wrap gap-6 items-center\">\n    <Icon\n      icon=\"info\"\n      info=\"This is helpful information\"\n      severity=\"info\"\n    />\n    <Icon\n      icon=\"settings\"\n      info=\"Open settings panel\"\n      tooltip-pos=\"top\"\n      severity=\"primary\"\n    />\n    <Icon\n      icon=\"user\"\n      info=\"User profile\"\n      tooltip-pos=\"right\"\n      severity=\"secondary\"\n    />\n    <Icon\n      icon=\"bell\"\n      info=\"View notifications\"\n      tooltip-pos=\"left\"\n      severity=\"warning\"\n    />\n  </div>\n</template>\n",
-        "hasExample": true,
-        "examplePath": "icon/Tooltip"
-      },
-      {
-        "id": "icon-gallery",
-        "label": "Icon Gallery",
-        "description": "Browse all available icons in the WangsIcons collection.",
-        "example": "<script setup lang=\"ts\">\nimport { Icon } from '@fewangsit/wangsvue'\nimport type { WangsIcons } from '@fewangsit/wangsvue/icon'\n\n// Popular and commonly used icons organized by category\nconst iconCategories = {\n  'Navigation & Actions': [\n    'add', 'close', 'edit', 'delete-bin', 'search', 'filter',\n    'arrow-left', 'arrow-right', 'arrow-up-s', 'arrow-down',\n    'menu', 'more', 'settings', 'refresh'\n  ] as WangsIcons[],\n\n  'Files & Documents': [\n    'file-add', 'file-edit', 'file-copy', 'files', 'folder',\n    'pdf', 'csv', 'xls', 'doc', 'download', 'upload-2'\n  ] as WangsIcons[],\n\n  'Users & Communication': [\n    'user', 'user-add', 'team', 'profile', 'mail', 'chat',\n    'notification', 'bell', 'phone'\n  ] as WangsIcons[],\n\n  'Status & Feedback': [\n    'check', 'error', 'info', 'warning', 'success',\n    'loader-4', 'spinner', 'time', 'calendar'\n  ] as WangsIcons[],\n\n  'Business & Finance': [\n    'money-dollar-circle', 'coins', 'calculator', 'bank-card-line',\n    'shopping-cart-2', 'store'\n  ] as WangsIcons[],\n\n  'Technology': [\n    'database', 'cloud-line', 'qr', 'barcode', 'printer',\n    'smartphone', 'device', 'tools', 'code-line'\n  ] as WangsIcons[]\n}\n</script>\n\n<template>\n  <div class=\"space-y-8\">\n    <div\n      v-for=\"(icons, category) in iconCategories\"\n      :key=\"category\"\n      class=\"space-y-4\"\n    >\n      <h4 class=\"text-lg font-semibold text-gray-800\">\n        {{ category }}\n      </h4>\n      <div class=\"grid grid-cols-6 sm:grid-cols-8 md:grid-cols-10 lg:grid-cols-12 gap-4\">\n        <div\n          v-for=\"iconName in icons\"\n          :key=\"iconName\"\n          class=\"flex flex-col items-center gap-2 p-3 rounded-lg hover:bg-gray-50 transition-colors\"\n        >\n          <Icon\n            :icon=\"iconName\"\n            :info=\"iconName\"\n            class=\"text-xl\"\n          />\n          <span class=\"text-xs text-gray-600 text-center break-all\">\n            {{ iconName }}\n          </span>\n        </div>\n      </div>\n    </div>\n\n    <div class=\"mt-8 p-4 bg-blue-50 rounded-lg\">\n      <p class=\"text-sm text-blue-800\">\n        <Icon\n          icon=\"info\"\n          severity=\"info\"\n          class=\"inline mr-2\"\n        />\n        This gallery shows popular icons. The complete WangsIcons collection includes 200+ icons.\n        Hover over any icon to see its name, or check the TypeScript definitions for the full list.\n      </p>\n    </div>\n  </div>\n</template>\n",
-        "hasExample": true,
-        "examplePath": "icon/Gallery"
       }
     ]
   },
@@ -1176,8 +1176,8 @@
       {
         "id": "controls",
         "label": "Controls",
-        "description": "Hide the input and control the overlay state from parent component using the `controls` prop.",
-        "example": "<script setup lang=\"ts\">\nimport { MultiSelect } from '@fewangsit/wangsvue'\nimport { ref } from 'vue'\n\nconst selectedItems = ref(['Option 1'])\nconst multiSelectRef = ref()\n\nconst options = [\n  'Option 1',\n  'Option 2',\n  'Option 3',\n  'Option 4'\n]\n\nconst showOverlay = () => {\n  multiSelectRef.value?.showOverlay()\n}\n\nconst hideOverlay = () => {\n  multiSelectRef.value?.hideHideOverlay()\n}\n</script>\n\n<template>\n  <div class=\"flex flex-col gap-4\">\n    <div class=\"flex gap-2\">\n      <button\n        class=\"px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600\"\n        @click=\"showOverlay\"\n      >\n        Show Options\n      </button>\n      <button\n        class=\"px-4 py-2 bg-gray-500 text-white rounded hover:bg-gray-600\"\n        @click=\"hideOverlay\"\n      >\n        Hide Options\n      </button>\n    </div>\n\n    <MultiSelect\n      ref=\"multiSelectRef\"\n      v-model=\"selectedItems\"\n      :options=\"options\"\n      label=\"Controlled MultiSelect\"\n      :controls=\"true\"\n    />\n  </div>\n</template>\n",
+        "description": "Hide the input and control the overlay state from parent component using the `controls` prop. By default, a button will appear as trigger that controls the overlay visibility.",
+        "example": "<script setup lang=\"ts\">\nimport { ref } from 'vue'\nimport { MultiSelect } from '@fewangsit/wangsvue'\n\nconst selectedItems = ref(['Option 1'])\n\nconst options = ['Option 1', 'Option 2', 'Option 3', 'Option 4']\n</script>\n\n<template>\n  <MultiSelect\n    ref=\"multiSelectRef\"\n    v-model=\"selectedItems\"\n    :options=\"options\"\n    label=\"Controlled MultiSelect\"\n    :controls=\"true\"\n  />\n</template>\n",
         "hasExample": true,
         "examplePath": "multiselect/Controls"
       },
@@ -1204,61 +1204,6 @@
         "example": "<script setup lang=\"ts\">\nimport { Form, MultiSelect } from '@fewangsit/wangsvue'\nimport type { FormPayload } from '@fewangsit/wangsvue/form'\n\nconst options = ['JavaScript', 'TypeScript', 'Python', 'Java', 'C#', 'Go']\n\nconst onSubmit = (payload: FormPayload) => {\n  console.log('Form submitted:', payload.formValues)\n}\n</script>\n\n<template>\n  <Form\n    :buttons-template=\"['submit', 'clear']\"\n    hide-stay-checkbox\n    @submit=\"onSubmit\"\n  >\n    <template #fields>\n      <MultiSelect\n        label=\"Programming Languages\"\n        field-name=\"languages\"\n        :options=\"options\"\n        :use-validator=\"true\"\n        :mandatory=\"true\"\n        :validator-message=\"{ empty: 'At least one language is required' }\"\n        placeholder=\"Select languages\"\n      />\n    </template>\n  </Form>\n</template>\n",
         "hasExample": true,
         "examplePath": "multiselect/FormIntegration"
-      }
-    ]
-  },
-  {
-    "name": "overlaypanel",
-    "title": "OverlayPanel",
-    "description": "OverlayPanel, also known as Popover, is a container component that can overlay other components on page.",
-    "sections": [
-      {
-        "id": "import",
-        "label": "Import",
-        "description": "```ts\nimport { OverlayPanel } from '@fewangsit/wangsvue';\n```",
-        "example": "",
-        "hasExample": false,
-        "examplePath": null
-      },
-      {
-        "id": "basic",
-        "label": "Basic",
-        "description": "Basic overlay panel triggered by button click.",
-        "example": "<script setup lang=\"ts\">\nimport { ref } from 'vue'\nimport { OverlayPanel, Button } from '@fewangsit/wangsvue'\n\nconst op = ref()\n\nconst toggle = (event: Event) => {\n  op.value.toggle(event)\n}\n</script>\n\n<template>\n  <div class=\"flex flex-wrap gap-3\">\n    <Button\n      label=\"Show Panel\"\n      @click=\"toggle\"\n    />\n\n    <OverlayPanel ref=\"op\">\n      <div class=\"p-4\">\n        <h3 class=\"font-semibold mb-2\">\n          Overlay Panel Content\n        </h3>\n        <p class=\"mb-3\">\n          This is a basic overlay panel with custom content.\n        </p>\n        <Button\n          label=\"Action\"\n          size=\"small\"\n        />\n      </div>\n    </OverlayPanel>\n  </div>\n</template>\n",
-        "hasExample": true,
-        "examplePath": "overlaypanel/Basic"
-      },
-      {
-        "id": "dismissable",
-        "label": "Dismissable",
-        "description": "Control overlay panel dismissal behavior when clicking outside or on other overlays.",
-        "example": "<script setup lang=\"ts\">\nimport { ref } from 'vue'\nimport { OverlayPanel, Button } from '@fewangsit/wangsvue'\n\nconst dismissablePanel = ref()\nconst nonDismissablePanel = ref()\n\nconst showDismissable = (event: Event) => {\n  dismissablePanel.value.show(event)\n}\n\nconst showNonDismissable = (event: Event) => {\n  nonDismissablePanel.value.show(event)\n}\n</script>\n\n<template>\n  <div class=\"flex flex-wrap gap-3\">\n    <Button\n      label=\"Dismissable Panel\"\n      @click=\"showDismissable\"\n    />\n    <Button\n      label=\"Non-Dismissable Panel\"\n      @click=\"showNonDismissable\"\n    />\n\n    <!-- Dismissable Panel -->\n    <OverlayPanel\n      ref=\"dismissablePanel\"\n      :dismissable=\"true\"\n    >\n      <div class=\"p-4\">\n        <h4 class=\"font-semibold mb-2\">\n          Dismissable Panel\n        </h4>\n        <p>Click outside to close this panel.</p>\n      </div>\n    </OverlayPanel>\n\n    <!-- Non-Dismissable Panel -->\n    <OverlayPanel\n      ref=\"nonDismissablePanel\"\n      :dismissable=\"false\"\n    >\n      <div class=\"p-4\">\n        <h4 class=\"font-semibold mb-2\">\n          Non-Dismissable Panel\n        </h4>\n        <p class=\"mb-3\">\n          This panel won't close when clicking outside.\n        </p>\n        <Button\n          label=\"Close\"\n          size=\"small\"\n          @click=\"nonDismissablePanel.hide()\"\n        />\n      </div>\n    </OverlayPanel>\n  </div>\n</template>\n",
-        "hasExample": true,
-        "examplePath": "overlaypanel/Dismissable"
-      },
-      {
-        "id": "close-icon",
-        "label": "Close Icon",
-        "description": "Display a close icon in the overlay panel header.",
-        "example": "<script setup lang=\"ts\">\nimport { ref } from 'vue'\nimport { OverlayPanel, Button } from '@fewangsit/wangsvue'\n\nconst op = ref()\n\nconst toggle = (event: Event) => {\n  op.value.toggle(event)\n}\n</script>\n\n<template>\n  <div class=\"flex flex-wrap gap-3\">\n    <Button\n      label=\"Show Panel with Close Icon\"\n      @click=\"toggle\"\n    />\n\n    <OverlayPanel\n      ref=\"op\"\n      :show-close-icon=\"true\"\n    >\n      <div class=\"p-4\">\n        <h3 class=\"font-semibold mb-2\">\n          Panel with Close Icon\n        </h3>\n        <p class=\"mb-3\">\n          This panel has a close icon in the top-right corner.\n        </p>\n        <div class=\"space-y-2\">\n          <p class=\"text-sm\">\n            You can close this panel by:\n          </p>\n          <ul class=\"text-sm list-disc list-inside space-y-1\">\n            <li>Clicking the close icon</li>\n            <li>Clicking outside the panel</li>\n            <li>Pressing the Escape key</li>\n          </ul>\n        </div>\n      </div>\n    </OverlayPanel>\n  </div>\n</template>\n",
-        "hasExample": true,
-        "examplePath": "overlaypanel/CloseIcon"
-      },
-      {
-        "id": "responsive",
-        "label": "Responsive",
-        "description": "Overlay panel with responsive breakpoints for different screen sizes.",
-        "example": "<script setup lang=\"ts\">\nimport { ref } from 'vue'\nimport { OverlayPanel, Button } from '@fewangsit/wangsvue'\n\nconst op = ref()\n\nconst breakpoints = {\n  '960px': '75vw',\n  '640px': '90vw'\n}\n\nconst toggle = (event: Event) => {\n  op.value.toggle(event)\n}\n</script>\n\n<template>\n  <div class=\"flex flex-wrap gap-3\">\n    <Button\n      label=\"Show Responsive Panel\"\n      @click=\"toggle\"\n    />\n\n    <OverlayPanel\n      ref=\"op\"\n      :breakpoints=\"breakpoints\"\n      :show-close-icon=\"true\"\n    >\n      <div\n        class=\"p-4\"\n        style=\"width: 400px;\"\n      >\n        <h3 class=\"font-semibold mb-2\">\n          Responsive Overlay Panel\n        </h3>\n        <p class=\"mb-3\">\n          This panel adapts its width based on screen size:\n        </p>\n        <ul class=\"list-disc list-inside space-y-1 text-sm\">\n          <li>Desktop (>960px): 400px width</li>\n          <li>Tablet (≤960px): 75% of viewport width</li>\n          <li>Mobile (≤640px): 90% of viewport width</li>\n        </ul>\n        <p class=\"mt-3 text-sm text-gray-600\">\n          Resize your browser window to see the responsive behavior.\n        </p>\n      </div>\n    </OverlayPanel>\n  </div>\n</template>\n",
-        "hasExample": true,
-        "examplePath": "overlaypanel/Responsive"
-      },
-      {
-        "id": "template",
-        "label": "Template",
-        "description": "Custom overlay panel content using slots.",
-        "example": "<script setup lang=\"ts\">\nimport { ref } from 'vue'\nimport { OverlayPanel, Button } from '@fewangsit/wangsvue'\n\nconst customPanel = ref()\nconst containerPanel = ref()\n\nconst showCustom = (event: Event) => {\n  customPanel.value.show(event)\n}\n\nconst showContainer = (event: Event) => {\n  containerPanel.value.show(event)\n}\n</script>\n\n<template>\n  <div class=\"flex flex-wrap gap-3\">\n    <Button\n      label=\"Custom Content\"\n      @click=\"showCustom\"\n    />\n    <Button\n      label=\"Custom Container\"\n      @click=\"showContainer\"\n    />\n\n    <!-- Custom Content -->\n    <OverlayPanel ref=\"customPanel\">\n      <div class=\"bg-gradient-to-r from-blue-50 to-indigo-50 p-6 rounded-lg\">\n        <div class=\"flex items-center gap-3 mb-4\">\n          <div class=\"w-10 h-10 bg-blue-500 rounded-full flex items-center justify-center\">\n            <i class=\"wangs-icon-user text-white\" />\n          </div>\n          <div>\n            <h3 class=\"font-semibold text-blue-900\">\n              User Profile\n            </h3>\n            <p class=\"text-sm text-blue-700\">\n              Manage your account\n            </p>\n          </div>\n        </div>\n        <div class=\"space-y-2\">\n          <Button\n            label=\"Edit Profile\"\n            severity=\"primary\"\n            size=\"small\"\n            class=\"w-full\"\n          />\n          <Button\n            label=\"Settings\"\n            severity=\"secondary\"\n            size=\"small\"\n            class=\"w-full\"\n          />\n        </div>\n      </div>\n    </OverlayPanel>\n\n    <!-- Custom Container -->\n    <OverlayPanel ref=\"containerPanel\">\n      <template #container=\"{ closeCallback }\">\n        <div class=\"bg-white border border-gray-200 rounded-lg shadow-lg overflow-hidden\">\n          <div class=\"bg-red-500 text-white p-3 flex items-center justify-between\">\n            <h3 class=\"font-semibold\">\n              Custom Container\n            </h3>\n            <button\n              class=\"text-white hover:text-red-200\"\n              @click=\"closeCallback\"\n            >\n              <i class=\"wangs-icon-close\" />\n            </button>\n          </div>\n          <div class=\"p-4\">\n            <p class=\"mb-3\">\n              This uses a custom container template with custom styling.\n            </p>\n            <Button\n              label=\"Action\"\n              severity=\"danger\"\n              size=\"small\"\n            />\n          </div>\n        </div>\n      </template>\n    </OverlayPanel>\n  </div>\n</template>\n",
-        "hasExample": true,
-        "examplePath": "overlaypanel/Template"
       }
     ]
   },
@@ -1429,6 +1374,352 @@
     ]
   },
   {
+    "name": "overlaypanel",
+    "title": "OverlayPanel",
+    "description": "OverlayPanel, also known as Popover, is a container component that can overlay other components on page.",
+    "sections": [
+      {
+        "id": "import",
+        "label": "Import",
+        "description": "```ts\nimport { OverlayPanel } from '@fewangsit/wangsvue';\n```",
+        "example": "",
+        "hasExample": false,
+        "examplePath": null
+      },
+      {
+        "id": "basic",
+        "label": "Basic",
+        "description": "Basic overlay panel triggered by button click.",
+        "example": "<script setup lang=\"ts\">\nimport { ref } from 'vue'\nimport { OverlayPanel, Button } from '@fewangsit/wangsvue'\n\nconst op = ref()\n\nconst toggle = (event: Event) => {\n  op.value.toggle(event)\n}\n</script>\n\n<template>\n  <div class=\"flex flex-wrap gap-3\">\n    <Button\n      label=\"Show Panel\"\n      @click=\"toggle\"\n    />\n\n    <OverlayPanel ref=\"op\">\n      <div class=\"p-4\">\n        <h3 class=\"font-semibold mb-2\">\n          Overlay Panel Content\n        </h3>\n        <p class=\"mb-3\">\n          This is a basic overlay panel with custom content.\n        </p>\n        <Button\n          label=\"Action\"\n          size=\"small\"\n        />\n      </div>\n    </OverlayPanel>\n  </div>\n</template>\n",
+        "hasExample": true,
+        "examplePath": "overlaypanel/Basic"
+      },
+      {
+        "id": "dismissable",
+        "label": "Dismissable",
+        "description": "Control overlay panel dismissal behavior when clicking outside or on other overlays.",
+        "example": "<script setup lang=\"ts\">\nimport { ref } from 'vue'\nimport { OverlayPanel, Button } from '@fewangsit/wangsvue'\n\nconst dismissablePanel = ref()\nconst nonDismissablePanel = ref()\n\nconst showDismissable = (event: Event) => {\n  dismissablePanel.value.show(event)\n}\n\nconst showNonDismissable = (event: Event) => {\n  nonDismissablePanel.value.show(event)\n}\n</script>\n\n<template>\n  <div class=\"flex flex-wrap gap-3\">\n    <Button\n      label=\"Dismissable Panel\"\n      @click=\"showDismissable\"\n    />\n    <Button\n      label=\"Non-Dismissable Panel\"\n      @click=\"showNonDismissable\"\n    />\n\n    <!-- Dismissable Panel -->\n    <OverlayPanel\n      ref=\"dismissablePanel\"\n      :dismissable=\"true\"\n    >\n      <div class=\"p-4\">\n        <h4 class=\"font-semibold mb-2\">\n          Dismissable Panel\n        </h4>\n        <p>Click outside to close this panel.</p>\n      </div>\n    </OverlayPanel>\n\n    <!-- Non-Dismissable Panel -->\n    <OverlayPanel\n      ref=\"nonDismissablePanel\"\n      :dismissable=\"false\"\n    >\n      <div class=\"p-4\">\n        <h4 class=\"font-semibold mb-2\">\n          Non-Dismissable Panel\n        </h4>\n        <p class=\"mb-3\">\n          This panel won't close when clicking outside.\n        </p>\n        <Button\n          label=\"Close\"\n          size=\"small\"\n          @click=\"nonDismissablePanel.hide()\"\n        />\n      </div>\n    </OverlayPanel>\n  </div>\n</template>\n",
+        "hasExample": true,
+        "examplePath": "overlaypanel/Dismissable"
+      },
+      {
+        "id": "close-icon",
+        "label": "Close Icon",
+        "description": "Display a close icon in the overlay panel header.",
+        "example": "<script setup lang=\"ts\">\nimport { ref } from 'vue'\nimport { OverlayPanel, Button } from '@fewangsit/wangsvue'\n\nconst op = ref()\n\nconst toggle = (event: Event) => {\n  op.value.toggle(event)\n}\n</script>\n\n<template>\n  <div class=\"flex flex-wrap gap-3\">\n    <Button\n      label=\"Show Panel with Close Icon\"\n      @click=\"toggle\"\n    />\n\n    <OverlayPanel\n      ref=\"op\"\n      :show-close-icon=\"true\"\n    >\n      <div class=\"p-4\">\n        <h3 class=\"font-semibold mb-2\">\n          Panel with Close Icon\n        </h3>\n        <p class=\"mb-3\">\n          This panel has a close icon in the top-right corner.\n        </p>\n        <div class=\"space-y-2\">\n          <p class=\"text-sm\">\n            You can close this panel by:\n          </p>\n          <ul class=\"text-sm list-disc list-inside space-y-1\">\n            <li>Clicking the close icon</li>\n            <li>Clicking outside the panel</li>\n            <li>Pressing the Escape key</li>\n          </ul>\n        </div>\n      </div>\n    </OverlayPanel>\n  </div>\n</template>\n",
+        "hasExample": true,
+        "examplePath": "overlaypanel/CloseIcon"
+      },
+      {
+        "id": "responsive",
+        "label": "Responsive",
+        "description": "Overlay panel with responsive breakpoints for different screen sizes.",
+        "example": "<script setup lang=\"ts\">\nimport { ref } from 'vue'\nimport { OverlayPanel, Button } from '@fewangsit/wangsvue'\n\nconst op = ref()\n\nconst breakpoints = {\n  '960px': '75vw',\n  '640px': '90vw'\n}\n\nconst toggle = (event: Event) => {\n  op.value.toggle(event)\n}\n</script>\n\n<template>\n  <div class=\"flex flex-wrap gap-3\">\n    <Button\n      label=\"Show Responsive Panel\"\n      @click=\"toggle\"\n    />\n\n    <OverlayPanel\n      ref=\"op\"\n      :breakpoints=\"breakpoints\"\n      :show-close-icon=\"true\"\n    >\n      <div\n        class=\"p-4\"\n        style=\"width: 400px;\"\n      >\n        <h3 class=\"font-semibold mb-2\">\n          Responsive Overlay Panel\n        </h3>\n        <p class=\"mb-3\">\n          This panel adapts its width based on screen size:\n        </p>\n        <ul class=\"list-disc list-inside space-y-1 text-sm\">\n          <li>Desktop (>960px): 400px width</li>\n          <li>Tablet (≤960px): 75% of viewport width</li>\n          <li>Mobile (≤640px): 90% of viewport width</li>\n        </ul>\n        <p class=\"mt-3 text-sm text-gray-600\">\n          Resize your browser window to see the responsive behavior.\n        </p>\n      </div>\n    </OverlayPanel>\n  </div>\n</template>\n",
+        "hasExample": true,
+        "examplePath": "overlaypanel/Responsive"
+      },
+      {
+        "id": "template",
+        "label": "Template",
+        "description": "Custom overlay panel content using slots.",
+        "example": "<script setup lang=\"ts\">\nimport { ref } from 'vue'\nimport { OverlayPanel, Button } from '@fewangsit/wangsvue'\n\nconst customPanel = ref()\nconst containerPanel = ref()\n\nconst showCustom = (event: Event) => {\n  customPanel.value.show(event)\n}\n\nconst showContainer = (event: Event) => {\n  containerPanel.value.show(event)\n}\n</script>\n\n<template>\n  <div class=\"flex flex-wrap gap-3\">\n    <Button\n      label=\"Custom Content\"\n      @click=\"showCustom\"\n    />\n    <Button\n      label=\"Custom Container\"\n      @click=\"showContainer\"\n    />\n\n    <!-- Custom Content -->\n    <OverlayPanel ref=\"customPanel\">\n      <div class=\"bg-gradient-to-r from-blue-50 to-indigo-50 p-6 rounded-lg\">\n        <div class=\"flex items-center gap-3 mb-4\">\n          <div class=\"w-10 h-10 bg-blue-500 rounded-full flex items-center justify-center\">\n            <i class=\"wangs-icon-user text-white\" />\n          </div>\n          <div>\n            <h3 class=\"font-semibold text-blue-900\">\n              User Profile\n            </h3>\n            <p class=\"text-sm text-blue-700\">\n              Manage your account\n            </p>\n          </div>\n        </div>\n        <div class=\"space-y-2\">\n          <Button\n            label=\"Edit Profile\"\n            severity=\"primary\"\n            size=\"small\"\n            class=\"w-full\"\n          />\n          <Button\n            label=\"Settings\"\n            severity=\"secondary\"\n            size=\"small\"\n            class=\"w-full\"\n          />\n        </div>\n      </div>\n    </OverlayPanel>\n\n    <!-- Custom Container -->\n    <OverlayPanel ref=\"containerPanel\">\n      <template #container=\"{ closeCallback }\">\n        <div class=\"bg-white border border-gray-200 rounded-lg shadow-lg overflow-hidden\">\n          <div class=\"bg-red-500 text-white p-3 flex items-center justify-between\">\n            <h3 class=\"font-semibold\">\n              Custom Container\n            </h3>\n            <button\n              class=\"text-white hover:text-red-200\"\n              @click=\"closeCallback\"\n            >\n              <i class=\"wangs-icon-close\" />\n            </button>\n          </div>\n          <div class=\"p-4\">\n            <p class=\"mb-3\">\n              This uses a custom container template with custom styling.\n            </p>\n            <Button\n              label=\"Action\"\n              severity=\"danger\"\n              size=\"small\"\n            />\n          </div>\n        </div>\n      </template>\n    </OverlayPanel>\n  </div>\n</template>\n",
+        "hasExample": true,
+        "examplePath": "overlaypanel/Template"
+      }
+    ]
+  },
+  {
+    "name": "toast",
+    "title": "Toast",
+    "description": "Toast is used to display messages in an overlay.",
+    "sections": [
+      {
+        "id": "import",
+        "label": "Import",
+        "description": "```ts\nimport { Toast, useToast } from '@fewangsit/wangsvue';\n```",
+        "example": "",
+        "hasExample": false,
+        "examplePath": null
+      },
+      {
+        "id": "basic",
+        "label": "Basic",
+        "description": "Basic toast messages using the useToast composable.",
+        "example": "<script setup lang=\"ts\">\nimport { Toast, Button, useToast } from '@fewangsit/wangsvue'\n\nconst toast = useToast()\n\nconst showBasic = () => {\n  toast.add({\n    severity: 'info',\n    message: 'This is a basic toast message.',\n    life: 3000\n  })\n}\n</script>\n\n<template>\n  <div class=\"flex flex-wrap gap-3\">\n    <Button\n      label=\"Show Toast\"\n      @click=\"showBasic\"\n    />\n\n    <Toast />\n  </div>\n</template>\n",
+        "hasExample": true,
+        "examplePath": "toast/Basic"
+      },
+      {
+        "id": "severity",
+        "label": "Severity",
+        "description": "",
+        "example": "<script setup lang=\"ts\">\nimport { Toast, Button, useToast } from '@fewangsit/wangsvue'\n\nconst toast = useToast()\n\nconst showSuccess = () => {\n  toast.add({\n    severity: 'success',\n    message: 'Operation completed successfully!',\n    life: 3000\n  })\n}\n\nconst showInfo = () => {\n  toast.add({\n    severity: 'info',\n    message: 'Here is some useful information.',\n    life: 3000\n  })\n}\n\nconst showError = () => {\n  toast.add({\n    severity: 'error',\n    message: 'Something went wrong!',\n    life: 3000\n  })\n}\n</script>\n\n<template>\n  <div class=\"flex flex-wrap gap-3\">\n    <Button\n      label=\"Success\"\n      severity=\"success\"\n      @click=\"showSuccess\"\n    />\n    <Button\n      label=\"Info\"\n      severity=\"info\"\n      @click=\"showInfo\"\n    />\n    <Button\n      label=\"Error\"\n      severity=\"danger\"\n      @click=\"showError\"\n    />\n\n    <Toast />\n  </div>\n</template>\n",
+        "hasExample": true,
+        "examplePath": "toast/Severity"
+      },
+      {
+        "id": "position",
+        "label": "Position",
+        "description": "Toast messages can be positioned at different locations on the screen.",
+        "example": "<script setup lang=\"ts\">\nimport { Toast, Button, useToast } from '@fewangsit/wangsvue'\n\nconst toast = useToast()\n\nconst showTopLeft = () => {\n  toast.add({\n    severity: 'info',\n    message: 'Toast positioned at top-left',\n    life: 3000,\n    group: 'tl'\n  })\n}\n\nconst showTopCenter = () => {\n  toast.add({\n    severity: 'info',\n    message: 'Toast positioned at top-center',\n    life: 3000,\n    group: 'tc'\n  })\n}\n\nconst showTopRight = () => {\n  toast.add({\n    severity: 'info',\n    message: 'Toast positioned at top-right',\n    life: 3000,\n    group: 'tr'\n  })\n}\n\nconst showBottomLeft = () => {\n  toast.add({\n    severity: 'info',\n    message: 'Toast positioned at bottom-left',\n    life: 3000,\n    group: 'bl'\n  })\n}\n\nconst showBottomRight = () => {\n  toast.add({\n    severity: 'info',\n    message: 'Toast positioned at bottom-right',\n    life: 3000,\n    group: 'br'\n  })\n}\n</script>\n\n<template>\n  <div class=\"flex flex-wrap gap-2\">\n    <Button\n      label=\"Top Left\"\n      size=\"small\"\n      @click=\"showTopLeft\"\n    />\n    <Button\n      label=\"Top Center\"\n      size=\"small\"\n      @click=\"showTopCenter\"\n    />\n    <Button\n      label=\"Top Right\"\n      size=\"small\"\n      @click=\"showTopRight\"\n    />\n    <Button\n      label=\"Bottom Left\"\n      size=\"small\"\n      @click=\"showBottomLeft\"\n    />\n    <Button\n      label=\"Bottom Right\"\n      size=\"small\"\n      @click=\"showBottomRight\"\n    />\n\n    <!-- Toast containers for different positions -->\n    <Toast\n      group=\"tl\"\n      position=\"top-left\"\n    />\n    <Toast\n      group=\"tc\"\n      position=\"top-center\"\n    />\n    <Toast\n      group=\"tr\"\n      position=\"top-right\"\n    />\n    <Toast\n      group=\"bl\"\n      position=\"bottom-left\"\n    />\n    <Toast\n      group=\"br\"\n      position=\"bottom-right\"\n    />\n  </div>\n</template>\n",
+        "hasExample": true,
+        "examplePath": "toast/Position"
+      },
+      {
+        "id": "life-cycle",
+        "label": "Life Cycle",
+        "description": "Control toast message duration and auto-dismiss behavior.",
+        "example": "<script setup lang=\"ts\">\nimport { Toast, Button, useToast } from '@fewangsit/wangsvue'\n\nconst toast = useToast()\n\nconst showShort = () => {\n  toast.add({\n    severity: 'info',\n    message: 'This toast will disappear in 1 second',\n    life: 1000\n  })\n}\n\nconst showLong = () => {\n  toast.add({\n    severity: 'info',\n    message: 'This toast will stay for 10 seconds',\n    life: 10000\n  })\n}\n</script>\n\n<template>\n  <div class=\"flex flex-wrap gap-3\">\n    <Button\n      label=\"Short (1s)\"\n      @click=\"showShort\"\n    />\n    <Button\n      label=\"Long (10s)\"\n      @click=\"showLong\"\n    />\n\n    <Toast />\n  </div>\n</template>\n",
+        "hasExample": true,
+        "examplePath": "toast/LifeCycle"
+      },
+      {
+        "id": "closable",
+        "label": "Closable",
+        "description": "Control whether toast messages can be manually closed by users.",
+        "example": "<script setup lang=\"ts\">\nimport { Toast, Button, useToast } from '@fewangsit/wangsvue'\n\nconst toast = useToast()\n\nconst showClosable = () => {\n  toast.add({\n    severity: 'info',\n    message: 'This toast can be closed manually',\n    life: 0 // Infinite duration\n  })\n}\n\nconst showAutoClose = () => {\n  toast.add({\n    severity: 'success',\n    message: 'This toast will auto-close in 3 seconds',\n    life: 3000\n  })\n}\n</script>\n\n<template>\n  <div class=\"flex flex-wrap gap-3\">\n    <Button\n      label=\"Closable Toast\"\n      @click=\"showClosable\"\n    />\n    <Button\n      label=\"Auto-Close Toast\"\n      @click=\"showAutoClose\"\n    />\n\n    <Toast />\n  </div>\n</template>\n",
+        "hasExample": true,
+        "examplePath": "toast/Closable"
+      },
+      {
+        "id": "template",
+        "label": "Template",
+        "description": "Custom toast message templates using slots.",
+        "example": "<script setup lang=\"ts\">\nimport { Toast, Button, useToast } from '@fewangsit/wangsvue'\n\nconst toast = useToast()\n\nconst showCustomMessage = () => {\n  toast.add({\n    severity: 'info',\n    message: 'This toast uses a custom message template',\n    life: 5000,\n    group: 'custom'\n  })\n}\n\nconst showCustomContainer = () => {\n  toast.add({\n    severity: 'success',\n    message: 'This toast uses a custom container template',\n    life: 5000,\n    group: 'container'\n  })\n}\n</script>\n\n<template>\n  <div class=\"flex flex-wrap gap-3\">\n    <Button\n      label=\"Custom Message\"\n      @click=\"showCustomMessage\"\n    />\n    <Button\n      label=\"Custom Container\"\n      @click=\"showCustomContainer\"\n    />\n\n    <!-- Custom Message Template -->\n    <Toast group=\"custom\">\n      <template #message=\"{ message }\">\n        <div class=\"flex items-center gap-3 p-4\">\n          <div class=\"w-10 h-10 bg-blue-500 rounded-full flex items-center justify-center\">\n            <i class=\"wangs-icon-info text-white\" />\n          </div>\n          <div class=\"flex-1\">\n            <h4 class=\"font-semibold text-blue-900\">\n              Custom Message\n            </h4>\n            <p class=\"text-sm text-blue-700\">\n              {{ message }}\n            </p>\n            <div class=\"mt-2 flex gap-2\">\n              <Button\n                label=\"Action\"\n                size=\"small\"\n                severity=\"primary\"\n              />\n              <Button\n                label=\"Dismiss\"\n                size=\"small\"\n                severity=\"secondary\"\n                text\n              />\n            </div>\n          </div>\n        </div>\n      </template>\n    </Toast>\n\n    <!-- Custom Container Template -->\n    <Toast group=\"container\">\n      <template #container=\"{ message, closeCallback }\">\n        <div class=\"bg-linear-to-r from-green-400 to-green-600 text-white p-4 rounded-lg shadow-lg\">\n          <div class=\"flex items-center justify-between\">\n            <div class=\"flex items-center gap-3\">\n              <i class=\"wangs-icon-check text-2xl\" />\n              <div>\n                <h4 class=\"font-bold\">\n                  Success\n                </h4>\n                <p class=\"text-sm opacity-90\">\n                  {{ message }}\n                </p>\n              </div>\n            </div>\n            <button\n              class=\"text-white hover:text-green-200\"\n              @click=\"closeCallback\"\n            >\n              <i class=\"wangs-icon-close\" />\n            </button>\n          </div>\n        </div>\n      </template>\n    </Toast>\n  </div>\n</template>\n",
+        "hasExample": true,
+        "examplePath": "toast/Template"
+      }
+    ]
+  },
+  {
+    "name": "breadcrumb",
+    "title": "Breadcrumb",
+    "description": "Breadcrumb is a component for displaying a breadcrumb trail to help users navigate a website or application. It takes an array of menu items as a prop and displays each item as a link or label, with a separator between them.",
+    "sections": [
+      {
+        "id": "import",
+        "label": "Import",
+        "description": "```ts\nimport { Breadcrumb } from '@fewangsit/wangsvue';\n```",
+        "example": "",
+        "hasExample": false,
+        "examplePath": null
+      },
+      {
+        "id": "basic",
+        "label": "Basic",
+        "description": "Basic breadcrumb navigation with menu items.",
+        "example": "<script setup lang=\"ts\">\nimport { Breadcrumb } from '@fewangsit/wangsvue'\n\nconst basicMenus = [\n  { name: 'Home' },\n  { name: 'Products' },\n  { name: 'Electronics' },\n  { name: 'Smartphones' }\n]\n</script>\n\n<template>\n  <div class=\"flex flex-wrap gap-3\">\n    <Breadcrumb :menus=\"basicMenus\" />\n  </div>\n</template>\n",
+        "hasExample": true,
+        "examplePath": "breadcrumb/Basic"
+      },
+      {
+        "id": "with-routes",
+        "label": "With Routes",
+        "description": "Breadcrumb items with navigation routes for clickable links.",
+        "example": "<script setup lang=\"ts\">\nimport { Breadcrumb } from '@fewangsit/wangsvue'\n\nconst routeMenus = [\n  { name: 'Home', route: '/' },\n  { name: 'Dashboard', route: '/dashboard' },\n  { name: 'Users', route: '/dashboard/users' },\n  { name: 'Profile' }\n]\n</script>\n\n<template>\n  <div class=\"flex flex-wrap gap-3\">\n    <Breadcrumb :menus=\"routeMenus\" />\n  </div>\n</template>\n",
+        "hasExample": true,
+        "examplePath": "breadcrumb/WithRoutes"
+      },
+      {
+        "id": "mixed-items",
+        "label": "Mixed Items",
+        "description": "Breadcrumb with both clickable and non-clickable items.",
+        "example": "<script setup lang=\"ts\">\nimport { Breadcrumb } from '@fewangsit/wangsvue'\n\nconst mixedMenus = [\n  { name: 'Home', route: '/' },\n  { name: 'Categories' },\n  { name: 'Technology', route: '/categories/technology' },\n  { name: 'Articles' },\n  { name: 'Current Article' }\n]\n</script>\n\n<template>\n  <div class=\"flex flex-wrap gap-3\">\n    <Breadcrumb :menus=\"mixedMenus\" />\n  </div>\n</template>\n",
+        "hasExample": true,
+        "examplePath": "breadcrumb/MixedItems"
+      },
+      {
+        "id": "long-path",
+        "label": "Long Path",
+        "description": "Breadcrumb handling longer navigation paths.",
+        "example": "<script setup lang=\"ts\">\nimport { Breadcrumb } from '@fewangsit/wangsvue'\n\nconst longPathMenus = [\n  { name: 'Home', route: '/' },\n  { name: 'Administration', route: '/admin' },\n  { name: 'User Management', route: '/admin/users' },\n  { name: 'Roles & Permissions', route: '/admin/users/roles' },\n  { name: 'Role Settings', route: '/admin/users/roles/settings' },\n  { name: 'Advanced Configuration' }\n]\n</script>\n\n<template>\n  <div class=\"flex flex-wrap gap-3\">\n    <Breadcrumb :menus=\"longPathMenus\" />\n  </div>\n</template>\n",
+        "hasExample": true,
+        "examplePath": "breadcrumb/LongPath"
+      },
+      {
+        "id": "custom-titles",
+        "label": "Custom Titles",
+        "description": "Breadcrumb items with custom display titles different from names.",
+        "example": "<script setup lang=\"ts\">\nimport { Breadcrumb } from '@fewangsit/wangsvue'\n\nconst customTitleMenus = [\n  { name: 'home', title: 'Home Page', route: '/' },\n  { name: 'products', title: 'Product Catalog', route: '/products' },\n  { name: 'electronics', title: 'Electronics & Gadgets', route: '/products/electronics' },\n  { name: 'smartphone-detail', title: 'iPhone 15 Pro Max' }\n]\n</script>\n\n<template>\n  <div class=\"flex flex-wrap gap-3\">\n    <Breadcrumb :menus=\"customTitleMenus\" />\n  </div>\n</template>\n",
+        "hasExample": true,
+        "examplePath": "breadcrumb/CustomTitles"
+      }
+    ]
+  },
+  {
+    "name": "buttoncopy",
+    "title": "ButtonCopy",
+    "description": "ButtonCopy is a component for copying text to the clipboard.",
+    "sections": [
+      {
+        "id": "import",
+        "label": "Import",
+        "description": "```ts\nimport { ButtonCopy } from '@fewangsit/wangsvue';\n```",
+        "example": "",
+        "hasExample": false,
+        "examplePath": null
+      },
+      {
+        "id": "basic",
+        "label": "Basic",
+        "description": "Basic copy button with text to copy to clipboard.",
+        "example": "<script setup lang=\"ts\">\nimport { ButtonCopy } from '@fewangsit/wangsvue'\n\nconst basicText = 'Hello, World!'\nconst emailText = 'contact@example.com'\nconst phoneText = '+1 (555) 123-4567'\n</script>\n\n<template>\n  <div class=\"flex flex-wrap gap-3\">\n    <div class=\"flex items-center gap-2\">\n      <span class=\"text-sm\">{{ basicText }}</span>\n      <ButtonCopy :text=\"basicText\" />\n    </div>\n\n    <div class=\"flex items-center gap-2\">\n      <span class=\"text-sm\">{{ emailText }}</span>\n      <ButtonCopy :text=\"emailText\" />\n    </div>\n\n    <div class=\"flex items-center gap-2\">\n      <span class=\"text-sm\">{{ phoneText }}</span>\n      <ButtonCopy :text=\"phoneText\" />\n    </div>\n  </div>\n</template>\n",
+        "hasExample": true,
+        "examplePath": "buttoncopy/Basic"
+      },
+      {
+        "id": "long-text",
+        "label": "Long Text",
+        "description": "Copy button for longer text content.",
+        "example": "<script setup lang=\"ts\">\nimport { ButtonCopy } from '@fewangsit/wangsvue'\n\nconst longText = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'\n\nconst address = '1234 Main Street, Suite 567, Springfield, IL 62701, United States of America'\n</script>\n\n<template>\n  <div class=\"flex flex-col gap-4\">\n    <div class=\"flex items-start gap-2\">\n      <div class=\"flex-1\">\n        <p class=\"text-sm mb-2\">\n          Long paragraph:\n        </p>\n        <p class=\"text-sm border rounded p-3\">\n          {{ longText }}\n        </p>\n      </div>\n      <ButtonCopy :text=\"longText\" />\n    </div>\n\n    <div class=\"flex items-start gap-2\">\n      <div class=\"flex-1\">\n        <p class=\"text-sm mb-2\">\n          Address:\n        </p>\n        <p class=\"text-sm border rounded p-3\">\n          {{ address }}\n        </p>\n      </div>\n      <ButtonCopy :text=\"address\" />\n    </div>\n  </div>\n</template>\n",
+        "hasExample": true,
+        "examplePath": "buttoncopy/LongText"
+      },
+      {
+        "id": "urls",
+        "label": "URLs",
+        "description": "Copy button for URLs and links.",
+        "example": "<script setup lang=\"ts\">\nimport { ButtonCopy } from '@fewangsit/wangsvue'\n\nconst websiteUrl = 'https://www.example.com'\nconst apiEndpoint = 'https://api.example.com/v1/users'\nconst githubRepo = 'https://github.com/username/repository'\n</script>\n\n<template>\n  <div class=\"flex flex-wrap gap-3\">\n    <div class=\"flex items-center gap-2\">\n      <span class=\"text-sm font-mono\">{{ websiteUrl }}</span>\n      <ButtonCopy :text=\"websiteUrl\" />\n    </div>\n\n    <div class=\"flex items-center gap-2\">\n      <span class=\"text-sm font-mono\">{{ apiEndpoint }}</span>\n      <ButtonCopy :text=\"apiEndpoint\" />\n    </div>\n\n    <div class=\"flex items-center gap-2\">\n      <span class=\"text-sm font-mono\">{{ githubRepo }}</span>\n      <ButtonCopy :text=\"githubRepo\" />\n    </div>\n  </div>\n</template>\n",
+        "hasExample": true,
+        "examplePath": "buttoncopy/URLs"
+      },
+      {
+        "id": "code-snippets",
+        "label": "Code Snippets",
+        "description": "Copy button for code snippets and technical content.",
+        "example": "<script setup lang=\"ts\">\nimport { ButtonCopy } from '@fewangsit/wangsvue'\n\nconst jsCode = `const greeting = 'Hello, World!';\nconsole.log(greeting);`\n\nconst cssCode = `.button {\n  background-color: #007bff;\n  color: white;\n  padding: 8px 16px;\n  border-radius: 4px;\n}`\n\nconst htmlCode = `<div class=\"container\">\n  <h1>Welcome</h1>\n  <p>This is a sample HTML snippet.</p>\n</div>`\n</script>\n\n<template>\n  <div class=\"flex flex-col gap-4\">\n    <div class=\"flex items-start gap-2\">\n      <div class=\"flex-1\">\n        <p class=\"text-sm mb-2\">\n          JavaScript:\n        </p>\n        <pre class=\"text-sm border rounded p-3 overflow-x-auto\"><code>{{ jsCode }}</code></pre>\n      </div>\n      <ButtonCopy :text=\"jsCode\" />\n    </div>\n\n    <div class=\"flex items-start gap-2\">\n      <div class=\"flex-1\">\n        <p class=\"text-sm mb-2\">\n          CSS:\n        </p>\n        <pre class=\"text-sm border rounded p-3 overflow-x-auto\"><code>{{ cssCode }}</code></pre>\n      </div>\n      <ButtonCopy :text=\"cssCode\" />\n    </div>\n\n    <div class=\"flex items-start gap-2\">\n      <div class=\"flex-1\">\n        <p class=\"text-sm mb-2\">\n          HTML:\n        </p>\n        <pre class=\"text-sm border rounded p-3 overflow-x-auto\"><code>{{ htmlCode }}</code></pre>\n      </div>\n      <ButtonCopy :text=\"htmlCode\" />\n    </div>\n  </div>\n</template>\n",
+        "hasExample": true,
+        "examplePath": "buttoncopy/CodeSnippets"
+      },
+      {
+        "id": "json-data",
+        "label": "JSON Data",
+        "description": "Copy button for JSON data and structured content.",
+        "example": "<script setup lang=\"ts\">\nimport { ButtonCopy } from '@fewangsit/wangsvue'\n\nconst userJson = JSON.stringify({\n  id: 1,\n  name: 'John Doe',\n  email: 'john.doe@example.com',\n  role: 'admin'\n}, null, 2)\n\nconst configJson = JSON.stringify({\n  apiUrl: 'https://api.example.com',\n  timeout: 5000,\n  retries: 3,\n  features: ['auth', 'logging', 'cache']\n}, null, 2)\n</script>\n\n<template>\n  <div class=\"flex flex-col gap-4\">\n    <div class=\"flex items-start gap-2\">\n      <div class=\"flex-1\">\n        <p class=\"text-sm mb-2\">\n          User data:\n        </p>\n        <pre class=\"text-sm border rounded p-3 overflow-x-auto\"><code>{{ userJson }}</code></pre>\n      </div>\n      <ButtonCopy :text=\"userJson\" />\n    </div>\n\n    <div class=\"flex items-start gap-2\">\n      <div class=\"flex-1\">\n        <p class=\"text-sm mb-2\">\n          Configuration:\n        </p>\n        <pre class=\"text-sm border rounded p-3 overflow-x-auto\"><code>{{ configJson }}</code></pre>\n      </div>\n      <ButtonCopy :text=\"configJson\" />\n    </div>\n  </div>\n</template>\n",
+        "hasExample": true,
+        "examplePath": "buttoncopy/JsonData"
+      }
+    ]
+  },
+  {
+    "name": "card",
+    "title": "Card",
+    "description": "Card is a flexible container component.",
+    "sections": [
+      {
+        "id": "import",
+        "label": "Import",
+        "description": "```ts\nimport { Card } from '@fewangsit/wangsvue';\n```",
+        "example": "",
+        "hasExample": false,
+        "examplePath": null
+      },
+      {
+        "id": "basic",
+        "label": "Basic",
+        "description": "Basic card with content slot.",
+        "example": "<script setup lang=\"ts\">\nimport { Card } from '@fewangsit/wangsvue'\n</script>\n\n<template>\n  <div class=\"flex flex-wrap gap-4\">\n    <Card class=\"w-80\">\n      <template #content>\n        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>\n      </template>\n    </Card>\n  </div>\n</template>\n",
+        "hasExample": true,
+        "examplePath": "card/Basic"
+      },
+      {
+        "id": "with-header",
+        "label": "With Header",
+        "description": "Card with header slot for additional content.",
+        "example": "<script setup lang=\"ts\">\nimport { Card } from '@fewangsit/wangsvue'\n</script>\n\n<template>\n  <div class=\"flex flex-wrap gap-4\">\n    <Card class=\"w-80\">\n      <template #header>\n        <img\n          src=\"https://via.placeholder.com/320x160/4F46E5/FFFFFF?text=Header+Image\"\n          alt=\"Header\"\n          class=\"w-full h-40 object-cover\"\n        >\n      </template>\n      <template #content>\n        <p>This card includes a header section with an image. The header slot allows you to add any content above the main card body.</p>\n      </template>\n    </Card>\n  </div>\n</template>\n",
+        "hasExample": true,
+        "examplePath": "card/WithHeader"
+      },
+      {
+        "id": "with-title-and-subtitle",
+        "label": "With Title and Subtitle",
+        "description": "Card with title and subtitle slots for structured content.",
+        "example": "<script setup lang=\"ts\">\nimport { Card } from '@fewangsit/wangsvue'\n</script>\n\n<template>\n  <div class=\"flex flex-wrap gap-4\">\n    <Card class=\"w-80\">\n      <template #title>\n        <h3 class=\"text-xl font-semibold text-gray-900\">\n          Card Title\n        </h3>\n      </template>\n      <template #subtitle>\n        <p class=\"text-sm text-gray-600 mt-1\">\n          This is a subtitle\n        </p>\n      </template>\n      <template #content>\n        <p class=\"mt-4\">\n          The title and subtitle slots provide a structured way to display card headers with consistent styling and hierarchy.\n        </p>\n      </template>\n    </Card>\n  </div>\n</template>\n",
+        "hasExample": true,
+        "examplePath": "card/WithTitleSubtitle"
+      },
+      {
+        "id": "with-footer",
+        "label": "With Footer",
+        "description": "Card with footer slot for actions or additional information.",
+        "example": "<script setup lang=\"ts\">\nimport { Card, Button } from '@fewangsit/wangsvue'\n</script>\n\n<template>\n  <div class=\"flex flex-wrap gap-4\">\n    <Card class=\"w-80\">\n      <template #content>\n        <p>This card demonstrates the footer slot, which is perfect for action buttons or additional information at the bottom of the card.</p>\n      </template>\n      <template #footer>\n        <div class=\"flex gap-2 pt-4 border-t\">\n          <Button\n            label=\"Save\"\n            severity=\"primary\"\n            size=\"small\"\n          />\n          <Button\n            label=\"Cancel\"\n            severity=\"secondary\"\n            size=\"small\"\n          />\n        </div>\n      </template>\n    </Card>\n  </div>\n</template>\n",
+        "hasExample": true,
+        "examplePath": "card/WithFooter"
+      },
+      {
+        "id": "complete-card",
+        "label": "Complete Card",
+        "description": "Card using all available slots for comprehensive content layout.",
+        "example": "<script setup lang=\"ts\">\nimport { Card, Button, Badge } from '@fewangsit/wangsvue'\n</script>\n\n<template>\n  <div class=\"flex flex-wrap gap-4\">\n    <Card class=\"w-96\">\n      <template #header>\n        <div class=\"relative\">\n          <img\n            src=\"https://via.placeholder.com/384x200/10B981/FFFFFF?text=Product+Image\"\n            alt=\"Product\"\n            class=\"w-full h-48 object-cover\"\n          >\n          <Badge\n            label=\"New\"\n            severity=\"success\"\n            class=\"absolute top-2 right-2\"\n          />\n        </div>\n      </template>\n      <template #title>\n        <h3 class=\"text-xl font-bold text-gray-900\">\n          Premium Product\n        </h3>\n      </template>\n      <template #subtitle>\n        <p class=\"text-sm text-gray-600\">\n          High-quality item with excellent features\n        </p>\n      </template>\n      <template #content>\n        <div class=\"space-y-3\">\n          <p class=\"text-gray-700\">\n            This comprehensive card example showcases all available slots working together to create a rich, structured layout.\n          </p>\n          <div class=\"flex items-center gap-2\">\n            <span class=\"text-2xl font-bold text-green-600\">$299</span>\n            <span class=\"text-sm text-gray-500 line-through\">$399</span>\n          </div>\n        </div>\n      </template>\n      <template #footer>\n        <div class=\"flex justify-between items-center pt-4 border-t\">\n          <div class=\"flex gap-2\">\n            <Button\n              label=\"Add to Cart\"\n              severity=\"primary\"\n              size=\"small\"\n            />\n            <Button\n              label=\"Wishlist\"\n              severity=\"secondary\"\n              size=\"small\"\n            />\n          </div>\n          <span class=\"text-xs text-gray-500\">Free shipping</span>\n        </div>\n      </template>\n    </Card>\n  </div>\n</template>\n",
+        "hasExample": true,
+        "examplePath": "card/CompleteCard"
+      }
+    ]
+  },
+  {
+    "name": "image",
+    "title": "Image",
+    "description": "Displays an image with preview functionality and built-in gallery support.",
+    "sections": [
+      {
+        "id": "import",
+        "label": "Import",
+        "description": "```ts\nimport { Image } from '@fewangsit/wangsvue';\n```",
+        "example": "",
+        "hasExample": false,
+        "examplePath": null
+      },
+      {
+        "id": "basic",
+        "label": "Basic",
+        "description": "Basic image display with preview functionality. Click the image to open the preview overlay.",
+        "example": "<script setup lang=\"ts\">\nimport { Image } from '@fewangsit/wangsvue'\n\nconst sampleImage = 'https://picsum.photos/400/300'\n</script>\n\n<template>\n  <div class=\"flex flex-wrap gap-4\">\n    <Image :src=\"sampleImage\" />\n  </div>\n</template>\n",
+        "hasExample": true,
+        "examplePath": "image/Basic"
+      },
+      {
+        "id": "sizes",
+        "label": "Sizes",
+        "description": "",
+        "example": "<script setup lang=\"ts\">\nimport { Image } from '@fewangsit/wangsvue'\n\nconst sampleImage = 'https://picsum.photos/400/300'\n</script>\n\n<template>\n  <div class=\"flex flex-wrap items-end gap-4\">\n    <div class=\"text-center\">\n      <Image\n        :src=\"sampleImage\"\n        size=\"small\"\n      />\n      <p class=\"text-xs text-gray-600 mt-2\">\n        Small (30px)\n      </p>\n    </div>\n\n    <div class=\"text-center\">\n      <Image\n        :src=\"sampleImage\"\n        size=\"medium\"\n      />\n      <p class=\"text-xs text-gray-600 mt-2\">\n        Medium (80px)\n      </p>\n    </div>\n\n    <div class=\"text-center\">\n      <Image\n        :src=\"sampleImage\"\n        size=\"big\"\n      />\n      <p class=\"text-xs text-gray-600 mt-2\">\n        Big (125px)\n      </p>\n    </div>\n  </div>\n</template>\n",
+        "hasExample": true,
+        "examplePath": "image/Sizes"
+      },
+      {
+        "id": "custom-size",
+        "label": "Custom Size",
+        "description": "Image with custom width dimensions using the `width` prop.",
+        "example": "<script setup lang=\"ts\">\nimport { Image } from '@fewangsit/wangsvue'\n\nconst sampleImage = 'https://picsum.photos/400/300'\n</script>\n\n<template>\n  <div class=\"flex flex-wrap items-end gap-4\">\n    <div class=\"text-center\">\n      <Image\n        :src=\"sampleImage\"\n        :width=\"50\"\n      />\n      <p class=\"text-xs text-gray-600 mt-2\">\n        50px\n      </p>\n    </div>\n\n    <div class=\"text-center\">\n      <Image\n        :src=\"sampleImage\"\n        :width=\"100\"\n      />\n      <p class=\"text-xs text-gray-600 mt-2\">\n        100px\n      </p>\n    </div>\n\n    <div class=\"text-center\">\n      <Image\n        :src=\"sampleImage\"\n        :width=\"150\"\n      />\n      <p class=\"text-xs text-gray-600 mt-2\">\n        150px\n      </p>\n    </div>\n\n    <div class=\"text-center\">\n      <Image\n        :src=\"sampleImage\"\n        :width=\"200\"\n      />\n      <p class=\"text-xs text-gray-600 mt-2\">\n        200px\n      </p>\n    </div>\n  </div>\n</template>\n",
+        "hasExample": true,
+        "examplePath": "image/CustomSize"
+      },
+      {
+        "id": "rounded",
+        "label": "Rounded",
+        "description": "Image with rounded corners using the `rounded` prop.",
+        "example": "<script setup lang=\"ts\">\nimport { Image } from '@fewangsit/wangsvue'\n\nconst sampleImage = 'https://picsum.photos/400/300'\n</script>\n\n<template>\n  <div class=\"flex flex-wrap items-center gap-6\">\n    <div class=\"text-center\">\n      <Image\n        :src=\"sampleImage\"\n        size=\"big\"\n      />\n      <p class=\"text-xs text-gray-600 mt-2\">\n        Default\n      </p>\n    </div>\n\n    <div class=\"text-center\">\n      <Image\n        :src=\"sampleImage\"\n        size=\"big\"\n        :rounded=\"true\"\n      />\n      <p class=\"text-xs text-gray-600 mt-2\">\n        Rounded\n      </p>\n    </div>\n  </div>\n</template>\n",
+        "hasExample": true,
+        "examplePath": "image/Rounded"
+      },
+      {
+        "id": "without-preview",
+        "label": "Without Preview",
+        "description": "Image display without preview functionality by setting `preview` to false.",
+        "example": "<script setup lang=\"ts\">\nimport { Image } from '@fewangsit/wangsvue'\n\nconst sampleImage = 'https://picsum.photos/400/300'\n</script>\n\n<template>\n  <div class=\"flex flex-wrap gap-4\">\n    <div class=\"text-center\">\n      <Image\n        :src=\"sampleImage\"\n        :preview=\"false\"\n      />\n      <p class=\"text-xs text-gray-600 mt-2\">\n        Preview disabled\n      </p>\n    </div>\n  </div>\n</template>\n",
+        "hasExample": true,
+        "examplePath": "image/WithoutPreview"
+      },
+      {
+        "id": "gallery",
+        "label": "Gallery",
+        "description": "Image gallery with multiple images and thumbnail navigation using the `galleries` prop. The gallery provides navigation between multiple images in the preview overlay.",
+        "example": "<script setup lang=\"ts\">\nimport { Image } from '@fewangsit/wangsvue'\n\nconst mainImage = 'https://picsum.photos/400/300'\n\nconst galleryImages = [\n  { src: 'https://picsum.photos/400/300?random=1' },\n  { src: 'https://picsum.photos/400/300?random=2' },\n  { src: 'https://picsum.photos/400/300?random=3' },\n  { src: 'https://picsum.photos/400/300?random=4' }\n]\n</script>\n\n<template>\n  <div class=\"flex flex-wrap gap-4\">\n    <Image\n      :src=\"mainImage\"\n      :galleries=\"galleryImages\"\n      size=\"big\"\n    />\n  </div>\n</template>\n",
+        "hasExample": true,
+        "examplePath": "image/Gallery"
+      }
+    ]
+  },
+  {
     "name": "inputtext",
     "title": "InputText",
     "description": "InputText renders a text field to enter data.",
@@ -1528,6 +1819,446 @@
         "example": "<script setup lang=\"ts\">\nimport { Form, InputText } from '@fewangsit/wangsvue'\nimport type { FormPayload } from '@fewangsit/wangsvue/form'\n\nconst existingUsernames = ['admin', 'user', 'test', 'demo']\n\nconst checkDomainAvailability = async (value: string): Promise<boolean> => {\n  await new Promise(resolve => setTimeout(resolve, 800))\n  const unavailableDomains = ['google', 'facebook', 'microsoft']\n  return !unavailableDomains.some(domain => value.toLowerCase().includes(domain))\n}\n\nconst onSubmit = (payload: FormPayload) => {\n  console.log('Text form submitted:', payload.formValues)\n}\n\nconst onCancel = () => {\n  console.log('Form cancelled')\n}\n</script>\n\n<template>\n  <Form\n    :column-per-row=\"2\"\n    :buttons-template=\"['submit', 'cancel', 'clear']\"\n    submit-btn-label=\"Save Profile\"\n    @submit=\"onSubmit\"\n    @cancel=\"onCancel\"\n  >\n    <template #fields=\"{ formValues }\">\n      <InputText\n        label=\"Username\"\n        field-name=\"username\"\n        :use-validator=\"true\"\n        :mandatory=\"true\"\n        :max-length=\"20\"\n        :existing-values=\"existingUsernames\"\n        :prevent-input-on-max-length=\"true\"\n        placeholder=\"Choose username\"\n        field-info=\"Will be converted to uppercase\"\n        :validator-message=\"{\n          empty: 'Username is required',\n          exceed: 'Username must not exceed 20 characters',\n          exist: 'This username is already taken'\n        }\"\n      />\n\n      <InputText\n        label=\"Company Domain\"\n        field-name=\"companyDomain\"\n        :use-validator=\"true\"\n        :mandatory=\"true\"\n        :check-availability=\"checkDomainAvailability\"\n        :allowed-characters=\"/^[a-zA-Z0-9]*$/\"\n        placeholder=\"Enter company domain\"\n        field-info=\"Only letters and numbers allowed\"\n        :validator-message=\"{\n          empty: 'Company domain is required',\n          exist: 'This domain name is not available'\n        }\"\n      />\n\n      <div class=\"col-span-2\">\n        <InputText\n          label=\"Bio\"\n          field-name=\"bio\"\n          :use-validator=\"true\"\n          :max-length=\"200\"\n          :prevent-input-on-max-length=\"true\"\n          :allowed-characters=\"/^[a-zA-Z0-9\\s.,!?-]*$/\"\n          placeholder=\"Tell us about yourself\"\n          field-info=\"Letters, numbers, spaces and basic punctuation only\"\n          :validator-message=\"{\n            exceed: 'Bio must not exceed 200 characters'\n          }\"\n        />\n      </div>\n\n      <InputText\n        label=\"Website\"\n        field-name=\"website\"\n        :use-validator=\"true\"\n        type=\"url\"\n        :use-protocol=\"true\"\n        placeholder=\"https://example.com\"\n        field-info=\"Optional website URL\"\n        :validator-message=\"{\n          invalidFormat: 'Please enter a valid URL with protocol'\n        }\"\n      />\n\n      <InputText\n        label=\"Phone Number\"\n        field-name=\"phone\"\n        :use-validator=\"true\"\n        :allowed-characters=\"/^[0-9+\\-\\s()]*$/\"\n        :validate-on-blur=\"true\"\n        placeholder=\"Enter phone number\"\n        field-info=\"Numbers, +, -, spaces, parentheses only\"\n      />\n\n      <!-- Conditional field using formValues -->\n      <div\n        v-if=\"formValues.companyDomain\"\n        class=\"col-span-2\"\n      >\n        <InputText\n          label=\"Company Description\"\n          field-name=\"companyDescription\"\n          :use-validator=\"true\"\n          :max-length=\"500\"\n          placeholder=\"Describe your company\"\n          field-info=\"Shown because company domain is provided\"\n          :validator-message=\"{\n            exceed: 'Description must not exceed 500 characters'\n          }\"\n        />\n      </div>\n    </template>\n  </Form>\n</template>\n",
         "hasExample": true,
         "examplePath": "inputtext/FormIntegration"
+      }
+    ]
+  },
+  {
+    "name": "imagecompressor",
+    "title": "ImageCompressor",
+    "description": "Handle image input and compression.",
+    "sections": [
+      {
+        "id": "import",
+        "label": "Import",
+        "description": "```ts\nimport { ImageCompressor } from '@fewangsit/wangsvue';\n```",
+        "example": "",
+        "hasExample": false,
+        "examplePath": null
+      },
+      {
+        "id": "basic",
+        "label": "Basic",
+        "description": "Basic image compressor with single image input and compression functionality.",
+        "example": "<script setup lang=\"ts\">\nimport { ImageCompressor } from '@fewangsit/wangsvue'\nimport type { ImageCompressorPayload } from '@fewangsit/wangsvue/imagecompressor'\n\nconst onApply = (payload: ImageCompressorPayload) => {\n  console.log('Image compressed:', payload)\n}\n</script>\n\n<template>\n  <ImageCompressor @apply=\"onApply\" />\n</template>\n",
+        "hasExample": true,
+        "examplePath": "imagecompressor/Basic"
+      },
+      {
+        "id": "multiple-images",
+        "label": "Multiple Images",
+        "description": "Image compressor that allows multiple image selection and compression.",
+        "example": "<script setup lang=\"ts\">\nimport { ImageCompressor } from '@fewangsit/wangsvue'\nimport type { ImageCompressorPayload } from '@fewangsit/wangsvue/imagecompressor'\n\nconst onApply = (payload: ImageCompressorPayload) => {\n  console.log('Multiple images compressed:', payload)\n}\n</script>\n\n<template>\n  <ImageCompressor\n    :multiple=\"true\"\n    @apply=\"onApply\"\n  />\n</template>\n",
+        "hasExample": true,
+        "examplePath": "imagecompressor/Multiple"
+      },
+      {
+        "id": "sizes",
+        "label": "Sizes",
+        "description": "",
+        "example": "<script setup lang=\"ts\">\nimport { ImageCompressor } from '@fewangsit/wangsvue'\nimport type { ImageCompressorPayload } from '@fewangsit/wangsvue/imagecompressor'\n\nconst onApply = (payload: ImageCompressorPayload) => {\n  console.log('Image compressed:', payload)\n}\n</script>\n\n<template>\n  <div class=\"flex flex-wrap items-end gap-6\">\n    <div class=\"text-center\">\n      <ImageCompressor\n        image-preview-size=\"small\"\n        @apply=\"onApply\"\n      />\n      <p class=\"text-xs text-gray-600 mt-2\">\n        Small (30px)\n      </p>\n    </div>\n\n    <div class=\"text-center\">\n      <ImageCompressor\n        image-preview-size=\"medium\"\n        @apply=\"onApply\"\n      />\n      <p class=\"text-xs text-gray-600 mt-2\">\n        Medium (80px)\n      </p>\n    </div>\n\n    <div class=\"text-center\">\n      <ImageCompressor\n        image-preview-size=\"big\"\n        @apply=\"onApply\"\n      />\n      <p class=\"text-xs text-gray-600 mt-2\">\n        Big (125px)\n      </p>\n    </div>\n  </div>\n</template>\n",
+        "hasExample": true,
+        "examplePath": "imagecompressor/Sizes"
+      },
+      {
+        "id": "rounded",
+        "label": "Rounded",
+        "description": "Image compressor with rounded preview display.",
+        "example": "<script setup lang=\"ts\">\nimport { ImageCompressor } from '@fewangsit/wangsvue'\nimport type { ImageCompressorPayload } from '@fewangsit/wangsvue/imagecompressor'\n\nconst onApply = (payload: ImageCompressorPayload) => {\n  console.log('Image compressed:', payload)\n}\n</script>\n\n<template>\n  <div class=\"flex flex-wrap items-center gap-6\">\n    <div class=\"text-center\">\n      <ImageCompressor\n        image-preview-size=\"big\"\n        @apply=\"onApply\"\n      />\n      <p class=\"text-xs text-gray-600 mt-2\">\n        Default\n      </p>\n    </div>\n\n    <div class=\"text-center\">\n      <ImageCompressor\n        image-preview-size=\"big\"\n        :rounded=\"true\"\n        @apply=\"onApply\"\n      />\n      <p class=\"text-xs text-gray-600 mt-2\">\n        Rounded\n      </p>\n    </div>\n  </div>\n</template>\n",
+        "hasExample": true,
+        "examplePath": "imagecompressor/Rounded"
+      },
+      {
+        "id": "file-types",
+        "label": "File Types",
+        "description": "Image compressor with different output file types (WebP, JPEG, JPG).",
+        "example": "<script setup lang=\"ts\">\nimport { ImageCompressor } from '@fewangsit/wangsvue'\nimport type { ImageCompressorPayload } from '@fewangsit/wangsvue/imagecompressor'\n\nconst onApply = (payload: ImageCompressorPayload) => {\n  console.log('Image compressed as:', payload.compressed.type, payload)\n}\n</script>\n\n<template>\n  <div class=\"flex flex-wrap items-center gap-6\">\n    <div class=\"text-center\">\n      <ImageCompressor\n        file-type=\"webp\"\n        @apply=\"onApply\"\n      />\n      <p class=\"text-xs text-gray-600 mt-2\">\n        WebP Format\n      </p>\n    </div>\n\n    <div class=\"text-center\">\n      <ImageCompressor\n        file-type=\"jpeg\"\n        @apply=\"onApply\"\n      />\n      <p class=\"text-xs text-gray-600 mt-2\">\n        JPEG Format\n      </p>\n    </div>\n\n    <div class=\"text-center\">\n      <ImageCompressor\n        file-type=\"jpg\"\n        @apply=\"onApply\"\n      />\n      <p class=\"text-xs text-gray-600 mt-2\">\n        JPG Format\n      </p>\n    </div>\n  </div>\n</template>\n",
+        "hasExample": true,
+        "examplePath": "imagecompressor/FileTypes"
+      },
+      {
+        "id": "form-integration",
+        "label": "Form Integration",
+        "description": "Image compressor integrated with form validation including field labels and validation messages.",
+        "example": "<script setup lang=\"ts\">\nimport { Form, ImageCompressor } from '@fewangsit/wangsvue'\nimport type { FormPayload } from '@fewangsit/wangsvue/form'\n\nconst onSubmit = (payload: FormPayload) => {\n  console.log('Form submitted:', payload.formValues)\n}\n</script>\n\n<template>\n  <Form\n    :buttons-template=\"['submit', 'clear']\"\n    hide-stay-checkbox\n    @submit=\"onSubmit\"\n  >\n    <template #fields>\n      <ImageCompressor\n        label=\"Profile Photo\"\n        field-name=\"profilePhoto\"\n        :use-validator=\"true\"\n        :mandatory=\"true\"\n        :validator-message=\"{ empty: 'Profile photo is required' }\"\n      />\n    </template>\n  </Form>\n</template>\n",
+        "hasExample": true,
+        "examplePath": "imagecompressor/FormIntegration"
+      }
+    ]
+  },
+  {
+    "name": "inlinemessage",
+    "title": "InlineMessage",
+    "description": "InlineMessage component is useful in cases where a single message needs to be displayed related to an element such as forms. It has one property, severity of the message.",
+    "sections": [
+      {
+        "id": "import",
+        "label": "Import",
+        "description": "```ts\nimport { InlineMessage } from '@fewangsit/wangsvue';\n```",
+        "example": "",
+        "hasExample": false,
+        "examplePath": null
+      },
+      {
+        "id": "basic",
+        "label": "Basic",
+        "description": "Basic inline message with default secondary severity and message text.",
+        "example": "<script setup lang=\"ts\">\nimport { InlineMessage } from '@fewangsit/wangsvue'\n</script>\n\n<template>\n  <InlineMessage message=\"This is a basic inline message.\" />\n</template>\n",
+        "hasExample": true,
+        "examplePath": "inlinemessage/Basic"
+      },
+      {
+        "id": "severity",
+        "label": "Severity",
+        "description": "",
+        "example": "<script setup lang=\"ts\">\nimport { InlineMessage } from '@fewangsit/wangsvue'\n</script>\n\n<template>\n  <div class=\"flex flex-col gap-4\">\n    <InlineMessage\n      severity=\"success\"\n      message=\"Operation completed successfully!\"\n    />\n\n    <InlineMessage\n      severity=\"danger\"\n      message=\"An error occurred while processing your request.\"\n    />\n\n    <InlineMessage\n      severity=\"secondary\"\n      message=\"This is an informational message.\"\n    />\n  </div>\n</template>\n",
+        "hasExample": true,
+        "examplePath": "inlinemessage/Severity"
+      },
+      {
+        "id": "with-title",
+        "label": "With Title",
+        "description": "InlineMessage with both title and message content.",
+        "example": "<script setup lang=\"ts\">\nimport { InlineMessage } from '@fewangsit/wangsvue'\n</script>\n\n<template>\n  <div class=\"flex flex-col gap-4\">\n    <InlineMessage\n      severity=\"success\"\n      title=\"Success\"\n      message=\"Your changes have been saved successfully.\"\n    />\n\n    <InlineMessage\n      severity=\"danger\"\n      title=\"Validation Error\"\n      message=\"Please check the following fields and try again.\"\n    />\n  </div>\n</template>\n",
+        "hasExample": true,
+        "examplePath": "inlinemessage/WithTitle"
+      },
+      {
+        "id": "with-lists",
+        "label": "With Lists",
+        "description": "InlineMessage displaying a list of items after the main message.",
+        "example": "<script setup lang=\"ts\">\nimport { InlineMessage } from '@fewangsit/wangsvue'\n\nconst errorList = [\n  'Email field is required',\n  'Password must be at least 8 characters',\n  'Phone number format is invalid'\n]\n\nconst successList = [\n  'Profile updated',\n  'Email verified',\n  'Preferences saved'\n]\n</script>\n\n<template>\n  <div class=\"flex flex-col gap-4\">\n    <InlineMessage\n      severity=\"danger\"\n      title=\"Validation Errors\"\n      message=\"Please fix the following issues:\"\n      :lists=\"errorList\"\n    />\n\n    <InlineMessage\n      severity=\"success\"\n      title=\"Changes Applied\"\n      message=\"The following updates were completed:\"\n      :lists=\"successList\"\n    />\n  </div>\n</template>\n",
+        "hasExample": true,
+        "examplePath": "inlinemessage/WithLists"
+      },
+      {
+        "id": "removable",
+        "label": "Removable",
+        "description": "InlineMessage with close button functionality for user dismissal.",
+        "example": "<script setup lang=\"ts\">\nimport { InlineMessage } from '@fewangsit/wangsvue'\nimport { ref } from 'vue'\n\nconst showMessage = ref(true)\n\nconst onClose = () => {\n  showMessage.value = false\n  setTimeout(() => {\n    showMessage.value = true\n  }, 2000)\n}\n</script>\n\n<template>\n  <div>\n    <InlineMessage\n      v-if=\"showMessage\"\n      severity=\"secondary\"\n      title=\"Dismissible Message\"\n      message=\"Click the close button to dismiss this message. It will reappear after 2 seconds.\"\n      :removable=\"true\"\n      @close=\"onClose\"\n    />\n    <p\n      v-else\n      class=\"text-gray-500 text-sm\"\n    >\n      Message dismissed. Will reappear in 2 seconds...\n    </p>\n  </div>\n</template>\n",
+        "hasExample": true,
+        "examplePath": "inlinemessage/Removable"
+      },
+      {
+        "id": "loading-state",
+        "label": "Loading State",
+        "description": "InlineMessage with loading state display.",
+        "example": "<script setup lang=\"ts\">\nimport { InlineMessage } from '@fewangsit/wangsvue'\n</script>\n\n<template>\n  <div class=\"flex flex-col gap-4\">\n    <InlineMessage\n      severity=\"secondary\"\n      title=\"Processing\"\n      message=\"Please wait while we process your request...\"\n      :loading=\"true\"\n    />\n\n    <InlineMessage\n      severity=\"success\"\n      message=\"Loading complete!\"\n      :loading=\"false\"\n    />\n  </div>\n</template>\n",
+        "hasExample": true,
+        "examplePath": "inlinemessage/Loading"
+      }
+    ]
+  },
+  {
+    "name": "progressbar",
+    "title": "ProgressBar",
+    "description": "Display progress of a task with customizable appearance and value positioning.",
+    "sections": [
+      {
+        "id": "import",
+        "label": "Import",
+        "description": "```ts\nimport { ProgressBar } from '@fewangsit/wangsvue';\n```",
+        "example": "",
+        "hasExample": false,
+        "examplePath": null
+      },
+      {
+        "id": "basic",
+        "label": "Basic",
+        "description": "Basic progress bar with determinate mode showing current progress value.",
+        "example": "<script setup lang=\"ts\">\nimport { ProgressBar } from '@fewangsit/wangsvue'\n</script>\n\n<template>\n  <div class=\"flex flex-col gap-4\">\n    <ProgressBar\n      :value=\"25\"\n      severity=\"primary\"\n    />\n\n    <ProgressBar\n      :value=\"50\"\n      severity=\"primary\"\n    />\n\n    <ProgressBar\n      :value=\"75\"\n      severity=\"primary\"\n    />\n\n    <ProgressBar\n      :value=\"100\"\n      severity=\"primary\"\n    />\n  </div>\n</template>\n",
+        "hasExample": true,
+        "examplePath": "progressbar/Basic"
+      },
+      {
+        "id": "severity",
+        "label": "Severity",
+        "description": "",
+        "example": "<script setup lang=\"ts\">\nimport { ProgressBar } from '@fewangsit/wangsvue'\n</script>\n\n<template>\n  <div class=\"flex flex-col gap-4\">\n    <ProgressBar\n      :value=\"60\"\n      severity=\"primary\"\n    />\n\n    <ProgressBar\n      :value=\"60\"\n      severity=\"success\"\n    />\n\n    <ProgressBar\n      :value=\"60\"\n      severity=\"danger\"\n    />\n\n    <ProgressBar\n      :value=\"60\"\n      severity=\"warning\"\n    />\n\n    <ProgressBar\n      :value=\"60\"\n      severity=\"dark\"\n    />\n  </div>\n</template>\n",
+        "hasExample": true,
+        "examplePath": "progressbar/Severity"
+      },
+      {
+        "id": "value-position",
+        "label": "Value Position",
+        "description": "",
+        "example": "<script setup lang=\"ts\">\nimport { ProgressBar } from '@fewangsit/wangsvue'\n</script>\n\n<template>\n  <div class=\"flex flex-col gap-6\">\n    <div>\n      <p class=\"text-sm text-gray-600 mb-2\">\n        Right Side (Default)\n      </p>\n      <ProgressBar\n        :value=\"45\"\n        severity=\"primary\"\n        value-position=\"right-side\"\n      />\n    </div>\n\n    <div>\n      <p class=\"text-sm text-gray-600 mb-2\">\n        Left Side\n      </p>\n      <ProgressBar\n        :value=\"45\"\n        severity=\"success\"\n        value-position=\"left-side\"\n      />\n    </div>\n\n    <div>\n      <p class=\"text-sm text-gray-600 mb-2\">\n        Inside\n      </p>\n      <ProgressBar\n        :value=\"45\"\n        severity=\"warning\"\n        value-position=\"inside\"\n      />\n    </div>\n\n    <div>\n      <p class=\"text-sm text-gray-600 mb-2\">\n        Bottom\n      </p>\n      <ProgressBar\n        :value=\"45\"\n        severity=\"danger\"\n        value-position=\"bottom\"\n      />\n    </div>\n  </div>\n</template>\n",
+        "hasExample": true,
+        "examplePath": "progressbar/ValuePosition"
+      },
+      {
+        "id": "indeterminate-mode",
+        "label": "Indeterminate Mode",
+        "description": "ProgressBar in indeterminate mode for unknown progress duration.",
+        "example": "<script setup lang=\"ts\">\nimport { ProgressBar } from '@fewangsit/wangsvue'\n</script>\n\n<template>\n  <div class=\"flex flex-col gap-4\">\n    <ProgressBar\n      mode=\"indeterminate\"\n      severity=\"primary\"\n    />\n\n    <ProgressBar\n      mode=\"indeterminate\"\n      severity=\"success\"\n    />\n  </div>\n</template>\n",
+        "hasExample": true,
+        "examplePath": "progressbar/Indeterminate"
+      },
+      {
+        "id": "without-value",
+        "label": "Without Value",
+        "description": "ProgressBar with value display disabled.",
+        "example": "<script setup lang=\"ts\">\nimport { ProgressBar } from '@fewangsit/wangsvue'\n</script>\n\n<template>\n  <div class=\"flex flex-col gap-4\">\n    <ProgressBar\n      :value=\"70\"\n      severity=\"primary\"\n      :show-value=\"false\"\n    />\n\n    <ProgressBar\n      :value=\"40\"\n      severity=\"success\"\n      :show-value=\"false\"\n    />\n  </div>\n</template>\n",
+        "hasExample": true,
+        "examplePath": "progressbar/WithoutValue"
+      },
+      {
+        "id": "custom-label",
+        "label": "Custom Label",
+        "description": "ProgressBar with custom label content using the label slot.",
+        "example": "<script setup lang=\"ts\">\nimport { ProgressBar } from '@fewangsit/wangsvue'\n</script>\n\n<template>\n  <div class=\"flex flex-col gap-4\">\n    <ProgressBar\n      :value=\"35\"\n      severity=\"primary\"\n    >\n      <template #label=\"{ value }\">\n        {{ value }}% Complete\n      </template>\n    </ProgressBar>\n\n    <ProgressBar\n      :value=\"80\"\n      severity=\"success\"\n    >\n      <template #label=\"{ value }\">\n        {{ value }}/100 Tasks\n      </template>\n    </ProgressBar>\n\n    <ProgressBar\n      :value=\"15\"\n      severity=\"warning\"\n    >\n      <template #label=\"{ value }\">\n        Loading... {{ value }}%\n      </template>\n    </ProgressBar>\n  </div>\n</template>\n",
+        "hasExample": true,
+        "examplePath": "progressbar/CustomLabel"
+      },
+      {
+        "id": "animated",
+        "label": "Animated",
+        "description": "ProgressBar with animated progress that cycles between 0 and 100 automatically.",
+        "example": "<script setup lang=\"ts\">\nimport { ProgressBar } from '@fewangsit/wangsvue'\nimport { ref, onMounted, onUnmounted } from 'vue'\n\nconst progress = ref(0)\nconst isIncreasing = ref(true)\nlet intervalId: NodeJS.Timeout | null = null\n\nconst updateProgress = () => {\n  if (isIncreasing.value) {\n    progress.value += 1\n    if (progress.value >= 100) {\n      isIncreasing.value = false\n    }\n  } else {\n    progress.value -= 1\n    if (progress.value <= 0) {\n      isIncreasing.value = true\n    }\n  }\n}\n\nonMounted(() => {\n  intervalId = setInterval(updateProgress, 500)\n})\n\nonUnmounted(() => {\n  if (intervalId) {\n    clearInterval(intervalId)\n  }\n})\n</script>\n\n<template>\n  <div class=\"flex flex-col gap-4\">\n    <ProgressBar\n      :value=\"progress\"\n      severity=\"primary\"\n    />\n\n    <ProgressBar\n      :value=\"progress\"\n      severity=\"success\"\n      value-position=\"inside\"\n    >\n      <template #label=\"{ value }\">\n        {{ isIncreasing ? 'Loading' : 'Unloading' }}... {{ value }}%\n      </template>\n    </ProgressBar>\n  </div>\n</template>\n",
+        "hasExample": true,
+        "examplePath": "progressbar/Animated"
+      }
+    ]
+  },
+  {
+    "name": "animation",
+    "title": "Animation",
+    "description": "Animation is a lottie animation wrapper.",
+    "sections": [
+      {
+        "id": "import",
+        "label": "Import",
+        "description": "```ts\nimport { Animation } from '@fewangsit/wangsvue';\n```",
+        "example": "",
+        "hasExample": false,
+        "examplePath": null
+      },
+      {
+        "id": "basic",
+        "label": "Basic",
+        "description": "Basic animation with default autoplay and loop settings.",
+        "example": "<script setup lang=\"ts\">\nimport { Animation } from '@fewangsit/wangsvue'\n</script>\n\n<template>\n  <div class=\"flex justify-center\">\n    <Animation animation=\"no-data\" />\n  </div>\n</template>\n",
+        "hasExample": true,
+        "examplePath": "animation/Basic"
+      },
+      {
+        "id": "animation-types",
+        "label": "Animation Types",
+        "description": "Different built-in animation types available in the component.",
+        "example": "<script setup lang=\"ts\">\nimport { Animation } from '@fewangsit/wangsvue'\n</script>\n\n<template>\n  <div class=\"grid grid-cols-2 md:grid-cols-3 gap-6\">\n    <div class=\"text-center\">\n      <Animation animation=\"no-data\" />\n      <p class=\"text-xs text-gray-600 mt-2\">\n        No Data\n      </p>\n    </div>\n\n    <div class=\"text-center\">\n      <Animation animation=\"loading-plane\" />\n      <p class=\"text-xs text-gray-600 mt-2\">\n        Loading Plane\n      </p>\n    </div>\n\n    <div class=\"text-center\">\n      <Animation animation=\"loading-page\" />\n      <p class=\"text-xs text-gray-600 mt-2\">\n        Loading Page\n      </p>\n    </div>\n\n    <div class=\"text-center\">\n      <Animation animation=\"loading-table\" />\n      <p class=\"text-xs text-gray-600 mt-2\">\n        Loading Table\n      </p>\n    </div>\n\n    <div class=\"text-center\">\n      <Animation animation=\"scan-qr\" />\n      <p class=\"text-xs text-gray-600 mt-2\">\n        Scan QR\n      </p>\n    </div>\n  </div>\n</template>\n",
+        "hasExample": true,
+        "examplePath": "animation/Types"
+      },
+      {
+        "id": "autoplay-control",
+        "label": "Autoplay Control",
+        "description": "Animation with autoplay disabled, requiring manual control.",
+        "example": "<script setup lang=\"ts\">\nimport { Animation, Button } from '@fewangsit/wangsvue'\nimport { ref } from 'vue'\n\nconst isPlaying = ref(false)\nconst animationKey = ref(0)\n\nconst togglePlayPause = () => {\n  isPlaying.value = !isPlaying.value\n  animationKey.value++\n}\n</script>\n\n<template>\n  <div class=\"flex flex-col items-center gap-4\">\n    <Animation\n      :key=\"animationKey\"\n      animation=\"loading-plane\"\n      :autoplay=\"isPlaying\"\n    />\n    <div class=\"flex flex-col items-center gap-2\">\n      <p class=\"text-sm text-gray-600\">\n        Animation with manual play/pause control\n      </p>\n      <Button\n        :label=\"isPlaying ? 'Pause' : 'Play'\"\n        :severity=\"isPlaying ? 'danger' : 'success'\"\n        @click=\"togglePlayPause\"\n      />\n    </div>\n  </div>\n</template>\n",
+        "hasExample": true,
+        "examplePath": "animation/Autoplay"
+      },
+      {
+        "id": "loop-control",
+        "label": "Loop Control",
+        "description": "Animation with loop disabled for single playthrough.",
+        "example": "<script setup lang=\"ts\">\nimport { Animation, Button } from '@fewangsit/wangsvue'\nimport { ref } from 'vue'\n\nconst animationKey = ref(0)\n\nconst resetAnimation = () => {\n  animationKey.value++\n}\n</script>\n\n<template>\n  <div class=\"flex flex-col items-center gap-4\">\n    <Animation\n      :key=\"animationKey\"\n      animation=\"scan-qr\"\n      :loop=\"false\"\n    />\n    <div class=\"flex flex-col items-center gap-2\">\n      <p class=\"text-sm text-gray-600\">\n        Animation with loop disabled\n      </p>\n      <Button\n        label=\"Reset Animation\"\n        severity=\"secondary\"\n        @click=\"resetAnimation\"\n      />\n    </div>\n  </div>\n</template>\n",
+        "hasExample": true,
+        "examplePath": "animation/Loop"
+      }
+    ]
+  },
+  {
+    "name": "loading",
+    "title": "Loading",
+    "description": "Tag Samurai Loading Overlay Animation.",
+    "sections": [
+      {
+        "id": "import",
+        "label": "Import",
+        "description": "```ts\nimport { useLoadingStore } from '@fewangsit/wangsvue';\n```",
+        "example": "",
+        "hasExample": false,
+        "examplePath": null
+      },
+      {
+        "id": "basic",
+        "label": "Basic",
+        "description": "Basic loading store usage to control global loading state.",
+        "example": "<script setup lang=\"ts\">\nimport { useLoadingStore, Button, Loading } from '@fewangsit/wangsvue'\n\nconst { loading, setLoading } = useLoadingStore()\n\nconst showLoading = () => {\n  setLoading(true)\n  setTimeout(() => {\n    setLoading(false)\n  }, 2000)\n}\n</script>\n\n<template>\n  <div class=\"space-y-4\">\n    <div class=\"p-4 rounded-lg\">\n      <p class=\"text-sm text-gray-600 mb-2\">\n        Loading State: {{ loading ? 'Active' : 'Inactive' }}\n      </p>\n      <Button\n        label=\"Show Loading (2s)\"\n        severity=\"primary\"\n        :disabled=\"loading\"\n        @click=\"showLoading\"\n      />\n    </div>\n  </div>\n\n  <Loading />\n</template>\n",
+        "hasExample": true,
+        "examplePath": "loading/Basic"
+      },
+      {
+        "id": "with-message",
+        "label": "With Message",
+        "description": "Loading store with custom loading message display.",
+        "example": "<script setup lang=\"ts\">\nimport { useLoadingStore, Button } from '@fewangsit/wangsvue'\n\nconst { loading, message, setLoading } = useLoadingStore()\n\nconst showLoadingWithMessage = () => {\n  setLoading(true, 'Processing your request...')\n  setTimeout(() => {\n    setLoading(false)\n  }, 3000)\n}\n</script>\n\n<template>\n  <div class=\"space-y-4\">\n    <div class=\"p-4 rounded-lg\">\n      <p class=\"text-sm text-gray-600 mb-2\">\n        Loading State: {{ loading ? 'Active' : 'Inactive' }}\n      </p>\n      <p class=\"text-sm text-gray-600 mb-4\">\n        Message: {{ message || 'No message' }}\n      </p>\n      <Button\n        label=\"Show Loading with Message (3s)\"\n        severity=\"success\"\n        :disabled=\"loading\"\n        @click=\"showLoadingWithMessage\"\n      />\n    </div>\n  </div>\n\n  <Loading />\n</template>\n",
+        "hasExample": true,
+        "examplePath": "loading/WithMessage"
+      },
+      {
+        "id": "interactive-control",
+        "label": "Interactive Control",
+        "description": "Interactive demo showing how to control loading state with custom messages.",
+        "example": "<script setup lang=\"ts\">\nimport { useLoadingStore, Button } from '@fewangsit/wangsvue'\n\nconst { loading, message, setLoading } = useLoadingStore()\n\nconst scenarios = [\n  { label: 'Quick Loading (1s)', duration: 1000, message: 'Loading...' },\n  { label: 'Data Processing (3s)', duration: 3000, message: 'Processing your data...' },\n  { label: 'File Upload (5s)', duration: 5000, message: 'Uploading files...' }\n]\n\nconst runScenario = (scenario: typeof scenarios[0]) => {\n  setLoading(true, scenario.message)\n  setTimeout(() => {\n    setLoading(false)\n  }, scenario.duration)\n}\n</script>\n\n<template>\n  <div class=\"space-y-4\">\n    <div class=\"p-4 rounded-lg\">\n      <h4 class=\"font-semibold mb-2\">\n        Current State\n      </h4>\n      <p class=\"text-sm text-gray-600 mb-2\">\n        Loading: {{ loading ? 'Active' : 'Inactive' }}\n      </p>\n      <p class=\"text-sm text-gray-600 mb-4\">\n        Message: {{ message || 'No message' }}\n      </p>\n    </div>\n\n    <div class=\"space-y-2\">\n      <h4 class=\"font-semibold\">\n        Test Scenarios\n      </h4>\n      <div class=\"flex flex-wrap gap-2\">\n        <Button\n          v-for=\"scenario in scenarios\"\n          :key=\"scenario.label\"\n          :label=\"scenario.label\"\n          severity=\"primary\"\n          :disabled=\"loading\"\n          @click=\"runScenario(scenario)\"\n        />\n      </div>\n    </div>\n  </div>\n\n  <Loading />\n</template>\n",
+        "hasExample": true,
+        "examplePath": "loading/Interactive"
+      }
+    ]
+  },
+  {
+    "name": "timeline",
+    "title": "Timeline",
+    "description": "Timeline visualizes a series of chained events.",
+    "sections": [
+      {
+        "id": "import",
+        "label": "Import",
+        "description": "```ts\nimport { Timeline } from '@fewangsit/wangsvue';\n```",
+        "example": "",
+        "hasExample": false,
+        "examplePath": null
+      },
+      {
+        "id": "basic",
+        "label": "Basic",
+        "description": "Basic timeline showing a series of chained events with actions and timestamps.",
+        "example": "<script setup lang=\"ts\">\nimport { Timeline } from '@fewangsit/wangsvue'\nimport type { TimelineItem } from '@fewangsit/wangsvue/timeline'\n\nconst events: TimelineItem[] = [\n  {\n    _id: '1',\n    action: 'Project Created',\n    createdAt: '2024-01-15T10:30:00Z'\n  },\n  {\n    _id: '2',\n    action: 'Task Assigned',\n    createdAt: '2024-01-15T14:20:00Z'\n  },\n  {\n    _id: '3',\n    action: 'Status Updated',\n    createdAt: '2024-01-16T09:15:00Z'\n  },\n  {\n    _id: '4',\n    action: 'Project Completed',\n    createdAt: '2024-01-17T16:45:00Z'\n  }\n]\n</script>\n\n<template>\n  <Timeline :value=\"events\" />\n</template>\n",
+        "hasExample": true,
+        "examplePath": "timeline/Basic"
+      },
+      {
+        "id": "with-users",
+        "label": "With Users",
+        "description": "Timeline displaying events with user information and usernames.",
+        "example": "<script setup lang=\"ts\">\nimport { Timeline } from '@fewangsit/wangsvue'\nimport type { TimelineItem } from '@fewangsit/wangsvue/timeline'\n\nconst events: TimelineItem[] = [\n  {\n    _id: '1',\n    action: 'Project Created',\n    createdAt: '2024-01-15T10:30:00Z',\n    username: 'john.doe',\n    user: {\n      _id: 'user1',\n      nickName: 'John Doe'\n    }\n  },\n  {\n    _id: '2',\n    action: 'Task Assigned',\n    createdAt: '2024-01-15T14:20:00Z',\n    username: 'jane.smith',\n    user: {\n      _id: 'user2',\n      nickName: 'Jane Smith'\n    }\n  },\n  {\n    _id: '3',\n    action: 'Status Updated',\n    createdAt: '2024-01-16T09:15:00Z',\n    username: 'mike.wilson',\n    user: {\n      _id: 'user3',\n      nickName: 'Mike Wilson'\n    }\n  },\n  {\n    _id: '4',\n    action: 'Project Completed',\n    createdAt: '2024-01-17T16:45:00Z',\n    username: 'sarah.johnson',\n    user: {\n      _id: 'user4',\n      nickName: 'Sarah Johnson'\n    }\n  }\n]\n</script>\n\n<template>\n  <Timeline :value=\"events\" />\n</template>\n",
+        "hasExample": true,
+        "examplePath": "timeline/WithUsers"
+      },
+      {
+        "id": "with-details",
+        "label": "With Details",
+        "description": "Timeline showing events with detailed information and various content types.",
+        "example": "<script setup lang=\"ts\">\nimport { Timeline } from '@fewangsit/wangsvue'\nimport type { TimelineItem } from '@fewangsit/wangsvue/timeline'\n\nconst events: TimelineItem[] = [\n  {\n    _id: '1',\n    action: 'Project Created',\n    createdAt: '2024-01-15T10:30:00Z',\n    username: 'john.doe',\n    detail: {\n      type: 'text',\n      value: 'New project \"Website Redesign\" has been created with initial requirements.'\n    }\n  },\n  {\n    _id: '2',\n    action: 'Task Assigned',\n    createdAt: '2024-01-15T14:20:00Z',\n    username: 'jane.smith',\n    detail: {\n      type: 'bullet',\n      value: [\n        'Frontend Development',\n        'UI/UX Design',\n        'Backend Integration'\n      ]\n    }\n  },\n  {\n    _id: '3',\n    action: 'Status Updated',\n    createdAt: '2024-01-16T09:15:00Z',\n    username: 'mike.wilson',\n    detail: {\n      type: 'badge',\n      label: 'In Progress',\n      severity: 'warning'\n    }\n  },\n  {\n    _id: '4',\n    action: 'Project Completed',\n    createdAt: '2024-01-17T16:45:00Z',\n    username: 'sarah.johnson',\n    detail: {\n      type: 'badge',\n      label: 'Completed',\n      severity: 'success'\n    }\n  }\n]\n</script>\n\n<template>\n  <Timeline :value=\"events\" />\n</template>\n",
+        "hasExample": true,
+        "examplePath": "timeline/WithDetails"
+      },
+      {
+        "id": "aligned-details",
+        "label": "Aligned Details",
+        "description": "Timeline comparison showing the difference between aligned and non-aligned detail values with complex object details containing multiple key-value pairs.",
+        "example": "<script setup lang=\"ts\">\nimport { Timeline } from '@fewangsit/wangsvue'\nimport type { TimelineItem } from '@fewangsit/wangsvue/timeline'\n\nconst complexEvent: TimelineItem = {\n  _id: '18',\n  createdAt: '2024-12-02T12:35:52.037Z',\n  action: 'PBI Reported Bug E2E Testing Dev',\n  detail: {\n    'Task': {\n      type: 'userText',\n      user: {\n        _id: '66d1771c1ebe5344bc2b9dab',\n        nickName: 'Kur'\n      },\n      text: 'Slicing blablabla'\n    },\n    'Modul': 'Transfer',\n    'Sub Modul': 'Transaksi',\n    'Test Steps': {\n      type: 'bullet',\n      value: ['Deskripsi 1', 'Deskripsi 2']\n    },\n    'Steps': {\n      type: 'bullet',\n      value: ['Deskripsi 1', 'Deskripsi 2']\n    },\n    'Deskripsi': {\n      type: 'json',\n      value: {\n        type: 'doc',\n        content: [\n          {\n            type: 'paragraph',\n            content: [\n              {\n                type: 'text',\n                text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras odio diam, mollis nec nulla vitae, commodo mattis magna.'\n              }\n            ]\n          }\n        ]\n      }\n    },\n    'Task Terkait': {\n      type: 'bullet',\n      value: [\n        {\n          type: 'userText',\n          user: {\n            _id: '66d1771c1ebe5344bc2b9dab',\n            nickName: 'Yusuf'\n          },\n          text: 'Diagram. Audit. Schedule'\n        },\n        {\n          type: 'userText',\n          user: {\n            _id: '66d1771c1ebe5344bc2b9dab',\n            nickName: 'Yusuf'\n          },\n          text: 'Diagram. Damage. Damage'\n        }\n      ]\n    }\n  }\n}\n\nconst events: TimelineItem[] = [complexEvent]\n</script>\n\n<template>\n  <div class=\"space-y-8\">\n    <div>\n      <h4 class=\"text-lg font-semibold mb-4 text-gray-800\">\n        Without Aligned Details (alignDetail: false)\n      </h4>\n      <div class=\"border rounded-lg p-4 bg-gray-50\">\n        <Timeline\n          :value=\"events\"\n          :align-detail=\"false\"\n        />\n      </div>\n    </div>\n\n    <div>\n      <h4 class=\"text-lg font-semibold mb-4 text-gray-800\">\n        With Aligned Details (alignDetail: true)\n      </h4>\n      <div class=\"border rounded-lg p-4 bg-blue-50\">\n        <Timeline\n          :value=\"events\"\n          :align-detail=\"true\"\n        />\n      </div>\n    </div>\n  </div>\n</template>\n",
+        "hasExample": true,
+        "examplePath": "timeline/AlignedDetails"
+      },
+      {
+        "id": "custom-templates",
+        "label": "Custom Templates",
+        "description": "Timeline with custom templates for dates, users, and details using slots.",
+        "example": "<script setup lang=\"ts\">\nimport { Timeline } from '@fewangsit/wangsvue'\nimport type { TimelineItem } from '@fewangsit/wangsvue/timeline'\n\nconst events: TimelineItem[] = [\n  {\n    _id: '1',\n    action: 'Project Created',\n    createdAt: '2024-01-15T10:30:00Z',\n    username: 'john.doe',\n    user: {\n      _id: 'user1',\n      nickName: 'John Doe'\n    },\n    detail: 'Project setup and initial configuration completed successfully.'\n  },\n  {\n    _id: '2',\n    action: 'Team Meeting',\n    createdAt: '2024-01-16T14:20:00Z',\n    username: 'jane.smith',\n    user: {\n      _id: 'user2',\n      nickName: 'Jane Smith'\n    },\n    detail: 'Discussed project milestones and assigned responsibilities to team members.'\n  },\n  {\n    _id: '3',\n    action: 'Code Review',\n    createdAt: '2024-01-17T09:15:00Z',\n    username: 'mike.wilson',\n    user: {\n      _id: 'user3',\n      nickName: 'Mike Wilson'\n    },\n    detail: 'Reviewed pull request #123 and provided feedback for improvements.'\n  }\n]\n</script>\n\n<template>\n  <Timeline :value=\"events\">\n    <template #date=\"{ date }\">\n      <span class=\"text-sm font-medium text-blue-600\">\n        📅 {{ new Date(date).toLocaleDateString() }}\n      </span>\n    </template>\n\n    <template #user=\"{ user }\">\n      <span class=\"inline-flex items-center gap-2 text-sm font-semibold text-green-700\">\n        👤 {{ user }}\n      </span>\n    </template>\n\n    <template #detail=\"{ value }\">\n      <div class=\"p-3 bg-gray-50 rounded-lg border-l-4 border-blue-400\">\n        <p class=\"text-sm text-gray-700\">\n          💬 {{ value }}\n        </p>\n      </div>\n    </template>\n  </Timeline>\n</template>\n",
+        "hasExample": true,
+        "examplePath": "timeline/CustomTemplates"
+      }
+    ]
+  },
+  {
+    "name": "username",
+    "title": "UserName",
+    "description": "Displays an user and profile image.",
+    "sections": [
+      {
+        "id": "import",
+        "label": "Import",
+        "description": "```ts\nimport { UserName } from '@fewangsit/wangsvue';\n```",
+        "example": "",
+        "hasExample": false,
+        "examplePath": null
+      },
+      {
+        "id": "basic",
+        "label": "Basic",
+        "description": "Basic usage showing user name with profile picture.",
+        "example": "<script setup lang=\"ts\">\nimport { UserName } from '@fewangsit/wangsvue'\nimport type { GeneralUser } from '@fewangsit/wangsvue/username'\n\nconst user: GeneralUser = {\n  _id: '1',\n  firstName: 'John',\n  lastName: 'Doe',\n  fullName: 'John Doe',\n  email: 'john.doe@example.com',\n  nickName: 'johndoe',\n  position: 'Software Engineer',\n  division: 'Engineering',\n  profilePicture: 'https://picsum.photos/64/64?random=1'\n}\n</script>\n\n<template>\n  <UserName :user=\"user\" />\n</template>\n",
+        "hasExample": true,
+        "examplePath": "username/Basic"
+      },
+      {
+        "id": "icon-type",
+        "label": "Icon Type",
+        "description": "Display user with icon instead of profile picture.",
+        "example": "<script setup lang=\"ts\">\nimport { UserName } from '@fewangsit/wangsvue'\nimport type { GeneralUser } from '@fewangsit/wangsvue/username'\n\nconst user: GeneralUser = {\n  _id: '2',\n  firstName: 'Jane',\n  lastName: 'Smith',\n  fullName: 'Jane Smith',\n  email: 'jane.smith@example.com',\n  nickName: 'janesmith',\n  position: 'Product Manager',\n  division: 'Product'\n}\n</script>\n\n<template>\n  <UserName\n    :user=\"user\"\n    type=\"icon\"\n  />\n</template>\n",
+        "hasExample": true,
+        "examplePath": "username/IconType"
+      },
+      {
+        "id": "without-name",
+        "label": "Without Name",
+        "description": "Show only the user's profile picture or icon without displaying the name.",
+        "example": "<script setup lang=\"ts\">\nimport { UserName } from '@fewangsit/wangsvue'\nimport type { GeneralUser } from '@fewangsit/wangsvue/username'\n\nconst userWithPicture: GeneralUser = {\n  _id: '3',\n  firstName: 'Alice',\n  lastName: 'Johnson',\n  fullName: 'Alice Johnson',\n  email: 'alice.johnson@example.com',\n  nickName: 'alicej',\n  position: 'Designer',\n  division: 'Design',\n  profilePicture: 'https://picsum.photos/64/64?random=3'\n}\n\nconst userWithIcon: GeneralUser = {\n  _id: '4',\n  firstName: 'Bob',\n  lastName: 'Wilson',\n  fullName: 'Bob Wilson',\n  email: 'bob.wilson@example.com',\n  nickName: 'bobw',\n  position: 'Developer',\n  division: 'Engineering'\n}\n</script>\n\n<template>\n  <div class=\"flex items-center gap-4\">\n    <div class=\"text-center\">\n      <UserName\n        :user=\"userWithPicture\"\n        :show-user-name=\"false\"\n        type=\"picture\"\n      />\n      <p class=\"text-sm text-gray-600 mt-2\">\n        Picture only\n      </p>\n    </div>\n\n    <div class=\"text-center\">\n      <UserName\n        :user=\"userWithIcon\"\n        :show-user-name=\"false\"\n        type=\"icon\"\n      />\n      <p class=\"text-sm text-gray-600 mt-2\">\n        Icon only\n      </p>\n    </div>\n  </div>\n</template>\n",
+        "hasExample": true,
+        "examplePath": "username/WithoutName"
+      },
+      {
+        "id": "custom-fields",
+        "label": "Custom Fields",
+        "description": "Use custom fields for user name and profile picture display.",
+        "example": "<script setup lang=\"ts\">\nimport { UserName } from '@fewangsit/wangsvue'\nimport type { GeneralUser } from '@fewangsit/wangsvue/username'\n\nconst userWithCustomFields: GeneralUser = {\n  _id: '5',\n  firstName: 'Charlie',\n  lastName: 'Brown',\n  fullName: 'Charlie Brown',\n  nickName: 'charlieb',\n  email: 'charlie.brown@example.com',\n  position: 'Senior Developer',\n  division: 'Engineering',\n  profilePicture: 'https://picsum.photos/64/64?random=5',\n  customDisplayName: 'Charlie B. (Senior Dev)',\n  customAvatar: 'https://picsum.photos/64/64?random=6'\n}\n</script>\n\n<template>\n  <div class=\"space-y-4\">\n    <div>\n      <h4 class=\"text-sm font-medium text-gray-700 mb-2\">\n        Default fields (fullName, profilePicture)\n      </h4>\n      <UserName :user=\"userWithCustomFields\" />\n    </div>\n\n    <div>\n      <h4 class=\"text-sm font-medium text-gray-700 mb-2\">\n        Custom name field (customDisplayName)\n      </h4>\n      <UserName\n        :user=\"userWithCustomFields\"\n        user-name-field=\"customDisplayName\"\n      />\n    </div>\n\n    <div>\n      <h4 class=\"text-sm font-medium text-gray-700 mb-2\">\n        Custom picture field (customAvatar)\n      </h4>\n      <UserName\n        :user=\"userWithCustomFields\"\n        profile-picture-field=\"customAvatar\"\n      />\n    </div>\n\n    <div>\n      <h4 class=\"text-sm font-medium text-gray-700 mb-2\">\n        Both custom fields\n      </h4>\n      <UserName\n        :user=\"userWithCustomFields\"\n        user-name-field=\"customDisplayName\"\n        profile-picture-field=\"customAvatar\"\n      />\n    </div>\n  </div>\n</template>\n",
+        "hasExample": true,
+        "examplePath": "username/CustomFields"
+      },
+      {
+        "id": "user-detail-panel",
+        "label": "User Detail Panel",
+        "description": "Interactive user display with detail panel functionality.",
+        "example": "<script setup lang=\"ts\">\nimport { UserName } from '@fewangsit/wangsvue'\nimport type { GeneralUser } from '@fewangsit/wangsvue/username'\n\nconst users: GeneralUser[] = [\n  {\n    _id: '6',\n    firstName: 'David',\n    lastName: 'Miller',\n    fullName: 'David Miller',\n    email: 'david.miller@example.com',\n    nickName: 'davidm',\n    position: 'Team Lead',\n    division: 'Engineering',\n    profilePicture: 'https://picsum.photos/64/64?random=6'\n  },\n  {\n    _id: '7',\n    firstName: 'Sarah',\n    lastName: 'Davis',\n    fullName: 'Sarah Davis',\n    email: 'sarah.davis@example.com',\n    nickName: 'sarahd',\n    position: 'UX Designer',\n    division: 'Design',\n    profilePicture: 'https://picsum.photos/64/64?random=7'\n  },\n  {\n    _id: '8',\n    firstName: 'Michael',\n    lastName: 'Johnson',\n    fullName: 'Michael Johnson',\n    email: 'michael.johnson@example.com',\n    nickName: 'michaelj',\n    position: 'DevOps Engineer',\n    division: 'Infrastructure'\n  }\n]\n\n// Mock function to simulate fetching user details\nconst getUserDetail = async (userId: string): Promise<GeneralUser> => {\n  // Simulate API delay\n  await new Promise(resolve => setTimeout(resolve, 500))\n\n  const user = users.find(u => u._id === userId)\n  if (!user) throw new Error('User not found')\n\n  // Return enhanced user details\n  return {\n    ...user,\n    // Add additional details that might be fetched\n    phone: '+1 (555) 123-4567',\n    department: user.division,\n    joinDate: '2023-01-15',\n    skills: ['JavaScript', 'Vue.js', 'TypeScript']\n  }\n}\n</script>\n\n<template>\n  <div class=\"space-y-4\">\n    <div>\n      <h4 class=\"text-sm font-medium text-gray-700 mb-2\">\n        Users with detail panel functionality\n      </h4>\n      <div class=\"flex flex-wrap gap-4\">\n        <UserName\n          v-for=\"user in users\"\n          :key=\"user._id\"\n          :user=\"user\"\n          :get-user-detail=\"getUserDetail\"\n          detail-user-path=\"/user/{userId}/profile\"\n        />\n      </div>\n    </div>\n\n    <div class=\"text-sm text-gray-600\">\n      <p>Click on any user to see their detail panel with additional information.</p>\n    </div>\n  </div>\n</template>\n",
+        "hasExample": true,
+        "examplePath": "username/DetailPanel"
+      }
+    ]
+  },
+  {
+    "name": "usergroup",
+    "title": "UserGroup",
+    "description": "Displays an user and profile image.",
+    "sections": [
+      {
+        "id": "import",
+        "label": "Import",
+        "description": "```ts\nimport { UserGroup } from '@fewangsit/wangsvue';\n```",
+        "example": "",
+        "hasExample": false,
+        "examplePath": null
+      },
+      {
+        "id": "basic",
+        "label": "Basic",
+        "description": "Basic usage showing a group of users with profile pictures and names.",
+        "example": "<script setup lang=\"ts\">\nimport { UserGroup } from '@fewangsit/wangsvue'\nimport type { GeneralUser } from '@fewangsit/wangsvue/username'\n\nconst users: GeneralUser[] = [\n  {\n    _id: '1',\n    firstName: 'John',\n    lastName: 'Doe',\n    fullName: 'John Doe',\n    nickName: 'johndoe',\n    email: 'john.doe@example.com',\n    position: 'Software Engineer',\n    division: 'Engineering',\n    profilePicture: 'https://picsum.photos/64/64?random=1'\n  },\n  {\n    _id: '2',\n    firstName: 'Jane',\n    lastName: 'Smith',\n    fullName: 'Jane Smith',\n    nickName: 'janesmith',\n    email: 'jane.smith@example.com',\n    position: 'Product Manager',\n    division: 'Product',\n    profilePicture: 'https://picsum.photos/64/64?random=2'\n  },\n  {\n    _id: '3',\n    firstName: 'Alice',\n    lastName: 'Johnson',\n    fullName: 'Alice Johnson',\n    nickName: 'alicej',\n    email: 'alice.johnson@example.com',\n    position: 'UX Designer',\n    division: 'Design',\n    profilePicture: 'https://picsum.photos/64/64?random=3'\n  },\n  {\n    _id: '4',\n    firstName: 'Bob',\n    lastName: 'Wilson',\n    fullName: 'Bob Wilson',\n    nickName: 'bobw',\n    email: 'bob.wilson@example.com',\n    position: 'DevOps Engineer',\n    division: 'Infrastructure',\n    profilePicture: 'https://picsum.photos/64/64?random=4'\n  }\n]\n</script>\n\n<template>\n  <UserGroup :users=\"users\" />\n</template>\n",
+        "hasExample": true,
+        "examplePath": "usergroup/Basic"
+      },
+      {
+        "id": "with-limit",
+        "label": "With Limit",
+        "description": "Display a limited number of users with a \"+N more\" indicator for additional users.",
+        "example": "<script setup lang=\"ts\">\nimport { UserGroup } from '@fewangsit/wangsvue'\nimport type { GeneralUser } from '@fewangsit/wangsvue/username'\n\nconst users: GeneralUser[] = [\n  {\n    _id: '1',\n    firstName: 'John',\n    lastName: 'Doe',\n    fullName: 'John Doe',\n    nickName: 'johndoe',\n    email: 'john.doe@example.com',\n    position: 'Software Engineer',\n    division: 'Engineering',\n    profilePicture: 'https://picsum.photos/64/64?random=1'\n  },\n  {\n    _id: '2',\n    firstName: 'Jane',\n    lastName: 'Smith',\n    fullName: 'Jane Smith',\n    nickName: 'janesmith',\n    email: 'jane.smith@example.com',\n    position: 'Product Manager',\n    division: 'Product',\n    profilePicture: 'https://picsum.photos/64/64?random=2'\n  },\n  {\n    _id: '3',\n    firstName: 'Alice',\n    lastName: 'Johnson',\n    fullName: 'Alice Johnson',\n    nickName: 'alicej',\n    email: 'alice.johnson@example.com',\n    position: 'UX Designer',\n    division: 'Design',\n    profilePicture: 'https://picsum.photos/64/64?random=3'\n  },\n  {\n    _id: '4',\n    firstName: 'Bob',\n    lastName: 'Wilson',\n    fullName: 'Bob Wilson',\n    nickName: 'bobw',\n    email: 'bob.wilson@example.com',\n    position: 'DevOps Engineer',\n    division: 'Infrastructure',\n    profilePicture: 'https://picsum.photos/64/64?random=4'\n  },\n  {\n    _id: '5',\n    firstName: 'Charlie',\n    lastName: 'Brown',\n    fullName: 'Charlie Brown',\n    nickName: 'charlieb',\n    email: 'charlie.brown@example.com',\n    position: 'Senior Developer',\n    division: 'Engineering',\n    profilePicture: 'https://picsum.photos/64/64?random=5'\n  },\n  {\n    _id: '6',\n    firstName: 'Diana',\n    lastName: 'Prince',\n    fullName: 'Diana Prince',\n    nickName: 'dianap',\n    email: 'diana.prince@example.com',\n    position: 'Team Lead',\n    division: 'Engineering',\n    profilePicture: 'https://picsum.photos/64/64?random=6'\n  }\n]\n</script>\n\n<template>\n  <div class=\"space-y-4\">\n    <div>\n      <h4 class=\"text-sm font-medium text-gray-700 mb-2\">\n        Limit to 3 users\n      </h4>\n      <UserGroup\n        :users=\"users\"\n        :limit=\"3\"\n      />\n    </div>\n\n    <div>\n      <h4 class=\"text-sm font-medium text-gray-700 mb-2\">\n        Limit to 2 users\n      </h4>\n      <UserGroup\n        :users=\"users\"\n        :limit=\"2\"\n      />\n    </div>\n  </div>\n</template>\n",
+        "hasExample": true,
+        "examplePath": "usergroup/WithLimit"
+      },
+      {
+        "id": "dialog-detail",
+        "label": "Dialog Detail",
+        "description": "Interactive user group with dialog detail functionality to view all users.",
+        "example": "<script setup lang=\"ts\">\nimport { UserGroup } from '@fewangsit/wangsvue'\nimport type { GeneralUser } from '@fewangsit/wangsvue/username'\n\nconst teamMembers: GeneralUser[] = [\n  {\n    _id: '1',\n    firstName: 'John',\n    lastName: 'Doe',\n    fullName: 'John Doe',\n    nickName: 'johndoe',\n    email: 'john.doe@example.com',\n    position: 'Software Engineer',\n    division: 'Engineering',\n    profilePicture: 'https://picsum.photos/64/64?random=1'\n  },\n  {\n    _id: '2',\n    firstName: 'Jane',\n    lastName: 'Smith',\n    fullName: 'Jane Smith',\n    nickName: 'janesmith',\n    email: 'jane.smith@example.com',\n    position: 'Product Manager',\n    division: 'Product',\n    profilePicture: 'https://picsum.photos/64/64?random=2'\n  },\n  {\n    _id: '3',\n    firstName: 'Alice',\n    lastName: 'Johnson',\n    fullName: 'Alice Johnson',\n    nickName: 'alicej',\n    email: 'alice.johnson@example.com',\n    position: 'UX Designer',\n    division: 'Design',\n    profilePicture: 'https://picsum.photos/64/64?random=3'\n  },\n  {\n    _id: '4',\n    firstName: 'Bob',\n    lastName: 'Wilson',\n    fullName: 'Bob Wilson',\n    nickName: 'bobw',\n    email: 'bob.wilson@example.com',\n    position: 'DevOps Engineer',\n    division: 'Infrastructure',\n    profilePicture: 'https://picsum.photos/64/64?random=4'\n  },\n  {\n    _id: '5',\n    firstName: 'Charlie',\n    lastName: 'Brown',\n    fullName: 'Charlie Brown',\n    nickName: 'charlieb',\n    email: 'charlie.brown@example.com',\n    position: 'Senior Developer',\n    division: 'Engineering',\n    profilePicture: 'https://picsum.photos/64/64?random=5'\n  }\n]\n</script>\n\n<template>\n  <div class=\"space-y-4\">\n    <div>\n      <h4 class=\"text-sm font-medium text-gray-700 mb-2\">\n        Team Members with Dialog Detail\n      </h4>\n      <UserGroup\n        :users=\"teamMembers\"\n        :limit=\"3\"\n        :with-dialog-detail=\"true\"\n        dialog-header-label=\"Team Members\"\n      />\n    </div>\n\n    <div class=\"text-sm text-gray-600\">\n      <p>Click on the \"+N more\" indicator to view all team members in a dialog.</p>\n    </div>\n  </div>\n</template>\n",
+        "hasExample": true,
+        "examplePath": "usergroup/DialogDetail"
+      },
+      {
+        "id": "large-group",
+        "label": "Large Group",
+        "description": "Display a large group of users demonstrating the component's handling of many users.",
+        "example": "<script setup lang=\"ts\">\nimport { UserGroup } from '@fewangsit/wangsvue'\nimport type { GeneralUser } from '@fewangsit/wangsvue/username'\n\nconst largeTeam: GeneralUser[] = [\n  {\n    _id: '1',\n    firstName: 'John',\n    lastName: 'Doe',\n    fullName: 'John Doe',\n    nickName: 'johndoe',\n    email: 'john.doe@example.com',\n    position: 'Software Engineer',\n    division: 'Engineering',\n    profilePicture: 'https://picsum.photos/64/64?random=1'\n  },\n  {\n    _id: '2',\n    firstName: 'Jane',\n    lastName: 'Smith',\n    fullName: 'Jane Smith',\n    nickName: 'janesmith',\n    email: 'jane.smith@example.com',\n    position: 'Product Manager',\n    division: 'Product',\n    profilePicture: 'https://picsum.photos/64/64?random=2'\n  },\n  {\n    _id: '3',\n    firstName: 'Alice',\n    lastName: 'Johnson',\n    fullName: 'Alice Johnson',\n    nickName: 'alicej',\n    email: 'alice.johnson@example.com',\n    position: 'UX Designer',\n    division: 'Design',\n    profilePicture: 'https://picsum.photos/64/64?random=3'\n  },\n  {\n    _id: '4',\n    firstName: 'Bob',\n    lastName: 'Wilson',\n    fullName: 'Bob Wilson',\n    nickName: 'bobw',\n    email: 'bob.wilson@example.com',\n    position: 'DevOps Engineer',\n    division: 'Infrastructure',\n    profilePicture: 'https://picsum.photos/64/64?random=4'\n  },\n  {\n    _id: '5',\n    firstName: 'Charlie',\n    lastName: 'Brown',\n    fullName: 'Charlie Brown',\n    nickName: 'charlieb',\n    email: 'charlie.brown@example.com',\n    position: 'Senior Developer',\n    division: 'Engineering',\n    profilePicture: 'https://picsum.photos/64/64?random=5'\n  },\n  {\n    _id: '6',\n    firstName: 'Diana',\n    lastName: 'Prince',\n    fullName: 'Diana Prince',\n    nickName: 'dianap',\n    email: 'diana.prince@example.com',\n    position: 'Team Lead',\n    division: 'Engineering',\n    profilePicture: 'https://picsum.photos/64/64?random=6'\n  },\n  {\n    _id: '7',\n    firstName: 'Edward',\n    lastName: 'Miller',\n    fullName: 'Edward Miller',\n    nickName: 'edwardm',\n    email: 'edward.miller@example.com',\n    position: 'QA Engineer',\n    division: 'Quality Assurance',\n    profilePicture: 'https://picsum.photos/64/64?random=7'\n  },\n  {\n    _id: '8',\n    firstName: 'Fiona',\n    lastName: 'Davis',\n    fullName: 'Fiona Davis',\n    nickName: 'fionad',\n    email: 'fiona.davis@example.com',\n    position: 'Business Analyst',\n    division: 'Business',\n    profilePicture: 'https://picsum.photos/64/64?random=8'\n  },\n  {\n    _id: '9',\n    firstName: 'George',\n    lastName: 'Taylor',\n    fullName: 'George Taylor',\n    nickName: 'georget',\n    email: 'george.taylor@example.com',\n    position: 'Data Scientist',\n    division: 'Data',\n    profilePicture: 'https://picsum.photos/64/64?random=9'\n  },\n  {\n    _id: '10',\n    firstName: 'Helen',\n    lastName: 'Anderson',\n    fullName: 'Helen Anderson',\n    nickName: 'helena',\n    email: 'helen.anderson@example.com',\n    position: 'Marketing Manager',\n    division: 'Marketing',\n    profilePicture: 'https://picsum.photos/64/64?random=10'\n  }\n]\n</script>\n\n<template>\n  <div class=\"space-y-4\">\n    <div>\n      <h4 class=\"text-sm font-medium text-gray-700 mb-2\">\n        Large Team (10 members, limit 4)\n      </h4>\n      <UserGroup\n        :users=\"largeTeam\"\n        :limit=\"4\"\n        :with-dialog-detail=\"true\"\n        dialog-header-label=\"All Team Members\"\n      />\n    </div>\n\n    <div>\n      <h4 class=\"text-sm font-medium text-gray-700 mb-2\">\n        Large Team (10 members, limit 2)\n      </h4>\n      <UserGroup\n        :users=\"largeTeam\"\n        :limit=\"2\"\n        :with-dialog-detail=\"true\"\n        dialog-header-label=\"Complete Team List\"\n      />\n    </div>\n\n    <div class=\"text-sm text-gray-600\">\n      <p>Demonstrates how the component handles large groups of users with different limit settings.</p>\n    </div>\n  </div>\n</template>\n",
+        "hasExample": true,
+        "examplePath": "usergroup/LargeGroup"
       }
     ]
   },
