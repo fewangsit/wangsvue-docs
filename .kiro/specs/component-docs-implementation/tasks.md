@@ -1,5 +1,5 @@
 
-- [ ] Animation
+- [x] Animation
 - [x] Badge
 - [ ] BadgeGroup
 - [ ] BaseTree

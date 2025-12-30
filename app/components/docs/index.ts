@@ -321,5 +321,11 @@ export const componentRegistry: Record<
   'progressbar/Indeterminate': () => import('./progressbar/Indeterminate.vue'),
   'progressbar/WithoutValue': () => import('./progressbar/WithoutValue.vue'),
   'progressbar/CustomLabel': () => import('./progressbar/CustomLabel.vue'),
-  'progressbar/Animated': () => import('./progressbar/Animated.vue')
+  'progressbar/Animated': () => import('./progressbar/Animated.vue'),
+
+  // Animation components
+  'animation/Basic': () => import('./animation/Basic.vue'),
+  'animation/Types': () => import('./animation/Types.vue'),
+  'animation/Autoplay': () => import('./animation/Autoplay.vue'),
+  'animation/Loop': () => import('./animation/Loop.vue')
 }
