@@ -352,5 +352,12 @@ export const componentRegistry: Record<
   'usergroup/Basic': () => import('./usergroup/Basic.vue'),
   'usergroup/WithLimit': () => import('./usergroup/WithLimit.vue'),
   'usergroup/DialogDetail': () => import('./usergroup/DialogDetail.vue'),
-  'usergroup/LargeGroup': () => import('./usergroup/LargeGroup.vue')
+  'usergroup/LargeGroup': () => import('./usergroup/LargeGroup.vue'),
+
+  // Tree components
+  'tree/Basic': () => import('./tree/Basic.vue'),
+  'tree/Selection': () => import('./tree/Selection.vue'),
+  'tree/Filter': () => import('./tree/Filter.vue'),
+  'tree/Loading': () => import('./tree/Loading.vue'),
+  'tree/CustomTemplate': () => import('./tree/CustomTemplate.vue')
 }

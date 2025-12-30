@@ -57,7 +57,7 @@
 - [x] Toast
 - [x] ToggleSwitch
 - [ ] TooltipSpan
-- [ ] Tree
+- [x] Tree
 - [x] UserGroup
 - [x] UserName
 - [x] ValidatorMessage
