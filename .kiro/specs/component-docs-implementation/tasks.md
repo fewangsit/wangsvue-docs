@@ -53,7 +53,7 @@
 - [ ] QuickFilter
 - [x] TabMenu
 - [x] Textarea
-- [ ] Timeline
+- [x] Timeline
 - [x] Toast
 - [x] ToggleSwitch
 - [ ] TooltipSpan

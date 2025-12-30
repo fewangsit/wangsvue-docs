@@ -332,5 +332,12 @@ export const componentRegistry: Record<
   // Loading components
   'loading/Basic': () => import('./loading/Basic.vue'),
   'loading/WithMessage': () => import('./loading/WithMessage.vue'),
-  'loading/Interactive': () => import('./loading/Interactive.vue')
+  'loading/Interactive': () => import('./loading/Interactive.vue'),
+
+  // Timeline components
+  'timeline/Basic': () => import('./timeline/Basic.vue'),
+  'timeline/WithUsers': () => import('./timeline/WithUsers.vue'),
+  'timeline/WithDetails': () => import('./timeline/WithDetails.vue'),
+  'timeline/AlignedDetails': () => import('./timeline/AlignedDetails.vue'),
+  'timeline/CustomTemplates': () => import('./timeline/CustomTemplates.vue')
 }
