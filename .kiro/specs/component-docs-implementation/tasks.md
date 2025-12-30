@@ -58,6 +58,6 @@
 - [x] ToggleSwitch
 - [ ] TooltipSpan
 - [ ] Tree
-- [ ] UserGroup
-- [ ] UserName
+- [x] UserGroup
+- [x] UserName
 - [x] ValidatorMessage

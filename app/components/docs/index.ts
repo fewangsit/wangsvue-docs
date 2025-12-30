@@ -346,5 +346,11 @@ export const componentRegistry: Record<
   'username/IconType': () => import('./username/IconType.vue'),
   'username/WithoutName': () => import('./username/WithoutName.vue'),
   'username/CustomFields': () => import('./username/CustomFields.vue'),
-  'username/DetailPanel': () => import('./username/DetailPanel.vue')
+  'username/DetailPanel': () => import('./username/DetailPanel.vue'),
+
+  // UserGroup components
+  'usergroup/Basic': () => import('./usergroup/Basic.vue'),
+  'usergroup/WithLimit': () => import('./usergroup/WithLimit.vue'),
+  'usergroup/DialogDetail': () => import('./usergroup/DialogDetail.vue'),
+  'usergroup/LargeGroup': () => import('./usergroup/LargeGroup.vue')
 }
