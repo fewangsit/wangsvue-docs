@@ -1925,6 +1925,92 @@
     ]
   },
   {
+    "name": "animation",
+    "title": "Animation",
+    "description": "Animation is a lottie animation wrapper.",
+    "sections": [
+      {
+        "id": "import-",
+        "label": "Import\r",
+        "description": "```ts\r\nimport { Animation } from '@fewangsit/wangsvue';\r\n```",
+        "example": "",
+        "hasExample": false,
+        "examplePath": null
+      },
+      {
+        "id": "basic-",
+        "label": "Basic\r",
+        "description": "Basic animation with default autoplay and loop settings.",
+        "example": "<script setup lang=\"ts\">\r\nimport { Animation } from '@fewangsit/wangsvue'\r\n</script>\r\n\r\n<template>\r\n  <div class=\"flex justify-center\">\r\n    <Animation animation=\"no-data\" />\r\n  </div>\r\n</template>\n",
+        "hasExample": true,
+        "examplePath": "animation/Basic"
+      },
+      {
+        "id": "animation-types-",
+        "label": "Animation Types\r",
+        "description": "Different built-in animation types available in the component.",
+        "example": "<script setup lang=\"ts\">\r\nimport { Animation } from '@fewangsit/wangsvue'\r\n</script>\r\n\r\n<template>\r\n  <div class=\"grid grid-cols-2 md:grid-cols-3 gap-6\">\r\n    <div class=\"text-center\">\r\n      <Animation animation=\"no-data\" />\r\n      <p class=\"text-xs text-gray-600 mt-2\">\r\n        No Data\r\n      </p>\r\n    </div>\r\n\r\n    <div class=\"text-center\">\r\n      <Animation animation=\"loading-plane\" />\r\n      <p class=\"text-xs text-gray-600 mt-2\">\r\n        Loading Plane\r\n      </p>\r\n    </div>\r\n\r\n    <div class=\"text-center\">\r\n      <Animation animation=\"loading-page\" />\r\n      <p class=\"text-xs text-gray-600 mt-2\">\r\n        Loading Page\r\n      </p>\r\n    </div>\r\n\r\n    <div class=\"text-center\">\r\n      <Animation animation=\"loading-table\" />\r\n      <p class=\"text-xs text-gray-600 mt-2\">\r\n        Loading Table\r\n      </p>\r\n    </div>\r\n\r\n    <div class=\"text-center\">\r\n      <Animation animation=\"scan-qr\" />\r\n      <p class=\"text-xs text-gray-600 mt-2\">\r\n        Scan QR\r\n      </p>\r\n    </div>\r\n  </div>\r\n</template>\n",
+        "hasExample": true,
+        "examplePath": "animation/Types"
+      },
+      {
+        "id": "autoplay-control-",
+        "label": "Autoplay Control\r",
+        "description": "Animation with autoplay disabled, requiring manual control.",
+        "example": "<script setup lang=\"ts\">\r\nimport { Animation, Button } from '@fewangsit/wangsvue'\r\nimport { ref } from 'vue'\r\n\r\nconst isPlaying = ref(false)\r\nconst animationKey = ref(0)\r\n\r\nconst togglePlayPause = () => {\r\n  isPlaying.value = !isPlaying.value\r\n  animationKey.value++\r\n}\r\n</script>\r\n\r\n<template>\r\n  <div class=\"flex flex-col items-center gap-4\">\r\n    <Animation\r\n      :key=\"animationKey\"\r\n      animation=\"loading-plane\"\r\n      :autoplay=\"isPlaying\"\r\n    />\r\n    <div class=\"flex flex-col items-center gap-2\">\r\n      <p class=\"text-sm text-gray-600\">\r\n        Animation with manual play/pause control\r\n      </p>\r\n      <Button\r\n        :label=\"isPlaying ? 'Pause' : 'Play'\"\r\n        :severity=\"isPlaying ? 'danger' : 'success'\"\r\n        @click=\"togglePlayPause\"\r\n      />\r\n    </div>\r\n  </div>\r\n</template>\r\n",
+        "hasExample": true,
+        "examplePath": "animation/Autoplay"
+      },
+      {
+        "id": "loop-control-",
+        "label": "Loop Control\r",
+        "description": "Animation with loop disabled for single playthrough.",
+        "example": "<script setup lang=\"ts\">\r\nimport { Animation, Button } from '@fewangsit/wangsvue'\r\nimport { ref } from 'vue'\r\n\r\nconst animationKey = ref(0)\r\n\r\nconst resetAnimation = () => {\r\n  animationKey.value++\r\n}\r\n</script>\r\n\r\n<template>\r\n  <div class=\"flex flex-col items-center gap-4\">\r\n    <Animation\r\n      :key=\"animationKey\"\r\n      animation=\"scan-qr\"\r\n      :loop=\"false\"\r\n    />\r\n    <div class=\"flex flex-col items-center gap-2\">\r\n      <p class=\"text-sm text-gray-600\">\r\n        Animation with loop disabled\r\n      </p>\r\n      <Button\r\n        label=\"Reset Animation\"\r\n        severity=\"secondary\"\r\n        @click=\"resetAnimation\"\r\n      />\r\n    </div>\r\n  </div>\r\n</template>\r\n",
+        "hasExample": true,
+        "examplePath": "animation/Loop"
+      }
+    ]
+  },
+  {
+    "name": "loading",
+    "title": "Loading",
+    "description": "Tag Samurai Loading Overlay Animation.",
+    "sections": [
+      {
+        "id": "import-",
+        "label": "Import\r",
+        "description": "```ts\r\nimport { useLoadingStore } from '@fewangsit/wangsvue';\r\n```",
+        "example": "",
+        "hasExample": false,
+        "examplePath": null
+      },
+      {
+        "id": "basic-",
+        "label": "Basic\r",
+        "description": "Basic loading store usage to control global loading state.",
+        "example": "<script setup lang=\"ts\">\r\nimport { useLoadingStore, Button, Loading } from '@fewangsit/wangsvue'\r\n\r\nconst { loading, setLoading } = useLoadingStore()\r\n\r\nconst showLoading = () => {\r\n  setLoading(true)\r\n  setTimeout(() => {\r\n    setLoading(false)\r\n  }, 2000)\r\n}\r\n</script>\r\n\r\n<template>\r\n  <div class=\"space-y-4\">\r\n    <div class=\"p-4 bg-gray-50 rounded-lg\">\r\n      <p class=\"text-sm text-gray-600 mb-2\">\r\n        Loading State: {{ loading ? 'Active' : 'Inactive' }}\r\n      </p>\r\n      <Button\r\n        label=\"Show Loading (2s)\"\r\n        severity=\"primary\"\r\n        :disabled=\"loading\"\r\n        @click=\"showLoading\"\r\n      />\r\n    </div>\r\n  </div>\r\n\r\n  <Loading />\r\n</template>\r\n",
+        "hasExample": true,
+        "examplePath": "loading/Basic"
+      },
+      {
+        "id": "with-message-",
+        "label": "With Message\r",
+        "description": "Loading store with custom loading message display.",
+        "example": "<script setup lang=\"ts\">\r\nimport { useLoadingStore, Button } from '@fewangsit/wangsvue'\r\n\r\nconst { loading, message, setLoading } = useLoadingStore()\r\n\r\nconst showLoadingWithMessage = () => {\r\n  setLoading(true, 'Processing your request...')\r\n  setTimeout(() => {\r\n    setLoading(false)\r\n  }, 3000)\r\n}\r\n</script>\r\n\r\n<template>\r\n  <div class=\"space-y-4\">\r\n    <div class=\"p-4 bg-gray-50 rounded-lg\">\r\n      <p class=\"text-sm text-gray-600 mb-2\">\r\n        Loading State: {{ loading ? 'Active' : 'Inactive' }}\r\n      </p>\r\n      <p class=\"text-sm text-gray-600 mb-4\">\r\n        Message: {{ message || 'No message' }}\r\n      </p>\r\n      <Button\r\n        label=\"Show Loading with Message (3s)\"\r\n        severity=\"success\"\r\n        :disabled=\"loading\"\r\n        @click=\"showLoadingWithMessage\"\r\n      />\r\n    </div>\r\n  </div>\r\n\r\n  <Loading />\r\n</template>\r\n",
+        "hasExample": true,
+        "examplePath": "loading/WithMessage"
+      },
+      {
+        "id": "interactive-control-",
+        "label": "Interactive Control\r",
+        "description": "Interactive demo showing how to control loading state with custom messages.",
+        "example": "<script setup lang=\"ts\">\r\nimport { useLoadingStore, Button } from '@fewangsit/wangsvue'\r\n\r\nconst { loading, message, setLoading } = useLoadingStore()\r\n\r\nconst scenarios = [\r\n  { label: 'Quick Loading (1s)', duration: 1000, message: 'Loading...' },\r\n  { label: 'Data Processing (3s)', duration: 3000, message: 'Processing your data...' },\r\n  { label: 'File Upload (5s)', duration: 5000, message: 'Uploading files...' }\r\n]\r\n\r\nconst runScenario = (scenario: typeof scenarios[0]) => {\r\n  setLoading(true, scenario.message)\r\n  setTimeout(() => {\r\n    setLoading(false)\r\n  }, scenario.duration)\r\n}\r\n</script>\r\n\r\n<template>\r\n  <div class=\"space-y-4\">\r\n    <div class=\"p-4 bg-gray-50 rounded-lg\">\r\n      <h4 class=\"font-semibold mb-2\">\r\n        Current State\r\n      </h4>\r\n      <p class=\"text-sm text-gray-600 mb-2\">\r\n        Loading: {{ loading ? 'Active' : 'Inactive' }}\r\n      </p>\r\n      <p class=\"text-sm text-gray-600 mb-4\">\r\n        Message: {{ message || 'No message' }}\r\n      </p>\r\n    </div>\r\n\r\n    <div class=\"space-y-2\">\r\n      <h4 class=\"font-semibold\">\r\n        Test Scenarios\r\n      </h4>\r\n      <div class=\"flex flex-wrap gap-2\">\r\n        <Button\r\n          v-for=\"scenario in scenarios\"\r\n          :key=\"scenario.label\"\r\n          :label=\"scenario.label\"\r\n          severity=\"primary\"\r\n          :disabled=\"loading\"\r\n          @click=\"runScenario(scenario)\"\r\n        />\r\n      </div>\r\n    </div>\r\n  </div>\r\n\r\n  <Loading />\r\n</template>\r\n",
+        "hasExample": true,
+        "examplePath": "loading/Interactive"
+      }
+    ]
+  },
+  {
     "name": "textarea",
     "title": "Textarea",
     "description": "Textarea is a multi-line text input element. Textarea is designed for longer text content with features like character counting and automatic height adjustment",

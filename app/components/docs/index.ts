@@ -327,5 +327,10 @@ export const componentRegistry: Record<
   'animation/Basic': () => import('./animation/Basic.vue'),
   'animation/Types': () => import('./animation/Types.vue'),
   'animation/Autoplay': () => import('./animation/Autoplay.vue'),
-  'animation/Loop': () => import('./animation/Loop.vue')
+  'animation/Loop': () => import('./animation/Loop.vue'),
+
+  // Loading components
+  'loading/Basic': () => import('./loading/Basic.vue'),
+  'loading/WithMessage': () => import('./loading/WithMessage.vue'),
+  'loading/Interactive': () => import('./loading/Interactive.vue')
 }

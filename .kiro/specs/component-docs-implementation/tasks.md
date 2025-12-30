@@ -44,7 +44,7 @@
 - [x] InputURL
 - [ ] InvisibleField
 - [ ] LiteDropdown
-- [ ] Loading
+- [x] Loading
 - [x] Menu
 - [ ] MultiSelect
 - [x] OverlayPanel
