@@ -224,6 +224,9 @@ export const componentRegistry: Record<
   'multiselect/Disabled': () => import('./multiselect/Disabled.vue'),
   'multiselect/Filter': () => import('./multiselect/Filter.vue'),
   'multiselect/HideHeaderCheckbox': () => import('./multiselect/HideHeaderCheckbox.vue'),
+  'multiselect/Controls': () => import('./multiselect/Controls.vue'),
+  'multiselect/TriggerSlot': () => import('./multiselect/TriggerSlot.vue'),
+  'multiselect/Display': () => import('./multiselect/Display.vue'),
   'multiselect/FormIntegration': () => import('./multiselect/FormIntegration.vue'),
 
   // InputPassword components

@@ -22,11 +22,11 @@
 - [x] DialogConfirm
 - [x] DialogForm
 - [ ] DialogSelectTree
-- [ ] Dropdown
+- [x] Dropdown
 - [ ] Editor
-- [ ] FieldWrapper
+- [-] FieldWrapper
 - [ ] FileUpload
-- [ ] FilterContainer
+- [x] FilterContainer
 - [x] Form
 - [ ] GalleryPreview
 - [x] Icon
@@ -46,7 +46,7 @@
 - [ ] LiteDropdown
 - [ ] Loading
 - [x] Menu
-- [ ] MultiSelect
+- [x] MultiSelect
 - [x] OverlayPanel
 - [ ] Paginator
 - [ ] ProgressBar

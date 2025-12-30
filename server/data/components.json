@@ -1174,6 +1174,30 @@
         "examplePath": "multiselect/HideHeaderCheckbox"
       },
       {
+        "id": "controls",
+        "label": "Controls",
+        "description": "Hide the input and control the overlay state from parent component using the `controls` prop.",
+        "example": "<script setup lang=\"ts\">\nimport { MultiSelect } from '@fewangsit/wangsvue'\nimport { ref } from 'vue'\n\nconst selectedItems = ref(['Option 1'])\nconst multiSelectRef = ref()\n\nconst options = [\n  'Option 1',\n  'Option 2',\n  'Option 3',\n  'Option 4'\n]\n\nconst showOverlay = () => {\n  multiSelectRef.value?.showOverlay()\n}\n\nconst hideOverlay = () => {\n  multiSelectRef.value?.hideHideOverlay()\n}\n</script>\n\n<template>\n  <div class=\"flex flex-col gap-4\">\n    <div class=\"flex gap-2\">\n      <button\n        class=\"px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600\"\n        @click=\"showOverlay\"\n      >\n        Show Options\n      </button>\n      <button\n        class=\"px-4 py-2 bg-gray-500 text-white rounded hover:bg-gray-600\"\n        @click=\"hideOverlay\"\n      >\n        Hide Options\n      </button>\n    </div>\n\n    <MultiSelect\n      ref=\"multiSelectRef\"\n      v-model=\"selectedItems\"\n      :options=\"options\"\n      label=\"Controlled MultiSelect\"\n      :controls=\"true\"\n    />\n  </div>\n</template>\n",
+        "hasExample": true,
+        "examplePath": "multiselect/Controls"
+      },
+      {
+        "id": "trigger-slot",
+        "label": "Trigger Slot",
+        "description": "Custom trigger slot allows you to replace the default trigger button with your own implementation.",
+        "example": "<script setup lang=\"ts\">\nimport { MultiSelect } from '@fewangsit/wangsvue'\nimport { ref } from 'vue'\n\nconst selectedItems = ref(['Option 2'])\n\nconst options = [\n  'Option 1',\n  'Option 2',\n  'Option 3',\n  'Option 4'\n]\n</script>\n\n<template>\n  <MultiSelect\n    v-model=\"selectedItems\"\n    :options=\"options\"\n    label=\"Custom Trigger MultiSelect\"\n  >\n    <template #trigger=\"{ disabled, visible, show, hide }\">\n      <button\n        :disabled=\"disabled\"\n        class=\"flex items-center gap-2 px-4 py-2 border rounded-lg hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed\"\n        :class=\"{ 'border-blue-500 bg-blue-50': visible }\"\n        @click=\"visible ? hide() : show()\"\n      >\n        <span class=\"text-2xl\">🎯</span>\n        <span>{{ selectedItems.length }} items selected</span>\n        <span class=\"ml-auto text-gray-400\">\n          {{ visible ? '▲' : '▼' }}\n        </span>\n      </button>\n    </template>\n  </MultiSelect>\n</template>\n",
+        "hasExample": true,
+        "examplePath": "multiselect/TriggerSlot"
+      },
+      {
+        "id": "display",
+        "label": "Display",
+        "description": "The `display` prop defines how selected items are displayed - either as chips (default) or comma-separated values.",
+        "example": "<script setup lang=\"ts\">\nimport { MultiSelect } from '@fewangsit/wangsvue'\nimport { ref } from 'vue'\n\nconst chipItems = ref(['Option 1', 'Option 2'])\nconst commaItems = ref(['Option 1', 'Option 2', 'Option 3'])\n\nconst options = [\n  'Option 1',\n  'Option 2',\n  'Option 3',\n  'Option 4',\n  'Option 5'\n]\n</script>\n\n<template>\n  <div class=\"flex flex-col gap-6\">\n    <div>\n      <h4 class=\"text-lg font-medium mb-2\">\n        Chip Display (Default)\n      </h4>\n      <MultiSelect\n        v-model=\"chipItems\"\n        :options=\"options\"\n        label=\"Chip Display\"\n        display=\"chip\"\n      />\n    </div>\n\n    <div>\n      <h4 class=\"text-lg font-medium mb-2\">\n        Comma Display\n      </h4>\n      <MultiSelect\n        v-model=\"commaItems\"\n        :options=\"options\"\n        label=\"Comma Display\"\n        display=\"comma\"\n      />\n    </div>\n  </div>\n</template>\n",
+        "hasExample": true,
+        "examplePath": "multiselect/Display"
+      },
+      {
         "id": "form-integration",
         "label": "Form Integration",
         "description": "MultiSelect integrated with form validation.",
