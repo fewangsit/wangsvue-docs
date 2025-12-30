@@ -259,5 +259,14 @@ export const componentRegistry: Record<
   'overlaypanel/Dismissable': () => import('./overlaypanel/Dismissable.vue'),
   'overlaypanel/CloseIcon': () => import('./overlaypanel/CloseIcon.vue'),
   'overlaypanel/Responsive': () => import('./overlaypanel/Responsive.vue'),
-  'overlaypanel/Template': () => import('./overlaypanel/Template.vue')
+  'overlaypanel/Template': () => import('./overlaypanel/Template.vue'),
+
+  // FilterContainer components
+  'filtercontainer/Basic': () => import('./filtercontainer/Basic.vue'),
+  'filtercontainer/Group': () => import('./filtercontainer/Group.vue'),
+  'filtercontainer/Category': () => import('./filtercontainer/Category.vue'),
+  'filtercontainer/MultiSelect': () => import('./filtercontainer/MultiSelect.vue'),
+  'filtercontainer/Dropdown': () => import('./filtercontainer/Dropdown.vue'),
+  'filtercontainer/Calendar': () => import('./filtercontainer/Calendar.vue'),
+  'filtercontainer/RangeNumber': () => import('./filtercontainer/RangeNumber.vue')
 }
