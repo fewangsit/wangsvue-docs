@@ -339,5 +339,12 @@ export const componentRegistry: Record<
   'timeline/WithUsers': () => import('./timeline/WithUsers.vue'),
   'timeline/WithDetails': () => import('./timeline/WithDetails.vue'),
   'timeline/AlignedDetails': () => import('./timeline/AlignedDetails.vue'),
-  'timeline/CustomTemplates': () => import('./timeline/CustomTemplates.vue')
+  'timeline/CustomTemplates': () => import('./timeline/CustomTemplates.vue'),
+
+  // UserName components
+  'username/Basic': () => import('./username/Basic.vue'),
+  'username/IconType': () => import('./username/IconType.vue'),
+  'username/WithoutName': () => import('./username/WithoutName.vue'),
+  'username/CustomFields': () => import('./username/CustomFields.vue'),
+  'username/DetailPanel': () => import('./username/DetailPanel.vue')
 }
