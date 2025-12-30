@@ -1,5 +1,5 @@
 ---
-inclusion: always
+alwaysApply: true
 ---
 # WangsVue Documentation Creation Guide
 

@@ -224,6 +224,9 @@ export const componentRegistry: Record<
   'multiselect/Disabled': () => import('./multiselect/Disabled.vue'),
   'multiselect/Filter': () => import('./multiselect/Filter.vue'),
   'multiselect/HideHeaderCheckbox': () => import('./multiselect/HideHeaderCheckbox.vue'),
+  'multiselect/Controls': () => import('./multiselect/Controls.vue'),
+  'multiselect/TriggerSlot': () => import('./multiselect/TriggerSlot.vue'),
+  'multiselect/Display': () => import('./multiselect/Display.vue'),
   'multiselect/FormIntegration': () => import('./multiselect/FormIntegration.vue'),
 
   // InputPassword components
@@ -260,6 +263,15 @@ export const componentRegistry: Record<
   'overlaypanel/CloseIcon': () => import('./overlaypanel/CloseIcon.vue'),
   'overlaypanel/Responsive': () => import('./overlaypanel/Responsive.vue'),
   'overlaypanel/Template': () => import('./overlaypanel/Template.vue'),
+
+  // FilterContainer components
+  'filtercontainer/Basic': () => import('./filtercontainer/Basic.vue'),
+  'filtercontainer/Group': () => import('./filtercontainer/Group.vue'),
+  'filtercontainer/Category': () => import('./filtercontainer/Category.vue'),
+  'filtercontainer/MultiSelect': () => import('./filtercontainer/MultiSelect.vue'),
+  'filtercontainer/Dropdown': () => import('./filtercontainer/Dropdown.vue'),
+  'filtercontainer/Calendar': () => import('./filtercontainer/Calendar.vue'),
+  'filtercontainer/RangeNumber': () => import('./filtercontainer/RangeNumber.vue'),
 
   // Toast components
   'toast/Basic': () => import('./toast/Basic.vue'),
