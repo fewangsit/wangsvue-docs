@@ -378,5 +378,12 @@ export const componentRegistry: Record<
   'calendar/SelectionModes': () => import('./calendar/SelectionModes.vue'),
   'calendar/WithTime': () => import('./calendar/WithTime.vue'),
   'calendar/DateRestrictions': () => import('./calendar/DateRestrictions.vue'),
-  'calendar/FormIntegration': () => import('./calendar/FormIntegration.vue')
+  'calendar/FormIntegration': () => import('./calendar/FormIntegration.vue'),
+
+  // FileUpload components
+  'fileupload/Basic': () => import('./fileupload/Basic.vue'),
+  'fileupload/Multiple': () => import('./fileupload/Multiple.vue'),
+  'fileupload/FileRestrictions': () => import('./fileupload/FileRestrictions.vue'),
+  'fileupload/WithUpload': () => import('./fileupload/WithUpload.vue'),
+  'fileupload/FormIntegration': () => import('./fileupload/FormIntegration.vue')
 }

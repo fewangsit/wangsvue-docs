@@ -25,7 +25,7 @@
 - [x] Dropdown
 - [ ] Editor
 - [-] FieldWrapper
-- [ ] FileUpload
+- [x] FileUpload
 - [x] FilterContainer
 - [x] Form
 - [ ] GalleryPreview
