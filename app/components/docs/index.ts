@@ -313,6 +313,7 @@ export const componentRegistry: Record<
   'image/Rounded': () => import('./image/Rounded.vue'),
   'image/WithoutPreview': () => import('./image/WithoutPreview.vue'),
   'image/Gallery': () => import('./image/Gallery.vue'),
+  'image/Placeholder': () => import('./image/Placeholder.vue'),
 
   // ImageCompressor components
   'imagecompressor/Basic': () => import('./imagecompressor/Basic.vue'),
