@@ -288,6 +288,7 @@ export const componentRegistry: Record<
   'breadcrumb/MixedItems': () => import('./breadcrumb/MixedItems.vue'),
   'breadcrumb/LongPath': () => import('./breadcrumb/LongPath.vue'),
   'breadcrumb/CustomTitles': () => import('./breadcrumb/CustomTitles.vue'),
+  'breadcrumb/DynamicNavigation': () => import('./breadcrumb/DynamicNavigation.vue'),
 
   // ButtonCopy components
   'buttoncopy/Basic': () => import('./buttoncopy/Basic.vue'),
