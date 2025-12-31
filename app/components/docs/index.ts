@@ -364,5 +364,8 @@ export const componentRegistry: Record<
   'usergroup/Basic': () => import('./usergroup/Basic.vue'),
   'usergroup/WithLimit': () => import('./usergroup/WithLimit.vue'),
   'usergroup/DialogDetail': () => import('./usergroup/DialogDetail.vue'),
-  'usergroup/LargeGroup': () => import('./usergroup/LargeGroup.vue')
+  'usergroup/LargeGroup': () => import('./usergroup/LargeGroup.vue'),
+
+  // ButtonFilter components
+  'buttonfilter/Basic': () => import('./buttonfilter/Basic.vue')
 }
