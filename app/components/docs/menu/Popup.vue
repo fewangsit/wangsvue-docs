@@ -1,8 +1,7 @@
 <script setup lang="ts">
-import { ref } from 'vue'
 import { Menu, Button } from '@fewangsit/wangsvue'
 
-const menu = ref()
+const menu = useTemplateRef<Menu>('menu')
 
 const items = [
   {
@@ -35,7 +34,7 @@ const items = [
 ]
 
 const toggle = (event: Event) => {
-  menu.value.toggle(event)
+  menu.value?.toggle(event)
 }
 </script>
 
