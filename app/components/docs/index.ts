@@ -341,10 +341,10 @@ export const componentRegistry: Record<
   'animation/Autoplay': () => import('./animation/Autoplay.vue'),
   'animation/Loop': () => import('./animation/Loop.vue'),
 
-  // Loading components
+  // Loading components\n
   'loading/Basic': () => import('./loading/Basic.vue'),
   'loading/WithMessage': () => import('./loading/WithMessage.vue'),
-  'loading/Interactive': () => import('./loading/Interactive.vue'),
+  'loading/ApiPostRequest': () => import('./loading/ApiPostRequest.vue'),
 
   // Timeline components
   'timeline/Basic': () => import('./timeline/Basic.vue'),

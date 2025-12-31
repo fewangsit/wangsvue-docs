@@ -5,7 +5,7 @@ description: Tag Samurai Loading Overlay Animation.
 
 ## Import
 ```ts
-import { useLoadingStore, Loading } from '@fewangsit/wangsvue';
+import { Loading } from '@fewangsit/wangsvue';
 ```
 
 ## Basic
@@ -21,7 +21,7 @@ Show loading with a custom message.
 ::
 
 ## API Integration
-Demonstrate Loading a POST during API request. Set loading state to true in the try block and false in the finally block to handle asynchronous operations.
+Demonstrate Loading during a POST API request. Set loading state to true in the try block and false in the finally block to handle asynchronous operations.
 
 ::component-demo{src="loading/ApiPostRequest"}
 ::
