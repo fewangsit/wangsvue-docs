@@ -368,6 +368,9 @@ export const componentRegistry: Record<
   'usergroup/DialogDetail': () => import('./usergroup/DialogDetail.vue'),
   'usergroup/LargeGroup': () => import('./usergroup/LargeGroup.vue'),
 
+  // ButtonFilter components
+  'buttonfilter/Basic': () => import('./buttonfilter/Basic.vue'),
+
   // Tree components
   'tree/Basic': () => import('./tree/Basic.vue'),
   'tree/Selection': () => import('./tree/Selection.vue'),

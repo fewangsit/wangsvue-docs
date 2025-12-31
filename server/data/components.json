@@ -2892,5 +2892,28 @@
         "examplePath": "inputurl/FormIntegration"
       }
     ]
+  },
+  {
+    "name": "buttonfilter",
+    "title": "ButtonFilter",
+    "description": "ButtonFilter is a utility button that toggles the visibility of a FilterContainer for datatables, using event bus communication.",
+    "sections": [
+      {
+        "id": "import",
+        "label": "Import",
+        "description": "```ts\nimport { ButtonFilter } from '@fewangsit/wangsvue';\n```",
+        "example": "",
+        "hasExample": false,
+        "examplePath": null
+      },
+      {
+        "id": "basic",
+        "label": "Basic",
+        "description": "ButtonFilter integrates with FilterContainer by emitting events via the event bus when clicked. Specify the `tableName` to target a specific datatable's filter.",
+        "example": "<script setup lang=\"ts\">\nimport { ButtonFilter, FilterContainer, eventBus } from '@fewangsit/wangsvue'\nimport type { FilterField } from '@fewangsit/wangsvue/filtercontainer'\n\ninterface DemoQueryParams {\n  status?: string\n}\n\nconst fields: FilterField<DemoQueryParams>[] = [\n  {\n    type: 'dropdown',\n    field: 'status',\n    label: 'Status',\n    fetchOptionFn: () => [\n      { label: 'Active', value: 'active' },\n      { label: 'Inactive', value: 'inactive' }\n    ],\n    optionLabel: 'label',\n    optionValue: 'value'\n  }\n]\n\nconst showFilter = (show: boolean) => {\n  eventBus.emit('show-filter', {\n    tableName: 'datatable',\n    show\n  })\n}\n</script>\n\n<template>\n  <div>\n    <ButtonFilter\n      table-name=\"datatable\"\n      @click=\"showFilter(true)\"\n    />\n    <FilterContainer\n      :fields=\"fields\"\n      :show=\"false\"\n      @apply=\"console.log\"\n    />\n  </div>\n</template>\n",
+        "hasExample": true,
+        "examplePath": "buttonfilter/Basic"
+      }
+    ]
   }
 ]

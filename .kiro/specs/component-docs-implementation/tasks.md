@@ -1,7 +1,7 @@
 
 - [x] Animation
 - [x] Badge
-- [ ] BadgeGroup
+- [x] BadgeGroup
 - [ ] BaseTree
 - [x] Breadcrumb
 - [x] Button
