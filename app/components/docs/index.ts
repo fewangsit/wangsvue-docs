@@ -192,6 +192,8 @@ export const componentRegistry: Record<
   'tabmenu/Types': () => import('./tabmenu/Types.vue'),
   'tabmenu/Icons': () => import('./tabmenu/Icons.vue'),
   'tabmenu/Router': () => import('./tabmenu/Router.vue'),
+  'tabmenu/ExternalUrl': () => import('./tabmenu/ExternalUrl.vue'),
+  'tabmenu/Visibility': () => import('./tabmenu/Visibility.vue'),
   'tabmenu/ActiveIndex': () => import('./tabmenu/ActiveIndex.vue'),
   'tabmenu/TrailingLine': () => import('./tabmenu/TrailingLine.vue'),
 

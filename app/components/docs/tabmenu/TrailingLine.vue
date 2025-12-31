@@ -1,15 +1,16 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { TabMenu } from '@fewangsit/wangsvue'
+import type { MenuItem } from '@fewangsit/wangsvue/menuitem'
 
 const activeIndexWithLine = ref(0)
 const activeIndexWithoutLine = ref(0)
 
-const items = [
-  { label: 'Home' },
-  { label: 'About' },
-  { label: 'Services' },
-  { label: 'Contact' }
+const items: MenuItem[] = [
+  { key: 'home', label: 'Home' },
+  { key: 'about', label: 'About' },
+  { key: 'services', label: 'Services' },
+  { key: 'contact', label: 'Contact' }
 ]
 </script>
 
