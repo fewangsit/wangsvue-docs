@@ -8,12 +8,12 @@ let intervalId: NodeJS.Timeout | null = null
 
 const updateProgress = () => {
   if (isIncreasing.value) {
-    progress.value += 1
+    progress.value = Math.min(progress.value + Math.round(Math.random() * 30), 100)
     if (progress.value >= 100) {
       isIncreasing.value = false
     }
   } else {
-    progress.value -= 1
+    progress.value = Math.max(progress.value - Math.round(Math.random() * 30), 0)
     if (progress.value <= 0) {
       isIncreasing.value = true
     }
@@ -21,7 +21,7 @@ const updateProgress = () => {
 }
 
 onMounted(() => {
-  intervalId = setInterval(updateProgress, 500)
+  intervalId = setInterval(updateProgress, 1000)
 })
 
 onUnmounted(() => {
