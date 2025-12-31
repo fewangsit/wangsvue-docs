@@ -280,6 +280,7 @@ export const componentRegistry: Record<
   'toast/LifeCycle': () => import('./toast/LifeCycle.vue'),
   'toast/Closable': () => import('./toast/Closable.vue'),
   'toast/Template': () => import('./toast/Template.vue'),
+  'toast/GroupManagement': () => import('./toast/GroupManagement.vue'),
 
   // Breadcrumb components
   'breadcrumb/Basic': () => import('./breadcrumb/Basic.vue'),
