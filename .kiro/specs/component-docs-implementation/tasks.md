@@ -13,7 +13,7 @@
 - [ ] ButtonSearch
 - [ ] ButtonSelectTree
 - [x] ButtonToggle
-- [ ] Calendar
+- [x] Calendar
 - [x] Card
 - [x] Checkbox
 - [ ] CodeSnippet
@@ -25,7 +25,7 @@
 - [x] Dropdown
 - [ ] Editor
 - [-] FieldWrapper
-- [ ] FileUpload
+- [x] FileUpload
 - [x] FilterContainer
 - [x] Form
 - [ ] GalleryPreview
@@ -57,7 +57,7 @@
 - [x] Toast
 - [x] ToggleSwitch
 - [ ] TooltipSpan
-- [ ] Tree
+- [x] Tree
 - [x] UserGroup
 - [x] UserName
 - [x] ValidatorMessage

@@ -367,5 +367,26 @@ export const componentRegistry: Record<
   'usergroup/LargeGroup': () => import('./usergroup/LargeGroup.vue'),
 
   // ButtonFilter components
-  'buttonfilter/Basic': () => import('./buttonfilter/Basic.vue')
+  'buttonfilter/Basic': () => import('./buttonfilter/Basic.vue'),
+
+  // Tree components
+  'tree/Basic': () => import('./tree/Basic.vue'),
+  'tree/Selection': () => import('./tree/Selection.vue'),
+  'tree/Filter': () => import('./tree/Filter.vue'),
+  'tree/Loading': () => import('./tree/Loading.vue'),
+  'tree/CustomTemplate': () => import('./tree/CustomTemplate.vue'),
+
+  // Calendar components
+  'calendar/Basic': () => import('./calendar/Basic.vue'),
+  'calendar/SelectionModes': () => import('./calendar/SelectionModes.vue'),
+  'calendar/WithTime': () => import('./calendar/WithTime.vue'),
+  'calendar/DateRestrictions': () => import('./calendar/DateRestrictions.vue'),
+  'calendar/FormIntegration': () => import('./calendar/FormIntegration.vue'),
+
+  // FileUpload components
+  'fileupload/Basic': () => import('./fileupload/Basic.vue'),
+  'fileupload/Multiple': () => import('./fileupload/Multiple.vue'),
+  'fileupload/FileRestrictions': () => import('./fileupload/FileRestrictions.vue'),
+  'fileupload/WithUpload': () => import('./fileupload/WithUpload.vue'),
+  'fileupload/FormIntegration': () => import('./fileupload/FormIntegration.vue')
 }
