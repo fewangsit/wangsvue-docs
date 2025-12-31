@@ -9,23 +9,23 @@ const onApply = (payload: ImageCompressorPayload) => {
 
 <template>
   <div class="flex flex-wrap items-center gap-6">
-    <div class="text-center">
+    <div>
       <ImageCompressor
         image-preview-size="big"
         @apply="onApply"
       />
-      <p class="text-xs text-gray-600 mt-2">
+      <p class="text-xs text-center text-gray-600 mt-2">
         Default
       </p>
     </div>
 
-    <div class="text-center">
+    <div>
       <ImageCompressor
         image-preview-size="big"
         :rounded="true"
         @apply="onApply"
       />
-      <p class="text-xs text-gray-600 mt-2">
+      <p class="text-xs text-center text-gray-600 mt-2">
         Rounded
       </p>
     </div>

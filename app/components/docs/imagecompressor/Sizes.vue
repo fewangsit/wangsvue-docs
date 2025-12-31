@@ -9,32 +9,32 @@ const onApply = (payload: ImageCompressorPayload) => {
 
 <template>
   <div class="flex flex-wrap items-end gap-6">
-    <div class="text-center">
+    <div>
       <ImageCompressor
         image-preview-size="small"
         @apply="onApply"
       />
-      <p class="text-xs text-gray-600 mt-2">
+      <p class="text-xs text-center text-gray-600 mt-2">
         Small (30px)
       </p>
     </div>
 
-    <div class="text-center">
+    <div>
       <ImageCompressor
         image-preview-size="medium"
         @apply="onApply"
       />
-      <p class="text-xs text-gray-600 mt-2">
+      <p class="text-xs text-center text-gray-600 mt-2">
         Medium (80px)
       </p>
     </div>
 
-    <div class="text-center">
+    <div>
       <ImageCompressor
         image-preview-size="big"
         @apply="onApply"
       />
-      <p class="text-xs text-gray-600 mt-2">
+      <p class="text-xs text-center text-gray-600 mt-2">
         Big (125px)
       </p>
     </div>
