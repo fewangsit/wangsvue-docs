@@ -2563,6 +2563,85 @@
     ]
   },
   {
+    "name": "editor",
+    "title": "Editor",
+    "description": "Rich text editor component with formatting tools, image upload, and mention functionality.",
+    "sections": [
+      {
+        "id": "import-",
+        "label": "Import\r",
+        "description": "```ts\r\nimport { Editor } from '@fewangsit/wangsvue';\r\n```",
+        "example": "",
+        "hasExample": false,
+        "examplePath": null
+      },
+      {
+        "id": "basic-",
+        "label": "Basic\r",
+        "description": "Basic rich text editor with standard formatting tools and content editing capabilities.",
+        "example": "<script setup lang=\"ts\">\r\nimport { ref } from 'vue'\r\nimport { Editor } from '@fewangsit/wangsvue'\r\nimport type { JSONContent } from '@fewangsit/wangsvue/editor'\r\n\r\nconst content = ref<JSONContent>({\r\n  type: 'doc',\r\n  content: [\r\n    {\r\n      type: 'paragraph',\r\n      content: [\r\n        {\r\n          type: 'text',\r\n          text: 'Welcome to the rich text editor! You can format text, add links, and more.'\r\n        }\r\n      ]\r\n    }\r\n  ]\r\n})\r\n</script>\r\n\r\n<template>\r\n  <Editor\r\n    v-model=\"content\"\r\n    label=\"Content\"\r\n  />\r\n</template>\n",
+        "hasExample": true,
+        "examplePath": "editor/Basic"
+      },
+      {
+        "id": "placeholder-",
+        "label": "Placeholder\r",
+        "description": "Editor with placeholder text to guide users on what content to enter.",
+        "example": "<script setup lang=\"ts\">\r\nimport { ref } from 'vue'\r\nimport { Editor } from '@fewangsit/wangsvue'\r\nimport type { JSONContent } from '@fewangsit/wangsvue/editor'\r\n\r\nconst content = ref<JSONContent>()\r\n</script>\r\n\r\n<template>\r\n  <Editor\r\n    v-model=\"content\"\r\n    label=\"Article Content\"\r\n    placeholder=\"Start writing your article here... Use the toolbar to format your text.\"\r\n  />\r\n</template>\n",
+        "hasExample": true,
+        "examplePath": "editor/Placeholder"
+      },
+      {
+        "id": "readonly-",
+        "label": "Readonly\r",
+        "description": "Editor in readonly mode for displaying formatted content without editing capabilities.",
+        "example": "<script setup lang=\"ts\">\r\nimport { ref } from 'vue'\r\nimport { Editor } from '@fewangsit/wangsvue'\r\nimport type { JSONContent } from '@fewangsit/wangsvue/editor'\r\n\r\nconst content = ref<JSONContent>({\r\n  type: 'doc',\r\n  content: [\r\n    {\r\n      type: 'heading',\r\n      attrs: { level: 2 },\r\n      content: [\r\n        {\r\n          type: 'text',\r\n          text: 'Sample Document'\r\n        }\r\n      ]\r\n    },\r\n    {\r\n      type: 'paragraph',\r\n      content: [\r\n        {\r\n          type: 'text',\r\n          text: 'This is a '\r\n        },\r\n        {\r\n          type: 'text',\r\n          marks: [{ type: 'bold' }],\r\n          text: 'readonly editor'\r\n        },\r\n        {\r\n          type: 'text',\r\n          text: ' displaying formatted content. The content cannot be edited but maintains all formatting.'\r\n        }\r\n      ]\r\n    },\r\n    {\r\n      type: 'bulletList',\r\n      content: [\r\n        {\r\n          type: 'listItem',\r\n          content: [\r\n            {\r\n              type: 'paragraph',\r\n              content: [\r\n                {\r\n                  type: 'text',\r\n                  text: 'Bullet point one'\r\n                }\r\n              ]\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          type: 'listItem',\r\n          content: [\r\n            {\r\n              type: 'paragraph',\r\n              content: [\r\n                {\r\n                  type: 'text',\r\n                  text: 'Bullet point two'\r\n                }\r\n              ]\r\n            }\r\n          ]\r\n        }\r\n      ]\r\n    }\r\n  ]\r\n})\r\n</script>\r\n\r\n<template>\r\n  <Editor\r\n    v-model=\"content\"\r\n    label=\"Document Preview\"\r\n    editor-state=\"readonly\"\r\n  />\r\n</template>\r\n",
+        "hasExample": true,
+        "examplePath": "editor/Readonly"
+      },
+      {
+        "id": "borderless-",
+        "label": "Borderless\r",
+        "description": "Editor without border styling for seamless integration into custom layouts.",
+        "example": "<script setup lang=\"ts\">\r\nimport { ref } from 'vue'\r\nimport { Editor } from '@fewangsit/wangsvue'\r\nimport type { JSONContent } from '@fewangsit/wangsvue/editor'\r\n\r\nconst content = ref<JSONContent>({\r\n  type: 'doc',\r\n  content: [\r\n    {\r\n      type: 'paragraph',\r\n      content: [\r\n        {\r\n          type: 'text',\r\n          text: 'This editor has no border for seamless integration into custom layouts.'\r\n        }\r\n      ]\r\n    }\r\n  ]\r\n})\r\n</script>\r\n\r\n<template>\r\n  <Editor\r\n    v-model=\"content\"\r\n    label=\"Borderless Editor\"\r\n    :borderless=\"true\"\r\n  />\r\n</template>\n",
+        "hasExample": true,
+        "examplePath": "editor/Borderless"
+      },
+      {
+        "id": "form-integration-",
+        "label": "Form Integration\r",
+        "description": "Editor integrated with form validation and field management using the Form component.",
+        "example": "<script setup lang=\"ts\">\r\nimport { Form, Editor } from '@fewangsit/wangsvue'\r\nimport type { FormPayload } from '@fewangsit/wangsvue/form'\r\n\r\nconst onSubmit = (payload: FormPayload) => {\r\n  console.log('Form submitted:', payload.formValues)\r\n}\r\n</script>\r\n\r\n<template>\r\n  <Form\r\n    :buttons-template=\"['submit', 'clear']\"\r\n    hide-stay-checkbox\r\n    @submit=\"onSubmit\"\r\n  >\r\n    <template #fields>\r\n      <Editor\r\n        label=\"Article Content\"\r\n        field-name=\"content\"\r\n        :use-validator=\"true\"\r\n        :mandatory=\"true\"\r\n        :validator-message=\"{ empty: 'Content is required' }\"\r\n        placeholder=\"Write your article content here...\"\r\n      />\r\n    </template>\r\n  </Form>\r\n</template>\n",
+        "hasExample": true,
+        "examplePath": "editor/FormIntegration"
+      },
+      {
+        "id": "image-upload-",
+        "label": "Image Upload\r",
+        "description": "Editor with image upload functionality for adding images to content.",
+        "example": "<script setup lang=\"ts\">\r\nimport { ref } from 'vue'\r\nimport { Editor } from '@fewangsit/wangsvue'\r\nimport type { JSONContent, PostImage, ImageProperties } from '@fewangsit/wangsvue/editor'\r\n\r\nconst content = ref<JSONContent>({\r\n  type: 'doc',\r\n  content: [\r\n    {\r\n      type: 'paragraph',\r\n      content: [\r\n        {\r\n          type: 'text',\r\n          text: 'You can upload images by clicking the image button in the toolbar or dragging and dropping files.'\r\n        }\r\n      ]\r\n    }\r\n  ]\r\n})\r\n\r\nconst handleImageUpload = (postImage: PostImage) => {\r\n  // Simulate image upload to server\r\n  console.log('Uploading image:', postImage.image.name)\r\n}\r\n\r\nconst handleImageDelete = (imageProps: ImageProperties) => {\r\n  console.log('Deleting image:', imageProps.src)\r\n  // Handle image deletion from server if needed\r\n}\r\n</script>\r\n\r\n<template>\r\n  <Editor\r\n    v-model=\"content\"\r\n    label=\"Content with Images\"\r\n    placeholder=\"Add some text and upload images using the toolbar...\"\r\n    is-image-upload-base64\r\n    @post-image-local=\"handleImageUpload\"\r\n    @delete-image-local=\"handleImageDelete\"\r\n  />\r\n</template>\r\n",
+        "hasExample": true,
+        "examplePath": "editor/ImageUpload"
+      },
+      {
+        "id": "mentions-",
+        "label": "Mentions\r",
+        "description": "Editor with mention functionality for tagging users using @ symbol.",
+        "example": "<script setup lang=\"ts\">\r\nimport { ref } from 'vue'\r\nimport { Editor } from '@fewangsit/wangsvue'\r\nimport type { JSONContent, GetMentionSuggestionResponse } from '@fewangsit/wangsvue/editor'\r\n\r\nconst content = ref<JSONContent>({\r\n  type: 'doc',\r\n  content: [\r\n    {\r\n      type: 'paragraph',\r\n      content: [\r\n        {\r\n          type: 'text',\r\n          text: 'Type @ to mention users in your content. Try typing @john or @jane'\r\n        }\r\n      ]\r\n    }\r\n  ]\r\n})\r\n\r\nconst mentionedList = ref<string[]>([])\r\n\r\n// Mock user data for mentions\r\nconst mockUsers = [\r\n  {\r\n    _id: '1',\r\n    fullName: 'John Doe',\r\n    nickName: 'john',\r\n    profilePicture: 'https://picsum.photos/40/40?random=1'\r\n  },\r\n  {\r\n    _id: '2',\r\n    fullName: 'Jane Smith',\r\n    nickName: 'jane',\r\n    profilePicture: 'https://picsum.photos/40/40?random=2'\r\n  },\r\n  {\r\n    _id: '3',\r\n    fullName: 'Bob Johnson',\r\n    nickName: 'bob',\r\n    profilePicture: 'https://picsum.photos/40/40?random=3'\r\n  }\r\n]\r\n\r\nconst fetchMentionSuggestions = async (): Promise<GetMentionSuggestionResponse> => {\r\n  // Simulate API call delay\r\n  await new Promise(resolve => setTimeout(resolve, 300))\r\n\r\n  return {\r\n    status: 200,\r\n    message: 'Success',\r\n    data: mockUsers\r\n  }\r\n}\r\n</script>\r\n\r\n<template>\r\n  <div class=\"space-y-4\">\r\n    <Editor\r\n      v-model=\"content\"\r\n      v-model:mentioned-list=\"mentionedList\"\r\n      label=\"Content with Mentions\"\r\n      placeholder=\"Type @ to mention users...\"\r\n      :fetch-mention-suggestion-function=\"fetchMentionSuggestions\"\r\n    />\r\n\r\n    <div\r\n      v-if=\"mentionedList.length > 0\"\r\n      class=\"p-3 bg-gray-50 rounded\"\r\n    >\r\n      <p class=\"text-sm font-medium mb-2\">\r\n        Mentioned Users:\r\n      </p>\r\n      <div class=\"flex flex-wrap gap-2\">\r\n        <span\r\n          v-for=\"userId in mentionedList\"\r\n          :key=\"userId\"\r\n          class=\"px-2 py-1 bg-blue-100 text-blue-800 rounded text-xs\"\r\n        >\r\n          {{ mockUsers.find(u => u._id === userId)?.fullName || userId }}\r\n        </span>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</template>\r\n",
+        "hasExample": true,
+        "examplePath": "editor/Mentions"
+      },
+      {
+        "id": "custom-styling-",
+        "label": "Custom Styling\r",
+        "description": "Editor with custom styling for wrapper, toolbar, and content areas.",
+        "example": "<script setup lang=\"ts\">\r\nimport { ref } from 'vue'\r\nimport { Editor } from '@fewangsit/wangsvue'\r\nimport type { JSONContent } from '@fewangsit/wangsvue/editor'\r\n\r\nconst content = ref<JSONContent>({\r\n  type: 'doc',\r\n  content: [\r\n    {\r\n      type: 'paragraph',\r\n      content: [\r\n        {\r\n          type: 'text',\r\n          text: 'This editor has custom styling applied to the wrapper, toolbar, and content areas.'\r\n        }\r\n      ]\r\n    }\r\n  ]\r\n})\r\n</script>\r\n\r\n<template>\r\n  <Editor\r\n    v-model=\"content\"\r\n    label=\"Custom Styled Editor\"\r\n    placeholder=\"Editor with custom styling...\"\r\n    editor-wrapper-class=\"!border-2 !border-purple-300 !rounded-lg\"\r\n    toolbar-wrapper-class=\"!bg-purple-50 !border-b-purple-200\"\r\n    content-wrapper-class=\"!min-h-32 !bg-purple-25\"\r\n  />\r\n</template>\r\n",
+        "hasExample": true,
+        "examplePath": "editor/CustomStyling"
+      }
+    ]
+  },
+  {
     "name": "inputnumber",
     "title": "InputNumber",
     "description": "Handle input number with form validation.",

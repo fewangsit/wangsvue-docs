@@ -315,6 +315,16 @@ export const componentRegistry: Record<
   'image/Gallery': () => import('./image/Gallery.vue'),
   'image/Placeholder': () => import('./image/Placeholder.vue'),
 
+  // Editor components
+  'editor/Basic': () => import('./editor/Basic.vue'),
+  'editor/Placeholder': () => import('./editor/Placeholder.vue'),
+  'editor/Readonly': () => import('./editor/Readonly.vue'),
+  'editor/Borderless': () => import('./editor/Borderless.vue'),
+  'editor/FormIntegration': () => import('./editor/FormIntegration.vue'),
+  'editor/ImageUpload': () => import('./editor/ImageUpload.vue'),
+  'editor/Mentions': () => import('./editor/Mentions.vue'),
+  'editor/CustomStyling': () => import('./editor/CustomStyling.vue'),
+
   // ImageCompressor components
   'imagecompressor/Basic': () => import('./imagecompressor/Basic.vue'),
   'imagecompressor/Multiple': () => import('./imagecompressor/Multiple.vue'),
