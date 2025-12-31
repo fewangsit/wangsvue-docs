@@ -325,6 +325,13 @@ export const componentRegistry: Record<
   'editor/Mentions': () => import('./editor/Mentions.vue'),
   'editor/CustomStyling': () => import('./editor/CustomStyling.vue'),
 
+  // CodeSnippet components
+  'codesnippet/Basic': () => import('./codesnippet/Basic.vue'),
+  'codesnippet/Languages': () => import('./codesnippet/Languages.vue'),
+  'codesnippet/Readonly': () => import('./codesnippet/Readonly.vue'),
+  'codesnippet/Placeholder': () => import('./codesnippet/Placeholder.vue'),
+  'codesnippet/Interactive': () => import('./codesnippet/Interactive.vue'),
+
   // ImageCompressor components
   'imagecompressor/Basic': () => import('./imagecompressor/Basic.vue'),
   'imagecompressor/Multiple': () => import('./imagecompressor/Multiple.vue'),

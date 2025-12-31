@@ -2642,6 +2642,61 @@
     ]
   },
   {
+    "name": "codesnippet",
+    "title": "CodeSnippet",
+    "description": "Code snippet component with syntax highlighting and editing capabilities for multiple programming languages.",
+    "sections": [
+      {
+        "id": "import-",
+        "label": "Import\r",
+        "description": "```ts\r\nimport { CodeSnippet } from '@fewangsit/wangsvue';\r\n```",
+        "example": "",
+        "hasExample": false,
+        "examplePath": null
+      },
+      {
+        "id": "basic-",
+        "label": "Basic\r",
+        "description": "Basic code snippet with syntax highlighting for JSON code.",
+        "example": "<script setup lang=\"ts\">\r\nimport { CodeSnippet } from '@fewangsit/wangsvue'\r\n\r\nconst jsonCode = `{\r\n  \"name\": \"WangsVue\",\r\n  \"version\": \"1.0.0\",\r\n  \"description\": \"Vue component library\",\r\n  \"main\": \"index.js\",\r\n  \"dependencies\": {\r\n    \"vue\": \"^3.0.0\",\r\n    \"typescript\": \"^5.0.0\"\r\n  }\r\n}`\r\n</script>\r\n\r\n<template>\r\n  <CodeSnippet\r\n    :code=\"jsonCode\"\r\n    lang=\"json\"\r\n  />\r\n</template>\n",
+        "hasExample": true,
+        "examplePath": "codesnippet/Basic"
+      },
+      {
+        "id": "languages-",
+        "label": "Languages\r",
+        "description": "",
+        "example": "<script setup lang=\"ts\">\r\nimport { CodeSnippet } from '@fewangsit/wangsvue'\r\n\r\nconst javascriptCode = `function greetUser(name) {\r\n  console.log(\\`Hello, \\${name}!\\`);\r\n  return \\`Welcome to WangsVue, \\${name}\\`;\r\n}`\r\n\r\nconst typescriptCode = `interface User {\r\n  id: number;\r\n  name: string;\r\n  email: string;\r\n}\r\n\r\nconst createUser = (userData: User): User => {\r\n  return { ...userData };\r\n}`\r\n\r\nconst htmlCode = `<div class=\"container\">\r\n  <h1>Welcome to WangsVue</h1>\r\n  <p>A comprehensive Vue component library</p>\r\n  <button class=\"btn-primary\">Get Started</button>\r\n</div>`\r\n\r\nconst jsonCode = `{\r\n  \"component\": \"CodeSnippet\",\r\n  \"features\": [\"syntax highlighting\", \"multiple languages\"],\r\n  \"supported\": [\"javascript\", \"typescript\", \"html\", \"json\"]\r\n}`\r\n</script>\r\n\r\n<template>\r\n  <div class=\"space-y-6\">\r\n    <div>\r\n      <h4 class=\"mb-2 font-medium\">\r\n        JavaScript\r\n      </h4>\r\n      <CodeSnippet\r\n        :code=\"javascriptCode\"\r\n        lang=\"javascript\"\r\n      />\r\n    </div>\r\n\r\n    <div>\r\n      <h4 class=\"mb-2 font-medium\">\r\n        TypeScript\r\n      </h4>\r\n      <CodeSnippet\r\n        :code=\"typescriptCode\"\r\n        lang=\"typescript\"\r\n      />\r\n    </div>\r\n\r\n    <div>\r\n      <h4 class=\"mb-2 font-medium\">\r\n        HTML\r\n      </h4>\r\n      <CodeSnippet\r\n        :code=\"htmlCode\"\r\n        lang=\"html\"\r\n      />\r\n    </div>\r\n\r\n    <div>\r\n      <h4 class=\"mb-2 font-medium\">\r\n        JSON\r\n      </h4>\r\n      <CodeSnippet\r\n        :code=\"jsonCode\"\r\n        lang=\"json\"\r\n      />\r\n    </div>\r\n  </div>\r\n</template>\r\n",
+        "hasExample": true,
+        "examplePath": "codesnippet/Languages"
+      },
+      {
+        "id": "readonly-",
+        "label": "Readonly\r",
+        "description": "Code snippet in readonly mode for displaying code without editing capabilities.",
+        "example": "<script setup lang=\"ts\">\r\nimport { CodeSnippet } from '@fewangsit/wangsvue'\r\n\r\nconst readonlyCode = `const config = {\r\n  apiUrl: 'https://api.example.com',\r\n  timeout: 5000,\r\n  retries: 3,\r\n  headers: {\r\n    'Content-Type': 'application/json',\r\n    'Authorization': 'Bearer token'\r\n  }\r\n};\r\n\r\n// This code is read-only and cannot be modified\r\nexport default config;`\r\n</script>\r\n\r\n<template>\r\n  <CodeSnippet\r\n    :code=\"readonlyCode\"\r\n    lang=\"javascript\"\r\n    :readonly=\"true\"\r\n  />\r\n</template>\n",
+        "hasExample": true,
+        "examplePath": "codesnippet/Readonly"
+      },
+      {
+        "id": "placeholder-",
+        "label": "Placeholder\r",
+        "description": "Code snippet with placeholder text when no code is provided.",
+        "example": "<script setup lang=\"ts\">\r\nimport { CodeSnippet } from '@fewangsit/wangsvue'\r\n</script>\r\n\r\n<template>\r\n  <CodeSnippet\r\n    lang=\"javascript\"\r\n    placeholder=\"Enter your JavaScript code here...\"\r\n  />\r\n</template>\n",
+        "hasExample": true,
+        "examplePath": "codesnippet/Placeholder"
+      },
+      {
+        "id": "interactive-",
+        "label": "Interactive\r",
+        "description": "Editable code snippet allowing users to modify and experiment with code.",
+        "example": "<script setup lang=\"ts\">\r\nimport { ref } from 'vue'\r\nimport { CodeSnippet } from '@fewangsit/wangsvue'\r\n\r\nconst editableCode = ref(`function calculateSum(a, b) {\r\n  return a + b;\r\n}\r\n\r\n// Try editing this code\r\nconst result = calculateSum(5, 3);\r\nconsole.log('Result:', result);`)\r\n</script>\r\n\r\n<template>\r\n  <div class=\"space-y-4\">\r\n    <CodeSnippet\r\n      v-model:code=\"editableCode\"\r\n      lang=\"javascript\"\r\n      placeholder=\"Write your JavaScript code here...\"\r\n    />\r\n\r\n    <div class=\"p-3 bg-gray-50 rounded text-sm\">\r\n      <strong>Interactive Mode:</strong> You can edit the code above and see your changes in real-time.\r\n    </div>\r\n  </div>\r\n</template>\n",
+        "hasExample": true,
+        "examplePath": "codesnippet/Interactive"
+      }
+    ]
+  },
+  {
     "name": "inputnumber",
     "title": "InputNumber",
     "description": "Handle input number with form validation.",
