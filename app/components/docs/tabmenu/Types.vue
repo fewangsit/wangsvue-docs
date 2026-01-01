@@ -19,12 +19,11 @@ const items: MenuItem[] = [
   <div class="flex flex-col gap-6">
     <div>
       <h4 class="mb-2 font-medium">
-        Tab Type
+        Default Type
       </h4>
       <TabMenu
         v-model:active-index="activeIndexTab"
         :menu="items"
-        type="tab"
       />
     </div>
 

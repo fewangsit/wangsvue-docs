@@ -7,28 +7,24 @@ const activeIndex = ref(0)
 
 const items: MenuItem[] = [
   {
-    key: 'dashboard',
     label: 'Dashboard',
     command: () => {
       console.log('Dashboard clicked')
     }
   },
   {
-    key: 'analytics',
     label: 'Analytics',
     command: () => {
       console.log('Analytics clicked')
     }
   },
   {
-    key: 'reports',
     label: 'Reports',
     command: () => {
       console.log('Reports clicked')
     }
   },
   {
-    key: 'settings',
     label: 'Settings',
     command: () => {
       console.log('Settings clicked')

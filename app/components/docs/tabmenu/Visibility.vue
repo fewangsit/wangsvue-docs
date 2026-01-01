@@ -8,25 +8,21 @@ const showAdminTab = ref(false)
 
 const items = computed<MenuItem[]>(() => [
   {
-    key: 'dashboard',
     label: 'Dashboard',
     icon: 'dashboard',
     visible: true
   },
   {
-    key: 'users',
     label: 'Users',
     icon: 'user',
     visible: true
   },
   {
-    key: 'admin',
     label: 'Admin Panel',
     icon: 'settings',
     visible: showAdminTab.value
   },
   {
-    key: 'reports',
     label: 'Reports',
     icon: 'file-chart-line',
     visible: false
@@ -46,9 +42,7 @@ const items = computed<MenuItem[]>(() => [
       <label
         for="show-admin"
         class="text-sm"
-      >
-        Show Admin Tab
-      </label>
+      > Show Admin Tab </label>
     </div>
 
     <TabMenu
@@ -64,7 +58,8 @@ const items = computed<MenuItem[]>(() => [
         MenuItem visibility can be controlled with the visible property
       </p>
       <p class="text-xs text-gray-500 mt-1">
-        Reports tab is always hidden (visible: false), Admin tab toggles based on checkbox
+        Reports tab is always hidden (visible: false), Admin tab toggles based
+        on checkbox
       </p>
     </div>
   </div>

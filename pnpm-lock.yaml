@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       '@fewangsit/wangsvue':
-        specifier: 1.5.229-alpha.15
-        version: 1.5.229-alpha.15(@stencil/core@4.39.0)(vue-router@4.6.4(vue@3.5.26(typescript@5.9.3)))(vue@3.5.26(typescript@5.9.3))
+        specifier: 1.5.229-alpha.16
+        version: 1.5.229-alpha.16(@stencil/core@4.39.0)(vue-router@4.6.4(vue@3.5.26(typescript@5.9.3)))(vue@3.5.26(typescript@5.9.3))
       '@fewangsit/wangsvue-presets':
         specifier: 1.0.111-alpha.3
         version: 1.0.111-alpha.3
@@ -674,8 +674,8 @@ packages:
   '@fewangsit/wangsvue-presets@1.0.111-alpha.3':
     resolution: {integrity: sha512-SQpMtkQSlyObG2UkdI+oCqghco1fL6UsspTaSb75DQbQDqP4q+h6LGldhYOI3pjxuzrmrqFMMTn3cfLcaMEXnA==}
 
-  '@fewangsit/wangsvue@1.5.229-alpha.15':
-    resolution: {integrity: sha512-6UogL2ZP2iR4VEapzZcyG+MD5gbTlVFPLA8qmKkGGAvwY2xb85RAtH4ZkLG9foCLAyFTVZnhsMnRQ6FgZVyaqQ==}
+  '@fewangsit/wangsvue@1.5.229-alpha.16':
+    resolution: {integrity: sha512-7GeK3z2PRnpYOub4qOkXAGEd/9V++YP4/wE3LGUp1sTXOfgQSFjJQc+hlCUFVxTZxVydKM8mRsMf7e8Mcz3UYA==}
     hasBin: true
 
   '@fewangsit/workspace-api-services@1.0.18-alpha.1':
@@ -2684,6 +2684,9 @@ packages:
   '@wangs-ui/core@1.0.23':
     resolution: {integrity: sha512-oZMjX1tElnYlS4LQuKTTUjdP/ppsTIjsrW53uL81d6fP8TDcSLcctUacOfdfezcoxDiSPoyAexeKBVL+cDIL4A==}
 
+  '@wangs-ui/core@1.0.24':
+    resolution: {integrity: sha512-eXb2KFfXFLC2A73rqmN8OjRDZR8dZ7cze97GCig/umjiRtnb9J6FT4kpPpwukRrdWDH1yAYLJJSl0d6oJ9P+Tw==}
+
   '@wangs-ui/vue-output-target@0.10.12':
     resolution: {integrity: sha512-FlxD/JV3W1Jaf94neTdoxGucOP5x21dqgXGniunTwrP2Yo//Dsujw/RuBYVtMSJ8LJJ9Gb4qHuZ5vR9qPOKHYw==}
     peerDependencies:
@@ -2698,6 +2701,11 @@ packages:
 
   '@wangs-ui/vue@1.0.23':
     resolution: {integrity: sha512-Aavxcjg37wTL1lPhvaciyfMYRaHcZd3ve3TOtnarleLC0EW+Cw7c71ykM+YmF8vK41yQ+dGnBAUWEvb7zVDZ3g==}
+    peerDependencies:
+      '@wangs-ui/core': '>=1.0.0'
+
+  '@wangs-ui/vue@1.0.24':
+    resolution: {integrity: sha512-q2Ha3itDtMVNsVLSMcRdoAO3BAMjkncGvXccjLF43/xgIxB3KslwlY/vvf4uxJLNwmwm1vveOcqXE93D8PSfXg==}
     peerDependencies:
       '@wangs-ui/core': '>=1.0.0'
 
@@ -6649,6 +6657,11 @@ packages:
     peerDependencies:
       zod: ^3.25 || ^4
 
+  zod-to-json-schema@3.25.1:
+    resolution: {integrity: sha512-pM/SU9d3YAggzi6MtR4h7ruuQlqKtad8e9S0fmxcMi+ueAK5Korys/aWcV9LIIHTVbj01NdzxcnXSN+O74ZIVA==}
+    peerDependencies:
+      zod: ^3.25 || ^4
+
   zod@3.23.8:
     resolution: {integrity: sha512-XBx9AXhXktjUqnepgTiE5flcKIYWi/rme0Eaj+5Y0lftuGBq+jyRu/md4WnuxqgP1ubdpNCsYEYPxrzVHD8d6g==}
 
@@ -7153,13 +7166,13 @@ snapshots:
 
   '@fewangsit/wangsvue-presets@1.0.111-alpha.3': {}
 
-  '@fewangsit/wangsvue@1.5.229-alpha.15(@stencil/core@4.39.0)(vue-router@4.6.4(vue@3.5.26(typescript@5.9.3)))(vue@3.5.26(typescript@5.9.3))':
+  '@fewangsit/wangsvue@1.5.229-alpha.16(@stencil/core@4.39.0)(vue-router@4.6.4(vue@3.5.26(typescript@5.9.3)))(vue@3.5.26(typescript@5.9.3))':
     dependencies:
       '@modelcontextprotocol/sdk': 1.23.0(zod@3.23.8)
       '@toon-format/toon': 2.1.0
       '@vueuse/core': 13.9.0(vue@3.5.26(typescript@5.9.3))
-      '@wangs-ui/core': 1.0.23(@stencil/core@4.39.0)(vue-router@4.6.4(vue@3.5.26(typescript@5.9.3)))(vue@3.5.26(typescript@5.9.3))
-      '@wangs-ui/vue': 1.0.23(@stencil/core@4.39.0)(@wangs-ui/core@1.0.23(@stencil/core@4.39.0)(vue-router@4.6.4(vue@3.5.26(typescript@5.9.3)))(vue@3.5.26(typescript@5.9.3)))(vue-router@4.6.4(vue@3.5.26(typescript@5.9.3)))(vue@3.5.26(typescript@5.9.3))
+      '@wangs-ui/core': 1.0.24(@stencil/core@4.39.0)(vue-router@4.6.4(vue@3.5.26(typescript@5.9.3)))(vue@3.5.26(typescript@5.9.3))
+      '@wangs-ui/vue': 1.0.24(@stencil/core@4.39.0)(@wangs-ui/core@1.0.24(@stencil/core@4.39.0)(vue-router@4.6.4(vue@3.5.26(typescript@5.9.3)))(vue@3.5.26(typescript@5.9.3)))(vue-router@4.6.4(vue@3.5.26(typescript@5.9.3)))(vue@3.5.26(typescript@5.9.3))
       dotenv: 16.6.1
       primevue: 3.53.1(vue@3.5.26(typescript@5.9.3))
       xlsx: '@e965/xlsx@0.20.3'
@@ -7424,7 +7437,7 @@ snapshots:
       pkce-challenge: 5.0.1
       raw-body: 3.0.2
       zod: 3.23.8
-      zod-to-json-schema: 3.25.0(zod@3.23.8)
+      zod-to-json-schema: 3.25.1(zod@3.23.8)
     transitivePeerDependencies:
       - supports-color
 
@@ -9581,6 +9594,15 @@ snapshots:
       - vue
       - vue-router
 
+  '@wangs-ui/core@1.0.24(@stencil/core@4.39.0)(vue-router@4.6.4(vue@3.5.26(typescript@5.9.3)))(vue@3.5.26(typescript@5.9.3))':
+    dependencies:
+      '@stencil/store': 2.2.2(@stencil/core@4.39.0)
+      '@wangs-ui/vue-output-target': 0.10.12(@stencil/core@4.39.0)(vue-router@4.6.4(vue@3.5.26(typescript@5.9.3)))(vue@3.5.26(typescript@5.9.3))
+    transitivePeerDependencies:
+      - '@stencil/core'
+      - vue
+      - vue-router
+
   '@wangs-ui/vue-output-target@0.10.12(@stencil/core@4.39.0)(vue-router@4.6.4(vue@3.5.26(typescript@5.9.3)))(vue@3.5.26(typescript@5.9.3))':
     dependencies:
       vue: 3.5.26(typescript@5.9.3)
@@ -9591,6 +9613,15 @@ snapshots:
   '@wangs-ui/vue@1.0.23(@stencil/core@4.39.0)(@wangs-ui/core@1.0.23(@stencil/core@4.39.0)(vue-router@4.6.4(vue@3.5.26(typescript@5.9.3)))(vue@3.5.26(typescript@5.9.3)))(vue-router@4.6.4(vue@3.5.26(typescript@5.9.3)))(vue@3.5.26(typescript@5.9.3))':
     dependencies:
       '@wangs-ui/core': 1.0.23(@stencil/core@4.39.0)(vue-router@4.6.4(vue@3.5.26(typescript@5.9.3)))(vue@3.5.26(typescript@5.9.3))
+      '@wangs-ui/vue-output-target': 0.10.12(@stencil/core@4.39.0)(vue-router@4.6.4(vue@3.5.26(typescript@5.9.3)))(vue@3.5.26(typescript@5.9.3))
+    transitivePeerDependencies:
+      - '@stencil/core'
+      - vue
+      - vue-router
+
+  '@wangs-ui/vue@1.0.24(@stencil/core@4.39.0)(@wangs-ui/core@1.0.24(@stencil/core@4.39.0)(vue-router@4.6.4(vue@3.5.26(typescript@5.9.3)))(vue@3.5.26(typescript@5.9.3)))(vue-router@4.6.4(vue@3.5.26(typescript@5.9.3)))(vue@3.5.26(typescript@5.9.3))':
+    dependencies:
+      '@wangs-ui/core': 1.0.24(@stencil/core@4.39.0)(vue-router@4.6.4(vue@3.5.26(typescript@5.9.3)))(vue@3.5.26(typescript@5.9.3))
       '@wangs-ui/vue-output-target': 0.10.12(@stencil/core@4.39.0)(vue-router@4.6.4(vue@3.5.26(typescript@5.9.3)))(vue@3.5.26(typescript@5.9.3))
     transitivePeerDependencies:
       - '@stencil/core'
@@ -14379,10 +14410,6 @@ snapshots:
       compress-commons: 6.0.2
       readable-stream: 4.7.0
 
-  zod-to-json-schema@3.25.0(zod@3.23.8):
-    dependencies:
-      zod: 3.23.8
-
   zod-to-json-schema@3.25.0(zod@3.25.76):
     dependencies:
       zod: 3.25.76
@@ -14390,6 +14417,10 @@ snapshots:
   zod-to-json-schema@3.25.0(zod@4.2.1):
     dependencies:
       zod: 4.2.1
+
+  zod-to-json-schema@3.25.1(zod@3.23.8):
+    dependencies:
+      zod: 3.23.8
 
   zod@3.23.8: {}
 

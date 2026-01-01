@@ -7,10 +7,10 @@ const activeIndexWithLine = ref(0)
 const activeIndexWithoutLine = ref(0)
 
 const items: MenuItem[] = [
-  { key: 'home', label: 'Home' },
-  { key: 'about', label: 'About' },
-  { key: 'services', label: 'Services' },
-  { key: 'contact', label: 'Contact' }
+  { label: 'Home' },
+  { label: 'About' },
+  { label: 'Services' },
+  { label: 'Contact' }
 ]
 </script>
 
