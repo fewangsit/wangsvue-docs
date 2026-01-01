@@ -7,32 +7,22 @@ const activeIndex = ref(0)
 
 const items: MenuItem[] = [
   {
-    key: 'dashboard',
-    label: 'Dashboard',
-    command: () => {
-      console.log('Dashboard clicked')
-    }
+    key: 'documentation',
+    label: 'Documentation',
+    icon: 'file-lines',
+    url: 'https://docs.example.com'
   },
   {
-    key: 'analytics',
-    label: 'Analytics',
-    command: () => {
-      console.log('Analytics clicked')
-    }
+    key: 'github',
+    label: 'GitHub',
+    icon: 'external-link',
+    url: 'https://github.com'
   },
   {
-    key: 'reports',
-    label: 'Reports',
-    command: () => {
-      console.log('Reports clicked')
-    }
-  },
-  {
-    key: 'settings',
-    label: 'Settings',
-    command: () => {
-      console.log('Settings clicked')
-    }
+    key: 'support',
+    label: 'Support',
+    icon: 'chat',
+    url: 'https://support.example.com'
   }
 ]
 </script>
@@ -45,6 +35,9 @@ const items: MenuItem[] = [
     />
     <div class="p-4 border rounded-lg">
       <p class="text-sm text-gray-600">
+        TabMenu with external URLs using url property
+      </p>
+      <p class="text-xs text-gray-500 mt-1">
         Active tab: {{ items[activeIndex]?.label }}
       </p>
     </div>

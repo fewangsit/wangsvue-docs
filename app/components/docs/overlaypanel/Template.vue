@@ -1,16 +1,15 @@
 <script setup lang="ts">
-import { ref } from 'vue'
 import { OverlayPanel, Button } from '@fewangsit/wangsvue'
 
-const customPanel = ref()
-const containerPanel = ref()
+const customPanel = useTemplateRef<OverlayPanel>('customPanel')
+const containerPanel = useTemplateRef<OverlayPanel>('containerPanel')
 
 const showCustom = (event: Event) => {
-  customPanel.value.show(event)
+  customPanel.value?.show(event)
 }
 
 const showContainer = (event: Event) => {
-  containerPanel.value.show(event)
+  containerPanel.value?.show(event)
 }
 </script>
 

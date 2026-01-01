@@ -1,14 +1,15 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { TabMenu, Button } from '@fewangsit/wangsvue'
+import type { MenuItem } from '@fewangsit/wangsvue/menuitem'
 
 const activeIndex = ref(0)
 
-const items = [
-  { label: 'Tab 1' },
-  { label: 'Tab 2' },
-  { label: 'Tab 3' },
-  { label: 'Tab 4' }
+const items: MenuItem[] = [
+  { key: 'tab1', label: 'Tab 1' },
+  { key: 'tab2', label: 'Tab 2' },
+  { key: 'tab3', label: 'Tab 3' },
+  { key: 'tab4', label: 'Tab 4' }
 ]
 
 const setActiveTab = (index: number) => {

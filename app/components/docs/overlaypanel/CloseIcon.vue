@@ -1,11 +1,10 @@
 <script setup lang="ts">
-import { ref } from 'vue'
 import { OverlayPanel, Button } from '@fewangsit/wangsvue'
 
-const op = ref()
+const op = useTemplateRef<OverlayPanel>('op')
 
 const toggle = (event: Event) => {
-  op.value.toggle(event)
+  op.value?.toggle(event)
 }
 </script>
 

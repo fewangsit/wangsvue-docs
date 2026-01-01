@@ -1,16 +1,15 @@
 <script setup lang="ts">
-import { ref } from 'vue'
 import { OverlayPanel, Button } from '@fewangsit/wangsvue'
 
-const dismissablePanel = ref()
-const nonDismissablePanel = ref()
+const dismissablePanel = useTemplateRef<OverlayPanel>('dismissablePanel')
+const nonDismissablePanel = useTemplateRef<OverlayPanel>('nonDismissablePanel')
 
 const showDismissable = (event: Event) => {
-  dismissablePanel.value.show(event)
+  dismissablePanel.value?.show(event)
 }
 
 const showNonDismissable = (event: Event) => {
-  nonDismissablePanel.value.show(event)
+  nonDismissablePanel.value?.show(event)
 }
 </script>
 
@@ -53,7 +52,7 @@ const showNonDismissable = (event: Event) => {
         <Button
           label="Close"
           size="small"
-          @click="nonDismissablePanel.hide()"
+          @click="nonDismissablePanel?.hide()"
         />
       </div>
     </OverlayPanel>

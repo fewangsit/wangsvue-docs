@@ -192,6 +192,8 @@ export const componentRegistry: Record<
   'tabmenu/Types': () => import('./tabmenu/Types.vue'),
   'tabmenu/Icons': () => import('./tabmenu/Icons.vue'),
   'tabmenu/Router': () => import('./tabmenu/Router.vue'),
+  'tabmenu/ExternalUrl': () => import('./tabmenu/ExternalUrl.vue'),
+  'tabmenu/Visibility': () => import('./tabmenu/Visibility.vue'),
   'tabmenu/ActiveIndex': () => import('./tabmenu/ActiveIndex.vue'),
   'tabmenu/TrailingLine': () => import('./tabmenu/TrailingLine.vue'),
 
@@ -280,6 +282,7 @@ export const componentRegistry: Record<
   'toast/LifeCycle': () => import('./toast/LifeCycle.vue'),
   'toast/Closable': () => import('./toast/Closable.vue'),
   'toast/Template': () => import('./toast/Template.vue'),
+  'toast/GroupManagement': () => import('./toast/GroupManagement.vue'),
 
   // Breadcrumb components
   'breadcrumb/Basic': () => import('./breadcrumb/Basic.vue'),
@@ -287,6 +290,7 @@ export const componentRegistry: Record<
   'breadcrumb/MixedItems': () => import('./breadcrumb/MixedItems.vue'),
   'breadcrumb/LongPath': () => import('./breadcrumb/LongPath.vue'),
   'breadcrumb/CustomTitles': () => import('./breadcrumb/CustomTitles.vue'),
+  'breadcrumb/DynamicNavigation': () => import('./breadcrumb/DynamicNavigation.vue'),
 
   // ButtonCopy components
   'buttoncopy/Basic': () => import('./buttoncopy/Basic.vue'),
@@ -309,6 +313,24 @@ export const componentRegistry: Record<
   'image/Rounded': () => import('./image/Rounded.vue'),
   'image/WithoutPreview': () => import('./image/WithoutPreview.vue'),
   'image/Gallery': () => import('./image/Gallery.vue'),
+  'image/Placeholder': () => import('./image/Placeholder.vue'),
+
+  // Editor components
+  'editor/Basic': () => import('./editor/Basic.vue'),
+  'editor/Placeholder': () => import('./editor/Placeholder.vue'),
+  'editor/Readonly': () => import('./editor/Readonly.vue'),
+  'editor/Borderless': () => import('./editor/Borderless.vue'),
+  'editor/FormIntegration': () => import('./editor/FormIntegration.vue'),
+  'editor/ImageUpload': () => import('./editor/ImageUpload.vue'),
+  'editor/Mentions': () => import('./editor/Mentions.vue'),
+  'editor/CustomStyling': () => import('./editor/CustomStyling.vue'),
+
+  // CodeSnippet components
+  'codesnippet/Basic': () => import('./codesnippet/Basic.vue'),
+  'codesnippet/Languages': () => import('./codesnippet/Languages.vue'),
+  'codesnippet/Readonly': () => import('./codesnippet/Readonly.vue'),
+  'codesnippet/Placeholder': () => import('./codesnippet/Placeholder.vue'),
+  'codesnippet/Interactive': () => import('./codesnippet/Interactive.vue'),
 
   // ImageCompressor components
   'imagecompressor/Basic': () => import('./imagecompressor/Basic.vue'),
