@@ -93,11 +93,6 @@ const removeAllGroups = () => {
       />
     </div>
 
-    <div class="text-sm text-gray-600">
-      <p>Groups allow you to organize and manage toast messages collectively.</p>
-      <p>Use removeGroup() to dismiss all toasts in a specific group, or removeAllGroups() to clear everything.</p>
-    </div>
-
     <Toast
       group="groupA"
     />

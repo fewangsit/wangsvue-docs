@@ -279,10 +279,9 @@ export const componentRegistry: Record<
   'toast/Basic': () => import('./toast/Basic.vue'),
   'toast/Severity': () => import('./toast/Severity.vue'),
   'toast/Position': () => import('./toast/Position.vue'),
-  'toast/LifeCycle': () => import('./toast/LifeCycle.vue'),
-  'toast/Closable': () => import('./toast/Closable.vue'),
+  'toast/LifeSpan': () => import('./toast/LifeSpan.vue'),
   'toast/Template': () => import('./toast/Template.vue'),
-  'toast/GroupManagement': () => import('./toast/GroupManagement.vue'),
+  'toast/Group': () => import('./toast/Group.vue'),
 
   // Breadcrumb components
   'breadcrumb/Basic': () => import('./breadcrumb/Basic.vue'),

@@ -1,7 +1,16 @@
 <script setup lang="ts">
-import { Toast, Button, useToast } from '@fewangsit/wangsvue'
+import {
+  Toast,
+  Button,
+  useToast,
+  Icon,
+  ProgressBar
+} from '@fewangsit/wangsvue'
 
 const toast = useToast()
+const visible = ref(false)
+const progress = ref(0)
+const interval = ref()
 
 const showCustomMessage = () => {
   toast.add({
@@ -13,12 +22,31 @@ const showCustomMessage = () => {
 }
 
 const showCustomContainer = () => {
-  toast.add({
-    severity: 'success',
-    message: 'This toast uses a custom container template',
-    life: 5000,
-    group: 'container'
-  })
+  if (!visible.value) {
+    toast.add({
+      severity: 'info',
+      message: 'Uploading your files.',
+      group: 'container',
+      life: 0
+    })
+    visible.value = true
+    progress.value = 0
+
+    if (interval.value) {
+      clearInterval(interval.value)
+    }
+
+    interval.value = setInterval(() => {
+      if (progress.value <= 100) {
+        progress.value = progress.value + 20
+      }
+
+      if (progress.value >= 100) {
+        progress.value = 100
+        clearInterval(interval.value)
+      }
+    }, 1000)
+  }
 }
 </script>
 
@@ -36,26 +64,25 @@ const showCustomContainer = () => {
     <!-- Custom Message Template -->
     <Toast group="custom">
       <template #message="{ message }">
-        <div class="flex items-center gap-3 p-4">
-          <div class="w-10 h-10 bg-blue-500 rounded-full flex items-center justify-center">
-            <i class="wangs-icon-info text-white" />
-          </div>
+        <div class="flex grow items-center gap-3 p-4">
+          <Icon
+            class="text-2xl text-info-500"
+            icon="information-line"
+          />
           <div class="flex-1">
-            <h4 class="font-semibold text-blue-900">
-              Custom Message
+            <h4 class="font-semibold text-info-900">
+              {{ message.severity }}
             </h4>
-            <p class="text-sm text-blue-700">
-              {{ message }}
+            <p class="text-sm text-info-700">
+              {{ message.detail }}
             </p>
             <div class="mt-2 flex gap-2">
               <Button
                 label="Action"
-                size="small"
                 severity="primary"
               />
               <Button
                 label="Dismiss"
-                size="small"
                 severity="secondary"
                 text
               />
@@ -66,29 +93,42 @@ const showCustomContainer = () => {
     </Toast>
 
     <!-- Custom Container Template -->
-    <Toast group="container">
+    <Toast
+      group="container"
+      position="top-center"
+      @close="visible = false"
+    >
       <template #container="{ message, closeCallback }">
-        <div class="bg-linear-to-r from-green-400 to-green-600 text-white p-4 rounded-lg shadow-lg">
-          <div class="flex items-center justify-between">
-            <div class="flex items-center gap-3">
-              <i class="wangs-icon-check text-2xl" />
-              <div>
-                <h4 class="font-bold">
-                  Success
-                </h4>
-                <p class="text-sm opacity-90">
-                  {{ message }}
-                </p>
-              </div>
-            </div>
-            <button
-              class="text-white hover:text-green-200"
-              @click="closeCallback"
-            >
-              <i class="wangs-icon-close" />
-            </button>
+        <section class="flex flex-col p-4 gap-4 w-full bg-grayscale-900 backdrop-blur-lg rounded-xl">
+          <div class="flex items-center gap-5">
+            <Icon
+              icon="file-up"
+              class="text-2xl text-white"
+            />
+            <span class="font-bold text-base text-white">{{ message.detail }}
+            </span>
           </div>
-        </div>
+          <div class="flex flex-col gap-2">
+            <ProgressBar
+              :value="progress"
+              :show-value="false"
+              severity="dark"
+            />
+            <label class="text-sm font-bold text-white">{{ progress }}% uploaded</label>
+          </div>
+          <div class="flex gap-4 mb-4 justify-end">
+            <Button
+              label="Another Upload?"
+              severity="secondary"
+              @click="closeCallback"
+            />
+            <Button
+              label="Cancel"
+              severity="secondary"
+              @click="closeCallback"
+            />
+          </div>
+        </section>
       </template>
     </Toast>
   </div>
