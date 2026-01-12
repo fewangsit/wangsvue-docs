@@ -100,8 +100,8 @@ const onSubmit = (payload: FormPayload) => {
       <ComponentName
         label="Field Label"
         field-name="fieldName"
-        :use-validator="true"
-        :mandatory="true"
+        use-validator
+        mandatory
         :validator-message="{ empty: 'Field is required' }"
       />
     </template>

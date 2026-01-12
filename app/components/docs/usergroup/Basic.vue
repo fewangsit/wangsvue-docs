@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { UserGroup } from '@fewangsit/wangsvue'
-import type { GeneralUser } from '@fewangsit/wangsvue/username'
+import { UserGroup } from '@fewangsit/wangsvue';
+import type { GeneralUser } from '@fewangsit/wangsvue/username';
 
 const users: GeneralUser[] = [
   {
@@ -12,7 +12,7 @@ const users: GeneralUser[] = [
     email: 'john.doe@example.com',
     position: 'Software Engineer',
     division: 'Engineering',
-    profilePicture: 'https://picsum.photos/64/64?random=1'
+    profilePicture: 'https://picsum.photos/64/64?random=1',
   },
   {
     _id: '2',
@@ -23,7 +23,7 @@ const users: GeneralUser[] = [
     email: 'jane.smith@example.com',
     position: 'Product Manager',
     division: 'Product',
-    profilePicture: 'https://picsum.photos/64/64?random=2'
+    profilePicture: 'https://picsum.photos/64/64?random=2',
   },
   {
     _id: '3',
@@ -34,7 +34,7 @@ const users: GeneralUser[] = [
     email: 'alice.johnson@example.com',
     position: 'UX Designer',
     division: 'Design',
-    profilePicture: 'https://picsum.photos/64/64?random=3'
+    profilePicture: 'https://picsum.photos/64/64?random=3',
   },
   {
     _id: '4',
@@ -45,9 +45,9 @@ const users: GeneralUser[] = [
     email: 'bob.wilson@example.com',
     position: 'DevOps Engineer',
     division: 'Infrastructure',
-    profilePicture: 'https://picsum.photos/64/64?random=4'
-  }
-]
+    profilePicture: 'https://picsum.photos/64/64?random=4',
+  },
+];
 </script>
 
 <template>

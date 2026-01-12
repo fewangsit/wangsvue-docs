@@ -1,33 +1,31 @@
 <script setup lang="ts">
-import { ref } from 'vue'
-import { DialogForm, InputText, Button } from '@fewangsit/wangsvue'
-import type { FormPayload } from '@fewangsit/wangsvue/form'
+import { Button, DialogForm, InputText } from '@fewangsit/wangsvue';
+import type { FormPayload } from '@fewangsit/wangsvue/form';
+import { ref } from 'vue';
 
-const visible = ref(false)
+const visible = ref(false);
 
-const onSubmit = (payload: FormPayload) => {
-  console.log('Form submitted:', payload.formValues)
-}
+const onSubmit = (payload: FormPayload): void => {
+  console.log('Form submitted:', payload.formValues);
+};
 </script>
 
 <template>
-  <Button
-    label="Open Dialog"
-    @click="visible = true"
-  />
+  <Button @click="visible = true" label="Open Dialog" />
+
   <DialogForm
     v-model:visible="visible"
-    header="Validation Dialog"
     :buttons-template="['submit', 'clear']"
     @submit="onSubmit"
+    header="Validation Dialog"
   >
     <template #fields>
       <InputText
-        label="Name"
-        field-name="name"
-        :use-validator="true"
-        :mandatory="true"
         :validator-message="{ empty: 'Name is required' }"
+        field-name="name"
+        label="Name"
+        mandatory
+        use-validator
       />
     </template>
   </DialogForm>

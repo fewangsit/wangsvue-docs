@@ -1,36 +1,34 @@
 <script setup lang="ts">
-import { ref } from 'vue'
-import { TabMenu } from '@fewangsit/wangsvue'
-import type { MenuItem } from '@fewangsit/wangsvue/menuitem'
+import { TabMenu } from '@fewangsit/wangsvue';
+import type { MenuItem } from '@fewangsit/wangsvue/menuitem';
+import { ref } from 'vue';
 
-const activeIndexWithLine = ref(0)
-const activeIndexWithoutLine = ref(0)
+const activeIndexWithLine = ref(0);
+const activeIndexWithoutLine = ref(0);
 
 const items: MenuItem[] = [
   { label: 'Home' },
   { label: 'About' },
   { label: 'Services' },
-  { label: 'Contact' }
-]
+  { label: 'Contact' },
+];
 </script>
 
 <template>
   <div class="flex flex-col gap-6">
     <div>
-      <h4 class="mb-2 font-medium">
-        With Trailing Line (default)
-      </h4>
+      <h4 class="mb-2 font-medium">With Trailing Line (default)</h4>
+
       <TabMenu
         v-model:active-index="activeIndexWithLine"
         :menu="items"
-        :use-trailing-line="true"
+        use-trailing-line
       />
     </div>
 
     <div>
-      <h4 class="mb-2 font-medium">
-        Without Trailing Line
-      </h4>
+      <h4 class="mb-2 font-medium">Without Trailing Line</h4>
+
       <TabMenu
         v-model:active-index="activeIndexWithoutLine"
         :menu="items"

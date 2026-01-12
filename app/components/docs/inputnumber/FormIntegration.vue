@@ -1,29 +1,26 @@
 <script setup lang="ts">
-import { Form, InputNumber } from '@fewangsit/wangsvue'
-import type { FormPayload } from '@fewangsit/wangsvue/form'
+import { Form, InputNumber } from '@fewangsit/wangsvue';
+import type { FormPayload } from '@fewangsit/wangsvue/form';
 
-const onSubmit = (payload: FormPayload) => {
-  console.log('Form submitted:', payload.formValues)
-}
+const onSubmit = (payload: FormPayload): void => {
+  console.log('Form submitted:', payload.formValues);
+};
 </script>
 
 <template>
-  <Form
-    :buttons-template="['submit', 'clear']"
-    @submit="onSubmit"
-  >
+  <Form :buttons-template="['submit', 'clear']" @submit="onSubmit">
     <template #fields>
       <InputNumber
-        label="Quantity"
-        field-name="quantity"
-        :use-validator="true"
-        :mandatory="true"
-        :min="1"
         :max="999"
-        :show-buttons="true"
+        :min="1"
         :validator-message="{
-          empty: 'Quantity is required'
+          empty: 'Quantity is required',
         }"
+        field-name="quantity"
+        label="Quantity"
+        mandatory
+        show-buttons
+        use-validator
       />
     </template>
   </Form>

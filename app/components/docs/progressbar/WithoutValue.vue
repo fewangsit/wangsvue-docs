@@ -1,19 +1,11 @@
 <script setup lang="ts">
-import { ProgressBar } from '@fewangsit/wangsvue'
+import { ProgressBar } from '@fewangsit/wangsvue';
 </script>
 
 <template>
   <div class="flex flex-col gap-4">
-    <ProgressBar
-      :value="70"
-      severity="primary"
-      :show-value="false"
-    />
+    <ProgressBar :show-value="false" :value="70" severity="primary" />
 
-    <ProgressBar
-      :value="40"
-      severity="success"
-      :show-value="false"
-    />
+    <ProgressBar :show-value="false" :value="40" severity="success" />
   </div>
 </template>

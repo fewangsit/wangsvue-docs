@@ -1,14 +1,14 @@
 <script setup lang="ts">
-import { Textarea } from '@fewangsit/wangsvue'
+import { Textarea } from '@fewangsit/wangsvue';
 </script>
 
 <template>
   <Textarea
-    label="Disabled"
-    :disabled="true"
-    :auto-resize="true"
     :rows="3"
-    placeholder="Disabled textarea"
+    auto-resize
+    disabled
     field-info="This textarea is disabled"
+    label="Disabled"
+    placeholder="Disabled textarea"
   />
 </template>

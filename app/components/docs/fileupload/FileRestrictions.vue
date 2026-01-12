@@ -1,21 +1,21 @@
 <script setup lang="ts">
-import { ref } from 'vue'
-import { FileUpload } from '@fewangsit/wangsvue'
+import { FileUpload } from '@fewangsit/wangsvue';
+import { ref } from 'vue';
 
-const selectedImageFile = ref<File | null>(null)
-const selectedDocFile = ref<File | null>(null)
+const selectedImageFile = ref<File | null>(null);
+const selectedDocFile = ref<File | null>(null);
 
-const onImageSelect = (file: File) => {
-  selectedImageFile.value = file
-}
+const onImageSelect = (file: File): void => {
+  selectedImageFile.value = file;
+};
 
-const onDocSelect = (file: File) => {
-  selectedDocFile.value = file
-}
+const onDocSelect = (file: File): void => {
+  selectedDocFile.value = file;
+};
 
-const onError = (error: unknown) => {
-  console.error('File upload error:', error)
-}
+const onError = (error: unknown): void => {
+  console.error('File upload error:', error);
+};
 </script>
 
 <template>
@@ -24,16 +24,18 @@ const onError = (error: unknown) => {
       <h4 class="text-sm font-medium text-gray-700 mb-2">
         Images Only (Max 2MB)
       </h4>
+
       <FileUpload
-        accept="image/*"
         :max-file-size="2097152"
-        label="Upload Image"
-        placeholder="Select image file"
+        @error="onError"
+        @select="onImageSelect"
+        accept="image/*"
         file-extensions="JPG, PNG, GIF"
         file-requirements="Max size: 2MB"
-        @select="onImageSelect"
-        @error="onError"
+        label="Upload Image"
+        placeholder="Select image file"
       />
+
       <div class="mt-2 text-xs text-gray-600">
         Selected: {{ selectedImageFile ? selectedImageFile.name : 'None' }}
       </div>
@@ -43,16 +45,18 @@ const onError = (error: unknown) => {
       <h4 class="text-sm font-medium text-gray-700 mb-2">
         Documents Only (Max 5MB)
       </h4>
+
       <FileUpload
-        accept=".pdf,.doc,.docx,.txt"
         :max-file-size="5242880"
-        label="Upload Document"
-        placeholder="Select document file"
+        @error="onError"
+        @select="onDocSelect"
+        accept=".pdf,.doc,.docx,.txt"
         file-extensions="PDF, DOC, DOCX, TXT"
         file-requirements="Max size: 5MB"
-        @select="onDocSelect"
-        @error="onError"
+        label="Upload Document"
+        placeholder="Select document file"
       />
+
       <div class="mt-2 text-xs text-gray-600">
         Selected: {{ selectedDocFile ? selectedDocFile.name : 'None' }}
       </div>

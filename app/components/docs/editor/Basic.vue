@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { ref } from 'vue'
-import { Editor } from '@fewangsit/wangsvue'
-import type { JSONContent } from '@fewangsit/wangsvue/editor'
+import { Editor } from '@fewangsit/wangsvue';
+import type { JSONContent } from '@fewangsit/wangsvue/editor';
+import { ref } from 'vue';
 
 const content = ref<JSONContent>({
   type: 'doc',
@@ -11,17 +11,14 @@ const content = ref<JSONContent>({
       content: [
         {
           type: 'text',
-          text: 'Welcome to the rich text editor! You can format text, add links, and more.'
-        }
-      ]
-    }
-  ]
-})
+          text: 'Welcome to the rich text editor! You can format text, add links, and more.',
+        },
+      ],
+    },
+  ],
+});
 </script>
 
 <template>
-  <Editor
-    v-model="content"
-    label="Content"
-  />
+  <Editor v-model="content" label="Content" />
 </template>

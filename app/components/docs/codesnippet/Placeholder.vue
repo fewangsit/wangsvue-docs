@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { CodeSnippet } from '@fewangsit/wangsvue'
+import { CodeSnippet } from '@fewangsit/wangsvue';
 </script>
 
 <template>

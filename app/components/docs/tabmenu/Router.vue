@@ -1,24 +1,24 @@
 <script setup lang="ts">
-import { TabMenu } from '@fewangsit/wangsvue'
-import type { MenuItem } from '@fewangsit/wangsvue/menuitem'
+import { TabMenu } from '@fewangsit/wangsvue';
+import type { MenuItem } from '@fewangsit/wangsvue/menuitem';
 
 const items: MenuItem[] = [
   {
     label: 'Home',
     icon: 'dashboard',
-    route: '/'
+    route: '/',
   },
   {
     label: 'Button Components',
     icon: 'apps-2-line',
-    route: 'button' // Relative to current route
+    route: 'button', // Relative to current route
   },
   {
     label: 'AI MCP',
     icon: 'star-fill',
-    route: '/ai/mcp'
-  }
-]
+    route: '/ai/mcp',
+  },
+];
 </script>
 
 <template>

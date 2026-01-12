@@ -1,29 +1,29 @@
 <script setup lang="ts">
-import { Form, MultiSelect } from '@fewangsit/wangsvue'
-import type { FormPayload } from '@fewangsit/wangsvue/form'
+import { Form, MultiSelect } from '@fewangsit/wangsvue';
+import type { FormPayload } from '@fewangsit/wangsvue/form';
 
-const options = ['JavaScript', 'TypeScript', 'Python', 'Java', 'C#', 'Go']
+const options = ['JavaScript', 'TypeScript', 'Python', 'Java', 'C#', 'Go'];
 
-const onSubmit = (payload: FormPayload) => {
-  console.log('Form submitted:', payload.formValues)
-}
+const onSubmit = (payload: FormPayload): void => {
+  console.log('Form submitted:', payload.formValues);
+};
 </script>
 
 <template>
   <Form
     :buttons-template="['submit', 'clear']"
-    hide-stay-checkbox
     @submit="onSubmit"
+    hide-stay-checkbox
   >
     <template #fields>
       <MultiSelect
-        label="Programming Languages"
-        field-name="languages"
         :options="options"
-        :use-validator="true"
-        :mandatory="true"
         :validator-message="{ empty: 'At least one language is required' }"
+        field-name="languages"
+        label="Programming Languages"
+        mandatory
         placeholder="Select languages"
+        use-validator
       />
     </template>
   </Form>

@@ -1,11 +1,11 @@
-import Prism from 'prismjs'
+import Prism from 'prismjs';
 
 // Import language components
-import 'prismjs/components/prism-typescript'
-import 'prismjs/components/prism-css'
-import 'prismjs/components/prism-json'
-import 'prismjs/components/prism-bash'
-import 'prismjs/components/prism-yaml'
+import 'prismjs/components/prism-typescript';
+import 'prismjs/components/prism-css';
+import 'prismjs/components/prism-json';
+import 'prismjs/components/prism-bash';
+import 'prismjs/components/prism-yaml';
 
 // Language mapping for common aliases
 const languageMap: Record<string, string> = {
@@ -16,55 +16,67 @@ const languageMap: Record<string, string> = {
   css: 'css',
   shell: 'bash',
   sh: 'bash',
-  yml: 'yaml'
+  yml: 'yaml',
+};
+
+interface UseSyntaxHighlightReturn {
+  highlightCode: (code: string, language?: string) => string;
+  highlightElement: (element: HTMLElement) => void;
+  highlightAll: () => void;
 }
 
-export const useSyntaxHighlight = () => {
-  const highlightCode = (code: string, language: string = 'javascript'): string => {
-    if (!code) return ''
+export const useSyntaxHighlight = (): UseSyntaxHighlightReturn => {
+  const highlightCode = (
+    code: string,
+    language: string = 'javascript',
+  ): string => {
+    if (!code) return '';
 
     // Map language to Prism language
-    const prismLang = languageMap[language] || language
+    const prismLang = languageMap[language] || language;
 
     // Check if language is supported
     if (!Prism.languages[prismLang]) {
       // Fallback to plain text if language not supported
-      return escapeHtml(code)
+      return escapeHtml(code);
     }
 
     try {
       // Generate highlighted HTML
-      return Prism.highlight(code, Prism.languages[prismLang], prismLang)
+      return Prism.highlight(code, Prism.languages[prismLang], prismLang);
     } catch (error) {
-      console.warn(`Failed to highlight code with language "${language}":`, error)
+      console.warn(
+        `Failed to highlight code with language "${language}":`,
+        error,
+      );
       // Fallback to plain text on error
-      return escapeHtml(code)
+      return escapeHtml(code);
     }
-  }
+  };
 
-  const highlightElement = (element: HTMLElement) => {
-    Prism.highlightElement(element)
-  }
+  const highlightElement = (element: HTMLElement): void => {
+    Prism.highlightElement(element);
+  };
 
-  const highlightAll = () => {
-    Prism.highlightAll()
-  }
+  const highlightAll = (): void => {
+    Prism.highlightAll();
+  };
 
   return {
     highlightCode,
     highlightElement,
-    highlightAll
-  }
-}
+    highlightAll,
+  };
+};
 
 // Helper function to escape HTML
-function escapeHtml(text: string): string {
+const escapeHtml = (text: string): string => {
   const map: Record<string, string> = {
     '&': '&amp;',
     '<': '&lt;',
     '>': '&gt;',
     '"': '&quot;',
-    '\'': '&#039;'
-  }
-  return text.replace(/[&<>"']/g, m => map[m])
-}
+    "'": '&#039;',
+  };
+  return text.replace(/[&<>"']/g, (m) => map[m] || m);
+};

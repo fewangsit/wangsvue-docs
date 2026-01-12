@@ -1,21 +1,18 @@
 <script setup lang="ts">
-import { ref } from 'vue'
-import { Checkbox } from '@fewangsit/wangsvue'
+import { Checkbox } from '@fewangsit/wangsvue';
+import { ref } from 'vue';
 
-const disabledChecked = ref(true)
-const disabledUnchecked = ref(false)
+const disabledChecked = ref(true);
+const disabledUnchecked = ref(false);
 </script>
 
 <template>
   <div class="flex flex-wrap gap-3">
-    <Checkbox
-      v-model="disabledChecked"
-      :disabled="true"
-      label="Disabled (checked)"
-    />
+    <Checkbox v-model="disabledChecked" disabled label="Disabled (checked)" />
+
     <Checkbox
       v-model="disabledUnchecked"
-      :disabled="true"
+      disabled
       label="Disabled (unchecked)"
     />
   </div>

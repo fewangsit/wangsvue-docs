@@ -1,44 +1,44 @@
 <script setup lang="ts">
-import { Breadcrumb, Button, useBreadcrumbStore } from '@fewangsit/wangsvue'
-import type { BreadcrumbMenu } from '@fewangsit/wangsvue/breadcrumb'
+import { Breadcrumb, Button, useBreadcrumbStore } from '@fewangsit/wangsvue';
+import type { BreadcrumbMenu } from '@fewangsit/wangsvue/breadcrumb';
 
-const { setBreadcrumbs } = useBreadcrumbStore()
+const { setBreadcrumbs } = useBreadcrumbStore();
 
-const currentPage = shallowRef('home')
+const currentPage = shallowRef('home');
 
 const breadcrumbConfigs: Record<string, BreadcrumbMenu[]> = {
   home: [{ name: 'Home' }],
   crm: [
     {
       name: 'Home',
-      route: '/'
+      route: '/',
     },
-    { name: 'CRM' }
+    { name: 'CRM' },
   ],
   customer: [
     {
       name: 'Home',
-      route: '/'
+      route: '/',
     },
     {
       name: 'CRM',
-      route: '/crm'
+      route: '/crm',
     },
-    { name: 'Customer' }
-  ]
-}
+    { name: 'Customer' },
+  ],
+};
 
-const navigateTo = (page: string) => {
-  currentPage.value = page
-}
+const navigateTo = (page: string): void => {
+  currentPage.value = page;
+};
 
 watch(
   currentPage,
   (page) => {
-    setBreadcrumbs(breadcrumbConfigs[page] ?? [])
+    setBreadcrumbs(breadcrumbConfigs[page] ?? []);
   },
-  { immediate: true }
-)
+  { immediate: true },
+);
 </script>
 
 <template>
@@ -50,19 +50,21 @@ watch(
     <!-- Demonstrate navigation that updates breadcrumbs -->
     <div class="flex flex-wrap gap-2">
       <Button
-        label="Home"
         :severity="currentPage === 'home' ? 'info' : 'secondary'"
         @click="navigateTo('home')"
+        label="Home"
       />
+
       <Button
-        label="CRM"
         :severity="currentPage === 'crm' ? 'info' : 'secondary'"
         @click="navigateTo('crm')"
+        label="CRM"
       />
+
       <Button
-        label="Customer"
         :severity="currentPage === 'customer' ? 'info' : 'secondary'"
         @click="navigateTo('customer')"
+        label="Customer"
       />
     </div>
   </div>

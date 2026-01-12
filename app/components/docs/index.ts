@@ -62,7 +62,8 @@ export const componentRegistry: Record<
   'inputnumber/Disabled': () => import('./inputnumber/Disabled.vue'),
   'inputnumber/MinMax': () => import('./inputnumber/MinMax.vue'),
   'inputnumber/Buttons': () => import('./inputnumber/Buttons.vue'),
-  'inputnumber/FractionDigits': () => import('./inputnumber/FractionDigits.vue'),
+  'inputnumber/FractionDigits': () =>
+    import('./inputnumber/FractionDigits.vue'),
   'inputnumber/Grouping': () => import('./inputnumber/Grouping.vue'),
   'inputnumber/Locale': () => import('./inputnumber/Locale.vue'),
   'inputnumber/PrefixSuffix': () => import('./inputnumber/PrefixSuffix.vue'),
@@ -82,9 +83,12 @@ export const componentRegistry: Record<
   'inputcurrency/Basic': () => import('./inputcurrency/Basic.vue'),
   'inputcurrency/Disabled': () => import('./inputcurrency/Disabled.vue'),
   'inputcurrency/Max': () => import('./inputcurrency/Max.vue'),
-  'inputcurrency/FormInitialValue': () => import('./inputcurrency/FormInitialValue.vue'),
-  'inputcurrency/VModelOutsideForm': () => import('./inputcurrency/VModelOutsideForm.vue'),
-  'inputcurrency/ValidationCustom': () => import('./inputcurrency/ValidationCustom.vue'),
+  'inputcurrency/FormInitialValue': () =>
+    import('./inputcurrency/FormInitialValue.vue'),
+  'inputcurrency/VModelOutsideForm': () =>
+    import('./inputcurrency/VModelOutsideForm.vue'),
+  'inputcurrency/ValidationCustom': () =>
+    import('./inputcurrency/ValidationCustom.vue'),
   'inputcurrency/FormIntegration': () =>
     import('./inputcurrency/FormIntegration.vue'),
 
@@ -96,22 +100,25 @@ export const componentRegistry: Record<
     import('./inputphonenumber/MaxDigits.vue'),
   'inputphonenumber/Mandatory': () =>
     import('./inputphonenumber/Mandatory.vue'),
-  'inputphonenumber/Disabled': () =>
-    import('./inputphonenumber/Disabled.vue'),
+  'inputphonenumber/Disabled': () => import('./inputphonenumber/Disabled.vue'),
 
   // DialogForm components
   'dialogform/Basic': () => import('./dialogform/Basic.vue'),
   'dialogform/Size': () => import('./dialogform/Size.vue'),
   'dialogform/Severity': () => import('./dialogform/Severity.vue'),
   'dialogform/Validation': () => import('./dialogform/Validation.vue'),
-  'dialogform/StayAfterSubmit': () => import('./dialogform/StayAfterSubmit.vue'),
-  'dialogform/ResetAfterSubmit': () => import('./dialogform/ResetAfterSubmit.vue'),
+  'dialogform/StayAfterSubmit': () =>
+    import('./dialogform/StayAfterSubmit.vue'),
+  'dialogform/ResetAfterSubmit': () =>
+    import('./dialogform/ResetAfterSubmit.vue'),
   'dialogform/CustomHeader': () => import('./dialogform/CustomHeader.vue'),
   'dialogform/CustomButtons': () => import('./dialogform/CustomButtons.vue'),
   'dialogform/AsideRight': () => import('./dialogform/AsideRight.vue'),
   'dialogform/ConfirmDialog': () => import('./dialogform/ConfirmDialog.vue'),
-  'dialogform/ValidationFunction': () => import('./dialogform/ValidationFunction.vue'),
-  'dialogform/CheckAvailability': () => import('./dialogform/CheckAvailability.vue'),
+  'dialogform/ValidationFunction': () =>
+    import('./dialogform/ValidationFunction.vue'),
+  'dialogform/CheckAvailability': () =>
+    import('./dialogform/CheckAvailability.vue'),
 
   // InputURL components
   'inputurl/Basic': () => import('./inputurl/Basic.vue'),
@@ -136,10 +143,8 @@ export const componentRegistry: Record<
     import('./inputrangenumber/Validation.vue'),
   'inputrangenumber/Mandatory': () =>
     import('./inputrangenumber/Mandatory.vue'),
-  'inputrangenumber/Disabled': () =>
-    import('./inputrangenumber/Disabled.vue'),
-  'inputrangenumber/Invalid': () =>
-    import('./inputrangenumber/Invalid.vue'),
+  'inputrangenumber/Disabled': () => import('./inputrangenumber/Disabled.vue'),
+  'inputrangenumber/Invalid': () => import('./inputrangenumber/Invalid.vue'),
   'inputrangenumber/FormIntegration': () =>
     import('./inputrangenumber/FormIntegration.vue'),
 
@@ -213,7 +218,8 @@ export const componentRegistry: Record<
   'dropdown/Loading': () => import('./dropdown/Loading.vue'),
   'dropdown/Disabled': () => import('./dropdown/Disabled.vue'),
   'dropdown/Filter': () => import('./dropdown/Filter.vue'),
-  'dropdown/CustomPlaceholder': () => import('./dropdown/CustomPlaceholder.vue'),
+  'dropdown/CustomPlaceholder': () =>
+    import('./dropdown/CustomPlaceholder.vue'),
   'dropdown/FormIntegration': () => import('./dropdown/FormIntegration.vue'),
   'dropdown/CustomTemplates': () => import('./dropdown/CustomTemplates.vue'),
 
@@ -221,19 +227,23 @@ export const componentRegistry: Record<
   'multiselect/Basic': () => import('./multiselect/Basic.vue'),
   'multiselect/ObjectOptions': () => import('./multiselect/ObjectOptions.vue'),
   'multiselect/DisplayModes': () => import('./multiselect/DisplayModes.vue'),
-  'multiselect/MaxSelectedLabels': () => import('./multiselect/MaxSelectedLabels.vue'),
+  'multiselect/MaxSelectedLabels': () =>
+    import('./multiselect/MaxSelectedLabels.vue'),
   'multiselect/Loading': () => import('./multiselect/Loading.vue'),
   'multiselect/Disabled': () => import('./multiselect/Disabled.vue'),
   'multiselect/Filter': () => import('./multiselect/Filter.vue'),
-  'multiselect/HideHeaderCheckbox': () => import('./multiselect/HideHeaderCheckbox.vue'),
+  'multiselect/HideHeaderCheckbox': () =>
+    import('./multiselect/HideHeaderCheckbox.vue'),
   'multiselect/Controls': () => import('./multiselect/Controls.vue'),
   'multiselect/TriggerSlot': () => import('./multiselect/TriggerSlot.vue'),
   'multiselect/Display': () => import('./multiselect/Display.vue'),
-  'multiselect/FormIntegration': () => import('./multiselect/FormIntegration.vue'),
+  'multiselect/FormIntegration': () =>
+    import('./multiselect/FormIntegration.vue'),
 
   // InputPassword components
   'inputpassword/Basic': () => import('./inputpassword/Basic.vue'),
-  'inputpassword/LabelPlaceholder': () => import('./inputpassword/LabelPlaceholder.vue'),
+  'inputpassword/LabelPlaceholder': () =>
+    import('./inputpassword/LabelPlaceholder.vue'),
   'inputpassword/Invalid': () => import('./inputpassword/Invalid.vue'),
   'inputpassword/Form': () => import('./inputpassword/Form.vue'),
   'inputpassword/Strength': () => import('./inputpassword/Strength.vue'),
@@ -270,10 +280,12 @@ export const componentRegistry: Record<
   'filtercontainer/Basic': () => import('./filtercontainer/Basic.vue'),
   'filtercontainer/Group': () => import('./filtercontainer/Group.vue'),
   'filtercontainer/Category': () => import('./filtercontainer/Category.vue'),
-  'filtercontainer/MultiSelect': () => import('./filtercontainer/MultiSelect.vue'),
+  'filtercontainer/MultiSelect': () =>
+    import('./filtercontainer/MultiSelect.vue'),
   'filtercontainer/Dropdown': () => import('./filtercontainer/Dropdown.vue'),
   'filtercontainer/Calendar': () => import('./filtercontainer/Calendar.vue'),
-  'filtercontainer/RangeNumber': () => import('./filtercontainer/RangeNumber.vue'),
+  'filtercontainer/RangeNumber': () =>
+    import('./filtercontainer/RangeNumber.vue'),
 
   // Toast components
   'toast/Basic': () => import('./toast/Basic.vue'),
@@ -285,7 +297,8 @@ export const componentRegistry: Record<
 
   // Breadcrumb components
   'breadcrumb/Basic': () => import('./breadcrumb/Basic.vue'),
-  'breadcrumb/BreadcrumbStore': () => import('./breadcrumb/BreadcrumbStore.vue'),
+  'breadcrumb/BreadcrumbStore': () =>
+    import('./breadcrumb/BreadcrumbStore.vue'),
   'breadcrumb/WithRoute': () => import('./breadcrumb/WithRoute.vue'),
 
   // ButtonCopy components
@@ -334,7 +347,8 @@ export const componentRegistry: Record<
   'imagecompressor/Sizes': () => import('./imagecompressor/Sizes.vue'),
   'imagecompressor/Rounded': () => import('./imagecompressor/Rounded.vue'),
   'imagecompressor/FileTypes': () => import('./imagecompressor/FileTypes.vue'),
-  'imagecompressor/FormIntegration': () => import('./imagecompressor/FormIntegration.vue'),
+  'imagecompressor/FormIntegration': () =>
+    import('./imagecompressor/FormIntegration.vue'),
 
   // InlineMessage components
   'inlinemessage/Basic': () => import('./inlinemessage/Basic.vue'),
@@ -404,7 +418,9 @@ export const componentRegistry: Record<
   // FileUpload components
   'fileupload/Basic': () => import('./fileupload/Basic.vue'),
   'fileupload/Multiple': () => import('./fileupload/Multiple.vue'),
-  'fileupload/FileRestrictions': () => import('./fileupload/FileRestrictions.vue'),
+  'fileupload/FileRestrictions': () =>
+    import('./fileupload/FileRestrictions.vue'),
   'fileupload/WithUpload': () => import('./fileupload/WithUpload.vue'),
-  'fileupload/FormIntegration': () => import('./fileupload/FormIntegration.vue')
-}
+  'fileupload/FormIntegration': () =>
+    import('./fileupload/FormIntegration.vue'),
+};

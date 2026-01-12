@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { ref } from 'vue'
-import { InputNumber } from '@fewangsit/wangsvue'
+import { InputNumber } from '@fewangsit/wangsvue';
+import { ref } from 'vue';
 
-const value = ref<number>()
+const value = ref<number>();
 </script>
 
 <template>
@@ -12,8 +12,7 @@ const value = ref<number>()
       label="Quantity"
       placeholder="Enter quantity"
     />
-    <div class="text-sm text-gray-600">
-      Value: {{ value ?? 'Empty' }}
-    </div>
+
+    <div class="text-sm text-gray-600">Value: {{ value ?? 'Empty' }}</div>
   </div>
 </template>

@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import { ButtonFilter, FilterContainer } from '@fewangsit/wangsvue'
-import type { FilterField } from '@fewangsit/wangsvue/filtercontainer'
+import { ButtonFilter, FilterContainer } from '@fewangsit/wangsvue';
+import type { FilterField } from '@fewangsit/wangsvue/filtercontainer';
 
 interface DemoQueryParams {
-  status?: string
+  status?: string;
 }
 
 const fields: FilterField<DemoQueryParams>[] = [
@@ -13,23 +13,22 @@ const fields: FilterField<DemoQueryParams>[] = [
     label: 'Status',
     fetchOptionFn: () => [
       { label: 'Active', value: 'active' },
-      { label: 'Inactive', value: 'inactive' }
+      { label: 'Inactive', value: 'inactive' },
     ],
     optionLabel: 'label',
-    optionValue: 'value'
-  }
-]
+    optionValue: 'value',
+  },
+];
 </script>
 
 <template>
   <div>
-    <ButtonFilter
-      table-name="tablename"
-    />
+    <ButtonFilter table-name="tablename" />
+
     <FilterContainer
-      table-name="tablename"
       :fields="fields"
       @apply="console.log"
+      table-name="tablename"
     />
   </div>
 </template>

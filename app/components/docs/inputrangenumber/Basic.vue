@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { ref } from 'vue'
-import { InputRangeNumber } from '@fewangsit/wangsvue'
+import { InputRangeNumber } from '@fewangsit/wangsvue';
+import { ref } from 'vue';
 
-const value = ref<number[]>([])
+const value = ref<number[]>([]);
 </script>
 
 <template>

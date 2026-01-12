@@ -1,47 +1,40 @@
 <script setup lang="ts">
-import { Toast, Button, useToast } from '@fewangsit/wangsvue'
+import { Button, Toast, useToast } from '@fewangsit/wangsvue';
 
-const toast = useToast()
+const toast = useToast();
 
-const showShort = () => {
+const showShort = (): void => {
   toast.add({
     severity: 'info',
     message: 'This toast will disappear in 1 second',
-    life: 1000
-  })
-}
+    life: 1000,
+  });
+};
 
-const showLong = () => {
+const showLong = (): void => {
   toast.add({
     severity: 'info',
     message: 'This toast will stay for 10 seconds',
-    life: 10000
-  })
-}
+    life: 10000,
+  });
+};
 
-const showInfinitely = () => {
+const showInfinitely = (): void => {
   toast.add({
     severity: 'info',
     message: 'This toast will stay for infinitely',
-    life: 0
-  })
-}
+    life: 0,
+  });
+};
 </script>
 
 <template>
   <div class="flex flex-wrap gap-3">
-    <Button
-      label="Short (1s)"
-      @click="showShort"
-    />
-    <Button
-      label="Long (10s)"
-      @click="showLong"
-    />
-    <Button
-      label="Infinitely"
-      @click="showInfinitely"
-    />
+    <Button @click="showShort" label="Short (1s)" />
+
+    <Button @click="showLong" label="Long (10s)" />
+
+    <Button @click="showInfinitely" label="Infinitely" />
 
     <Toast />
   </div>

@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { ref } from 'vue'
-import { InputBadge } from '@fewangsit/wangsvue'
+import { InputBadge } from '@fewangsit/wangsvue';
+import { ref } from 'vue';
 
-const value = ref<string[]>([])
+const value = ref<string[]>([]);
 </script>
 
 <template>
@@ -12,6 +12,7 @@ const value = ref<string[]>([])
       label="Tags"
       placeholder="Enter tags and press Enter"
     />
+
     <p class="text-sm text-gray-600">
       Tags: {{ value.length > 0 ? value.join(', ') : 'None' }}
     </p>

@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { ref } from 'vue'
-import { Calendar } from '@fewangsit/wangsvue'
+import { Calendar } from '@fewangsit/wangsvue';
+import { ref } from 'vue';
 
-const selectedDate = ref<Date | null>(null)
+const selectedDate = ref<Date | null>(null);
 </script>
 
 <template>
@@ -14,7 +14,10 @@ const selectedDate = ref<Date | null>(null)
     />
 
     <div class="text-sm text-gray-600">
-      <p>Selected Date: {{ selectedDate ? selectedDate.toLocaleDateString() : 'None' }}</p>
+      <p>
+        Selected Date:
+        {{ selectedDate ? selectedDate.toLocaleDateString() : 'None' }}
+      </p>
     </div>
   </div>
 </template>

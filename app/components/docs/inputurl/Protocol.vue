@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import { ref } from 'vue'
-import { InputURL } from '@fewangsit/wangsvue'
+import { InputURL } from '@fewangsit/wangsvue';
+import { ref } from 'vue';
 
-const withProtocol = ref('')
-const withoutProtocol = ref('')
+const withProtocol = ref('');
+const withoutProtocol = ref('');
 </script>
 
 <template>
@@ -12,18 +12,19 @@ const withoutProtocol = ref('')
       v-model="withProtocol"
       label="With Protocol Validation"
       placeholder="https://example.com"
-      :use-protocol="true"
+      use-protocol
     />
 
     <InputURL
       v-model="withoutProtocol"
+      :use-protocol="false"
       label="Without Protocol Validation"
       placeholder="example.com"
-      :use-protocol="false"
     />
 
     <div class="text-sm text-gray-600">
       <p>With Protocol: {{ withProtocol || 'Empty' }}</p>
+
       <p>Without Protocol: {{ withoutProtocol || 'Empty' }}</p>
     </div>
   </div>

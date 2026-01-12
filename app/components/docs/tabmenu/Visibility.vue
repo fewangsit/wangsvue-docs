@@ -1,33 +1,33 @@
 <script setup lang="ts">
-import { ref, computed } from 'vue'
-import { TabMenu } from '@fewangsit/wangsvue'
-import type { MenuItem } from '@fewangsit/wangsvue/menuitem'
+import { TabMenu } from '@fewangsit/wangsvue';
+import type { MenuItem } from '@fewangsit/wangsvue/menuitem';
+import { computed, ref } from 'vue';
 
-const activeIndex = ref(0)
-const showAdminTab = ref(false)
+const activeIndex = ref(0);
+const showAdminTab = ref(false);
 
 const items = computed<MenuItem[]>(() => [
   {
     label: 'Dashboard',
     icon: 'dashboard',
-    visible: true
+    visible: true,
   },
   {
     label: 'Users',
     icon: 'user',
-    visible: true
+    visible: true,
   },
   {
     label: 'Admin Panel',
     icon: 'settings',
-    visible: showAdminTab.value
+    visible: showAdminTab.value,
   },
   {
     label: 'Reports',
     icon: 'file-chart-line',
-    visible: false
-  }
-])
+    visible: false,
+  },
+]);
 </script>
 
 <template>
@@ -36,27 +36,24 @@ const items = computed<MenuItem[]>(() => [
       <input
         id="show-admin"
         v-model="showAdminTab"
-        type="checkbox"
         class="rounded"
-      >
-      <label
-        for="show-admin"
-        class="text-sm"
-      > Show Admin Tab </label>
+        type="checkbox"
+      />
+
+      <label class="text-sm" for="show-admin"> Show Admin Tab </label>
     </div>
 
-    <TabMenu
-      v-model:active-index="activeIndex"
-      :menu="items"
-    />
+    <TabMenu v-model:active-index="activeIndex" :menu="items" />
 
     <div class="p-4 border rounded-lg">
       <p class="text-xs text-gray-500 mt-1">
         Active tab: {{ items[activeIndex]?.label }}
       </p>
+
       <p class="text-sm text-gray-600">
         MenuItem visibility can be controlled with the visible property
       </p>
+
       <p class="text-xs text-gray-500 mt-1">
         Reports tab is always hidden (visible: false), Admin tab toggles based
         on checkbox

@@ -1,21 +1,25 @@
 <script lang="ts" setup>
-const props = withDefaults(defineProps<{ title?: string, description?: string, headline?: string }>(), {
-  title: 'title',
-  description: 'description'
-})
+const props = withDefaults(
+  defineProps<{ title?: string; description?: string; headline?: string }>(),
+  {
+    title: 'title',
+    description: 'description',
+    headline: '',
+  },
+);
 
-const title = computed(() => (props.title || '').slice(0, 60))
-const description = computed(() => (props.description || '').slice(0, 200))
+const title = computed(() => (props.title || '').slice(0, 60));
+const description = computed(() => (props.description || '').slice(0, 200));
 </script>
 
 <template>
   <div class="w-full h-full flex flex-col justify-center bg-[#020420]">
     <svg
       class="absolute right-0 top-0"
-      width="629"
+      fill="none"
       height="593"
       viewBox="0 0 629 593"
-      fill="none"
+      width="629"
       xmlns="http://www.w3.org/2000/svg"
     >
       <g filter="url(#filter0_f_199_94966)">
@@ -24,29 +28,29 @@ const description = computed(() => (props.description || '').slice(0, 200))
           fill="#00DC82"
         />
       </g>
+
       <defs>
         <filter
           id="filter0_f_199_94966"
+          color-interpolation-filters="sRGB"
+          filterUnits="userSpaceOnUse"
+          height="1251.52"
+          width="1255.25"
           x="0.873535"
           y="-659"
-          width="1255.25"
-          height="1251.52"
-          filterUnits="userSpaceOnUse"
-          color-interpolation-filters="sRGB"
         >
-          <feFlood
-            flood-opacity="0"
-            result="BackgroundImageFix"
-          />
+          <feFlood flood-opacity="0" result="BackgroundImageFix" />
+
           <feBlend
-            mode="normal"
             in="SourceGraphic"
             in2="BackgroundImageFix"
+            mode="normal"
             result="shape"
           />
+
           <feGaussianBlur
-            stdDeviation="40.5"
             result="effect1_foregroundBlur_199_94966"
+            stdDeviation="40.5"
           />
         </filter>
       </defs>
@@ -59,12 +63,14 @@ const description = computed(() => (props.description || '').slice(0, 200))
       >
         {{ headline }}
       </p>
+
       <h1
         v-if="title"
         class="m-0 text-[75px] font-semibold mb-4 text-white flex items-center"
       >
         <span>{{ title }}</span>
       </h1>
+
       <p
         v-if="description"
         class="text-[32px] text-[#E4E4E7] leading-tight w-[700px]"

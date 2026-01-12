@@ -1,42 +1,39 @@
 <script setup lang="ts">
-import { Menu } from '@fewangsit/wangsvue'
+import { Menu } from '@fewangsit/wangsvue';
 
 const items = [
   {
     label: 'New',
-    command: () => {
-      console.log('New clicked')
-    }
+    command: (): void => {
+      console.log('New clicked');
+    },
   },
   {
     label: 'Open',
-    command: () => {
-      console.log('Open clicked')
-    }
+    command: (): void => {
+      console.log('Open clicked');
+    },
   },
   {
-    separator: true
+    separator: true,
   },
   {
     label: 'Save',
-    command: () => {
-      console.log('Save clicked')
-    }
+    command: (): void => {
+      console.log('Save clicked');
+    },
   },
   {
     label: 'Save As',
-    command: () => {
-      console.log('Save As clicked')
-    }
-  }
-]
+    command: (): void => {
+      console.log('Save As clicked');
+    },
+  },
+];
 </script>
 
 <template>
   <div class="flex flex-wrap gap-3">
-    <Menu
-      :model="items"
-      :popup="false"
-    />
+    <Menu :model="items" :popup="false" />
   </div>
 </template>

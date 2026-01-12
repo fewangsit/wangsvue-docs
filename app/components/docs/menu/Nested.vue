@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Menu } from '@fewangsit/wangsvue'
+import { Menu } from '@fewangsit/wangsvue';
 
 const items = [
   {
@@ -7,61 +7,58 @@ const items = [
     items: [
       {
         label: 'New',
-        command: () => {
-          console.log('New clicked')
-        }
+        command: (): void => {
+          console.log('New clicked');
+        },
       },
       {
         label: 'Open',
-        command: () => {
-          console.log('Open clicked')
-        }
-      }
-    ]
+        command: (): void => {
+          console.log('Open clicked');
+        },
+      },
+    ],
   },
   {
-    separator: true
+    separator: true,
   },
   {
     label: 'Edit',
     items: [
       {
         label: 'Cut',
-        command: () => {
-          console.log('Cut clicked')
-        }
+        command: (): void => {
+          console.log('Cut clicked');
+        },
       },
       {
         label: 'Copy',
-        command: () => {
-          console.log('Copy clicked')
-        }
+        command: (): void => {
+          console.log('Copy clicked');
+        },
       },
       {
         label: 'Paste',
-        command: () => {
-          console.log('Paste clicked')
-        }
-      }
-    ]
+        command: (): void => {
+          console.log('Paste clicked');
+        },
+      },
+    ],
   },
   {
-    separator: true
+    separator: true,
   },
   {
     label: 'Quit',
-    command: () => {
-      console.log('Quit clicked')
-    }
-  }
-]
+    command: (): void => {
+      console.log('Quit clicked');
+    },
+  },
+];
 </script>
 
 <template>
   <div class="flex flex-wrap gap-3">
-    <Menu
-      :model="items"
-      :popup="false"
-    />
+    <Menu :model="items" :popup="false" />
   </div>
 </template>

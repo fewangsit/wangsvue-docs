@@ -1,15 +1,15 @@
 <script setup lang="ts">
-import { ref } from 'vue'
-import { InputPhoneNumber } from '@fewangsit/wangsvue'
+import { InputPhoneNumber } from '@fewangsit/wangsvue';
+import { ref } from 'vue';
 
-const value = ref('')
+const value = ref('');
 </script>
 
 <template>
   <InputPhoneNumber
     v-model="value"
+    field-info="Include country code for international numbers"
     label="Business Phone"
     placeholder="Enter business phone"
-    field-info="Include country code for international numbers"
   />
 </template>

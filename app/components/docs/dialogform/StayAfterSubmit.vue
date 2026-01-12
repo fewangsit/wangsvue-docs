@@ -1,43 +1,42 @@
 <script setup lang="ts">
-import { ref } from 'vue'
-import { DialogForm, InputText, Button, InputEmail } from '@fewangsit/wangsvue'
-import type { FormPayload } from '@fewangsit/wangsvue/form'
+import { Button, DialogForm, InputEmail, InputText } from '@fewangsit/wangsvue';
+import type { FormPayload } from '@fewangsit/wangsvue/form';
+import { ref } from 'vue';
 
-const visible = ref(false)
+const visible = ref(false);
 
-const onSubmit = (payload: FormPayload) => {
-  console.log('Form submitted:', payload.formValues)
-  console.log('Stay after submit:', payload.stayAfterSubmit)
-  visible.value = payload.stayAfterSubmit
-}
+const onSubmit = (payload: FormPayload): void => {
+  console.log('Form submitted:', payload.formValues);
+  console.log('Stay after submit:', payload.stayAfterSubmit);
+  visible.value = payload.stayAfterSubmit;
+};
 </script>
 
 <template>
-  <Button
-    label="Open Dialog"
-    @click="visible = true"
-  />
+  <Button @click="visible = true" label="Open Dialog" />
+
   <DialogForm
     v-model:visible="visible"
-    header="Stay After Submit Dialog"
     :buttons-template="['submit', 'clear']"
-    :show-stay-checkbox="true"
     @submit="onSubmit"
+    header="Stay After Submit Dialog"
+    show-stay-checkbox
   >
     <template #fields>
       <InputText
-        label="Name"
-        field-name="name"
-        :use-validator="true"
-        :mandatory="true"
         :validator-message="{ empty: 'Name is required' }"
+        field-name="name"
+        label="Name"
+        mandatory
+        use-validator
       />
+
       <InputEmail
-        label="Email"
-        field-name="email"
-        :use-validator="true"
-        :mandatory="true"
         :validator-message="{ empty: 'Email is required' }"
+        field-name="email"
+        label="Email"
+        mandatory
+        use-validator
       />
     </template>
   </DialogForm>

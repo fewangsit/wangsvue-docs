@@ -1,15 +1,15 @@
 <script setup lang="ts">
-import { InputPassword } from '@fewangsit/wangsvue'
+import { InputPassword } from '@fewangsit/wangsvue';
 
-const password = ref('')
+const password = ref('');
 </script>
 
 <template>
   <InputPassword
     v-model="password"
+    invalid
     label="Password"
     placeholder="Enter password"
-    :invalid="true"
     validator-message="Password is required"
   />
 </template>

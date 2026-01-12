@@ -1,102 +1,75 @@
 <script setup lang="ts">
-import { Toast, Button, useToast } from '@fewangsit/wangsvue'
+import { Button, Toast, useToast } from '@fewangsit/wangsvue';
 
-const toast = useToast()
+const toast = useToast();
 
-const showTopLeft = () => {
+const showTopLeft = (): void => {
   toast.add({
     severity: 'info',
     message: 'Toast positioned at top-left',
     life: 3000,
-    group: 'tl'
-  })
-}
+    group: 'tl',
+  });
+};
 
-const showTopCenter = () => {
+const showTopCenter = (): void => {
   toast.add({
     severity: 'info',
     message: 'Toast positioned at top-center',
     life: 3000,
-    group: 'tc'
-  })
-}
+    group: 'tc',
+  });
+};
 
-const showTopRight = () => {
+const showTopRight = (): void => {
   toast.add({
     severity: 'info',
     message: 'Toast positioned at top-right',
     life: 3000,
-    group: 'tr'
-  })
-}
+    group: 'tr',
+  });
+};
 
-const showBottomLeft = () => {
+const showBottomLeft = (): void => {
   toast.add({
     severity: 'info',
     message: 'Toast positioned at bottom-left',
     life: 3000,
-    group: 'bl'
-  })
-}
+    group: 'bl',
+  });
+};
 
-const showBottomRight = () => {
+const showBottomRight = (): void => {
   toast.add({
     severity: 'info',
     message: 'Toast positioned at bottom-right',
     life: 3000,
-    group: 'br'
-  })
-}
+    group: 'br',
+  });
+};
 </script>
 
 <template>
   <div class="flex flex-wrap gap-2">
-    <Button
-      label="Top Left"
-      size="small"
-      @click="showTopLeft"
-    />
-    <Button
-      label="Top Center"
-      size="small"
-      @click="showTopCenter"
-    />
-    <Button
-      label="Top Right"
-      size="small"
-      @click="showTopRight"
-    />
-    <Button
-      label="Bottom Left"
-      size="small"
-      @click="showBottomLeft"
-    />
-    <Button
-      label="Bottom Right"
-      size="small"
-      @click="showBottomRight"
-    />
+    <Button @click="showTopLeft" label="Top Left" size="small" />
+
+    <Button @click="showTopCenter" label="Top Center" size="small" />
+
+    <Button @click="showTopRight" label="Top Right" size="small" />
+
+    <Button @click="showBottomLeft" label="Bottom Left" size="small" />
+
+    <Button @click="showBottomRight" label="Bottom Right" size="small" />
 
     <!-- Toast containers for different positions -->
-    <Toast
-      group="tl"
-      position="top-left"
-    />
-    <Toast
-      group="tc"
-      position="top-center"
-    />
-    <Toast
-      group="tr"
-      position="top-right"
-    />
-    <Toast
-      group="bl"
-      position="bottom-left"
-    />
-    <Toast
-      group="br"
-      position="bottom-right"
-    />
+    <Toast group="tl" position="top-left" />
+
+    <Toast group="tc" position="top-center" />
+
+    <Toast group="tr" position="top-right" />
+
+    <Toast group="bl" position="bottom-left" />
+
+    <Toast group="br" position="bottom-right" />
   </div>
 </template>

@@ -1,4 +1,4 @@
-import { loadComponentData } from '../../utils/component-loader'
+import { loadComponentData } from '../../utils/component-loader';
 
 export default defineMcpTool({
   description: `List all available Wangsvue component IDs.
@@ -16,23 +16,27 @@ WORKFLOW: After using this tool to find components, use get_sections with the co
 
   handler: async () => {
     try {
-      const components = await loadComponentData()
-      const componentIds = components.map(c => c.name)
+      const components = await loadComponentData();
+      const componentIds = components.map((c) => c.name);
 
       return {
-        content: [{
-          type: 'text',
-          text: JSON.stringify(componentIds)
-        }]
-      }
+        content: [
+          {
+            type: 'text',
+            text: JSON.stringify(componentIds),
+          },
+        ],
+      };
     } catch (error) {
       return {
-        content: [{
-          type: 'text',
-          text: `Error: ${error instanceof Error ? error.message : 'Unknown error'}`
-        }],
-        isError: true
-      }
+        content: [
+          {
+            type: 'text',
+            text: `Error: ${error instanceof Error ? error.message : 'Unknown error'}`,
+          },
+        ],
+        isError: true,
+      };
     }
-  }
-})
+  },
+});

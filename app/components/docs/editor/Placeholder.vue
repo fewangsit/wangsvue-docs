@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import { ref } from 'vue'
-import { Editor } from '@fewangsit/wangsvue'
-import type { JSONContent } from '@fewangsit/wangsvue/editor'
+import { Editor } from '@fewangsit/wangsvue';
+import type { JSONContent } from '@fewangsit/wangsvue/editor';
+import { ref } from 'vue';
 
-const content = ref<JSONContent>()
+const content = ref<JSONContent>();
 </script>
 
 <template>

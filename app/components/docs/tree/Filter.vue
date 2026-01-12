@@ -1,15 +1,12 @@
 <script setup lang="ts">
-import { ref } from 'vue'
-import { Tree } from '@fewangsit/wangsvue'
-import type { TreeNode } from '@fewangsit/wangsvue/basetree'
-import type { QueryParams, ShortFetchResponse } from '@fewangsit/wangsvue/datatable'
+import { Tree } from '@fewangsit/wangsvue';
+import type { TreeNode } from '@fewangsit/wangsvue/basetree';
+import type { ShortFetchResponse } from '@fewangsit/wangsvue/datatable';
+import { ref } from 'vue';
 
-const filter = ref('')
+const filter = ref('');
 
-const fetchTree = async (
-  _type: 'group' | 'category',
-  _params?: QueryParams
-): Promise<ShortFetchResponse<TreeNode>> => {
+const fetchTree = async (): Promise<ShortFetchResponse<TreeNode>> => {
   const data: TreeNode[] = [
     {
       key: -1,
@@ -33,23 +30,23 @@ const fetchTree = async (
                   label: 'Expenses.doc',
                   icon: 'file-lines',
                   selectable: true,
-                  data: 'Expenses Document'
+                  data: 'Expenses Document',
                 },
                 {
                   key: '0-0-1',
                   label: 'Resume.doc',
                   icon: 'file-lines',
                   selectable: true,
-                  data: 'Resume Document'
+                  data: 'Resume Document',
                 },
                 {
                   key: '0-0-2',
                   label: 'Salary.pdf',
                   icon: 'pdf',
                   selectable: true,
-                  data: 'Salary Document'
-                }
-              ]
+                  data: 'Salary Document',
+                },
+              ],
             },
             {
               key: '0-1',
@@ -62,18 +59,18 @@ const fetchTree = async (
                   label: 'Invoices.txt',
                   icon: 'file-lines',
                   selectable: true,
-                  data: 'Invoices for this month'
+                  data: 'Invoices for this month',
                 },
                 {
                   key: '0-1-1',
                   label: 'Bills.pdf',
                   icon: 'pdf',
                   selectable: true,
-                  data: 'Monthly bills'
-                }
-              ]
-            }
-          ]
+                  data: 'Monthly bills',
+                },
+              ],
+            },
+          ],
         },
         {
           key: '1',
@@ -86,23 +83,23 @@ const fetchTree = async (
               label: 'Vue Application',
               icon: 'code-line',
               selectable: true,
-              data: 'Vue.js project'
+              data: 'Vue.js project',
             },
             {
               key: '1-1',
               label: 'React Website',
               icon: 'code-line',
               selectable: true,
-              data: 'React.js website'
+              data: 'React.js website',
             },
             {
               key: '1-2',
               label: 'Angular Dashboard',
               icon: 'code-line',
               selectable: true,
-              data: 'Angular dashboard'
-            }
-          ]
+              data: 'Angular dashboard',
+            },
+          ],
         },
         {
           key: '2',
@@ -121,35 +118,31 @@ const fetchTree = async (
                   label: 'Logo.png',
                   icon: 'image-add',
                   selectable: true,
-                  data: 'Company logo'
+                  data: 'Company logo',
                 },
                 {
                   key: '2-0-1',
                   label: 'Banner.jpg',
                   icon: 'image-add',
                   selectable: true,
-                  data: 'Website banner'
-                }
-              ]
-            }
-          ]
-        }
-      ]
-    }
-  ]
+                  data: 'Website banner',
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+  ];
 
   return {
     status: 200,
     message: 'Success',
-    data: data
-  }
-}
+    data: data,
+  };
+};
 </script>
 
 <template>
-  <Tree
-    v-model:filter="filter"
-    type="group"
-    :fetch-tree="fetchTree"
-  />
+  <Tree v-model:filter="filter" :fetch-tree="fetchTree" type="group" />
 </template>

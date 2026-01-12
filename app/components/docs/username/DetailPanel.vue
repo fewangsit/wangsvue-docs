@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { UserName } from '@fewangsit/wangsvue'
-import type { GeneralUser } from '@fewangsit/wangsvue/username'
+import { UserName } from '@fewangsit/wangsvue';
+import type { GeneralUser } from '@fewangsit/wangsvue/username';
 
 const users: GeneralUser[] = [
   {
@@ -12,7 +12,7 @@ const users: GeneralUser[] = [
     nickName: 'davidm',
     position: 'Team Lead',
     division: 'Engineering',
-    profilePicture: 'https://picsum.photos/64/64?random=6'
+    profilePicture: 'https://picsum.photos/64/64?random=6',
   },
   {
     _id: '7',
@@ -23,7 +23,7 @@ const users: GeneralUser[] = [
     nickName: 'sarahd',
     position: 'UX Designer',
     division: 'Design',
-    profilePicture: 'https://picsum.photos/64/64?random=7'
+    profilePicture: 'https://picsum.photos/64/64?random=7',
   },
   {
     _id: '8',
@@ -33,17 +33,17 @@ const users: GeneralUser[] = [
     email: 'michael.johnson@example.com',
     nickName: 'michaelj',
     position: 'DevOps Engineer',
-    division: 'Infrastructure'
-  }
-]
+    division: 'Infrastructure',
+  },
+];
 
 // Mock function to simulate fetching user details
 const getUserDetail = async (userId: string): Promise<GeneralUser> => {
   // Simulate API delay
-  await new Promise(resolve => setTimeout(resolve, 500))
+  await new Promise((resolve) => setTimeout(resolve, 500));
 
-  const user = users.find(u => u._id === userId)
-  if (!user) throw new Error('User not found')
+  const user = users.find((u) => u._id === userId);
+  if (!user) throw new Error('User not found');
 
   // Return enhanced user details
   return {
@@ -52,9 +52,9 @@ const getUserDetail = async (userId: string): Promise<GeneralUser> => {
     phone: '+1 (555) 123-4567',
     department: user.division,
     joinDate: '2023-01-15',
-    skills: ['JavaScript', 'Vue.js', 'TypeScript']
-  }
-}
+    skills: ['JavaScript', 'Vue.js', 'TypeScript'],
+  };
+};
 </script>
 
 <template>
@@ -63,19 +63,22 @@ const getUserDetail = async (userId: string): Promise<GeneralUser> => {
       <h4 class="text-sm font-medium text-gray-700 mb-2">
         Users with detail panel functionality
       </h4>
+
       <div class="flex flex-wrap gap-4">
         <UserName
-          v-for="user in users"
           :key="user._id"
-          :user="user"
+          v-for="user in users"
           :get-user-detail="getUserDetail"
+          :user="user"
           detail-user-path="/user/{userId}/profile"
         />
       </div>
     </div>
 
     <div class="text-sm text-gray-600">
-      <p>Click on any user to see their detail panel with additional information.</p>
+      <p>
+        Click on any user to see their detail panel with additional information.
+      </p>
     </div>
   </div>
 </template>

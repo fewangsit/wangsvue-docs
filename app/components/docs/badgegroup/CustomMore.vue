@@ -1,31 +1,47 @@
 <script setup lang="ts">
-import { BadgeGroup } from '@fewangsit/wangsvue'
+import { BadgeGroup } from '@fewangsit/wangsvue';
 
 const skills = [
-  'JavaScript', 'Vue.js', 'TypeScript', 'Nuxt.js', 'TailwindCSS',
-  'Node.js', 'Express.js', 'MongoDB', 'PostgreSQL', 'Docker',
-  'AWS', 'Git', 'Jest', 'Cypress'
-]
+  'JavaScript',
+  'Vue.js',
+  'TypeScript',
+  'Nuxt.js',
+  'TailwindCSS',
+  'Node.js',
+  'Express.js',
+  'MongoDB',
+  'PostgreSQL',
+  'Docker',
+  'AWS',
+  'Git',
+  'Jest',
+  'Cypress',
+];
 
 const categories = [
-  'Frontend', 'Backend', 'Database', 'DevOps', 'Testing',
-  'Mobile', 'Design', 'Analytics'
-]
+  'Frontend',
+  'Backend',
+  'Database',
+  'DevOps',
+  'Testing',
+  'Mobile',
+  'Design',
+  'Analytics',
+];
 </script>
 
 <template>
   <div class="flex flex-col gap-4">
     <div>
-      <h3 class="mb-2 font-semibold">
-        Custom "Show All" Text
-      </h3>
+      <h3 class="mb-2 font-semibold">Custom "Show All" Text</h3>
+
       <BadgeGroup
         :labels="skills"
-        severity="primary"
         :limit="4"
+        header-label="Complete Skill Set"
+        severity="primary"
         text-more="Show All Skills"
         text-more-severity="info"
-        header-label="Complete Skill Set"
       />
     </div>
 
@@ -33,13 +49,14 @@ const categories = [
       <h3 class="mb-2 font-semibold">
         Custom "View More" with Different Severity
       </h3>
+
       <BadgeGroup
         :labels="categories"
-        severity="success"
         :limit="3"
+        header-label="All Categories"
+        severity="success"
         text-more="View More"
         text-more-severity="warning"
-        header-label="All Categories"
       />
     </div>
 

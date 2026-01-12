@@ -1,16 +1,16 @@
 <script setup lang="ts">
-import { ref } from 'vue'
-import { InputRangeNumber } from '@fewangsit/wangsvue'
+import { InputRangeNumber } from '@fewangsit/wangsvue';
+import { ref } from 'vue';
 
-const value = ref<number[]>([100, 500])
+const value = ref<number[]>([100, 500]);
 </script>
 
 <template>
   <InputRangeNumber
     v-model="value"
+    disabled
     label="Price Range (Disabled)"
-    min-placeholder="Min price"
     max-placeholder="Max price"
-    :disabled="true"
+    min-placeholder="Min price"
   />
 </template>

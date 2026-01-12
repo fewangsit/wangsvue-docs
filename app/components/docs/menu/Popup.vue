@@ -1,53 +1,47 @@
 <script setup lang="ts">
-import { Menu, Button } from '@fewangsit/wangsvue'
+import { Button, Menu } from '@fewangsit/wangsvue';
 
-const menu = useTemplateRef<Menu>('menu')
+const menu = useTemplateRef<Menu>('menu');
 
 const items = [
   {
     label: 'New',
-    command: () => {
-      console.log('New clicked')
-    }
+    command: (): void => {
+      console.log('New clicked');
+    },
   },
   {
     label: 'Open',
-    command: () => {
-      console.log('Open clicked')
-    }
+    command: (): void => {
+      console.log('Open clicked');
+    },
   },
   {
-    separator: true
+    separator: true,
   },
   {
     label: 'Save',
-    command: () => {
-      console.log('Save clicked')
-    }
+    command: (): void => {
+      console.log('Save clicked');
+    },
   },
   {
     label: 'Save As',
-    command: () => {
-      console.log('Save As clicked')
-    }
-  }
-]
+    command: (): void => {
+      console.log('Save As clicked');
+    },
+  },
+];
 
-const toggle = (event: Event) => {
-  menu.value?.toggle(event)
-}
+const toggle = (event: Event): void => {
+  menu.value?.toggle(event);
+};
 </script>
 
 <template>
   <div class="flex flex-wrap gap-3">
-    <Button
-      label="Show Menu"
-      @click="toggle"
-    />
-    <Menu
-      ref="menu"
-      :model="items"
-      :popup="true"
-    />
+    <Button @click="toggle" label="Show Menu" />
+
+    <Menu ref="menu" :model="items" popup />
   </div>
 </template>

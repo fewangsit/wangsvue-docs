@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { CodeSnippet } from '@fewangsit/wangsvue'
+import { CodeSnippet } from '@fewangsit/wangsvue';
 
 const jsonCode = `{
   "name": "WangsVue",
@@ -10,12 +10,9 @@ const jsonCode = `{
     "vue": "^3.0.0",
     "typescript": "^5.0.0"
   }
-}`
+}`;
 </script>
 
 <template>
-  <CodeSnippet
-    :code="jsonCode"
-    lang="json"
-  />
+  <CodeSnippet :code="jsonCode" lang="json" />
 </template>

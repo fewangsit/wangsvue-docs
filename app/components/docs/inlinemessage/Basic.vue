@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { InlineMessage } from '@fewangsit/wangsvue'
+import { InlineMessage } from '@fewangsit/wangsvue';
 </script>
 
 <template>

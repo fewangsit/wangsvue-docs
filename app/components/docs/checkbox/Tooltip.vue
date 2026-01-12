@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { ref } from 'vue'
-import { Checkbox } from '@fewangsit/wangsvue'
+import { Checkbox } from '@fewangsit/wangsvue';
+import { ref } from 'vue';
 
-const tooltipValue = ref(false)
+const tooltipValue = ref(false);
 </script>
 
 <template>
@@ -13,6 +13,7 @@ const tooltipValue = ref(false)
       tooltip="This is a helpful tooltip"
       tooltip-pos="top"
     />
+
     <Checkbox
       v-model="tooltipValue"
       label="Right tooltip"

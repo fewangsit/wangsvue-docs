@@ -1,31 +1,34 @@
 <script setup lang="ts">
-import { Form, InputText } from '@fewangsit/wangsvue'
-import type { FormPayload } from '@fewangsit/wangsvue/form'
+import { Form, InputText } from '@fewangsit/wangsvue';
+import type { FormPayload } from '@fewangsit/wangsvue/form';
 
-const onSubmit = (payload: FormPayload) => {
-  console.log('Form submitted:', payload)
-}
+const onSubmit = (payload: FormPayload): void => {
+  console.log('Form submitted:', payload);
+};
 
-const onSave = (payload: FormPayload) => {
-  console.log('Form saved:', payload)
-}
+const onSave = (payload: FormPayload): void => {
+  console.log('Form saved:', payload);
+};
 </script>
 
 <template>
   <Form
     :buttons-template="['save', 'submit']"
-    :save-btn-label="'Save Draft'"
-    :submit-btn-label="'Complete'"
-    @submit="onSubmit"
     @save="onSave"
+    @submit="onSubmit"
+    save-btn-label="Save Draft"
+    submit-btn-label="Complete"
   >
     <template #fields>
       <InputText
-        label="Email"
+        :validator-message="{
+          empty: 'Email is required',
+          invalidFormat: 'Invalid email',
+        }"
         field-name="email"
-        :use-validator="true"
-        :mandatory="true"
-        :validator-message="{ empty: 'Email is required', invalidFormat: 'Invalid email' }"
+        label="Email"
+        mandatory
+        use-validator
       />
     </template>
   </Form>

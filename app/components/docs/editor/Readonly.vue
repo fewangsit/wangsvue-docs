@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { ref } from 'vue'
-import { Editor } from '@fewangsit/wangsvue'
-import type { JSONContent } from '@fewangsit/wangsvue/editor'
+import { Editor } from '@fewangsit/wangsvue';
+import type { JSONContent } from '@fewangsit/wangsvue/editor';
+import { ref } from 'vue';
 
 const content = ref<JSONContent>({
   type: 'doc',
@@ -12,27 +12,27 @@ const content = ref<JSONContent>({
       content: [
         {
           type: 'text',
-          text: 'Sample Document'
-        }
-      ]
+          text: 'Sample Document',
+        },
+      ],
     },
     {
       type: 'paragraph',
       content: [
         {
           type: 'text',
-          text: 'This is a '
+          text: 'This is a ',
         },
         {
           type: 'text',
           marks: [{ type: 'bold' }],
-          text: 'readonly editor'
+          text: 'readonly editor',
         },
         {
           type: 'text',
-          text: ' displaying formatted content. The content cannot be edited but maintains all formatting.'
-        }
-      ]
+          text: ' displaying formatted content. The content cannot be edited but maintains all formatting.',
+        },
+      ],
     },
     {
       type: 'bulletList',
@@ -45,11 +45,11 @@ const content = ref<JSONContent>({
               content: [
                 {
                   type: 'text',
-                  text: 'Bullet point one'
-                }
-              ]
-            }
-          ]
+                  text: 'Bullet point one',
+                },
+              ],
+            },
+          ],
         },
         {
           type: 'listItem',
@@ -59,22 +59,18 @@ const content = ref<JSONContent>({
               content: [
                 {
                   type: 'text',
-                  text: 'Bullet point two'
-                }
-              ]
-            }
-          ]
-        }
-      ]
-    }
-  ]
-})
+                  text: 'Bullet point two',
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+  ],
+});
 </script>
 
 <template>
-  <Editor
-    v-model="content"
-    label="Document Preview"
-    editor-state="readonly"
-  />
+  <Editor v-model="content" editor-state="readonly" label="Document Preview" />
 </template>

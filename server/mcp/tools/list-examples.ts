@@ -1,5 +1,7 @@
-import { z } from 'zod'
-import { loadComponentData } from '../../utils/component-loader'
+/* eslint-disable camelcase */
+import { z } from 'zod';
+
+import { loadComponentData } from '../../utils/component-loader';
 
 export default defineMcpTool({
   description: `List all available examples for a specific Wangsvue component.
@@ -24,56 +26,66 @@ EXAMPLES:
 WORKFLOW: Use this to discover all available examples, then use get_example with specific section IDs to get the actual code.`,
 
   inputSchema: {
-    component_name: z.string().describe('The component name (e.g., "button", "icon")')
+    component_name: z
+      .string()
+      .describe('The component name (e.g., "button", "icon")'),
   },
 
   cache: '10m',
 
   handler: async ({ component_name }) => {
     try {
-      const components = await loadComponentData()
+      const components = await loadComponentData();
 
       // Find the component
-      const component = components.find(c => c.name.toLowerCase() === component_name.toLowerCase())
+      const component = components.find(
+        (c) => c.name.toLowerCase() === component_name.toLowerCase(),
+      );
       if (!component) {
         return {
-          content: [{
-            type: 'text',
-            text: `Component "${component_name}" not found. Available components: ${components.map(c => c.name).join(', ')}`
-          }],
-          isError: true
-        }
+          content: [
+            {
+              type: 'text',
+              text: `Component "${component_name}" not found. Available components: ${components.map((c) => c.name).join(', ')}`,
+            },
+          ],
+          isError: true,
+        };
       }
 
       // Filter sections that have examples
       const examples = component.sections
-        .filter(section => section.hasExample)
-        .map(section => ({
+        .filter((section) => section.hasExample)
+        .map((section) => ({
           section: section.id,
           label: section.label,
-          description: section.description
-        }))
+          description: section.description,
+        }));
 
       const result = {
         total: examples.length,
         component: component.name,
-        examples: examples
-      }
+        examples: examples,
+      };
 
       return {
-        content: [{
-          type: 'text',
-          text: JSON.stringify(result, null, 2)
-        }]
-      }
+        content: [
+          {
+            type: 'text',
+            text: JSON.stringify(result, null, 2),
+          },
+        ],
+      };
     } catch (error) {
       return {
-        content: [{
-          type: 'text',
-          text: `Error: ${error instanceof Error ? error.message : 'Unknown error'}`
-        }],
-        isError: true
-      }
+        content: [
+          {
+            type: 'text',
+            text: `Error: ${error instanceof Error ? error.message : 'Unknown error'}`,
+          },
+        ],
+        isError: true,
+      };
     }
-  }
-})
+  },
+});

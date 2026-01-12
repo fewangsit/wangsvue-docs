@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const { footer } = useAppConfig()
+const { footer } = useAppConfig();
 </script>
 
 <template>
@@ -13,8 +13,8 @@ const { footer } = useAppConfig()
 
       <template v-if="footer?.links">
         <UButton
-          v-for="(link, index) of footer?.links"
           :key="index"
+          v-for="(link, index) of footer?.links"
           v-bind="{ color: 'neutral', variant: 'ghost', ...link }"
         />
       </template>

@@ -1,15 +1,15 @@
 <script setup lang="ts">
-import { ref } from 'vue'
-import { InputText } from '@fewangsit/wangsvue'
+import { InputText } from '@fewangsit/wangsvue';
+import { ref } from 'vue';
 
-const disabledInput = ref('Disabled input')
+const disabledInput = ref('Disabled input');
 </script>
 
 <template>
   <InputText
     v-model="disabledInput"
+    disabled
     label="Disabled Input"
     placeholder="You cannot edit this"
-    :disabled="true"
   />
 </template>

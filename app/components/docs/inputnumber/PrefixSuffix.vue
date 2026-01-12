@@ -1,42 +1,42 @@
 <script setup lang="ts">
-import { ref } from 'vue'
-import { InputNumber } from '@fewangsit/wangsvue'
+import { InputNumber } from '@fewangsit/wangsvue';
+import { ref } from 'vue';
 
-const temperature = ref<number>()
-const percentage = ref<number>()
-const weight = ref<number>()
+const temperature = ref<number>();
+const percentage = ref<number>();
+const weight = ref<number>();
 </script>
 
 <template>
   <div class="flex flex-col gap-4">
     <InputNumber
       v-model="temperature"
+      :max="50"
+      :min="-50"
       label="Temperature"
       placeholder="Enter temperature"
+      show-buttons
       suffix="°C"
-      :min="-50"
-      :max="50"
-      :show-buttons="true"
     />
 
     <InputNumber
       v-model="percentage"
+      :max="100"
+      :max-fraction-digits="1"
+      :min="0"
       label="Percentage"
       placeholder="Enter percentage"
       suffix="%"
-      :min="0"
-      :max="100"
-      :max-fraction-digits="1"
     />
 
     <InputNumber
       v-model="weight"
+      :max-fraction-digits="2"
+      :min="0"
       label="Weight"
       placeholder="Enter weight"
       prefix="Weight: "
       suffix=" kg"
-      :min="0"
-      :max-fraction-digits="2"
     />
   </div>
 </template>

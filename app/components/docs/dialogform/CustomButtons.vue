@@ -1,50 +1,42 @@
 <script setup lang="ts">
-import { ref } from 'vue'
-import { DialogForm, InputText, Button } from '@fewangsit/wangsvue'
-import type { FormPayload } from '@fewangsit/wangsvue/form'
+import { Button, DialogForm, InputText } from '@fewangsit/wangsvue';
+import type { FormPayload } from '@fewangsit/wangsvue/form';
+import { ref } from 'vue';
 
-const visible = ref(false)
-const form = useTemplateRef<DialogForm>('dialogForm')
+const visible = ref(false);
+const form = useTemplateRef<DialogForm>('dialogForm');
 
-const onSubmit = (payload: FormPayload) => {
-  console.log('Form submitted:', payload.formValues)
-}
+const onSubmit = (payload: FormPayload): void => {
+  console.log('Form submitted:', payload.formValues);
+};
 
-const clearFields = () => {
-  form.value?.clearField()
-}
+const clearFields = (): void => {
+  form.value?.clearField();
+};
 </script>
 
 <template>
-  <Button
-    label="Open Dialog"
-    @click="visible = true"
-  />
+  <Button @click="visible = true" label="Open Dialog" />
+
   <DialogForm
     ref="dialogForm"
     v-model:visible="visible"
-    header="Custom Buttons Dialog"
     @submit="onSubmit"
+    header="Custom Buttons Dialog"
   >
     <template #fields>
       <InputText
-        label="Name"
-        field-name="name"
-        :use-validator="true"
         :mandatory="false"
+        field-name="name"
+        label="Name"
+        use-validator
       />
     </template>
+
     <template #actionButtons="{ submit }">
-      <Button
-        label="Clear"
-        severity="secondary"
-        @click="clearFields"
-      />
-      <Button
-        label="Custom Save"
-        class="mr-2"
-        @click="submit"
-      />
+      <Button @click="clearFields" label="Clear" severity="secondary" />
+
+      <Button @click="submit" class="mr-2" label="Custom Save" />
     </template>
   </DialogForm>
 </template>

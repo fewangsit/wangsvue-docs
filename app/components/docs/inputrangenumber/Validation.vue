@@ -1,22 +1,22 @@
 <script setup lang="ts">
-import { ref } from 'vue'
-import { InputRangeNumber } from '@fewangsit/wangsvue'
+import { InputRangeNumber } from '@fewangsit/wangsvue';
+import { ref } from 'vue';
 
-const value = ref<number[]>([])
+const value = ref<number[]>([]);
 </script>
 
 <template>
   <InputRangeNumber
     v-model="value"
-    label="Salary Range"
-    min-placeholder="Minimum salary"
-    max-placeholder="Maximum salary"
-    :use-validator="true"
-    :mandatory="true"
-    min-field-name="minSalary"
-    max-field-name="maxSalary"
     :validator-message="{
-      empty: 'Salary range is required'
+      empty: 'Salary range is required',
     }"
+    label="Salary Range"
+    mandatory
+    max-field-name="maxSalary"
+    max-placeholder="Maximum salary"
+    min-field-name="minSalary"
+    min-placeholder="Minimum salary"
+    use-validator
   />
 </template>

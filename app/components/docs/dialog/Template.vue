@@ -1,51 +1,48 @@
 <script setup lang="ts">
-import { ref } from 'vue'
-import { Dialog, Button } from '@fewangsit/wangsvue'
+import { Button, Dialog } from '@fewangsit/wangsvue';
+import { ref } from 'vue';
 
-const visible = ref(false)
+const visible = ref(false);
 const formData = ref({
   name: '',
-  email: ''
-})
+  email: '',
+});
 
-const saveForm = () => {
-  console.log('Form saved:', formData.value)
-  visible.value = false
-}
+const saveForm = (): void => {
+  console.log('Form saved:', formData.value);
+  visible.value = false;
+};
 
-const resetForm = () => {
+const resetForm = (): void => {
   formData.value = {
     name: '',
-    email: ''
-  }
-}
+    email: '',
+  };
+};
 </script>
 
 <template>
   <div class="flex flex-wrap gap-3">
-    <Button
-      label="Show Custom Dialog"
-      @click="visible = true"
-    />
+    <Button @click="visible = true" label="Show Custom Dialog" />
 
-    <Dialog
-      v-model:visible="visible"
-      :style="{ width: '50vw' }"
-      :show-header="false"
-    >
+    <Dialog v-model:visible="visible" :show-header="false" class="w-[50vw]">
       <template #header>
-        <div class="flex items-center justify-between w-full p-4 bg-blue-50 border-b">
+        <div
+          class="flex items-center justify-between w-full p-4 bg-blue-50 border-b"
+        >
           <div class="flex items-center gap-2">
             <i class="wangs-icon-user text-blue-600" />
+
             <h3 class="text-lg font-semibold text-blue-800">
               User Information
             </h3>
           </div>
+
           <Button
+            @click="visible = false"
             icon="close"
             severity="secondary"
             text
-            @click="visible = false"
           />
         </div>
       </template>
@@ -54,43 +51,40 @@ const resetForm = () => {
         <div class="space-y-4">
           <div>
             <label class="block text-sm font-medium mb-2">Name</label>
+
             <input
               v-model="formData.name"
-              type="text"
               class="w-full p-2 border rounded-md"
               placeholder="Enter your name"
-            >
+              type="text"
+            />
           </div>
+
           <div>
             <label class="block text-sm font-medium mb-2">Email</label>
+
             <input
               v-model="formData.email"
-              type="email"
               class="w-full p-2 border rounded-md"
               placeholder="Enter your email"
-            >
+              type="email"
+            />
           </div>
         </div>
       </div>
 
       <template #footer>
         <div class="flex justify-between items-center p-4 bg-gray-50 border-t">
-          <Button
-            label="Reset"
-            severity="secondary"
-            text
-            @click="resetForm"
-          />
+          <Button @click="resetForm" label="Reset" severity="secondary" text />
+
           <div class="flex gap-2">
             <Button
+              @click="visible = false"
               label="Cancel"
               severity="secondary"
-              @click="visible = false"
             />
-            <Button
-              label="Save"
-              @click="saveForm"
-            />
+
+            <Button @click="saveForm" label="Save" />
           </div>
         </div>
       </template>

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Animation } from '@fewangsit/wangsvue'
+import { Animation } from '@fewangsit/wangsvue';
 </script>
 
 <template>

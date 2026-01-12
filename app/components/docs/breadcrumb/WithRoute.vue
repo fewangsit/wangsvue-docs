@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { Breadcrumb } from '@fewangsit/wangsvue'
-import type { BreadcrumbMenu } from '@fewangsit/wangsvue/breadcrumb'
+import { Breadcrumb } from '@fewangsit/wangsvue';
+import type { BreadcrumbMenu } from '@fewangsit/wangsvue/breadcrumb';
 
 const menus: BreadcrumbMenu[] = [
   { name: 'Home', route: '/', title: 'Home' },
@@ -8,10 +8,10 @@ const menus: BreadcrumbMenu[] = [
   {
     name: 'Electronics',
     route: '/products/electronics',
-    title: 'Electronics'
+    title: 'Electronics',
   },
-  { name: 'Smartphones' }
-]
+  { name: 'Smartphones' },
+];
 </script>
 
 <template>

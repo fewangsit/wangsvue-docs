@@ -1,23 +1,20 @@
 <script setup lang="ts">
-import { Toast, Button, useToast } from '@fewangsit/wangsvue'
+import { Button, Toast, useToast } from '@fewangsit/wangsvue';
 
-const toast = useToast()
+const toast = useToast();
 
-const showBasic = () => {
+const showBasic = (): void => {
   toast.add({
     severity: 'info',
     message: 'This is a basic toast message.',
-    life: 3000
-  })
-}
+    life: 3000,
+  });
+};
 </script>
 
 <template>
   <div class="flex flex-wrap gap-3">
-    <Button
-      label="Show Toast"
-      @click="showBasic"
-    />
+    <Button @click="showBasic" label="Show Toast" />
 
     <Toast />
   </div>

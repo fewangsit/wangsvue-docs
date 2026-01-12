@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { ref } from 'vue'
-import { Editor } from '@fewangsit/wangsvue'
-import type { JSONContent } from '@fewangsit/wangsvue/editor'
+import { Editor } from '@fewangsit/wangsvue';
+import type { JSONContent } from '@fewangsit/wangsvue/editor';
+import { ref } from 'vue';
 
 const content = ref<JSONContent>({
   type: 'doc',
@@ -11,18 +11,14 @@ const content = ref<JSONContent>({
       content: [
         {
           type: 'text',
-          text: 'This editor has no border for seamless integration into custom layouts.'
-        }
-      ]
-    }
-  ]
-})
+          text: 'This editor has no border for seamless integration into custom layouts.',
+        },
+      ],
+    },
+  ],
+});
 </script>
 
 <template>
-  <Editor
-    v-model="content"
-    label="Borderless Editor"
-    :borderless="true"
-  />
+  <Editor v-model="content" borderless label="Borderless Editor" />
 </template>

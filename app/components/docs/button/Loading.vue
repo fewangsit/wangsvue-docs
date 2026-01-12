@@ -1,17 +1,17 @@
 <script setup lang="ts">
-import { ref } from 'vue'
-import { Button } from '@fewangsit/wangsvue'
+import { Button } from '@fewangsit/wangsvue';
+import { ref } from 'vue';
 
-const isLoading = ref(false)
+const isLoading = ref(false);
 
-const toggleLoading = () => {
-  isLoading.value = !isLoading.value
+const toggleLoading = (): void => {
+  isLoading.value = !isLoading.value;
   if (isLoading.value) {
     setTimeout(() => {
-      isLoading.value = false
-    }, 3000)
+      isLoading.value = false;
+    }, 3000);
   }
-}
+};
 </script>
 
 <template>

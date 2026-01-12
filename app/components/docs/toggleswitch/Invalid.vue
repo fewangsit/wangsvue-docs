@@ -1,15 +1,15 @@
 <script setup lang="ts">
-import { ref } from 'vue'
-import { ToggleSwitch } from '@fewangsit/wangsvue'
+import { ToggleSwitch } from '@fewangsit/wangsvue';
+import { ref } from 'vue';
 
-const invalidValue = ref(false)
+const invalidValue = ref(false);
 </script>
 
 <template>
   <div class="flex flex-wrap gap-3">
     <ToggleSwitch
       v-model="invalidValue"
-      :invalid="true"
+      invalid
       label="Invalid toggle switch"
     />
   </div>

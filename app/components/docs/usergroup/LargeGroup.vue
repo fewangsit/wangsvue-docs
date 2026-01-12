@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { UserGroup } from '@fewangsit/wangsvue'
-import type { GeneralUser } from '@fewangsit/wangsvue/username'
+import { UserGroup } from '@fewangsit/wangsvue';
+import type { GeneralUser } from '@fewangsit/wangsvue/username';
 
 const largeTeam: GeneralUser[] = [
   {
@@ -12,7 +12,7 @@ const largeTeam: GeneralUser[] = [
     email: 'john.doe@example.com',
     position: 'Software Engineer',
     division: 'Engineering',
-    profilePicture: 'https://picsum.photos/64/64?random=1'
+    profilePicture: 'https://picsum.photos/64/64?random=1',
   },
   {
     _id: '2',
@@ -23,7 +23,7 @@ const largeTeam: GeneralUser[] = [
     email: 'jane.smith@example.com',
     position: 'Product Manager',
     division: 'Product',
-    profilePicture: 'https://picsum.photos/64/64?random=2'
+    profilePicture: 'https://picsum.photos/64/64?random=2',
   },
   {
     _id: '3',
@@ -34,7 +34,7 @@ const largeTeam: GeneralUser[] = [
     email: 'alice.johnson@example.com',
     position: 'UX Designer',
     division: 'Design',
-    profilePicture: 'https://picsum.photos/64/64?random=3'
+    profilePicture: 'https://picsum.photos/64/64?random=3',
   },
   {
     _id: '4',
@@ -45,7 +45,7 @@ const largeTeam: GeneralUser[] = [
     email: 'bob.wilson@example.com',
     position: 'DevOps Engineer',
     division: 'Infrastructure',
-    profilePicture: 'https://picsum.photos/64/64?random=4'
+    profilePicture: 'https://picsum.photos/64/64?random=4',
   },
   {
     _id: '5',
@@ -56,7 +56,7 @@ const largeTeam: GeneralUser[] = [
     email: 'charlie.brown@example.com',
     position: 'Senior Developer',
     division: 'Engineering',
-    profilePicture: 'https://picsum.photos/64/64?random=5'
+    profilePicture: 'https://picsum.photos/64/64?random=5',
   },
   {
     _id: '6',
@@ -67,7 +67,7 @@ const largeTeam: GeneralUser[] = [
     email: 'diana.prince@example.com',
     position: 'Team Lead',
     division: 'Engineering',
-    profilePicture: 'https://picsum.photos/64/64?random=6'
+    profilePicture: 'https://picsum.photos/64/64?random=6',
   },
   {
     _id: '7',
@@ -78,7 +78,7 @@ const largeTeam: GeneralUser[] = [
     email: 'edward.miller@example.com',
     position: 'QA Engineer',
     division: 'Quality Assurance',
-    profilePicture: 'https://picsum.photos/64/64?random=7'
+    profilePicture: 'https://picsum.photos/64/64?random=7',
   },
   {
     _id: '8',
@@ -89,7 +89,7 @@ const largeTeam: GeneralUser[] = [
     email: 'fiona.davis@example.com',
     position: 'Business Analyst',
     division: 'Business',
-    profilePicture: 'https://picsum.photos/64/64?random=8'
+    profilePicture: 'https://picsum.photos/64/64?random=8',
   },
   {
     _id: '9',
@@ -100,7 +100,7 @@ const largeTeam: GeneralUser[] = [
     email: 'george.taylor@example.com',
     position: 'Data Scientist',
     division: 'Data',
-    profilePicture: 'https://picsum.photos/64/64?random=9'
+    profilePicture: 'https://picsum.photos/64/64?random=9',
   },
   {
     _id: '10',
@@ -111,9 +111,9 @@ const largeTeam: GeneralUser[] = [
     email: 'helen.anderson@example.com',
     position: 'Marketing Manager',
     division: 'Marketing',
-    profilePicture: 'https://picsum.photos/64/64?random=10'
-  }
-]
+    profilePicture: 'https://picsum.photos/64/64?random=10',
+  },
+];
 </script>
 
 <template>
@@ -122,11 +122,12 @@ const largeTeam: GeneralUser[] = [
       <h4 class="text-sm font-medium text-gray-700 mb-2">
         Large Team (10 members, limit 4)
       </h4>
+
       <UserGroup
-        :users="largeTeam"
         :limit="4"
-        :with-dialog-detail="true"
+        :users="largeTeam"
         dialog-header-label="All Team Members"
+        with-dialog-detail
       />
     </div>
 
@@ -134,16 +135,20 @@ const largeTeam: GeneralUser[] = [
       <h4 class="text-sm font-medium text-gray-700 mb-2">
         Large Team (10 members, limit 2)
       </h4>
+
       <UserGroup
-        :users="largeTeam"
         :limit="2"
-        :with-dialog-detail="true"
+        :users="largeTeam"
         dialog-header-label="Complete Team List"
+        with-dialog-detail
       />
     </div>
 
     <div class="text-sm text-gray-600">
-      <p>Demonstrates how the component handles large groups of users with different limit settings.</p>
+      <p>
+        Demonstrates how the component handles large groups of users with
+        different limit settings.
+      </p>
     </div>
   </div>
 </template>

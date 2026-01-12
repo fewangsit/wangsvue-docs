@@ -1,22 +1,22 @@
 <script setup lang="ts">
-import { InlineMessage } from '@fewangsit/wangsvue'
+import { InlineMessage } from '@fewangsit/wangsvue';
 </script>
 
 <template>
   <div class="flex flex-col gap-4">
     <InlineMessage
-      severity="success"
       message="Operation completed successfully!"
+      severity="success"
     />
 
     <InlineMessage
-      severity="danger"
       message="An error occurred while processing your request."
+      severity="danger"
     />
 
     <InlineMessage
-      severity="secondary"
       message="This is an informational message."
+      severity="secondary"
     />
   </div>
 </template>

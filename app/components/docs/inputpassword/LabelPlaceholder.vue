@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { InputPassword } from '@fewangsit/wangsvue'
+import { InputPassword } from '@fewangsit/wangsvue';
 
-const password = ref('')
+const password = ref('');
 </script>
 
 <template>

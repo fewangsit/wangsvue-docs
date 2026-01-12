@@ -1,26 +1,27 @@
 <script setup lang="ts">
-import { ref } from 'vue'
-import { InputNumber } from '@fewangsit/wangsvue'
+import { InputNumber } from '@fewangsit/wangsvue';
+import { ref } from 'vue';
 
-const withoutGrouping = ref(1234567.89)
-const withGrouping = ref(1234567.89)
+const withoutGrouping = ref(1234567.89);
+const withGrouping = ref(1234567.89);
 </script>
 
 <template>
   <div class="flex flex-col gap-4">
     <InputNumber
       v-model="withoutGrouping"
-      label="Without Grouping"
-      :use-grouping="false"
-      :min-fraction-digits="2"
       :max-fraction-digits="2"
+      :min-fraction-digits="2"
+      :use-grouping="false"
+      label="Without Grouping"
     />
+
     <InputNumber
       v-model="withGrouping"
-      label="With Grouping"
-      :use-grouping="true"
-      :min-fraction-digits="2"
       :max-fraction-digits="2"
+      :min-fraction-digits="2"
+      label="With Grouping"
+      use-grouping
     />
   </div>
 </template>

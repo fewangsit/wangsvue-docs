@@ -1,25 +1,22 @@
 <script setup lang="ts">
-import { ref } from 'vue'
-import { Checkbox } from '@fewangsit/wangsvue'
+import { Checkbox } from '@fewangsit/wangsvue';
+import { ref } from 'vue';
 
-const triStateValue = ref(null)
+const triStateValue = ref<boolean | null>(null);
 </script>
 
 <template>
   <div class="flex flex-wrap gap-3">
-    <Checkbox
-      v-model="triStateValue"
-      :tri-state="true"
-      label="Tri-state checkbox"
-    />
+    <Checkbox v-model="triStateValue" label="Tri-state checkbox" tri-state />
+
     <p class="text-sm text-gray-600">
       Value:
       {{
         triStateValue === null
-          ? "null (not checked)"
+          ? 'null (not checked)'
           : triStateValue === true
-            ? "true (checked)"
-            : "false (partial)"
+            ? 'true (checked)'
+            : 'false (partial)'
       }}
     </p>
   </div>

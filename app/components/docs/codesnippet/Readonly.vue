@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { CodeSnippet } from '@fewangsit/wangsvue'
+import { CodeSnippet } from '@fewangsit/wangsvue';
 
 const readonlyCode = `const config = {
   apiUrl: 'https://api.example.com',
@@ -12,13 +12,9 @@ const readonlyCode = `const config = {
 };
 
 // This code is read-only and cannot be modified
-export default config;`
+export default config;`;
 </script>
 
 <template>
-  <CodeSnippet
-    :code="readonlyCode"
-    lang="javascript"
-    :readonly="true"
-  />
+  <CodeSnippet :code="readonlyCode" lang="javascript" readonly />
 </template>

@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { Image } from '@fewangsit/wangsvue'
+import { Image } from '@fewangsit/wangsvue';
 
-const sampleImage = 'https://picsum.photos/400/300'
+const sampleImage = 'https://picsum.photos/400/300';
 </script>
 
 <template>

@@ -1,50 +1,40 @@
 <script setup lang="ts">
-import { Toast, Button, useToast } from '@fewangsit/wangsvue'
+import { Button, Toast, useToast } from '@fewangsit/wangsvue';
 
-const toast = useToast()
+const toast = useToast();
 
-const showSuccess = () => {
+const showSuccess = (): void => {
   toast.add({
     severity: 'success',
     message: 'Operation completed successfully!',
-    life: 3000
-  })
-}
+    life: 3000,
+  });
+};
 
-const showInfo = () => {
+const showInfo = (): void => {
   toast.add({
     severity: 'info',
     message: 'Here is some useful information.',
-    life: 3000
-  })
-}
+    life: 3000,
+  });
+};
 
-const showError = () => {
+const showError = (): void => {
   toast.add({
     severity: 'error',
     message: 'Something went wrong!',
-    life: 3000
-  })
-}
+    life: 3000,
+  });
+};
 </script>
 
 <template>
   <div class="flex flex-wrap gap-3">
-    <Button
-      label="Success"
-      severity="success"
-      @click="showSuccess"
-    />
-    <Button
-      label="Info"
-      severity="info"
-      @click="showInfo"
-    />
-    <Button
-      label="Error"
-      severity="danger"
-      @click="showError"
-    />
+    <Button @click="showSuccess" label="Success" severity="success" />
+
+    <Button @click="showInfo" label="Info" severity="info" />
+
+    <Button @click="showError" label="Error" severity="danger" />
 
     <Toast />
   </div>

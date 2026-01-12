@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { ref } from 'vue'
-import { ToggleSwitch } from '@fewangsit/wangsvue'
+import { ToggleSwitch } from '@fewangsit/wangsvue';
+import { ref } from 'vue';
 
-const tooltipValue = ref(false)
+const tooltipValue = ref(false);
 </script>
 
 <template>
@@ -13,6 +13,7 @@ const tooltipValue = ref(false)
       tooltip="This enables dark mode"
       tooltip-pos="top"
     />
+
     <ToggleSwitch
       v-model="tooltipValue"
       label="Right tooltip"

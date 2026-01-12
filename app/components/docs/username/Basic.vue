@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { UserName } from '@fewangsit/wangsvue'
-import type { GeneralUser } from '@fewangsit/wangsvue/username'
+import { UserName } from '@fewangsit/wangsvue';
+import type { GeneralUser } from '@fewangsit/wangsvue/username';
 
 const user: GeneralUser = {
   _id: '1',
@@ -11,8 +11,8 @@ const user: GeneralUser = {
   nickName: 'johndoe',
   position: 'Software Engineer',
   division: 'Engineering',
-  profilePicture: 'https://picsum.photos/64/64?random=1'
-}
+  profilePicture: 'https://picsum.photos/64/64?random=1',
+};
 </script>
 
 <template>

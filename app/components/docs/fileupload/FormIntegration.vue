@@ -1,30 +1,30 @@
 <script setup lang="ts">
-import { Form, FileUpload } from '@fewangsit/wangsvue'
-import type { FormPayload } from '@fewangsit/wangsvue/form'
+import { FileUpload, Form } from '@fewangsit/wangsvue';
+import type { FormPayload } from '@fewangsit/wangsvue/form';
 
-const onSubmit = (payload: FormPayload) => {
-  console.log('Form submitted:', payload.formValues)
-}
+const onSubmit = (payload: FormPayload): void => {
+  console.log('Form submitted:', payload.formValues);
+};
 </script>
 
 <template>
   <Form
     :buttons-template="['submit', 'clear']"
-    hide-stay-checkbox
     @submit="onSubmit"
+    hide-stay-checkbox
   >
     <template #fields>
       <FileUpload
-        label="Upload Resume"
-        field-name="resume"
-        :use-validator="true"
-        :mandatory="true"
+        :max-file-size="5242880"
         :validator-message="{ empty: 'Resume file is required' }"
         accept=".pdf,.doc,.docx"
-        :max-file-size="5242880"
-        placeholder="Select your resume"
+        field-name="resume"
         file-extensions="PDF, DOC, DOCX"
         file-requirements="Max size: 5MB"
+        label="Upload Resume"
+        mandatory
+        placeholder="Select your resume"
+        use-validator
       />
     </template>
   </Form>

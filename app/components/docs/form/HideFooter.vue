@@ -1,41 +1,33 @@
 <script setup lang="ts">
-import { Form, InputText, Button } from '@fewangsit/wangsvue'
-import { useTemplateRef } from 'vue'
+import { Button, Form, InputText } from '@fewangsit/wangsvue';
+import { useTemplateRef } from 'vue';
 
-const form = useTemplateRef<Form>('form')
-const onSubmit = () => {
-  form.value?.submit()
-}
+const form = useTemplateRef<Form>('form');
+const onSubmit = (): void => {
+  form.value?.submit();
+};
 
-const onClear = () => {
-  form.value?.clearField()
-}
+const onClear = (): void => {
+  form.value?.clearField();
+};
 </script>
 
 <template>
-  <Form
-    ref="form"
-    hide-footer
-  >
+  <Form ref="form" hide-footer>
     <template #fields>
       <InputText
-        label="Message"
-        field-name="message"
-        :use-validator="true"
-        :mandatory="true"
         :validator-message="{ empty: 'Message is required' }"
+        field-name="message"
+        label="Message"
+        mandatory
+        use-validator
       />
     </template>
   </Form>
+
   <div class="flex gap-2 mt-4">
-    <Button
-      label="Clear"
-      severity="secondary"
-      @click="onClear"
-    />
-    <Button
-      label="Submit"
-      @click="onSubmit"
-    />
+    <Button @click="onClear" label="Clear" severity="secondary" />
+
+    <Button @click="onSubmit" label="Submit" />
   </div>
 </template>

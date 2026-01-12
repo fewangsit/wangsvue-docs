@@ -1,119 +1,118 @@
 <script setup lang="ts">
-import { Form, InputText } from '@fewangsit/wangsvue'
-import type { FormPayload } from '@fewangsit/wangsvue/form'
+import { Form, InputText } from '@fewangsit/wangsvue';
+import type { FormPayload } from '@fewangsit/wangsvue/form';
 
-const existingUsernames = ['admin', 'user', 'test', 'demo']
+const existingUsernames = ['admin', 'user', 'test', 'demo'];
 
 const checkDomainAvailability = async (value: string): Promise<boolean> => {
-  await new Promise(resolve => setTimeout(resolve, 800))
-  const unavailableDomains = ['google', 'facebook', 'microsoft']
-  return !unavailableDomains.some(domain => value.toLowerCase().includes(domain))
-}
+  await new Promise((resolve) => setTimeout(resolve, 800));
+  const unavailableDomains = ['google', 'facebook', 'microsoft'];
+  return !unavailableDomains.some((domain) =>
+    value.toLowerCase().includes(domain),
+  );
+};
 
-const onSubmit = (payload: FormPayload) => {
-  console.log('Text form submitted:', payload.formValues)
-}
+const onSubmit = (payload: FormPayload): void => {
+  console.log('Text form submitted:', payload.formValues);
+};
 
-const onCancel = () => {
-  console.log('Form cancelled')
-}
+const onCancel = (): void => {
+  console.log('Form cancelled');
+};
 </script>
 
 <template>
   <Form
-    :column-per-row="2"
     :buttons-template="['submit', 'cancel', 'clear']"
-    submit-btn-label="Save Profile"
-    @submit="onSubmit"
+    :column-per-row="2"
     @cancel="onCancel"
+    @submit="onSubmit"
+    submit-btn-label="Save Profile"
   >
     <template #fields="{ formValues }">
       <InputText
-        label="Username"
-        field-name="username"
-        :use-validator="true"
-        :mandatory="true"
-        :max-length="20"
         :existing-values="existingUsernames"
-        :prevent-input-on-max-length="true"
-        placeholder="Choose username"
-        field-info="Will be converted to uppercase"
         :validator-message="{
           empty: 'Username is required',
           exceed: 'Username must not exceed 20 characters',
-          exist: 'This username is already taken'
+          exist: 'This username is already taken',
         }"
+        field-info="Will be converted to uppercase"
+        field-name="username"
+        label="Username"
+        mandatory
+        max-length="20"
+        placeholder="Choose username"
+        prevent-input-on-max-length
+        use-validator
       />
 
       <InputText
-        label="Company Domain"
-        field-name="companyDomain"
-        :use-validator="true"
-        :mandatory="true"
-        :check-availability="checkDomainAvailability"
         :allowed-characters="/^[a-zA-Z0-9]*$/"
-        placeholder="Enter company domain"
-        field-info="Only letters and numbers allowed"
+        :check-availability="checkDomainAvailability"
         :validator-message="{
           empty: 'Company domain is required',
-          exist: 'This domain name is not available'
+          exist: 'This domain name is not available',
         }"
+        field-info="Only letters and numbers allowed"
+        field-name="companyDomain"
+        label="Company Domain"
+        mandatory
+        placeholder="Enter company domain"
+        use-validator
       />
 
       <div class="col-span-2">
         <InputText
-          label="Bio"
-          field-name="bio"
-          :use-validator="true"
-          :max-length="200"
-          :prevent-input-on-max-length="true"
           :allowed-characters="/^[a-zA-Z0-9\s.,!?-]*$/"
-          placeholder="Tell us about yourself"
-          field-info="Letters, numbers, spaces and basic punctuation only"
           :validator-message="{
-            exceed: 'Bio must not exceed 200 characters'
+            exceed: 'Bio must not exceed 200 characters',
           }"
+          field-info="Letters, numbers, spaces and basic punctuation only"
+          field-name="bio"
+          label="Bio"
+          max-length="200"
+          placeholder="Tell us about yourself"
+          prevent-input-on-max-length
+          use-validator
         />
       </div>
 
       <InputText
-        label="Website"
-        field-name="website"
-        :use-validator="true"
-        type="url"
-        :use-protocol="true"
-        placeholder="https://example.com"
-        field-info="Optional website URL"
         :validator-message="{
-          invalidFormat: 'Please enter a valid URL with protocol'
+          invalidFormat: 'Please enter a valid URL with protocol',
         }"
+        field-info="Optional website URL"
+        field-name="website"
+        label="Website"
+        placeholder="https://example.com"
+        type="url"
+        use-protocol
+        use-validator
       />
 
       <InputText
-        label="Phone Number"
-        field-name="phone"
-        :use-validator="true"
         :allowed-characters="/^[0-9+\-\s()]*$/"
-        :validate-on-blur="true"
-        placeholder="Enter phone number"
         field-info="Numbers, +, -, spaces, parentheses only"
+        field-name="phone"
+        label="Phone Number"
+        placeholder="Enter phone number"
+        use-validator
+        validate-on-blur
       />
 
       <!-- Conditional field using formValues -->
-      <div
-        v-if="formValues.companyDomain"
-        class="col-span-2"
-      >
+      <div v-if="formValues.companyDomain" class="col-span-2">
         <InputText
-          label="Company Description"
-          field-name="companyDescription"
-          :use-validator="true"
-          :max-length="500"
-          placeholder="Describe your company"
-          field-info="Shown because company domain is provided"
           :validator-message="{
-            exceed: 'Description must not exceed 500 characters'
+            exceed: 'Description must not exceed 500 characters',
           }"
+          field-info="Shown because company domain is provided"
+          field-name="companyDescription"
+          label="Company Description"
+          max-length="500"
+          placeholder="Describe your company"
+          use-validator
         />
       </div>
     </template>

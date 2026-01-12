@@ -1,21 +1,21 @@
 <script setup lang="ts">
-import { useLoadingStore, Button } from '@fewangsit/wangsvue'
+import { Button, useLoadingStore } from '@fewangsit/wangsvue';
 
-const { setLoading } = useLoadingStore()
+const { setLoading } = useLoadingStore();
 
-const showLoadingWithMessage = () => {
-  setLoading(true, 'Processing your request...')
+const showLoadingWithMessage = (): void => {
+  setLoading(true, 'Processing your request...');
   setTimeout(() => {
-    setLoading(false)
-  }, 3000)
-}
+    setLoading(false);
+  }, 3000);
+};
 </script>
 
 <template>
   <Button
+    @click="showLoadingWithMessage"
     label="Show Loading with Message (3s)"
     severity="success"
-    @click="showLoadingWithMessage"
   />
 
   <Loading />

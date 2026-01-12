@@ -1,16 +1,13 @@
 <script setup lang="ts">
-import { ref } from 'vue'
-import { Tree } from '@fewangsit/wangsvue'
-import type { TreeNode, TreeSelectionKeys } from '@fewangsit/wangsvue/basetree'
-import type { QueryParams, ShortFetchResponse } from '@fewangsit/wangsvue/datatable'
+import { Tree } from '@fewangsit/wangsvue';
+import type { TreeNode, TreeSelectionKeys } from '@fewangsit/wangsvue/basetree';
+import type { ShortFetchResponse } from '@fewangsit/wangsvue/datatable';
+import { ref } from 'vue';
 
-const singleSelection = ref<TreeSelectionKeys>({})
-const checkboxSelection = ref<TreeSelectionKeys>({})
+const singleSelection = ref<TreeSelectionKeys>({});
+const checkboxSelection = ref<TreeSelectionKeys>({});
 
-const fetchTree = async (
-  _type: 'group' | 'category',
-  _params?: QueryParams
-): Promise<ShortFetchResponse<TreeNode>> => {
+const fetchTree = async (): Promise<ShortFetchResponse<TreeNode>> => {
   const data: TreeNode[] = [
     {
       key: -1,
@@ -34,16 +31,16 @@ const fetchTree = async (
                   label: 'Expenses.doc',
                   icon: 'file-lines',
                   selectable: true,
-                  data: 'Expenses Document'
+                  data: 'Expenses Document',
                 },
                 {
                   key: '0-0-1',
                   label: 'Resume.doc',
                   icon: 'file-lines',
                   selectable: true,
-                  data: 'Resume Document'
-                }
-              ]
+                  data: 'Resume Document',
+                },
+              ],
             },
             {
               key: '0-1',
@@ -56,11 +53,11 @@ const fetchTree = async (
                   label: 'Invoices.txt',
                   icon: 'file-lines',
                   selectable: true,
-                  data: 'Invoices for this month'
-                }
-              ]
-            }
-          ]
+                  data: 'Invoices for this month',
+                },
+              ],
+            },
+          ],
         },
         {
           key: '1',
@@ -73,60 +70,60 @@ const fetchTree = async (
               label: 'Meeting',
               icon: 'calendar-event',
               selectable: true,
-              data: 'General meeting'
+              data: 'General meeting',
             },
             {
               key: '1-1',
               label: 'Product Launch',
               icon: 'calendar-event',
               selectable: true,
-              data: 'New product launch event'
-            }
-          ]
-        }
-      ]
-    }
-  ]
+              data: 'New product launch event',
+            },
+          ],
+        },
+      ],
+    },
+  ];
 
   return {
     status: 200,
     message: 'Success',
-    data: data
-  }
-}
+    data: data,
+  };
+};
 </script>
 
 <template>
   <div class="space-y-6">
     <div>
-      <h4 class="text-sm font-medium text-gray-700 mb-2">
-        Single Selection
-      </h4>
+      <h4 class="text-sm font-medium text-gray-700 mb-2">Single Selection</h4>
+
       <Tree
         v-model:selected-keys="singleSelection"
-        type="group"
-        filter=""
         :fetch-tree="fetchTree"
+        filter=""
         selection-mode="single"
-        :should-emit-event-on-change="true"
+        should-emit-event-on-change
+        type="group"
       />
+
       <div class="mt-2 text-xs text-gray-600">
         Selected: {{ Object.keys(singleSelection).join(', ') || 'None' }}
       </div>
     </div>
 
     <div>
-      <h4 class="text-sm font-medium text-gray-700 mb-2">
-        Checkbox Selection
-      </h4>
+      <h4 class="text-sm font-medium text-gray-700 mb-2">Checkbox Selection</h4>
+
       <Tree
         v-model:selected-keys="checkboxSelection"
-        type="group"
-        filter=""
         :fetch-tree="fetchTree"
+        filter=""
         selection-mode="checkbox"
-        :should-emit-event-on-change="true"
+        should-emit-event-on-change
+        type="group"
       />
+
       <div class="mt-2 text-xs text-gray-600">
         Selected: {{ Object.keys(checkboxSelection).join(', ') || 'None' }}
       </div>

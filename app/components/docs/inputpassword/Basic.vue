@@ -1,12 +1,9 @@
 <script setup lang="ts">
-import { InputPassword } from '@fewangsit/wangsvue'
+import { InputPassword } from '@fewangsit/wangsvue';
 
-const password = ref('')
+const password = ref('');
 </script>
 
 <template>
-  <InputPassword
-    v-model="password"
-    placeholder="Enter password"
-  />
+  <InputPassword v-model="password" placeholder="Enter password" />
 </template>

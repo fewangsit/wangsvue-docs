@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { Timeline } from '@fewangsit/wangsvue'
-import type { TimelineItem } from '@fewangsit/wangsvue/timeline'
+import { Timeline } from '@fewangsit/wangsvue';
+import type { TimelineItem } from '@fewangsit/wangsvue/timeline';
 
 const events: TimelineItem[] = [
   {
@@ -10,8 +10,8 @@ const events: TimelineItem[] = [
     username: 'john.doe',
     user: {
       _id: 'user1',
-      nickName: 'John Doe'
-    }
+      nickName: 'John Doe',
+    },
   },
   {
     _id: '2',
@@ -20,8 +20,8 @@ const events: TimelineItem[] = [
     username: 'jane.smith',
     user: {
       _id: 'user2',
-      nickName: 'Jane Smith'
-    }
+      nickName: 'Jane Smith',
+    },
   },
   {
     _id: '3',
@@ -30,8 +30,8 @@ const events: TimelineItem[] = [
     username: 'mike.wilson',
     user: {
       _id: 'user3',
-      nickName: 'Mike Wilson'
-    }
+      nickName: 'Mike Wilson',
+    },
   },
   {
     _id: '4',
@@ -40,10 +40,10 @@ const events: TimelineItem[] = [
     username: 'sarah.johnson',
     user: {
       _id: 'user4',
-      nickName: 'Sarah Johnson'
-    }
-  }
-]
+      nickName: 'Sarah Johnson',
+    },
+  },
+];
 </script>
 
 <template>

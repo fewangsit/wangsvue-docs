@@ -1,20 +1,20 @@
 <script setup lang="ts">
-import { ref } from 'vue'
-import { InputRangeNumber } from '@fewangsit/wangsvue'
+import { InputRangeNumber } from '@fewangsit/wangsvue';
+import { ref } from 'vue';
 
-const value = ref<number[]>([])
+const value = ref<number[]>([]);
 </script>
 
 <template>
   <InputRangeNumber
     v-model="value"
-    label="Price Range"
-    min-placeholder="Min price"
-    max-placeholder="Max price"
-    :mandatory="true"
-    :use-validator="true"
-    min-field-name="minPrice"
-    max-field-name="maxPrice"
     :validator-message="{ empty: 'Price range is required' }"
+    label="Price Range"
+    mandatory
+    max-field-name="maxPrice"
+    max-placeholder="Max price"
+    min-field-name="minPrice"
+    min-placeholder="Min price"
+    use-validator
   />
 </template>

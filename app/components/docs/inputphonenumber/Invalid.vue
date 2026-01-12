@@ -1,16 +1,16 @@
 <script setup lang="ts">
-import { ref } from 'vue'
-import { InputPhoneNumber } from '@fewangsit/wangsvue'
+import { InputPhoneNumber } from '@fewangsit/wangsvue';
+import { ref } from 'vue';
 
-const value = ref('')
+const value = ref('');
 </script>
 
 <template>
   <InputPhoneNumber
     v-model="value"
+    :validator-message="{ empty: 'Emergency contact is required for safety' }"
+    invalid
     label="Emergency Contact"
     placeholder="Enter emergency contact"
-    :invalid="true"
-    :validator-message="{ empty: 'Emergency contact is required for safety' }"
   />
 </template>

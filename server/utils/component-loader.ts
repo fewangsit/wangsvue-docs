@@ -1,58 +1,60 @@
-import type { ComponentData } from '../mcp/types/component'
+import type { ComponentData } from '../mcp/types/component';
 
-let loadedComponents: ComponentData[]
+let loadedComponents: ComponentData[];
 
 /**
  * Loads component data from the JSON file
  * @returns Promise<ComponentData[]> Array of component data
  * @throws Error if file cannot be read or parsed
  */
-export async function loadComponentData(): Promise<ComponentData[]> {
+export const loadComponentData = async (): Promise<ComponentData[]> => {
   try {
-    if (loadedComponents) return loadedComponents
-    const { readFile } = await import('fs/promises')
-    const { join } = await import('path')
+    if (loadedComponents) return loadedComponents;
+    const { readFile } = await import('fs/promises');
+    const { join } = await import('path');
 
     const possiblePaths = [
       join(process.cwd(), 'data/components.json'), // For netlify function
       // Development path
       join(process.cwd(), 'server/data/components.json'),
       // Production build path (Nitro output)
-      join(process.cwd(), '.output/server/data/components.json')
-    ]
+      join(process.cwd(), '.output/server/data/components.json'),
+    ];
 
-    // const { readdir } = await import('fs/promises')
-    // console.log('CWD: ', process.cwd())
-    // console.log(
-    //   'Folders in current directory:',
-    //   await readdir(process.cwd(), { withFileTypes: true }).then(entries =>
-    //     entries
-    //       .filter(entry => entry.isDirectory())
-    //       .map(entry => entry.name)
-    //   )
-    // )
+    /*
+     * Const { readdir } = await import('fs/promises')
+     * console.log('CWD: ', process.cwd())
+     * console.log(
+     *   'Folders in current directory:',
+     *   await readdir(process.cwd(), { withFileTypes: true }).then(entries =>
+     *     entries
+     *       .filter(entry => entry.isDirectory())
+     *       .map(entry => entry.name)
+     *   )
+     * )
+     */
 
-    let data: string
+    let data: string;
 
     for (const path of possiblePaths) {
       try {
-        data = await readFile(path, 'utf-8')
-        break
+        data = await readFile(path, 'utf-8');
+        break;
       } catch {
         // Continue to next path
-        continue
+        continue;
       }
     }
 
-    if (!data!) {
-      throw new Error('Component data file not found in any expected location')
+    if (data === undefined) {
+      throw new Error('Component data file not found in any expected location');
     }
 
-    loadedComponents = JSON.parse(data)
-    return loadedComponents
+    loadedComponents = JSON.parse(data);
+    return loadedComponents;
   } catch (error) {
     throw new Error(
-      `Failed to load component data: ${error instanceof Error ? error.message : 'Unknown error'}`
-    )
+      `Failed to load component data: ${error instanceof Error ? error.message : 'Unknown error'}`,
+    );
   }
-}
+};

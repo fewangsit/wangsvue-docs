@@ -1,18 +1,18 @@
 <script setup lang="ts">
-import { ref } from 'vue'
-import { Textarea } from '@fewangsit/wangsvue'
+import { Textarea } from '@fewangsit/wangsvue';
+import { ref } from 'vue';
 
-const invalidValue = ref('This content has an error')
+const invalidValue = ref('This content has an error');
 </script>
 
 <template>
   <Textarea
     v-model="invalidValue"
-    :invalid="true"
     :rows="3"
-    :use-validator="true"
+    invalid
     label="Invalid Content"
     placeholder="This shows an error"
+    use-validator
     validator-message="This content contains inappropriate language"
   />
 </template>

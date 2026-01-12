@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { Timeline } from '@fewangsit/wangsvue'
-import type { TimelineItem } from '@fewangsit/wangsvue/timeline'
+import { Timeline } from '@fewangsit/wangsvue';
+import type { TimelineItem } from '@fewangsit/wangsvue/timeline';
 
 const events: TimelineItem[] = [
   {
@@ -10,8 +10,9 @@ const events: TimelineItem[] = [
     username: 'john.doe',
     detail: {
       type: 'text',
-      value: 'New project "Website Redesign" has been created with initial requirements.'
-    }
+      value:
+        'New project "Website Redesign" has been created with initial requirements.',
+    },
   },
   {
     _id: '2',
@@ -20,12 +21,8 @@ const events: TimelineItem[] = [
     username: 'jane.smith',
     detail: {
       type: 'bullet',
-      value: [
-        'Frontend Development',
-        'UI/UX Design',
-        'Backend Integration'
-      ]
-    }
+      value: ['Frontend Development', 'UI/UX Design', 'Backend Integration'],
+    },
   },
   {
     _id: '3',
@@ -35,8 +32,8 @@ const events: TimelineItem[] = [
     detail: {
       type: 'badge',
       label: 'In Progress',
-      severity: 'warning'
-    }
+      severity: 'warning',
+    },
   },
   {
     _id: '4',
@@ -46,10 +43,10 @@ const events: TimelineItem[] = [
     detail: {
       type: 'badge',
       label: 'Completed',
-      severity: 'success'
-    }
-  }
-]
+      severity: 'success',
+    },
+  },
+];
 </script>
 
 <template>

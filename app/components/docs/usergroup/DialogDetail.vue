@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { UserGroup } from '@fewangsit/wangsvue'
-import type { GeneralUser } from '@fewangsit/wangsvue/username'
+import { UserGroup } from '@fewangsit/wangsvue';
+import type { GeneralUser } from '@fewangsit/wangsvue/username';
 
 const teamMembers: GeneralUser[] = [
   {
@@ -12,7 +12,7 @@ const teamMembers: GeneralUser[] = [
     email: 'john.doe@example.com',
     position: 'Software Engineer',
     division: 'Engineering',
-    profilePicture: 'https://picsum.photos/64/64?random=1'
+    profilePicture: 'https://picsum.photos/64/64?random=1',
   },
   {
     _id: '2',
@@ -23,7 +23,7 @@ const teamMembers: GeneralUser[] = [
     email: 'jane.smith@example.com',
     position: 'Product Manager',
     division: 'Product',
-    profilePicture: 'https://picsum.photos/64/64?random=2'
+    profilePicture: 'https://picsum.photos/64/64?random=2',
   },
   {
     _id: '3',
@@ -34,7 +34,7 @@ const teamMembers: GeneralUser[] = [
     email: 'alice.johnson@example.com',
     position: 'UX Designer',
     division: 'Design',
-    profilePicture: 'https://picsum.photos/64/64?random=3'
+    profilePicture: 'https://picsum.photos/64/64?random=3',
   },
   {
     _id: '4',
@@ -45,7 +45,7 @@ const teamMembers: GeneralUser[] = [
     email: 'bob.wilson@example.com',
     position: 'DevOps Engineer',
     division: 'Infrastructure',
-    profilePicture: 'https://picsum.photos/64/64?random=4'
+    profilePicture: 'https://picsum.photos/64/64?random=4',
   },
   {
     _id: '5',
@@ -56,9 +56,9 @@ const teamMembers: GeneralUser[] = [
     email: 'charlie.brown@example.com',
     position: 'Senior Developer',
     division: 'Engineering',
-    profilePicture: 'https://picsum.photos/64/64?random=5'
-  }
-]
+    profilePicture: 'https://picsum.photos/64/64?random=5',
+  },
+];
 </script>
 
 <template>
@@ -67,16 +67,19 @@ const teamMembers: GeneralUser[] = [
       <h4 class="text-sm font-medium text-gray-700 mb-2">
         Team Members with Dialog Detail
       </h4>
+
       <UserGroup
-        :users="teamMembers"
         :limit="3"
-        :with-dialog-detail="true"
+        :users="teamMembers"
         dialog-header-label="Team Members"
+        with-dialog-detail
       />
     </div>
 
     <div class="text-sm text-gray-600">
-      <p>Click on the "+N more" indicator to view all team members in a dialog.</p>
+      <p>
+        Click on the "+N more" indicator to view all team members in a dialog.
+      </p>
     </div>
   </div>
 </template>

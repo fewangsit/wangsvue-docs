@@ -1,18 +1,18 @@
 <script setup lang="ts">
-import { ref } from 'vue'
-import { InputPhoneNumber } from '@fewangsit/wangsvue'
+import { InputPhoneNumber } from '@fewangsit/wangsvue';
+import { ref } from 'vue';
 
-const value = ref('')
+const value = ref('');
 </script>
 
 <template>
   <InputPhoneNumber
     v-model="value"
-    label="Contact Number"
-    placeholder="Enter contact number"
-    :use-validator="true"
-    field-name="contactNumber"
-    :mandatory="true"
     :validator-message="{ empty: 'Contact number is required' }"
+    field-name="contactNumber"
+    label="Contact Number"
+    mandatory
+    placeholder="Enter contact number"
+    use-validator
   />
 </template>

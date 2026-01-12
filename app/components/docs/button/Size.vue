@@ -1,17 +1,13 @@
+<script setup lang="ts">
+import { Button } from '@fewangsit/wangsvue';
+</script>
+
 <template>
   <div class="flex flex-wrap items-center gap-4">
-    <Button
-      size="small"
-      label="Small Button"
-    />
+    <Button label="Small Button" size="small" />
+
     <Button label="Normal Button" />
-    <Button
-      size="large"
-      label="Large Button"
-    />
+
+    <Button label="Large Button" size="large" />
   </div>
 </template>
-
-<script setup lang="ts">
-import { Button } from '@fewangsit/wangsvue'
-</script>

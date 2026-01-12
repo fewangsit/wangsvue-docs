@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { Timeline } from '@fewangsit/wangsvue'
-import type { TimelineItem } from '@fewangsit/wangsvue/timeline'
+import { Timeline } from '@fewangsit/wangsvue';
+import type { TimelineItem } from '@fewangsit/wangsvue/timeline';
 
 const events: TimelineItem[] = [
   {
@@ -10,9 +10,9 @@ const events: TimelineItem[] = [
     username: 'john.doe',
     user: {
       _id: 'user1',
-      nickName: 'John Doe'
+      nickName: 'John Doe',
     },
-    detail: 'Project setup and initial configuration completed successfully.'
+    detail: 'Project setup and initial configuration completed successfully.',
   },
   {
     _id: '2',
@@ -21,9 +21,10 @@ const events: TimelineItem[] = [
     username: 'jane.smith',
     user: {
       _id: 'user2',
-      nickName: 'Jane Smith'
+      nickName: 'Jane Smith',
     },
-    detail: 'Discussed project milestones and assigned responsibilities to team members.'
+    detail:
+      'Discussed project milestones and assigned responsibilities to team members.',
   },
   {
     _id: '3',
@@ -32,11 +33,12 @@ const events: TimelineItem[] = [
     username: 'mike.wilson',
     user: {
       _id: 'user3',
-      nickName: 'Mike Wilson'
+      nickName: 'Mike Wilson',
     },
-    detail: 'Reviewed pull request #123 and provided feedback for improvements.'
-  }
-]
+    detail:
+      'Reviewed pull request #123 and provided feedback for improvements.',
+  },
+];
 </script>
 
 <template>
@@ -48,16 +50,16 @@ const events: TimelineItem[] = [
     </template>
 
     <template #user="{ user }">
-      <span class="inline-flex items-center gap-2 text-sm font-semibold text-green-700">
+      <span
+        class="inline-flex items-center gap-2 text-sm font-semibold text-green-700"
+      >
         👤 {{ user }}
       </span>
     </template>
 
     <template #detail="{ value }">
       <div class="p-3 bg-gray-50 rounded-lg border-l-4 border-blue-400">
-        <p class="text-sm text-gray-700">
-          💬 {{ value }}
-        </p>
+        <p class="text-sm text-gray-700">💬 {{ value }}</p>
       </div>
     </template>
   </Timeline>

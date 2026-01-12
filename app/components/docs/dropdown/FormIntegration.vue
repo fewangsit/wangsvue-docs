@@ -1,29 +1,29 @@
 <script setup lang="ts">
-import { Form, Dropdown } from '@fewangsit/wangsvue'
-import type { FormPayload } from '@fewangsit/wangsvue/form'
+import { Dropdown, Form } from '@fewangsit/wangsvue';
+import type { FormPayload } from '@fewangsit/wangsvue/form';
 
-const options = ['Manager', 'Developer', 'Designer', 'Analyst']
+const options = ['Manager', 'Developer', 'Designer', 'Analyst'];
 
-const onSubmit = (payload: FormPayload) => {
-  console.log('Form submitted:', payload.formValues)
-}
+const onSubmit = (payload: FormPayload): void => {
+  console.log('Form submitted:', payload.formValues);
+};
 </script>
 
 <template>
   <Form
     :buttons-template="['submit', 'clear']"
-    hide-stay-checkbox
     @submit="onSubmit"
+    hide-stay-checkbox
   >
     <template #fields>
       <Dropdown
-        label="Job Role"
-        field-name="jobRole"
         :options="options"
-        :use-validator="true"
-        :mandatory="true"
         :validator-message="{ empty: 'Job role is required' }"
+        field-name="jobRole"
+        label="Job Role"
+        mandatory
         placeholder="Select your role"
+        use-validator
       />
     </template>
   </Form>

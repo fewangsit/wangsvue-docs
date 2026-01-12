@@ -1,28 +1,25 @@
 <script setup lang="ts">
-import { ref } from 'vue'
-import { Tree, Button } from '@fewangsit/wangsvue'
-import type { TreeNode } from '@fewangsit/wangsvue/basetree'
-import type { QueryParams, ShortFetchResponse } from '@fewangsit/wangsvue/datatable'
+import { Button, Tree } from '@fewangsit/wangsvue';
+import type { TreeNode } from '@fewangsit/wangsvue/basetree';
+import type { ShortFetchResponse } from '@fewangsit/wangsvue/datatable';
+import { ref } from 'vue';
 
-const isLoading = ref(false)
-const shouldLoad = ref(false)
+const isLoading = ref(false);
+const shouldLoad = ref(false);
 
-const fetchTree = async (
-  _type: 'group' | 'category',
-  _params?: QueryParams
-): Promise<ShortFetchResponse<TreeNode>> => {
+const fetchTree = async (): Promise<ShortFetchResponse<TreeNode>> => {
   if (!shouldLoad.value) {
     return {
       status: 200,
       message: 'Success',
-      data: []
-    }
+      data: [],
+    };
   }
 
-  isLoading.value = true
+  isLoading.value = true;
 
   // Simulate API delay
-  await new Promise(resolve => setTimeout(resolve, 2000))
+  await new Promise((resolve) => setTimeout(resolve, 2000));
 
   const data: TreeNode[] = [
     {
@@ -47,18 +44,18 @@ const fetchTree = async (
                   label: 'README.md',
                   icon: 'file-lines',
                   selectable: true,
-                  data: 'Project documentation'
+                  data: 'Project documentation',
                 },
                 {
                   key: '0-0-1',
                   label: 'package.json',
                   icon: 'file-lines',
                   selectable: true,
-                  data: 'Package configuration'
-                }
-              ]
-            }
-          ]
+                  data: 'Package configuration',
+                },
+              ],
+            },
+          ],
         },
         {
           key: '1',
@@ -71,72 +68,65 @@ const fetchTree = async (
               label: 'Images',
               icon: 'image-add',
               selectable: true,
-              data: 'Image assets'
+              data: 'Image assets',
             },
             {
               key: '1-1',
               label: 'Styles',
               icon: 'file-lines',
               selectable: true,
-              data: 'CSS files'
-            }
-          ]
-        }
-      ]
-    }
-  ]
+              data: 'CSS files',
+            },
+          ],
+        },
+      ],
+    },
+  ];
 
-  isLoading.value = false
+  isLoading.value = false;
 
   return {
     status: 200,
     message: 'Success',
-    data: data
-  }
-}
+    data: data,
+  };
+};
 
-const loadTreeData = () => {
-  shouldLoad.value = true
-}
+const loadTreeData = (): void => {
+  shouldLoad.value = true;
+};
 
-const clearData = () => {
-  shouldLoad.value = false
-  isLoading.value = false
-}
+const clearData = (): void => {
+  shouldLoad.value = false;
+  isLoading.value = false;
+};
 </script>
 
 <template>
   <div class="space-y-4">
     <div class="flex gap-2">
       <Button
-        label="Load Tree Data"
         :disabled="isLoading || shouldLoad"
         @click="loadTreeData"
+        label="Load Tree Data"
       />
+
       <Button
-        label="Clear Data"
-        severity="secondary"
         :disabled="isLoading"
         @click="clearData"
+        label="Clear Data"
+        severity="secondary"
       />
     </div>
 
-    <Tree
-      type="group"
-      filter=""
-      :fetch-tree="fetchTree"
-    />
+    <Tree :fetch-tree="fetchTree" filter="" type="group" />
 
     <div class="text-sm text-gray-600">
-      <p v-if="isLoading">
-        Loading tree data...
-      </p>
-      <p v-else-if="!shouldLoad">
-        Click "Load Tree Data" to see the loading state.
-      </p>
-      <p v-else>
-        Tree data loaded successfully!
-      </p>
+      <p v-if="isLoading">Loading tree data...</p>
+
+      <p v-else-if="shouldLoad">Tree data loaded successfully!</p>
+
+      <p v-else>Click "Load Tree Data" to see the loading state.</p>
     </div>
   </div>
 </template>

@@ -1,58 +1,50 @@
 <script setup lang="ts">
-import { ref } from 'vue'
-import { DialogConfirm, Button } from '@fewangsit/wangsvue'
+import { Button, DialogConfirm } from '@fewangsit/wangsvue';
+import { ref } from 'vue';
 
-const bodyVisible = ref(false)
-const footerVisible = ref(false)
+const bodyVisible = ref(false);
+const footerVisible = ref(false);
 
-const handleCustomAction = () => {
-  console.log('Custom action performed')
-  footerVisible.value = false
-}
+const handleCustomAction = (): void => {
+  console.log('Custom action performed');
+  footerVisible.value = false;
+};
 </script>
 
 <template>
   <div class="flex flex-wrap gap-3">
-    <Button
-      label="Custom Body"
-      @click="bodyVisible = true"
-    />
-    <Button
-      label="Custom Footer"
-      @click="footerVisible = true"
-    />
+    <Button @click="bodyVisible = true" label="Custom Body" />
+
+    <Button @click="footerVisible = true" label="Custom Footer" />
 
     <!-- Custom Body -->
     <DialogConfirm
       v-model:visible="bodyVisible"
+      @close="bodyVisible = false"
+      @confirm="bodyVisible = false"
       header="Terms and Conditions"
       severity="primary"
-      @confirm="bodyVisible = false"
-      @close="bodyVisible = false"
     >
       <template #body>
         <div class="space-y-4">
           <div class="bg-blue-50 p-4 rounded-lg">
-            <h4 class="font-semibold text-blue-800 mb-2">
-              Important Notice
-            </h4>
+            <h4 class="font-semibold text-blue-800 mb-2">Important Notice</h4>
+
             <p class="text-blue-700">
               By proceeding, you agree to our updated terms and conditions.
             </p>
           </div>
+
           <div class="space-y-2">
             <label class="flex items-center gap-2">
-              <input
-                type="checkbox"
-                class="rounded"
-              >
+              <input class="rounded" type="checkbox" />
+
               <span class="text-sm">I have read and agree to the terms</span>
             </label>
+
             <label class="flex items-center gap-2">
-              <input
-                type="checkbox"
-                class="rounded"
-              >
+              <input class="rounded" type="checkbox" />
+
               <span class="text-sm">I consent to data processing</span>
             </label>
           </div>
@@ -64,32 +56,35 @@ const handleCustomAction = () => {
     <DialogConfirm
       v-model:visible="footerVisible"
       header="Advanced Options"
-      severity="primary"
       message="Choose your preferred action:"
+      severity="primary"
     >
       <template #footer>
         <div class="flex justify-between items-center w-full">
           <Button
+            @click="footerVisible = false"
             label="Skip"
             severity="secondary"
             text
-            @click="footerVisible = false"
           />
+
           <div class="flex gap-2">
             <Button
+              @click="handleCustomAction"
               label="Save Draft"
               severity="secondary"
-              @click="handleCustomAction"
             />
+
             <Button
+              @click="handleCustomAction"
               label="Publish"
               severity="success"
-              @click="handleCustomAction"
             />
+
             <Button
+              @click="handleCustomAction"
               label="Schedule"
               severity="primary"
-              @click="handleCustomAction"
             />
           </div>
         </div>
