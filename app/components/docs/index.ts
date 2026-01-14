@@ -201,12 +201,18 @@ export const componentRegistry: Record<
 
   // DataTable components
   'datatable/Basic': () => import('./datatable/Basic.vue'),
+  'datatable/Dynamic': () => import('./datatable/Dynamic.vue'),
   'datatable/SingleAction': () => import('./datatable/SingleAction.vue'),
   'datatable/BulkAction': () => import('./datatable/BulkAction.vue'),
   'datatable/Template': () => import('./datatable/Template.vue'),
   'datatable/Sort': () => import('./datatable/Sort.vue'),
-  'datatable/Dynamic': () => import('./datatable/Dynamic.vue'),
   'datatable/SearchFilter': () => import('./datatable/SearchFilter.vue'),
+  'datatable/ColumnPreset/Toggle': () =>
+    import('./datatable/ColumnPreset/Toggle.vue'),
+  'datatable/ColumnPreset/Checkbox': () =>
+    import('./datatable/ColumnPreset/Checkbox.vue'),
+  'datatable/ColumnPreset/MultiRow': () =>
+    import('./datatable/ColumnPreset/MultiRow.vue'),
   'tabmenu/Visibility': () => import('./tabmenu/Visibility.vue'),
   'tabmenu/ActiveIndex': () => import('./tabmenu/ActiveIndex.vue'),
   'tabmenu/TrailingLine': () => import('./tabmenu/TrailingLine.vue'),

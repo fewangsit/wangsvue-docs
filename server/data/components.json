@@ -741,9 +741,41 @@
         "id": "search-&-filter",
         "label": "Search & Filter",
         "description": "DataTable integrates with ButtonSearch, ButtonFilter, FilterContainer, and QuickFilter for comprehensive data filtering capabilities. Those components should share the same `table-name` prop to work together.",
-        "example": "<script setup lang=\"ts\">\nimport {\n  ButtonDownload,\n  ButtonFilter,\n  ButtonSearch,\n  DataTable,\n  FilterContainer,\n  QuickFilter,\n} from '@fewangsit/wangsvue';\nimport type { FetchResponse, TableColumn } from '@fewangsit/wangsvue/datatable';\nimport type {\n  FetchOptionResponse,\n  FilterField,\n} from '@fewangsit/wangsvue/filtercontainer';\nimport axios, { type AxiosResponse } from 'axios';\n\nimport type {\n  GetProductsQueryParams,\n  Product,\n} from 'server/api/products/index';\nimport type { GetProductOptionsQueryParams } from 'server/api/products/options.get';\n\nconst columns: TableColumn<Product>[] = [\n  { field: 'id', header: 'ID' },\n  { field: 'code', header: 'Code' },\n  { field: 'name', header: 'Name' },\n  { field: 'description', header: 'Description' },\n  { field: 'image', header: 'Image' },\n  { field: 'price', header: 'Price' },\n  { field: 'category', header: 'Category' },\n  { field: 'quantity', header: 'Quantity' },\n  { field: 'inventoryStatus', header: 'Inventory Status' },\n  { field: 'rating', header: 'Rating' },\n];\n\nconst tableName = 'product-table-search-filter';\n\nconst filterFields: FilterField<\n  GetProductsQueryParams,\n  GetProductOptionsQueryParams\n>[] = [\n  {\n    field: 'name',\n    type: 'multiselect',\n    label: 'Product Name',\n    fetchOptionFn: fetchOptions,\n  },\n  {\n    field: 'category',\n    type: 'multiselect',\n    label: 'Category',\n    fetchOptionFn: fetchOptions,\n  },\n];\n\nconst quickFilterFields: FilterField<\n  GetProductsQueryParams,\n  GetProductOptionsQueryParams\n>[] = [\n  {\n    field: 'quantity',\n    type: 'rangenumber',\n    label: 'Quantity',\n    minPlaceholder: 'Min Quantity',\n    maxPlaceholder: 'Max Quantity',\n  },\n  {\n    field: 'rating',\n    type: 'rangenumber',\n    label: 'Rating',\n    minPlaceholder: 'Min Rating',\n    maxPlaceholder: 'Max Rating',\n  },\n  {\n    field: 'inventoryStatus',\n    type: 'multiselect',\n    label: 'Inventory Status',\n  },\n];\n\nconst fetchProducts = async (\n  params: GetProductsQueryParams,\n): Promise<FetchResponse<Product> | undefined> => {\n  try {\n    const response = await axios.get<FetchResponse<Product>>('/api/products', {\n      params,\n    });\n    return response.data;\n  } catch (error) {\n    console.error('Failed to fetch products:', error);\n    return undefined;\n  }\n};\n\n// eslint-disable-next-line func-style\nasync function fetchOptions<\n  Opt = GetProductOptionsQueryParams,\n  R = FetchOptionResponse<Opt>,\n>(params: Opt): Promise<AxiosResponse<R>> {\n  return await axios.get<R>('/api/products/options', { params });\n}\n</script>\n\n<template>\n  <div class=\"flex flex-col gap-2\">\n    <div class=\"flex justify-end gap-1\">\n      <ButtonSearch :table-name />\n\n      <ButtonFilter :table-name />\n\n      <ButtonDownload :table-name file-name=\"products\" />\n    </div>\n\n    <FilterContainer :fields=\"filterFields\" :table-name=\"tableName\" />\n\n    <QuickFilter :fields=\"quickFilterFields\" :table-name=\"tableName\" />\n\n    <DataTable\n      :columns=\"columns\"\n      :fetch-function=\"fetchProducts\"\n      :rows=\"5\"\n      :table-name=\"tableName\"\n      :use-option=\"false\"\n      data-key=\"id\"\n      use-paginator\n    />\n  </div>\n</template>\n",
+        "example": "<script setup lang=\"ts\">\nimport {\n  ButtonFilter,\n  ButtonSearch,\n  DataTable,\n  FilterContainer,\n  QuickFilter,\n} from '@fewangsit/wangsvue';\nimport type { FetchResponse, TableColumn } from '@fewangsit/wangsvue/datatable';\nimport type {\n  FetchOptionResponse,\n  FilterField,\n} from '@fewangsit/wangsvue/filtercontainer';\nimport axios, { type AxiosResponse } from 'axios';\n\nimport type {\n  GetProductsQueryParams,\n  Product,\n} from 'server/api/products/index';\nimport type { GetProductOptionsQueryParams } from 'server/api/products/options.get';\n\nconst columns: TableColumn<Product>[] = [\n  { field: 'id', header: 'ID' },\n  { field: 'code', header: 'Code' },\n  { field: 'name', header: 'Name' },\n  { field: 'description', header: 'Description' },\n  { field: 'image', header: 'Image' },\n  { field: 'price', header: 'Price' },\n  { field: 'category', header: 'Category' },\n  { field: 'quantity', header: 'Quantity' },\n  { field: 'inventoryStatus', header: 'Inventory Status' },\n  { field: 'rating', header: 'Rating' },\n];\n\nconst tableName = 'product-table-search-filter';\n\nconst filterFields: FilterField<\n  GetProductsQueryParams,\n  GetProductOptionsQueryParams\n>[] = [\n  {\n    field: 'name',\n    type: 'multiselect',\n    label: 'Product Name',\n    fetchOptionFn: fetchOptions,\n  },\n  {\n    field: 'category',\n    type: 'multiselect',\n    label: 'Category',\n    fetchOptionFn: fetchOptions,\n  },\n];\n\nconst quickFilterFields: FilterField<\n  GetProductsQueryParams,\n  GetProductOptionsQueryParams\n>[] = [\n  {\n    field: 'quantity',\n    type: 'rangenumber',\n    label: 'Quantity',\n    minPlaceholder: 'Min Quantity',\n    maxPlaceholder: 'Max Quantity',\n  },\n  {\n    field: 'rating',\n    type: 'rangenumber',\n    label: 'Rating',\n    minPlaceholder: 'Min Rating',\n    maxPlaceholder: 'Max Rating',\n  },\n  {\n    field: 'inventoryStatus',\n    type: 'multiselect',\n    label: 'Inventory Status',\n  },\n];\n\nconst fetchProducts = async (\n  params: GetProductsQueryParams,\n): Promise<FetchResponse<Product> | undefined> => {\n  try {\n    const response = await axios.get<FetchResponse<Product>>('/api/products', {\n      params,\n    });\n    return response.data;\n  } catch (error) {\n    console.error('Failed to fetch products:', error);\n    return undefined;\n  }\n};\n\n// eslint-disable-next-line func-style\nasync function fetchOptions<\n  Opt = GetProductOptionsQueryParams,\n  R = FetchOptionResponse<Opt>,\n>(params: Opt): Promise<AxiosResponse<R>> {\n  return await axios.get<R>('/api/products/options', { params });\n}\n</script>\n\n<template>\n  <div class=\"flex flex-col gap-2\">\n    <div class=\"flex justify-end gap-1\">\n      <ButtonSearch :table-name />\n\n      <ButtonFilter :table-name />\n    </div>\n\n    <FilterContainer :fields=\"filterFields\" :table-name=\"tableName\" />\n\n    <QuickFilter :fields=\"quickFilterFields\" :table-name=\"tableName\" />\n\n    <DataTable\n      :columns=\"columns\"\n      :fetch-function=\"fetchProducts\"\n      :rows=\"5\"\n      :table-name=\"tableName\"\n      :use-option=\"false\"\n      data-key=\"id\"\n      use-paginator\n    />\n  </div>\n</template>\n",
         "hasExample": true,
         "examplePath": "datatable/SearchFilter"
+      },
+      {
+        "id": "column-preset",
+        "label": "Column Preset",
+        "description": "Use commonly used component presets for columns with built-in functionality. Column presets provide ready-to-use column configurations for toggle switches, checkboxes, and multi-row displays.",
+        "example": "",
+        "hasExample": false,
+        "examplePath": null
+      },
+      {
+        "id": "toggle-preset",
+        "label": "Toggle Preset",
+        "description": "Toggle preset provides a switch/toggle button for boolean values with optional confirmation dialog and state management.",
+        "example": "<!-- Example file not found: app/components/docs/datatable/Toggle.vue -->",
+        "hasExample": true,
+        "examplePath": "datatable/Toggle"
+      },
+      {
+        "id": "checkbox-preset",
+        "label": "Checkbox Preset",
+        "description": "Checkbox preset provides a checkbox for boolean values with optional confirmation dialog and state management.",
+        "example": "<!-- Example file not found: app/components/docs/datatable/Checkbox.vue -->",
+        "hasExample": true,
+        "examplePath": "datatable/Checkbox"
+      },
+      {
+        "id": "multirow-preset",
+        "label": "MultiRow Preset",
+        "description": "MultiRow preset allows displaying multiple rows of data within a single table cell with custom attributes and components.",
+        "example": "<!-- Example file not found: app/components/docs/datatable/MultiRow.vue -->",
+        "hasExample": true,
+        "examplePath": "datatable/MultiRow"
       }
     ]
   },

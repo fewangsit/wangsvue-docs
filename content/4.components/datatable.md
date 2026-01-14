@@ -59,3 +59,28 @@ DataTable integrates with ButtonSearch, ButtonFilter, FilterContainer, and Quick
 ::component-demo{src="datatable/SearchFilter"}
 ::
 
+## Column Preset
+
+Use commonly used component presets for columns with built-in functionality. Column presets provide ready-to-use column configurations for toggle switches, checkboxes, and multi-row displays.
+
+### Toggle Preset
+
+Toggle preset provides a switch/toggle button for boolean values with optional confirmation dialog and state management.
+
+::component-demo{src="datatable/ColumnPreset/Toggle"}
+::
+
+### Checkbox Preset
+
+Checkbox preset provides a checkbox for boolean values with optional confirmation dialog and state management.
+
+::component-demo{src="datatable/ColumnPreset/Checkbox"}
+::
+
+### MultiRow Preset
+
+MultiRow preset allows displaying multiple rows of data within a single table cell with custom attributes and components.
+
+::component-demo{src="datatable/ColumnPreset/MultiRow"}
+::
+
