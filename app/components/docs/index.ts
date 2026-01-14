@@ -198,6 +198,15 @@ export const componentRegistry: Record<
   'tabmenu/Icons': () => import('./tabmenu/Icons.vue'),
   'tabmenu/Router': () => import('./tabmenu/Router.vue'),
   'tabmenu/ExternalUrl': () => import('./tabmenu/ExternalUrl.vue'),
+
+  // DataTable components
+  'datatable/Basic': () => import('./datatable/Basic.vue'),
+  'datatable/SingleAction': () => import('./datatable/SingleAction.vue'),
+  'datatable/BulkAction': () => import('./datatable/BulkAction.vue'),
+  'datatable/Template': () => import('./datatable/Template.vue'),
+  'datatable/Sort': () => import('./datatable/Sort.vue'),
+  'datatable/Dynamic': () => import('./datatable/Dynamic.vue'),
+  'datatable/SearchFilter': () => import('./datatable/SearchFilter.vue'),
   'tabmenu/Visibility': () => import('./tabmenu/Visibility.vue'),
   'tabmenu/ActiveIndex': () => import('./tabmenu/ActiveIndex.vue'),
   'tabmenu/TrailingLine': () => import('./tabmenu/TrailingLine.vue'),
