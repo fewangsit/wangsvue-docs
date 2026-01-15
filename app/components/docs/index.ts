@@ -216,6 +216,8 @@ export const componentRegistry: Record<
   'datatable/ExportExcel': () => import('./datatable/ExportExcel.vue'),
   'datatable/Editable': () => import('./datatable/Editable.vue'),
   'datatable/RowReorder': () => import('./datatable/RowReorder.vue'),
+  'datatable/ColumnVisibility': () =>
+    import('./datatable/ColumnVisibility.vue'),
   'tabmenu/Visibility': () => import('./tabmenu/Visibility.vue'),
   'tabmenu/ActiveIndex': () => import('./tabmenu/ActiveIndex.vue'),
   'tabmenu/TrailingLine': () => import('./tabmenu/TrailingLine.vue'),

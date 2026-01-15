@@ -105,3 +105,10 @@ DataTable supports drag and drop row reordering with the `reorderable` prop. Ena
 ::component-demo{src="datatable/RowReorder"}
 ::
 
+## Column Visibility
+
+DataTable supports column visibility management with the CustomColumn component. Users can show/hide columns, reorder them, and reset to default configuration through a dropdown menu interface.
+
+::component-demo{src="datatable/ColumnVisibility"}
+::
+
