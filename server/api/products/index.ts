@@ -13,7 +13,19 @@ export interface Product extends Data {
   category: string;
   quantity: number;
   inventoryStatus: string;
+  isOutOfStock?: boolean;
   rating: number;
+  updatedAt: string;
+  tags?: Array<{
+    text: string;
+    severity:
+      | 'success'
+      | 'info'
+      | 'danger'
+      | 'warning'
+      | 'secondary'
+      | 'contrast';
+  }>;
 }
 
 export interface GetProductsQueryParams {
@@ -30,7 +42,7 @@ export interface GetProductsQueryParams {
   inventoryStatus?: string; // Array string
 }
 
-const allProducts: Product[] = [...products];
+const allProducts: Product[] = [...(products as Product[])];
 
 export default defineEventHandler(async (event) => {
   try {
@@ -132,7 +144,12 @@ export default defineEventHandler(async (event) => {
       });
     }
 
-    const paginatedProducts = filteredProducts.slice(first, last);
+    const paginatedProducts = filteredProducts
+      .slice(first, last)
+      .map((product) => ({
+        ...product,
+        isOutOfStock: product.quantity === 0,
+      }));
 
     const response: FetchResponse<Product> = {
       message: 'Success',

@@ -91,7 +91,6 @@ const fetchProducts = async (
   }
 };
 
-// eslint-disable-next-line func-style
 async function fetchOptions<
   Opt = GetProductOptionsQueryParams,
   R = FetchOptionResponse<Opt>,

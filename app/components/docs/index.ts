@@ -213,6 +213,7 @@ export const componentRegistry: Record<
     import('./datatable/ColumnPreset/Checkbox.vue'),
   'datatable/ColumnPreset/MultiRow': () =>
     import('./datatable/ColumnPreset/MultiRow.vue'),
+  'datatable/ExportExcel': () => import('./datatable/ExportExcel.vue'),
   'tabmenu/Visibility': () => import('./tabmenu/Visibility.vue'),
   'tabmenu/ActiveIndex': () => import('./tabmenu/ActiveIndex.vue'),
   'tabmenu/TrailingLine': () => import('./tabmenu/TrailingLine.vue'),

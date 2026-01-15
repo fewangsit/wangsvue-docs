@@ -84,3 +84,10 @@ MultiRow preset allows displaying multiple rows of data within a single table ce
 ::component-demo{src="datatable/ColumnPreset/MultiRow"}
 ::
 
+## Export Excel
+
+DataTable provides built-in Excel export functionality to download table data as Excel files. Export supports customizing filename, selecting specific columns, and handling data transformation before export.
+
+::component-demo{src="datatable/ExportExcel"}
+::
+
