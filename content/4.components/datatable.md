@@ -98,3 +98,10 @@ DataTable supports inline editing with the `editable` property on columns. Set `
 ::component-demo{src="datatable/Editable"}
 ::
 
+## Row Reorder
+
+DataTable supports drag and drop row reordering with the `reorderable` prop. Enable row reordering to allow users to drag rows to new positions, with events fired when reordering occurs.
+
+::component-demo{src="datatable/RowReorder"}
+::
+
