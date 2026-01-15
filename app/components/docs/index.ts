@@ -218,6 +218,7 @@ export const componentRegistry: Record<
   'datatable/RowReorder': () => import('./datatable/RowReorder.vue'),
   'datatable/ColumnVisibility': () =>
     import('./datatable/ColumnVisibility.vue'),
+  'datatable/Static': () => import('./datatable/Static.vue'),
   'tabmenu/Visibility': () => import('./tabmenu/Visibility.vue'),
   'tabmenu/ActiveIndex': () => import('./tabmenu/ActiveIndex.vue'),
   'tabmenu/TrailingLine': () => import('./tabmenu/TrailingLine.vue'),

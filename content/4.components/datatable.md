@@ -112,3 +112,17 @@ DataTable supports column visibility management with the CustomColumn component.
 ::component-demo{src="datatable/ColumnVisibility"}
 ::
 
+## Static DataTable
+
+DataTable supports static data with client-side filtering, sorting, and pagination. Use `data` prop instead of `fetchFunction` for client-side operations, while maintaining integration with search and filter components. The options for static filter are unique values populated from the data which specified by `field` or `optionField` property in `filterFields`.
+
+**Key Features:**
+- **Static Data**: Uses `data` prop instead of `fetchFunction`. Prop `lazy` must be set to false.
+- **Client-side Operations**: Search, Filtering, sorting, and pagination handled in browser.
+- **Search Integration**: Works with ButtonSearch component.
+- **Filter Integration**: Works with FilterContainer component.
+- **Table Name**: Required for component integration.
+
+::component-demo{src="datatable/Static"}
+::
+

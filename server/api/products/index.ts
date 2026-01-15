@@ -16,7 +16,7 @@ export interface Product extends Data {
   isOutOfStock?: boolean;
   rating: number;
   updatedAt: string;
-  tags?: Array<{
+  tags: Array<{
     text: string;
     severity:
       | 'success'
@@ -149,6 +149,7 @@ export default defineEventHandler(async (event) => {
       .map((product) => ({
         ...product,
         isOutOfStock: product.quantity === 0,
+        tags: product.tags || [],
       }));
 
     const response: FetchResponse<Product> = {
