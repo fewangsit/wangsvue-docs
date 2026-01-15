@@ -214,6 +214,7 @@ export const componentRegistry: Record<
   'datatable/ColumnPreset/MultiRow': () =>
     import('./datatable/ColumnPreset/MultiRow.vue'),
   'datatable/ExportExcel': () => import('./datatable/ExportExcel.vue'),
+  'datatable/Editable': () => import('./datatable/Editable.vue'),
   'tabmenu/Visibility': () => import('./tabmenu/Visibility.vue'),
   'tabmenu/ActiveIndex': () => import('./tabmenu/ActiveIndex.vue'),
   'tabmenu/TrailingLine': () => import('./tabmenu/TrailingLine.vue'),

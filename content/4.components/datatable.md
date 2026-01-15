@@ -91,3 +91,10 @@ DataTable provides built-in Excel export functionality to download table data as
 ::component-demo{src="datatable/ExportExcel"}
 ::
 
+## Editable Columns
+
+DataTable supports inline editing with the `editable` property on columns. Set `editable: true` to make cells contenteditable, and use `numberInputOnly: true` for numeric columns to restrict input to numbers only.
+
+::component-demo{src="datatable/Editable"}
+::
+
