@@ -5,19 +5,19 @@
 - [ ] BaseTree
 - [x] Breadcrumb
 - [x] Button
-- [ ] ButtonBulkAction
+- [x] ButtonBulkAction
 - [x] ButtonCopy
-- [ ] ButtonDownload
-- [ ] ButtonFilter
-- [ ] ButtonRadio
-- [ ] ButtonSearch
+- [x] ButtonDownload
+- [x] ButtonFilter
+- [x] ButtonRadio
+- [x] ButtonSearch
 - [ ] ButtonSelectTree
 - [x] ButtonToggle
 - [x] Calendar
 - [x] Card
 - [x] Checkbox
 - [ ] CodeSnippet
-- [ ] DataTable
+- [x] DataTable
 - [x] Dialog
 - [x] DialogConfirm
 - [x] DialogForm

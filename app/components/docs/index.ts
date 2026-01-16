@@ -422,6 +422,17 @@ export const componentRegistry: Record<
   // ButtonFilter components
   'buttonfilter/Basic': () => import('./buttonfilter/Basic.vue'),
 
+  // ButtonBulkAction components
+  'buttonbulkaction/Basic': () => import('./buttonbulkaction/Basic.vue'),
+  'buttonbulkaction/MenuTypes': () =>
+    import('./buttonbulkaction/MenuTypes.vue'),
+  'buttonbulkaction/CustomNaming': () =>
+    import('./buttonbulkaction/CustomNaming.vue'),
+  'buttonbulkaction/AdditionSlot': () =>
+    import('./buttonbulkaction/AdditionSlot.vue'),
+  'buttonbulkaction/TableIntegration': () =>
+    import('./buttonbulkaction/TableIntegration.vue'),
+
   // Tree components
   'tree/Basic': () => import('./tree/Basic.vue'),
   'tree/Selection': () => import('./tree/Selection.vue'),

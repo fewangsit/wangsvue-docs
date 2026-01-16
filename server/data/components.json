@@ -355,6 +355,61 @@
     ]
   },
   {
+    "name": "buttonbulkaction",
+    "title": "ButtonBulkAction",
+    "description": "ButtonBulkAction is a component for handling bulk action for multiple data at once.",
+    "sections": [
+      {
+        "id": "import",
+        "label": "Import",
+        "description": "```ts\nimport { ButtonBulkAction } from '@fewangsit/wangsvue';\n```",
+        "example": "",
+        "hasExample": false,
+        "examplePath": null
+      },
+      {
+        "id": "basic",
+        "label": "Basic",
+        "description": "Basic usage of ButtonBulkAction with selected data and action options.",
+        "example": "<script setup lang=\"ts\">\nimport { ButtonBulkAction } from '@fewangsit/wangsvue';\nimport type { MenuItem } from '@fewangsit/wangsvue/menuitem';\nimport { ref } from 'vue';\n\ninterface DataItem {\n  id: number;\n  name: string;\n  status: string;\n}\n\nconst selectedData = ref<DataItem[]>([\n  { id: 1, name: 'Item 1', status: 'active' },\n  { id: 2, name: 'Item 2', status: 'inactive' },\n  { id: 3, name: 'Item 3', status: 'active' },\n]);\n\nconst options: MenuItem[] = [\n  {\n    label: 'Delete',\n    icon: 'delete-bin',\n    command: (): void => {\n      console.log('Delete action executed');\n    },\n  },\n  {\n    label: 'Export',\n    icon: 'download',\n    command: (): void => {\n      console.log('Export action executed');\n    },\n  },\n  {\n    label: 'Archive',\n    icon: 'archive-line',\n    command: (): void => {\n      console.log('Archive action executed');\n    },\n  },\n];\n\nconst handleApply = (): void => {\n  console.log('Apply clicked');\n};\n</script>\n\n<template>\n  <ButtonBulkAction\n    v-model:selected-data=\"selectedData\"\n    :options=\"options\"\n    :total-records=\"100\"\n    @apply=\"handleApply\"\n    table-name=\"sample-table\"\n  />\n</template>\n",
+        "hasExample": true,
+        "examplePath": "buttonbulkaction/Basic"
+      },
+      {
+        "id": "menu-types",
+        "label": "Menu Types",
+        "description": "ButtonBulkAction supports different menu types for displaying action options.",
+        "example": "<script setup lang=\"ts\">\nimport { ButtonBulkAction } from '@fewangsit/wangsvue';\nimport type { MenuItem } from '@fewangsit/wangsvue/menuitem';\nimport { ref } from 'vue';\n\ninterface DataItem {\n  id: number;\n  name: string;\n  status: string;\n}\n\nconst selectedDataOverlay = ref<DataItem[]>([\n  { id: 1, name: 'Item 1', status: 'active' },\n  { id: 2, name: 'Item 2', status: 'inactive' },\n]);\n\nconst selectedDataDropdown = ref<DataItem[]>([\n  { id: 3, name: 'Item 3', status: 'active' },\n  { id: 4, name: 'Item 4', status: 'inactive' },\n]);\n\nconst options: MenuItem[] = [\n  {\n    label: 'Delete',\n    icon: 'delete-bin',\n    command: (): void => {\n      console.log('Delete action executed');\n    },\n  },\n  {\n    label: 'Export',\n    icon: 'download',\n    command: (): void => {\n      console.log('Export action executed');\n    },\n  },\n  {\n    label: 'Archive',\n    icon: 'archive-line',\n    command: (): void => {\n      console.log('Archive action executed');\n    },\n  },\n];\n\nconst handleApply = (): void => {\n  console.log('Apply clicked');\n};\n</script>\n\n<template>\n  <div class=\"flex flex-col gap-4\">\n    <div>\n      <h3 class=\"text-lg font-semibold mb-2\">Overlay Panel Menu</h3>\n\n      <ButtonBulkAction\n        v-model:selected-data=\"selectedDataOverlay\"\n        :options=\"options\"\n        @apply=\"handleApply\"\n        select-menu-type=\"overlay-panel\"\n        table-name=\"overlay-table\"\n      />\n    </div>\n\n    <div>\n      <h3 class=\"text-lg font-semibold mb-2\">Dropdown Menu</h3>\n\n      <ButtonBulkAction\n        v-model:selected-data=\"selectedDataDropdown\"\n        :options=\"options\"\n        @apply=\"handleApply\"\n        select-menu-type=\"dropdown\"\n        table-name=\"dropdown-table\"\n      />\n    </div>\n  </div>\n</template>\n",
+        "hasExample": true,
+        "examplePath": "buttonbulkaction/MenuTypes"
+      },
+      {
+        "id": "custom-naming",
+        "label": "Custom Naming",
+        "description": "Customize the display name for selected items using the naming property.",
+        "example": "<script setup lang=\"ts\">\nimport { ButtonBulkAction } from '@fewangsit/wangsvue';\nimport type { MenuItem } from '@fewangsit/wangsvue/menuitem';\nimport { ref } from 'vue';\n\ninterface DataItem {\n  id: number;\n  name: string;\n  category: string;\n}\n\nconst selectedUsers = ref<DataItem[]>([\n  { id: 1, name: 'John Doe', category: 'admin' },\n  { id: 2, name: 'Jane Smith', category: 'user' },\n]);\n\nconst selectedProducts = ref<DataItem[]>([\n  { id: 3, name: 'Laptop', category: 'electronics' },\n  { id: 4, name: 'Mouse', category: 'electronics' },\n]);\n\nconst options: MenuItem[] = [\n  {\n    label: 'Delete',\n    icon: 'delete-bin',\n    command: (): void => {\n      console.log('Delete action executed');\n    },\n  },\n  {\n    label: 'Export',\n    icon: 'download',\n    command: (): void => {\n      console.log('Export action executed');\n    },\n  },\n  {\n    label: 'Archive',\n    icon: 'archive-line',\n    command: (): void => {\n      console.log('Archive action executed');\n    },\n  },\n];\n\nconst handleApply = (): void => {\n  console.log('Apply clicked');\n};\n\nconst updateSelectedProducts = (datas: DataItem[]): void => {\n  selectedProducts.value = datas;\n};\n</script>\n\n<template>\n  <div class=\"flex flex-col gap-4\">\n    <div>\n      <h3 class=\"text-lg font-semibold mb-2\">Custom Naming - Users</h3>\n\n      <ButtonBulkAction\n        v-model:selected-data=\"selectedUsers\"\n        :options=\"options\"\n        @apply=\"handleApply\"\n        naming=\"User(s)\"\n        table-name=\"users-table\"\n      />\n    </div>\n\n    <div>\n      <h3 class=\"text-lg font-semibold mb-2\">Custom Naming - Products</h3>\n\n      <ButtonBulkAction\n        v-model:selected-data=\"selectedProducts\"\n        :options=\"options\"\n        @apply=\"handleApply\"\n        @update:selected-data=\"updateSelectedProducts\"\n        naming=\"Product(s)\"\n        table-name=\"products-table\"\n      />\n    </div>\n\n    <div>\n      <h3 class=\"text-lg font-semibold mb-2\">Default Naming</h3>\n\n      <ButtonBulkAction\n        v-model:selected-data=\"selectedProducts\"\n        :options=\"options\"\n        @apply=\"handleApply\"\n        @update:selected-data=\"updateSelectedProducts\"\n        table-name=\"default-table\"\n      />\n    </div>\n  </div>\n</template>\n",
+        "hasExample": true,
+        "examplePath": "buttonbulkaction/CustomNaming"
+      },
+      {
+        "id": "with-addition-slot",
+        "label": "With Addition Slot",
+        "description": "Use the addition slot to provide additional input fields for bulk actions, this option is only available when `select-menu-type` is set to `dropdown`. You must set `useAdditionSlot` to `true` on the menu item which you want to use the addition slot.",
+        "example": "<script setup lang=\"ts\">\nimport { ButtonBulkAction, InputText } from '@fewangsit/wangsvue';\nimport type { MenuItem } from '@fewangsit/wangsvue/menuitem';\nimport { ref } from 'vue';\n\ninterface DataItem {\n  id: number;\n  name: string;\n  status: string;\n}\n\nconst selectedData = ref<DataItem[]>([\n  { id: 1, name: 'Item 1', status: 'active' },\n  { id: 2, name: 'Item 2', status: 'inactive' },\n]);\n\nconst tagValue = shallowRef<string>('');\n\nconst options: MenuItem[] = [\n  {\n    label: 'Add Tag',\n    icon: 'price-tag-3',\n    useAdditionSlot: true,\n    command: (): void => {\n      console.log('Add tag action executed');\n    },\n  },\n  {\n    label: 'Delete',\n    icon: 'delete-bin',\n    command: (): void => {\n      console.log('Delete action executed');\n    },\n  },\n  {\n    label: 'Export',\n    icon: 'download',\n    command: (): void => {\n      console.log('Export action executed');\n    },\n  },\n];\n\nconst handleApply = (): void => {\n  console.log('Apply clicked with tag:', tagValue.value);\n};\n</script>\n\n<template>\n  <div class=\"flex\">\n    <ButtonBulkAction\n      v-model:selected-data=\"selectedData\"\n      :options=\"options\"\n      @apply=\"handleApply\"\n      select-menu-type=\"dropdown\"\n      table-name=\"addition-slot-table\"\n    >\n      <template #addition=\"{ selectedOption }\">\n        <div v-if=\"selectedOption?.label === 'Add Tag'\" class=\"p-3\">\n          <InputText\n            v-model=\"tagValue\"\n            class=\"w-full\"\n            placeholder=\"Enter tag name\"\n          />\n        </div>\n      </template>\n    </ButtonBulkAction>\n  </div>\n</template>\n",
+        "hasExample": true,
+        "examplePath": "buttonbulkaction/AdditionSlot"
+      },
+      {
+        "id": "with-table-integration",
+        "label": "With Table Integration",
+        "description": "Example of ButtonBulkAction integrated with a data table for complete bulk action workflow.",
+        "example": "<script setup lang=\"ts\">\nimport { ButtonBulkAction, DataTable } from '@fewangsit/wangsvue';\nimport type { TableColumn } from '@fewangsit/wangsvue/datatable';\nimport type { MenuItem } from '@fewangsit/wangsvue/menuitem';\nimport { ref } from 'vue';\n\ninterface Product {\n  id: number;\n  name: string;\n  category: string;\n  price: number;\n  status: string;\n}\n\nconst products = ref<Product[]>([\n  {\n    id: 1,\n    name: 'Laptop',\n    category: 'Electronics',\n    price: 999,\n    status: 'active',\n  },\n  {\n    id: 2,\n    name: 'Mouse',\n    category: 'Electronics',\n    price: 25,\n    status: 'active',\n  },\n  {\n    id: 3,\n    name: 'Keyboard',\n    category: 'Electronics',\n    price: 75,\n    status: 'inactive',\n  },\n  {\n    id: 4,\n    name: 'Monitor',\n    category: 'Electronics',\n    price: 300,\n    status: 'active',\n  },\n  {\n    id: 5,\n    name: 'Desk Chair',\n    category: 'Furniture',\n    price: 150,\n    status: 'active',\n  },\n]);\n\nconst selectedProducts = ref<Product[]>([]);\n\nconst bulkOptions: MenuItem[] = [\n  {\n    label: 'Delete Selected',\n    icon: 'delete-bin',\n    command: (): void => {\n      console.log('Delete selected products');\n    },\n  },\n  {\n    label: 'Export to Excel',\n    icon: 'xls',\n    command: (): void => {\n      console.log('Export selected products to Excel');\n    },\n  },\n  {\n    label: 'Change Status',\n    icon: 'edit',\n    command: (): void => {\n      console.log('Change status of selected products');\n    },\n  },\n];\n\nconst columns: TableColumn<Product>[] = [\n  { field: 'name', header: 'Product Name' },\n  { field: 'category', header: 'Category' },\n  { field: 'price', header: 'Price' },\n  { field: 'status', header: 'Status' },\n];\n\nconst handleBulkApply = (): void => {\n  console.log('Bulk action applied to:', selectedProducts.value);\n};\n</script>\n\n<template>\n  <div class=\"space-y-4\">\n    <div class=\"flex justify-between items-center\">\n      <h3 class=\"text-lg font-semibold\">Product Management</h3>\n\n      <ButtonBulkAction\n        v-model:selected-data=\"selectedProducts\"\n        :options=\"bulkOptions\"\n        :total-records=\"products.length\"\n        @apply=\"handleBulkApply\"\n        naming=\"Product(s)\"\n        table-name=\"products-table\"\n      />\n    </div>\n\n    <DataTable\n      v-model:selection=\"selectedProducts\"\n      :columns=\"columns\"\n      :data=\"products\"\n      :rows=\"5\"\n      data-key=\"id\"\n      paginator\n      selection-mode=\"multiple\"\n      table-style=\"min-width: 50rem\"\n    />\n\n    <div v-if=\"selectedProducts.length > 0\" class=\"p-3 bg-blue-50 rounded\">\n      <p class=\"text-sm text-blue-800\">\n        {{ selectedProducts.length }} product(s) selected for bulk actions\n      </p>\n    </div>\n  </div>\n</template>\n",
+        "hasExample": true,
+        "examplePath": "buttonbulkaction/TableIntegration"
+      }
+    ]
+  },
+  {
     "name": "buttoncopy",
     "title": "ButtonCopy",
     "description": "ButtonCopy is a component for copying text to the clipboard.",
