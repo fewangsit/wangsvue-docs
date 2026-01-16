@@ -42,21 +42,21 @@
 - [x] InputRangeNumber
 - [x] InputText
 - [x] InputURL
-- [ ] InvisibleField
-- [ ] LiteDropdown
+- [skip] InvisibleField
+- [skip] LiteDropdown
 - [x] Loading
 - [x] Menu
 - [x] MultiSelect
 - [x] OverlayPanel
-- [ ] Paginator
+- [skip] Paginator
 - [x] ProgressBar
-- [ ] QuickFilter
+- [skip] QuickFilter
 - [x] TabMenu
 - [x] Textarea
 - [x] Timeline
 - [x] Toast
 - [x] ToggleSwitch
-- [ ] TooltipSpan
+- [skip] TooltipSpan
 - [x] Tree
 - [x] UserGroup
 - [x] UserName
