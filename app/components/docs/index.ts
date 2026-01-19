@@ -439,6 +439,8 @@ export const componentRegistry: Record<
   'tree/Filter': () => import('./tree/Filter.vue'),
   'tree/Loading': () => import('./tree/Loading.vue'),
   'tree/CustomTemplate': () => import('./tree/CustomTemplate.vue'),
+  'tree/ButtonSelectTree': () => import('./tree/ButtonSelectTree.vue'),
+  'tree/DialogSelectTree': () => import('./tree/DialogSelectTree.vue'),
 
   // Calendar components
   'calendar/Basic': () => import('./calendar/Basic.vue'),

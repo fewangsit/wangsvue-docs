@@ -6,40 +6,40 @@ description: Tree is used to display hierarchical data.
 ## Import
 
 ```ts
-import { Tree } from '@fewangsit/wangsvue';
+import { Tree, ButtonSelectTree, DialogSelectTree } from '@fewangsit/wangsvue';
 ```
 
 ## Basic
 
-Basic tree displaying hierarchical data with expandable nodes.
+Tree displaying hierarchical data.
 
 ::component-demo{src="tree/Basic"}
 ::
 
 ## Selection
 
-Tree with different selection modes including single and checkbox selection.
+Tree supports **Checkbox** and **Single** selection modes.
 
 ::component-demo{src="tree/Selection"}
 ::
 
 ## Filter
 
-Tree with filtering capability to search through nodes.
+Filtering allows searching through the tree nodes.
 
 ::component-demo{src="tree/Filter"}
 ::
 
-## Loading
+## Button Select Tree
 
-Tree with loading state demonstration.
+A form component that opens a dialog to select tree nodes.
 
-::component-demo{src="tree/Loading"}
+::component-demo{src="tree/ButtonSelectTree"}
 ::
 
-## Custom Template
+## Dialog Select Tree
 
-Tree with custom node templates using slots.
+A dialog component wrapping the tree for selection.
 
-::component-demo{src="tree/CustomTemplate"}
+::component-demo{src="tree/DialogSelectTree"}
 ::

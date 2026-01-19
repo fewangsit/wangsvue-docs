@@ -19,26 +19,32 @@ When implementing ANY Wangsvue component, follow this exact sequence:
 2. **Analyze**: `mcp_wangsvue_mcp_analyze_component` for basic metadata
 3. **Resolve Component Class and all related types**: `mcp_wangsvue_mcp_resolve_type_definition` with component name
 4. **Implement**: Write Vue component using resolved API definitions
-5. **Lint**** Run `npx eslint . --fix` multiple times until all eslint errors fixed
+5. **Lint\*\*** Run `npx eslint . --fix` multiple times until all eslint errors fixed
 
 ## MCP Tool Reference
 
 ### 1. Component Discovery
+
 **`mcp_wangsvue_mcp_search_components`**
+
 - Purpose: Find components by name, category, or functionality
 - Required params: `{"query": "search-term", "format": "toon", "limit": 5}`
 - Categories: `form`, `navigation`, `layout`, `data-display`, `feedback`, `input`, `overlay`, `utility`
 - Returns: componentId (needed for next step)
 
 ### 2. Component Metadata
+
 **`mcp_wangsvue_mcp_analyze_component`**
+
 - Purpose: Get import path, description, and basic info
 - Required params: `{"componentId": "from-search", "format": "toon"}`
 - Returns: component name, import path, category
 - **Critical**: Does NOT return API details (props/slots/events)
 
 ### 3. Type Resolution (Most Important)
+
 **`mcp_wangsvue_mcp_resolve_type_definition`**
+
 - Purpose: Get complete TypeScript definitions for components and their APIs
 - Usage patterns:
   - Component class: `{"types": ["ComponentName"]}`
@@ -47,6 +53,7 @@ When implementing ANY Wangsvue component, follow this exact sequence:
 - **Pro tip**: Use `"includeRelated": true` to auto-resolve dependent types
 
 ### 4. Source Code (Optional)
+
 **`mcp_wangsvue_mcp_get_component_source`** - Vue implementation
 **`mcp_wangsvue_mcp_get_component_definition`** - TypeScript definitions
 
@@ -57,24 +64,24 @@ When implementing ANY Wangsvue component, follow this exact sequence:
 ```javascript
 // Step 1: Search for component
 mcp_wangsvue_mcp_search_components({
-  "query": "button",
-  "format": "toon",
-  "limit": 5
-})
+  query: 'button',
+  format: 'toon',
+  limit: 5,
+});
 // Returns: componentId: "button--fewangsit-wangsvue"
 
 // Step 2: Get basic metadata
 mcp_wangsvue_mcp_analyze_component({
-  "componentId": "button--fewangsit-wangsvue",
-  "format": "toon"
-})
+  componentId: 'button--fewangsit-wangsvue',
+  format: 'toon',
+});
 // Returns: name="Button", importPath="@fewangsit/wangsvue"
 
 // Step 3: Batch resolve all API types
 mcp_wangsvue_mcp_resolve_type_definition({
-  "types": ["Button"],
-  "includeRelated": true
-})
+  types: ['Button'],
+  includeRelated: true,
+});
 // Returns: Button class definition and all related types
 
 // Step 4: Implement with full type safety
@@ -83,8 +90,9 @@ mcp_wangsvue_mcp_resolve_type_definition({
 ## Component Categories & Search Strategy
 
 ### Available Categories
+
 - **`form`**: Button, Input, Checkbox, Radio, Select
-- **`navigation`**: Menu, Breadcrumb, Tabs, Pagination  
+- **`navigation`**: Menu, Breadcrumb, Tabs, Pagination
 - **`layout`**: Grid, Container, Divider, Spacer
 - **`data-display`**: Table, List, Card, Badge
 - **`feedback`**: Message, Toast, Progress, Loading
@@ -93,19 +101,20 @@ mcp_wangsvue_mcp_resolve_type_definition({
 - **`utility`**: Animation, Helper components
 
 ### Search Best Practices
+
 1. **Start broad**: Use general terms like "button", "table", "form"
 2. **Filter by stability**: Add `"status": "stable"` for production code
 3. **Optimize bundle size**: Use `"treeshakable": true` filter
 
 ## Common Issues & Solutions
 
-| Problem | Solution |
-|---------|----------|
-| Component not found | Try broader search terms or different category |
-| Type undefined error | Use `mcp_wangsvue_mcp_resolve_type_definition` |
-| Import path incorrect | Check exact path from `mcp_wangsvue_mcp_analyze_component` |
-| Missing prop definitions | Ensure you resolved the Props type from ClassComponent |
-| Slot names unknown | Resolve the Slots type from ClassComponent |
+| Problem                  | Solution                                                   |
+| ------------------------ | ---------------------------------------------------------- |
+| Component not found      | Try broader search terms or different category             |
+| Type undefined error     | Use `mcp_wangsvue_mcp_resolve_type_definition`             |
+| Import path incorrect    | Check exact path from `mcp_wangsvue_mcp_analyze_component` |
+| Missing prop definitions | Ensure you resolved the Props type from ClassComponent     |
+| Slot names unknown       | Resolve the Slots type from ClassComponent                 |
 
 ## Performance Guidelines
 
@@ -117,6 +126,7 @@ mcp_wangsvue_mcp_resolve_type_definition({
 ## Quick Reference
 
 ### Essential Search Filters
+
 ```javascript
 {
   "status": "stable",        // Production-ready only
@@ -128,9 +138,10 @@ mcp_wangsvue_mcp_resolve_type_definition({
 ```
 
 ### Standard Vue Component Pattern
+
 ```vue
 <script setup lang="ts">
-import { ComponentName } from '@fewangsit/wangsvue'
+import { ComponentName } from '@fewangsit/wangsvue';
 
 // Define props based on resolved ComponentProps
 interface Props {
@@ -140,7 +151,7 @@ interface Props {
 // Define emits based on resolved ComponentEmits
 const emit = defineEmits<{
   // Use exact event signatures from MCP resolution
-}>()
+}>();
 </script>
 
 <template>
