@@ -2,7 +2,7 @@
 - [x] Animation
 - [x] Badge
 - [x] BadgeGroup
-- [ ] BaseTree
+- [x] BaseTree
 - [x] Breadcrumb
 - [x] Button
 - [x] ButtonBulkAction
@@ -11,24 +11,24 @@
 - [x] ButtonFilter
 - [x] ButtonRadio
 - [x] ButtonSearch
-- [ ] ButtonSelectTree
+- [x] ButtonSelectTree
 - [x] ButtonToggle
 - [x] Calendar
 - [x] Card
 - [x] Checkbox
-- [ ] CodeSnippet
+- [SKIP] CodeSnippet
 - [x] DataTable
 - [x] Dialog
 - [x] DialogConfirm
 - [x] DialogForm
-- [ ] DialogSelectTree
+- [x] DialogSelectTree
 - [x] Dropdown
-- [ ] Editor
+- [SKIP] Editor
 - [-] FieldWrapper
 - [x] FileUpload
 - [x] FilterContainer
 - [x] Form
-- [ ] GalleryPreview
+- [SKIP] GalleryPreview
 - [x] Icon
 - [x] Image
 - [x] ImageCompressor
