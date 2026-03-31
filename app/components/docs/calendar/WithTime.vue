@@ -2,7 +2,7 @@
 import { Calendar } from '@fewangsit/wangsvue';
 import { ref } from 'vue';
 
-const dateTime = ref<Date | null>(null);
+const dateTime = ref<Date>();
 const dateTimeRange = ref<Date[]>([]);
 </script>
 

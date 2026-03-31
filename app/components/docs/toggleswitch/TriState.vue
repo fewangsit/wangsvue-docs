@@ -2,7 +2,7 @@
 import { ToggleSwitch } from '@fewangsit/wangsvue';
 import { ref } from 'vue';
 
-const triStateValue = ref<boolean | null>(null);
+const triStateValue = ref<boolean>();
 </script>
 
 <template>

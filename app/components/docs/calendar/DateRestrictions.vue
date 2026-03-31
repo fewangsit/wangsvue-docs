@@ -2,9 +2,9 @@
 import { Calendar } from '@fewangsit/wangsvue';
 import { ref } from 'vue';
 
-const restrictedDate = ref<Date | null>(null);
-const weekdaysOnly = ref<Date | null>(null);
-const excludedDatesSelection = ref<Date | null>(null);
+const restrictedDate = ref<Date>();
+const weekdaysOnly = ref<Date>();
+const excludedDatesSelection = ref<Date>();
 
 // Set min date to today and max date to 30 days from now
 const today = new Date();

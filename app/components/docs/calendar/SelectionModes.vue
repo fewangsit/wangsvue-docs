@@ -2,7 +2,7 @@
 import { Calendar } from '@fewangsit/wangsvue';
 import { ref } from 'vue';
 
-const singleDate = ref<Date | null>(null);
+const singleDate = ref<Date>();
 const multipleDates = ref<Date[]>([]);
 const dateRange = ref<Date[]>([]);
 </script>

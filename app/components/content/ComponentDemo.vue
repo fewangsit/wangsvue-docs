@@ -18,7 +18,7 @@ const props = withDefaults(defineProps<Props>(), {
   description: '',
 });
 
-const dynamicComponent = shallowRef<Component | null>(null);
+const dynamicComponent = shallowRef<Component>();
 const isLoading = ref(true);
 const loadingError = ref('');
 const sourceCode = ref('');

@@ -20,7 +20,7 @@ const columns: TableColumn<Product>[] = [
   { field: 'quantity', header: 'Quantity' },
 ];
 
-const selectedProduct = shallowRef<Product | null>(null);
+const selectedProduct = shallowRef<Product>();
 
 const singleActions = computed<MenuItem[]>(() => [
   {

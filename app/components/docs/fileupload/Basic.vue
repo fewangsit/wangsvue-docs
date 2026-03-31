@@ -2,7 +2,7 @@
 import { FileUpload } from '@fewangsit/wangsvue';
 import { ref } from 'vue';
 
-const selectedFile = ref<File | null>(null);
+const selectedFile = ref<File>();
 
 const onFileSelect = (file: File): void => {
   selectedFile.value = file;

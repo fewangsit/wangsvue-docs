@@ -2,7 +2,7 @@
 import { Calendar } from '@fewangsit/wangsvue';
 import { ref } from 'vue';
 
-const selectedDate = ref<Date | null>(null);
+const selectedDate = ref<Date>();
 </script>
 
 <template>
